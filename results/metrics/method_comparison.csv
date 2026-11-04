@@ -1,0 +1,4 @@
+method,accuracy,precision,recall_tpr,f1_score,false_positive_rate,false_negative_rate,true_negatives,false_positives,false_negatives,true_positives,confusion_matrix,zero_day_detection_rate
+Simple CV,0.2849,0.0,0.0,0.0,0.0494,1.0,1424,74,3501,0,"[[1424, 74], [3501, 0]]",0.0
+Adaptive MAD,0.2935,0.444,0.0351,0.0651,0.1028,0.9649,1344,154,3378,123,"[[1344, 154], [3378, 123]]",0.1161
+Fuzzy Logic,0.8224,0.8569,0.896,0.876,0.3498,0.104,974,524,364,3137,"[[974, 524], [364, 3137]]",0.7588

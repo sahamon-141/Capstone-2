@@ -1,0 +1,25 @@
+{
+    "features": [
+        "IAT",
+        "Rate",
+        "Srate",
+        "Drate",
+        "flow_duration",
+        "Duration",
+        "Header_Length",
+        "Tot size",
+        "Tot sum",
+        "Number",
+        "AVG",
+        "Std",
+        "Min",
+        "Max",
+        "Protocol Type",
+        "TCP",
+        "UDP",
+        "syn_count",
+        "ack_count"
+    ],
+    "num_features": 19,
+    "sequence_length": 50
+}

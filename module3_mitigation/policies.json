@@ -1,0 +1,161 @@
+{
+    "version": "1.0.0",
+    "description": "Attack-Specific Mitigation Policies for IoT and Wi-Fi Intrusion Defense (AWID3 & CICIoT2023)",
+    "policies": [
+        {
+            "attack_type": "Deauth",
+            "mitigation_action": "ENABLE_PMF_AND_MONITOR",
+            "description": "Enable 802.11w Protected Management Frames (PMF) on AP; monitor suspicious management frames",
+            "required_info": ["source_mac"],
+            "automated_execution": true,
+            "requires_admin_approval": false,
+            "remediation_type": "AUTOMATED_ACTION",
+            "confidence_threshold": 0.60,
+            "aliases": ["deauthentication", "deauth_flood", "wifi_deauth", "deauth"]
+        },
+        {
+            "attack_type": "Disas",
+            "mitigation_action": "ENABLE_PMF_MONITOR_DISAS",
+            "description": "Enable PMF and monitor suspicious disassociation activity across monitored BSSID",
+            "required_info": ["source_mac"],
+            "automated_execution": true,
+            "requires_admin_approval": false,
+            "remediation_type": "AUTOMATED_ACTION",
+            "confidence_threshold": 0.60,
+            "aliases": ["disassociation", "disas_flood", "disas"]
+        },
+        {
+            "attack_type": "(Re)Assoc",
+            "mitigation_action": "ENFORCE_AUTH_ASSOC_POLICY",
+            "description": "Enforce strict AP authentication and association rate limit policies; drop malformed frames",
+            "required_info": ["source_mac"],
+            "automated_execution": true,
+            "requires_admin_approval": false,
+            "remediation_type": "AUTOMATED_ACTION",
+            "confidence_threshold": 0.60,
+            "aliases": ["reassoc", "assoc", "association_flood", "reassociation"]
+        },
+        {
+            "attack_type": "Rogue_AP",
+            "mitigation_action": "ALERT_ROGUE_AP",
+            "description": "Generate high-priority rogue access point alert and notify network administrator for physical sweep",
+            "required_info": ["source_mac"],
+            "automated_execution": false,
+            "requires_admin_approval": true,
+            "remediation_type": "RECOMMENDED_MANUAL",
+            "confidence_threshold": 0.70,
+            "aliases": ["rogue_ap", "rogue_access_point", "unauthorized_ap"]
+        },
+        {
+            "attack_type": "Krack",
+            "mitigation_action": "RECOMMEND_FIRMWARE_UPDATE_KRACK",
+            "description": "Recommend WPA2 4-way handshake patch and AP/client firmware security updates (CVE-2017-13077)",
+            "required_info": ["source_mac"],
+            "automated_execution": false,
+            "requires_admin_approval": true,
+            "remediation_type": "RECOMMENDED_MANUAL",
+            "confidence_threshold": 0.75,
+            "aliases": ["krack", "key_reinstallation_attack", "wpa2_krack"]
+        },
+        {
+            "attack_type": "Kr00k",
+            "mitigation_action": "RECOMMEND_FIRMWARE_UPDATE_KR00K",
+            "description": "Recommend vulnerable Wi-Fi chipset firmware updates for all-zero TK encryption vulnerability (CVE-2019-15126)",
+            "required_info": ["source_mac"],
+            "automated_execution": false,
+            "requires_admin_approval": true,
+            "remediation_type": "RECOMMENDED_MANUAL",
+            "confidence_threshold": 0.75,
+            "aliases": ["kr00k", "krook", "cve_2019_15126"]
+        },
+        {
+            "attack_type": "SSH",
+            "mitigation_action": "APPLY_SSH_RATE_LIMIT",
+            "description": "Simulate SSH connection rate limiting and temporary source IP firewall throttle on TCP port 22",
+            "required_info": ["source_ip"],
+            "automated_execution": true,
+            "requires_admin_approval": false,
+            "remediation_type": "AUTOMATED_ACTION",
+            "confidence_threshold": 0.60,
+            "aliases": ["ssh", "ssh_bruteforce", "ssh_attack", "dictionarybruteforce"]
+        },
+        {
+            "attack_type": "Botnet",
+            "mitigation_action": "ISOLATE_INFECTED_DEVICE",
+            "description": "Simulate infected device network isolation via quarantine VLAN and dynamic MAC filter",
+            "required_info": ["source_mac"],
+            "automated_execution": true,
+            "requires_admin_approval": false,
+            "remediation_type": "AUTOMATED_ACTION",
+            "confidence_threshold": 0.65,
+            "aliases": ["botnet", "mirai", "mirai-udpplain", "mirai-greeth_flood", "mirai-greip_flood", "ddos-udp_flood", "ddos-icmp_flood", "ddos-syn_flood", "ddos-tcp_flood", "ddos-pshack_flood", "ddos-rstfinflood", "dos-udp_flood", "dos-tcp_flood", "dos-syn_flood"]
+        },
+        {
+            "attack_type": "Malware",
+            "mitigation_action": "QUARANTINE_ENDPOINT",
+            "description": "Simulate endpoint quarantine, block outbound C2 channels, and alert incident response team",
+            "required_info": ["source_ip", "source_mac"],
+            "automated_execution": true,
+            "requires_admin_approval": false,
+            "remediation_type": "AUTOMATED_ACTION",
+            "confidence_threshold": 0.65,
+            "aliases": ["malware", "backdoor_malware", "backdoor", "trojan", "ransomware", "commandinjection"]
+        },
+        {
+            "attack_type": "SQL_Injection",
+            "mitigation_action": "ACTIVATE_WAF_RULE",
+            "description": "Simulate WAF rule activation to inspect and drop malicious SQL query payloads and parameter tampering",
+            "required_info": ["source_ip"],
+            "automated_execution": true,
+            "requires_admin_approval": false,
+            "remediation_type": "AUTOMATED_ACTION",
+            "confidence_threshold": 0.60,
+            "aliases": ["sqlinjection", "sql_injection", "sql_i", "web_exploit"]
+        },
+        {
+            "attack_type": "SSDP",
+            "mitigation_action": "RESTRICT_UDP_PORT_1900",
+            "description": "Simulate restricting unnecessary SSDP UDP port 1900 traffic and disable UPnP on external interface",
+            "required_info": ["source_ip"],
+            "automated_execution": true,
+            "requires_admin_approval": false,
+            "remediation_type": "AUTOMATED_ACTION",
+            "confidence_threshold": 0.60,
+            "aliases": ["ssdp", "ssdp_amplification", "upnp_abuse", "port_1900"]
+        },
+        {
+            "attack_type": "Evil_Twin",
+            "mitigation_action": "ALERT_EVIL_TWIN_VERIFY",
+            "description": "Generate suspicious AP alert, mark spoofed SSID/BSSID pair, and recommend identity verification",
+            "required_info": ["source_mac"],
+            "automated_execution": false,
+            "requires_admin_approval": true,
+            "remediation_type": "RECOMMENDED_MANUAL",
+            "confidence_threshold": 0.70,
+            "aliases": ["evil_twin", "mitm-arpspoofing", "arpspoofing", "ap_spoofing", "fake_ap"]
+        },
+        {
+            "attack_type": "Website_spoofing",
+            "mitigation_action": "BLOCK_MALICIOUS_DESTINATION",
+            "description": "Simulate blocking verified malicious destination domain and IP on DNS resolver and gateway proxy",
+            "required_info": ["destination_ip"],
+            "automated_execution": true,
+            "requires_admin_approval": false,
+            "remediation_type": "AUTOMATED_ACTION",
+            "confidence_threshold": 0.65,
+            "aliases": ["website_spoofing", "dns_spoofing", "phishing_domain", "fake_website", "browserhijacking"]
+        }
+    ],
+    "fallback_policy": {
+        "attack_type": "Unknown",
+        "mitigation_action": "ALERT_ADMIN_AND_LOG",
+        "description": "No automated mitigation policy matched. Log forensic packet telemetry and alert security operator",
+        "required_info": [],
+        "automated_execution": false,
+        "requires_admin_approval": true,
+        "remediation_type": "RECOMMENDED_MANUAL",
+        "confidence_threshold": 0.0,
+        "aliases": ["unknown", "unknown_zero_day", "default"]
+    }
+}
+

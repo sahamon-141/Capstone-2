@@ -1,0 +1,48 @@
+2026-11-04 13:25:02,373 [INFO] [Module3] Received attack event: type=Deauth, conf=0.970, MAC=00:14:22:01:23:45, IP=None
+2026-11-04 13:25:02,384 [INFO] [Module3] Mitigation completed [ID=1]: action=ENABLE_PMF_AND_MONITOR, exec_status=SIMULATED_SUCCESS, traffic: 500.0 -> 15.0 (+97.0%), verif_status=MITIGATION_EFFECTIVE
+2026-11-04 13:25:02,386 [INFO] [Module3] Received attack event: type=Botnet, conf=0.980, MAC=AA:BB:CC:DD:EE:FF, IP=None
+2026-11-04 13:25:02,406 [INFO] [Module3] Mitigation completed [ID=2]: action=ISOLATE_INFECTED_DEVICE, exec_status=SIMULATED_SUCCESS, traffic: 1000.0 -> 0.0 (+100.0%), verif_status=MITIGATION_EFFECTIVE
+2026-11-04 13:25:37,902 [INFO] [Module3] Received attack event: type=Deauth, conf=0.970, MAC=00:14:22:01:23:45, IP=None
+2026-11-04 13:25:37,911 [INFO] [Module3] Mitigation completed [ID=3]: action=ENABLE_PMF_AND_MONITOR, exec_status=SIMULATED_SUCCESS, traffic: 500.0 -> 15.0 (+97.0%), verif_status=MITIGATION_EFFECTIVE
+2026-11-04 13:25:37,911 [INFO] [Module3] Received attack event: type=Botnet, conf=0.980, MAC=E4:5F:01:AB:CD:EF, IP=192.168.1.185
+2026-11-04 13:25:37,920 [INFO] [Module3] Mitigation completed [ID=4]: action=ISOLATE_INFECTED_DEVICE, exec_status=SIMULATED_SUCCESS, traffic: 1200.0 -> 0.0 (+100.0%), verif_status=MITIGATION_EFFECTIVE
+2026-11-04 13:25:37,920 [INFO] [Module3] Received attack event: type=SSH, conf=0.920, MAC=B8:27:EB:12:34:56, IP=192.168.1.140
+2026-11-04 13:25:37,929 [INFO] [Module3] Mitigation completed [ID=5]: action=APPLY_SSH_RATE_LIMIT, exec_status=SIMULATED_SUCCESS, traffic: 400.0 -> 180.0 (+55.0%), verif_status=PARTIALLY_EFFECTIVE
+2026-11-04 13:25:37,929 [INFO] [Module3] Received attack event: type=Rogue_AP, conf=0.940, MAC=68:DB:F5:88:99:AA, IP=None
+2026-11-04 13:25:37,938 [WARNING] [Module3] Mitigation completed [ID=6]: action=ALERT_ROGUE_AP, exec_status=REQUIRES_ADMIN_APPROVAL, traffic: 180.0 -> 180.0 (+0.0%), verif_status=MITIGATION_FAILED
+2026-11-04 13:30:15,330 [INFO] [Module3] Received attack event: type=DDoS-RSTFINFlood, conf=0.251, MAC=00:14:22:01:23:45, IP=192.168.1.185
+2026-11-04 13:30:15,424 [INFO] [Module3] Mitigation completed [ID=7]: action=ISOLATE_INFECTED_DEVICE, exec_status=REQUIRES_ADMIN_APPROVAL, traffic: 1200.0 -> 300.0 (+75.0%), verif_status=PARTIALLY_EFFECTIVE
+2026-11-04 13:35:01,449 [INFO] [Module3] Received attack event: type=Deauth, conf=0.970, MAC=00:14:22:01:23:45, IP=None
+2026-11-04 13:35:01,459 [INFO] [Module3] Mitigation completed [ID=8]: action=ENABLE_PMF_AND_MONITOR, exec_status=SIMULATED_SUCCESS, traffic: 500.0 -> 15.0 (+97.0%), verif_status=MITIGATION_EFFECTIVE
+2026-11-04 13:35:01,459 [INFO] [Module3] Received attack event: type=Botnet, conf=0.980, MAC=E4:5F:01:AB:CD:EF, IP=192.168.1.185
+2026-11-04 13:35:01,467 [INFO] [Module3] Mitigation completed [ID=9]: action=ISOLATE_INFECTED_DEVICE, exec_status=SIMULATED_SUCCESS, traffic: 1200.0 -> 0.0 (+100.0%), verif_status=MITIGATION_EFFECTIVE
+2026-11-04 13:35:01,467 [INFO] [Module3] Received attack event: type=SSH, conf=0.920, MAC=B8:27:EB:12:34:56, IP=192.168.1.140
+2026-11-04 13:35:01,476 [INFO] [Module3] Mitigation completed [ID=10]: action=APPLY_SSH_RATE_LIMIT, exec_status=SIMULATED_SUCCESS, traffic: 400.0 -> 180.0 (+55.0%), verif_status=PARTIALLY_EFFECTIVE
+2026-11-04 13:35:01,476 [INFO] [Module3] Received attack event: type=Rogue_AP, conf=0.940, MAC=68:DB:F5:88:99:AA, IP=None
+2026-11-04 13:35:01,486 [WARNING] [Module3] Mitigation completed [ID=11]: action=ALERT_ROGUE_AP, exec_status=REQUIRES_ADMIN_APPROVAL, traffic: 180.0 -> 180.0 (+0.0%), verif_status=MITIGATION_FAILED
+2026-11-04 13:35:01,486 [INFO] [Module3] Received attack event: type=Malware, conf=0.950, MAC=AC:DE:48:00:11:22, IP=192.168.1.205
+2026-11-04 13:35:01,497 [INFO] [Module3] Mitigation completed [ID=12]: action=QUARANTINE_ENDPOINT, exec_status=SIMULATED_SUCCESS, traffic: 800.0 -> 20.0 (+97.5%), verif_status=MITIGATION_EFFECTIVE
+2026-11-04 13:35:01,497 [INFO] [Module3] Received attack event: type=Unknown_Novel_Exploit_X, conf=0.700, MAC=52:54:00:12:34:56, IP=192.168.1.99
+2026-11-04 13:35:01,506 [WARNING] [Module3] Mitigation completed [ID=13]: action=ALERT_ADMIN_AND_LOG, exec_status=UNSUPPORTED_ACTION, traffic: 300.0 -> 300.0 (+0.0%), verif_status=MITIGATION_FAILED
+2026-11-04 13:35:01,506 [INFO] [Module3] Received attack event: type=SQL_Injection, conf=0.420, MAC=70:85:C2:55:66:77, IP=192.168.1.112
+2026-11-04 13:35:01,515 [WARNING] [Module3] Mitigation completed [ID=14]: action=ACTIVATE_WAF_RULE, exec_status=REQUIRES_ADMIN_APPROVAL, traffic: 350.0 -> 350.0 (+0.0%), verif_status=MITIGATION_FAILED
+2026-11-04 13:35:01,515 [INFO] [Module3] Received attack event: type=SSDP, conf=0.880, MAC=F0:9F:C2:33:44:55, IP=192.168.1.160
+2026-11-04 13:35:01,524 [WARNING] [Module3] Mitigation completed [ID=15]: action=RESTRICT_UDP_PORT_1900, exec_status=SIMULATED_SUCCESS, traffic: 1000.0 -> 950.0 (+5.0%), verif_status=MITIGATION_FAILED
+2026-11-04 13:35:01,540 [INFO] [Module3] Received attack event: type=DDoS-UDP_Flood, conf=0.982, MAC=E4:5F:01:FE:DC:BA, IP=192.168.1.185
+2026-11-04 13:35:01,549 [INFO] [Module3] Mitigation completed [ID=16]: action=ISOLATE_INFECTED_DEVICE, exec_status=SIMULATED_SUCCESS, traffic: 1200.0 -> 0.0 (+100.0%), verif_status=MITIGATION_EFFECTIVE
+2026-11-04 13:35:16,628 [INFO] [Module3] Received attack event: type=Deauth, conf=0.970, MAC=00:14:22:01:23:45, IP=None
+2026-11-04 13:35:16,638 [INFO] [Module3] Mitigation completed [ID=17]: action=ENABLE_PMF_AND_MONITOR, exec_status=SIMULATED_SUCCESS, traffic: 500.0 -> 15.0 (+97.0%), verif_status=MITIGATION_EFFECTIVE
+2026-11-04 13:35:16,638 [INFO] [Module3] Received attack event: type=Botnet, conf=0.980, MAC=E4:5F:01:AB:CD:EF, IP=192.168.1.185
+2026-11-04 13:35:16,647 [INFO] [Module3] Mitigation completed [ID=18]: action=ISOLATE_INFECTED_DEVICE, exec_status=SIMULATED_SUCCESS, traffic: 1200.0 -> 0.0 (+100.0%), verif_status=MITIGATION_EFFECTIVE
+2026-11-04 13:35:16,647 [INFO] [Module3] Received attack event: type=SSH, conf=0.920, MAC=B8:27:EB:12:34:56, IP=192.168.1.140
+2026-11-04 13:35:16,658 [INFO] [Module3] Mitigation completed [ID=19]: action=APPLY_SSH_RATE_LIMIT, exec_status=SIMULATED_SUCCESS, traffic: 400.0 -> 180.0 (+55.0%), verif_status=PARTIALLY_EFFECTIVE
+2026-11-04 13:35:16,658 [INFO] [Module3] Received attack event: type=Rogue_AP, conf=0.940, MAC=68:DB:F5:88:99:AA, IP=None
+2026-11-04 13:35:16,669 [WARNING] [Module3] Mitigation completed [ID=20]: action=ALERT_ROGUE_AP, exec_status=REQUIRES_ADMIN_APPROVAL, traffic: 180.0 -> 180.0 (+0.0%), verif_status=MITIGATION_FAILED
+2026-11-04 13:35:16,670 [INFO] [Module3] Received attack event: type=Malware, conf=0.950, MAC=AC:DE:48:00:11:22, IP=192.168.1.205
+2026-11-04 13:35:16,682 [INFO] [Module3] Mitigation completed [ID=21]: action=QUARANTINE_ENDPOINT, exec_status=SIMULATED_SUCCESS, traffic: 800.0 -> 20.0 (+97.5%), verif_status=MITIGATION_EFFECTIVE
+2026-11-04 13:35:16,682 [INFO] [Module3] Received attack event: type=Unknown_Novel_Exploit_X, conf=0.700, MAC=52:54:00:12:34:56, IP=192.168.1.99
+2026-11-04 13:35:16,694 [WARNING] [Module3] Mitigation completed [ID=22]: action=ALERT_ADMIN_AND_LOG, exec_status=UNSUPPORTED_ACTION, traffic: 300.0 -> 300.0 (+0.0%), verif_status=MITIGATION_FAILED
+2026-11-04 13:35:16,694 [INFO] [Module3] Received attack event: type=SQL_Injection, conf=0.420, MAC=70:85:C2:55:66:77, IP=192.168.1.112
+2026-11-04 13:35:16,705 [WARNING] [Module3] Mitigation completed [ID=23]: action=ACTIVATE_WAF_RULE, exec_status=REQUIRES_ADMIN_APPROVAL, traffic: 350.0 -> 350.0 (+0.0%), verif_status=MITIGATION_FAILED
+2026-11-04 13:35:16,706 [INFO] [Module3] Received attack event: type=SSDP, conf=0.880, MAC=F0:9F:C2:33:44:55, IP=192.168.1.160
+2026-11-04 13:35:16,718 [WARNING] [Module3] Mitigation completed [ID=24]: action=RESTRICT_UDP_PORT_1900, exec_status=SIMULATED_SUCCESS, traffic: 1000.0 -> 950.0 (+5.0%), verif_status=MITIGATION_FAILED

@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 3: Attack Mitigation & Verification | IoT Sentinel IDS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #090d16;
+            --card-bg: #111827;
+            --card-border: #1f2937;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --primary: #3b82f6;
+            --primary-hover: #2563eb;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --badge-bg: #1e293b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            padding: 24px;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            margin-bottom: 28px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--card-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .title-group h1 {
+            font-size: 1.85rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .title-group p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-top: 4px;
+        }
+
+        .sim-banner {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(16, 185, 129, 0.15));
+            border: 1px solid rgba(59, 130, 246, 0.4);
+            border-radius: 8px;
+            padding: 8px 16px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #93c5fd;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Metrics Row */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+
+        .metric-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 18px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .metric-title {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .metric-value {
+            font-size: 1.9rem;
+            font-weight: 800;
+            margin-top: 6px;
+            color: #fff;
+        }
+
+        .metric-sub {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        /* Scenarios Quick Runner */
+        .section-header {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .scenarios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .scenario-btn {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            padding: 14px 16px;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .scenario-btn:hover {
+            border-color: var(--primary);
+            background-color: #1e293b;
+            transform: translateY(-2px);
+        }
+
+        .scenario-btn .sc-title {
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: #60a5fa;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .scenario-btn .sc-desc {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* Two Column Layout */
+        .main-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.3fr;
+            gap: 24px;
+            margin-bottom: 28px;
+        }
+
+        @media (max-width: 1024px) {
+            .main-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 22px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Forms */
+        .form-group {
+            margin-bottom: 14px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #d1d5db;
+            margin-bottom: 6px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px 12px;
+            border-radius: 8px;
+            border: 1px solid var(--card-border);
+            background-color: #0f172a;
+            color: #fff;
+            font-size: 0.9rem;
+            font-family: inherit;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: none;
+            background-color: var(--primary);
+            color: #fff;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background-color 0.2s;
+        }
+
+        .btn-submit:hover {
+            background-color: var(--primary-hover);
+        }
+
+        /* Result Display Cards */
+        .result-box {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .badge-success { background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid #10b981; }
+        .badge-warning { background: rgba(245, 158, 11, 0.2); color: #fbbf24; border: 1px solid #f59e0b; }
+        .badge-danger { background: rgba(239, 68, 68, 0.2); color: #f87171; border: 1px solid #ef4444; }
+        .badge-info { background: rgba(59, 130, 246, 0.2); color: #60a5fa; border: 1px solid #3b82f6; }
+
+        .progress-bar-container {
+            width: 100%;
+            height: 12px;
+            background-color: #1e293b;
+            border-radius: 6px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #10b981, #3b82f6);
+            transition: width 0.5s ease;
+        }
+
+        /* History Table */
+        .history-table-container {
+            overflow-x: auto;
+            margin-top: 14px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+        }
+
+        th {
+            background-color: #1e293b;
+            padding: 12px;
+            text-align: left;
+            color: #94a3b8;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid var(--card-border);
+            color: #e2e8f0;
+        }
+
+        tr:hover td {
+            background-color: rgba(255, 255, 255, 0.02);
+        }
+
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+        }
+
+        .btn-secondary {
+            background-color: #1e293b;
+            color: #e2e8f0;
+            border: 1px solid var(--card-border);
+            padding: 8px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        .btn-secondary:hover {
+            background-color: #334155;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <div class="title-group">
+            <h1>🛡️ IoT Sentinel IDS | Module 3</h1>
+            <p>Attack-Specific Mitigation Engine & Traffic Verification (Safe Windows Simulation)</p>
+        </div>
+        <div class="sim-banner">
+            <span>⚙️</span> SIMULATION MODE: WINDOWS HOST (NO HARDWARE MODIFICATIONS)
+        </div>
+    </header>
+
+    <!-- Metrics Cards -->
+    <div class="metrics-grid">
+        <div class="metric-card">
+            <div class="metric-title">Total Mitigation Events</div>
+            <div class="metric-value" id="stat-total">{{ stats.total_events }}</div>
+            <div class="metric-sub">Recorded in SQLite database</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-title">Mitigations Effective</div>
+            <div class="metric-value" style="color: #34d399;" id="stat-effective">{{ stats.effective_count }}</div>
+            <div class="metric-sub">Traffic reduction ≥ 80%</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-title">Partially Effective</div>
+            <div class="metric-value" style="color: #fbbf24;" id="stat-partial">{{ stats.partial_count }}</div>
+            <div class="metric-sub">Traffic reduction 30% - 80%</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-title">Mitigations Failed</div>
+            <div class="metric-value" style="color: #f87171;" id="stat-failed">{{ stats.failed_count }}</div>
+            <div class="metric-sub">Reduction < 30% or traffic increase</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-title">Approval Required</div>
+            <div class="metric-value" style="color: #60a5fa;" id="stat-approval">{{ stats.approval_count }}</div>
+            <div class="metric-sub">Manual / Low-confidence events</div>
+        </div>
+    </div>
+
+    <!-- Scenarios Quick Runner -->
+    <div class="section-header">⚡ One-Click Simulation Scenarios (Reproducible Test Suite)</div>
+    <div class="scenarios-grid">
+        {% for sc in scenarios %}
+        <button class="scenario-btn" onclick="runScenario({{ sc.id }})">
+            <div class="sc-title">
+                <span>{{ sc.id }}.</span> {{ sc.name }}
+            </div>
+            <div class="sc-desc">{{ sc.description }}</div>
+        </button>
+        {% endfor %}
+    </div>
+
+    <!-- Main Section: Form & Live Result -->
+    <div class="main-layout">
+        <!-- Manual Custom Simulation Form -->
+        <div class="card">
+            <div class="section-header">🎯 Custom Attack Mitigation Trigger</div>
+            <form id="custom-mitigate-form" onsubmit="submitCustomAttack(event)">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="input-attack-type">Attack Category</label>
+                        <select id="input-attack-type" class="form-control">
+                            {% for att in supported_attacks %}
+                            <option value="{{ att }}">{{ att }}</option>
+                            {% endfor %}
+                            <option value="Unknown_Exploit">Unknown_Exploit (Fallback)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="input-confidence">Confidence Score (0.0 to 1.0)</label>
+                        <input type="number" step="0.01" min="0.0" max="1.0" id="input-confidence" class="form-control" value="0.95">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="input-mac">Source MAC Address</label>
+                        <input type="text" id="input-mac" class="form-control font-mono" value="00:14:22:01:23:45">
+                    </div>
+                    <div class="form-group">
+                        <label for="input-ip">Source IP Address</label>
+                        <input type="text" id="input-ip" class="form-control font-mono" value="192.168.1.185">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="input-before">Traffic Before (pkts/min)</label>
+                        <input type="number" step="10" min="0" id="input-before" class="form-control font-mono" value="500">
+                    </div>
+                    <div class="form-group">
+                        <label for="input-after">Traffic After (pkts/min)</label>
+                        <input type="number" step="5" min="0" id="input-after" class="form-control font-mono" value="20">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="input-force-status">Execution Status Override (Optional)</label>
+                    <select id="input-force-status" class="form-control">
+                        <option value="">Default (Policy-Driven)</option>
+                        <option value="SIMULATED_SUCCESS">Force SIMULATED_SUCCESS</option>
+                        <option value="REQUIRES_ADMIN_APPROVAL">Force REQUIRES_ADMIN_APPROVAL</option>
+                        <option value="SIMULATION_FAILED">Force SIMULATION_FAILED</option>
+                        <option value="UNSUPPORTED_ACTION">Force UNSUPPORTED_ACTION</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-submit">🚀 Execute Simulated Mitigation</button>
+            </form>
+        </div>
+
+        <!-- Latest Execution & Verification Result -->
+        <div class="card">
+            <div class="section-header">🔍 Active Mitigation & Verification Result</div>
+            <div class="result-box" id="result-display">
+                {% if recent_history and recent_history|length > 0 %}
+                {% set rec = recent_history[0] %}
+                <div>
+                    <span style="color: #94a3b8; font-size: 0.8rem; text-transform: uppercase;">Attack Attribution</span>
+                    <h3 style="font-size: 1.35rem; font-weight: 700; margin-top: 4px;">{{ rec.attack_type }}</h3>
+                    <div style="font-size: 0.85rem; color: #94a3b8; margin-top: 4px;">
+                        Confidence: <strong style="color: #60a5fa;">{{ "%.1f"|format(rec.confidence * 100) }}%</strong> &nbsp;|&nbsp;
+                        Source MAC: <strong class="font-mono">{{ rec.source_mac or 'N/A' }}</strong> &nbsp;|&nbsp;
+                        Sensor: <strong>{{ rec.sensor_id }}</strong>
+                    </div>
+                </div>
+
+                <div style="background-color: #0f172a; border-radius: 8px; padding: 14px; border: 1px solid var(--card-border);">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span style="font-size: 0.85rem; font-weight: 600; color: #93c5fd;">Mitigation Action</span>
+                        <span class="status-badge {% if rec.execution_status == 'SIMULATED_SUCCESS' %}badge-success{% elif rec.execution_status == 'REQUIRES_ADMIN_APPROVAL' %}badge-warning{% else %}badge-danger{% endif %}">
+                            {{ rec.execution_status }}
+                        </span>
+                    </div>
+                    <div style="font-size: 1rem; font-weight: 700; margin-top: 6px; color: #fff;">{{ rec.mitigation_action }}</div>
+                    <div style="font-size: 0.85rem; color: #cbd5e1; margin-top: 4px;">{{ rec.action_description }}</div>
+                </div>
+
+                <div style="background-color: #0f172a; border-radius: 8px; padding: 14px; border: 1px solid var(--card-border);">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span style="font-size: 0.85rem; font-weight: 600; color: #93c5fd;">Mitigation Verification</span>
+                        <span class="status-badge {% if rec.verification_status == 'MITIGATION_EFFECTIVE' %}badge-success{% elif rec.verification_status == 'PARTIALLY_EFFECTIVE' %}badge-warning{% else %}badge-danger{% endif %}">
+                            {{ rec.verification_status }}
+                        </span>
+                    </div>
+
+                    <div style="display: flex; justify-content: space-between; margin-top: 10px; font-size: 0.9rem;">
+                        <div>Before: <strong>{{ rec.traffic_before }} pkts/min</strong></div>
+                        <div>After: <strong>{{ rec.traffic_after }} pkts/min</strong></div>
+                        <div>Reduction: <strong style="color: #34d399; font-size: 1.1rem;">{{ rec.reduction_percentage }}%</strong></div>
+                    </div>
+
+                    <div class="progress-bar-container">
+                        <div class="progress-bar-fill" style="width: {{ [0, [100, rec.reduction_percentage]|min]|max }}%;"></div>
+                    </div>
+
+                    <div style="font-size: 0.8rem; color: #94a3b8;">{{ rec.notes }}</div>
+                </div>
+                {% else %}
+                <div style="text-align: center; padding: 40px 0; color: var(--text-muted);">
+                    <p style="font-size: 1.1rem;">No mitigation events recorded yet.</p>
+                    <p style="font-size: 0.85rem; margin-top: 6px;">Click any scenario above or submit a custom attack to begin simulation.</p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- History Table -->
+    <div class="card">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+            <div class="section-header" style="margin: 0;">📜 Mitigation History (Persisted in SQLite)</div>
+            <div style="display: flex; gap: 8px;">
+                <button class="btn-secondary" onclick="loadHistory()">🔄 Refresh</button>
+                <button class="btn-secondary" onclick="clearHistory()">🗑️ Clear History</button>
+            </div>
+        </div>
+
+        <div class="history-table-container">
+            <table id="history-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Timestamp</th>
+                        <th>Attack Type</th>
+                        <th>Confidence</th>
+                        <th>Source MAC</th>
+                        <th>Action</th>
+                        <th>Execution Status</th>
+                        <th>Traffic Before</th>
+                        <th>Traffic After</th>
+                        <th>Reduction (%)</th>
+                        <th>Verification Status</th>
+                    </tr>
+                </thead>
+                <tbody id="history-tbody">
+                    {% for h in recent_history %}
+                    <tr>
+                        <td class="font-mono">{{ h.id }}</td>
+                        <td style="font-size: 0.75rem;">{{ h.timestamp[:19] }}</td>
+                        <td><strong>{{ h.attack_type }}</strong></td>
+                        <td>{{ "%.1f"|format(h.confidence * 100) }}%</td>
+                        <td class="font-mono">{{ h.source_mac or 'N/A' }}</td>
+                        <td>{{ h.mitigation_action }}</td>
+                        <td>
+                            <span class="status-badge {% if h.execution_status == 'SIMULATED_SUCCESS' %}badge-success{% elif h.execution_status == 'REQUIRES_ADMIN_APPROVAL' %}badge-warning{% else %}badge-danger{% endif %}">
+                                {{ h.execution_status }}
+                            </span>
+                        </td>
+                        <td class="font-mono">{{ h.traffic_before }}</td>
+                        <td class="font-mono">{{ h.traffic_after }}</td>
+                        <td style="font-weight: 700; color: {% if h.reduction_percentage >= 80 %}#34d399{% elif h.reduction_percentage >= 30 %}#fbbf24{% else %}#f87171{% endif %};">
+                            {{ h.reduction_percentage }}%
+                        </td>
+                        <td>
+                            <span class="status-badge {% if h.verification_status == 'MITIGATION_EFFECTIVE' %}badge-success{% elif h.verification_status == 'PARTIALLY_EFFECTIVE' %}badge-warning{% else %}badge-danger{% endif %}">
+                                {{ h.verification_status }}
+                            </span>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+async function runScenario(scenarioId) {
+    try {
+        const response = await fetch(`/api/run-scenario/${scenarioId}`, { method: 'POST' });
+        const data = await response.json();
+        if (data.status === 'success') {
+            updateResultDisplay(data.record);
+            updateStats(data.stats);
+            loadHistory();
+        } else {
+            alert('Error running scenario: ' + data.message);
+        }
+    } catch (err) {
+        alert('Server connection error: ' + err);
+    }
+}
+
+async function submitCustomAttack(e) {
+    e.preventDefault();
+    const payload = {
+        attack_type: document.getElementById('input-attack-type').value,
+        confidence: parseFloat(document.getElementById('input-confidence').value),
+        source_mac: document.getElementById('input-mac').value,
+        source_ip: document.getElementById('input-ip').value,
+        traffic_before: parseFloat(document.getElementById('input-before').value),
+        traffic_after: parseFloat(document.getElementById('input-after').value),
+        force_status: document.getElementById('input-force-status').value || null,
+        sensor_id: 'ESP32_01'
+    };
+
+    try {
+        const response = await fetch('/api/mitigate', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        });
+        const data = await response.json();
+        if (data.status === 'success') {
+            updateResultDisplay(data.record);
+            updateStats(data.stats);
+            loadHistory();
+        } else {
+            alert('Mitigation error: ' + data.message);
+        }
+    } catch (err) {
+        alert('Server connection error: ' + err);
+    }
+}
+
+function updateResultDisplay(rec) {
+    const execClass = rec.execution_status === 'SIMULATED_SUCCESS' ? 'badge-success' : (rec.execution_status === 'REQUIRES_ADMIN_APPROVAL' ? 'badge-warning' : 'badge-danger');
+    const verifClass = rec.verification_status === 'MITIGATION_EFFECTIVE' ? 'badge-success' : (rec.verification_status === 'PARTIALLY_EFFECTIVE' ? 'badge-warning' : 'badge-danger');
+    const pct = Math.max(0, Math.min(100, rec.reduction_percentage));
+
+    const html = `
+        <div>
+            <span style="color: #94a3b8; font-size: 0.8rem; text-transform: uppercase;">Attack Attribution</span>
+            <h3 style="font-size: 1.35rem; font-weight: 700; margin-top: 4px;">${rec.attack_type}</h3>
+            <div style="font-size: 0.85rem; color: #94a3b8; margin-top: 4px;">
+                Confidence: <strong style="color: #60a5fa;">${(rec.confidence * 100).toFixed(1)}%</strong> &nbsp;|&nbsp;
+                Source MAC: <strong class="font-mono">${rec.source_mac || 'N/A'}</strong> &nbsp;|&nbsp;
+                Sensor: <strong>${rec.sensor_id}</strong>
+            </div>
+        </div>
+
+        <div style="background-color: #0f172a; border-radius: 8px; padding: 14px; border: 1px solid var(--card-border);">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-size: 0.85rem; font-weight: 600; color: #93c5fd;">Mitigation Action</span>
+                <span class="status-badge ${execClass}">${rec.execution_status}</span>
+            </div>
+            <div style="font-size: 1rem; font-weight: 700; margin-top: 6px; color: #fff;">${rec.mitigation_action}</div>
+            <div style="font-size: 0.85rem; color: #cbd5e1; margin-top: 4px;">${rec.action_description}</div>
+        </div>
+
+        <div style="background-color: #0f172a; border-radius: 8px; padding: 14px; border: 1px solid var(--card-border);">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-size: 0.85rem; font-weight: 600; color: #93c5fd;">Mitigation Verification</span>
+                <span class="status-badge ${verifClass}">${rec.verification_status}</span>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; margin-top: 10px; font-size: 0.9rem;">
+                <div>Before: <strong>${rec.traffic_before} pkts/min</strong></div>
+                <div>After: <strong>${rec.traffic_after} pkts/min</strong></div>
+                <div>Reduction: <strong style="color: #34d399; font-size: 1.1rem;">${rec.reduction_percentage}%</strong></div>
+            </div>
+
+            <div class="progress-bar-container">
+                <div class="progress-bar-fill" style="width: ${pct}%;"></div>
+            </div>
+
+            <div style="font-size: 0.8rem; color: #94a3b8;">${rec.notes || ''}</div>
+        </div>
+    `;
+    document.getElementById('result-display').innerHTML = html;
+}
+
+function updateStats(stats) {
+    if (!stats) return;
+    document.getElementById('stat-total').innerText = stats.total_events || 0;
+    document.getElementById('stat-effective').innerText = stats.effective_count || 0;
+    document.getElementById('stat-partial').innerText = stats.partial_count || 0;
+    document.getElementById('stat-failed').innerText = stats.failed_count || 0;
+    document.getElementById('stat-approval').innerText = stats.approval_count || 0;
+}
+
+async function loadHistory() {
+    try {
+        const response = await fetch('/api/history?limit=25');
+        const data = await response.json();
+        if (data.status === 'success') {
+            const tbody = document.getElementById('history-tbody');
+            tbody.innerHTML = '';
+            data.records.forEach(h => {
+                const execClass = h.execution_status === 'SIMULATED_SUCCESS' ? 'badge-success' : (h.execution_status === 'REQUIRES_ADMIN_APPROVAL' ? 'badge-warning' : 'badge-danger');
+                const verifClass = h.verification_status === 'MITIGATION_EFFECTIVE' ? 'badge-success' : (h.verification_status === 'PARTIALLY_EFFECTIVE' ? 'badge-warning' : 'badge-danger');
+                const redColor = h.reduction_percentage >= 80 ? '#34d399' : (h.reduction_percentage >= 30 ? '#fbbf24' : '#f87171');
+                
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td class="font-mono">${h.id}</td>
+                    <td style="font-size: 0.75rem;">${h.timestamp ? h.timestamp.substring(0, 19) : ''}</td>
+                    <td><strong>${h.attack_type}</strong></td>
+                    <td>${(h.confidence * 100).toFixed(1)}%</td>
+                    <td class="font-mono">${h.source_mac || 'N/A'}</td>
+                    <td>${h.mitigation_action}</td>
+                    <td><span class="status-badge ${execClass}">${h.execution_status}</span></td>
+                    <td class="font-mono">${h.traffic_before}</td>
+                    <td class="font-mono">${h.traffic_after}</td>
+                    <td style="font-weight: 700; color: ${redColor};">${h.reduction_percentage}%</td>
+                    <td><span class="status-badge ${verifClass}">${h.verification_status}</span></td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+    } catch (e) {
+        console.error("Failed to load history", e);
+    }
+}
+
+async function clearHistory() {
+    if (!confirm("Are you sure you want to clear all mitigation history from SQLite?")) return;
+    try {
+        const res = await fetch('/api/clear-history', { method: 'POST' });
+        const data = await res.json();
+        if (data.status === 'success') {
+            loadHistory();
+            updateStats({ total_events: 0, effective_count: 0, partial_count: 0, failed_count: 0, approval_count: 0 });
+        }
+    } catch (e) {
+        alert("Failed to clear history: " + e);
+    }
+}
+</script>
+
+</body>
+</html>
+

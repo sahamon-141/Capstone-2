@@ -1,0 +1,168 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\citation{rekha2023,jing2014}
+\citation{yang2017}
+\citation{hamad2020}
+\citation{jahangeer2023}
+\citation{pakmehr2024}
+\citation{volety2019}
+\citation{babu2010}
+\citation{abdulganiyu2023}
+\citation{khraisat2019}
+\citation{rakine2025}
+\citation{palshikar2022}
+\citation{mallidi2025,arshad2020}
+\citation{gholami2022,misrak2025}
+\citation{elhusseini2024}
+\citation{sabeel2021}
+\citation{sahin2025}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{2}{section.1}\protected@file@percent }
+\citation{lit_deauth}
+\citation{luay2026}
+\citation{lit_hybrid}
+\citation{lit_wireless}
+\citation{lit_bct}
+\citation{misrak2025}
+\citation{mondal2026}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Literature Survey}{3}{section.2}\protected@file@percent }
+\newlabel{sec:lit}{{2}{3}{Literature Survey}{section.2}{}}
+\citation{lit_adaptive}
+\citation{lit_energy}
+\citation{yu2025}
+\citation{lit_deauth}
+\citation{lit_hybrid}
+\citation{lit_wireless}
+\citation{lit_bct}
+\citation{misrak2025}
+\citation{lit_adaptive}
+\citation{lit_energy}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Comparison of representative related work with the proposed system.}}{4}{table.1}\protected@file@percent }
+\newlabel{tab:lit}{{1}{4}{Comparison of representative related work with the proposed system}{table.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Proposed Methodology}{4}{section.3}\protected@file@percent }
+\newlabel{sec:method}{{3}{4}{Proposed Methodology}{section.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Architecture of the proposed two-stage IDS. Module~1 screens every window cheaply; Module~2 is only invoked for suspicious or attack windows, and its output drives the attack-specific mitigation and re-monitoring loop.}}{5}{figure.1}\protected@file@percent }
+\newlabel{fig:arch}{{1}{5}{Architecture of the proposed two-stage IDS. Module~1 screens every window cheaply; Module~2 is only invoked for suspicious or attack windows, and its output drives the attack-specific mitigation and re-monitoring loop}{figure.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Module 1: IAT-Based Anomaly Detection}{5}{subsection.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.1}Packet inter-arrival time}{5}{subsubsection.3.1.1}\protected@file@percent }
+\newlabel{eq:iat}{{1}{5}{Packet inter-arrival time}{equation.1}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.2}Overlapping sliding windows}{5}{subsubsection.3.1.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Distribution of the packet inter-arrival time feature in CICIoT2023 and its separation between benign and attack traffic.}}{6}{figure.2}\protected@file@percent }
+\newlabel{fig:iat}{{2}{6}{Distribution of the packet inter-arrival time feature in CICIoT2023 and its separation between benign and attack traffic}{figure.2}{}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {IAT distribution}}}{6}{figure.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {IAT: normal vs.\ attack}}}{6}{figure.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Window-level CV and packet-rate distributions. Many attack windows have CV values below the benign mode. Upper-tail CV tests cannot detect these windows.}}{6}{figure.3}\protected@file@percent }
+\newlabel{fig:rate}{{3}{6}{Window-level CV and packet-rate distributions. Many attack windows have CV values below the benign mode. Upper-tail CV tests cannot detect these windows}{figure.3}{}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {Window CV of IAT}}}{6}{figure.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {Window mean packet rate}}}{6}{figure.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.3}Window-level statistical features}{6}{subsubsection.3.1.3}\protected@file@percent }
+\newlabel{eq:cv}{{4}{6}{Window-level statistical features}{equation.4}{}}
+\newlabel{eq:dev}{{5}{6}{Window-level statistical features}{equation.5}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Data-driven membership functions of the Mamdani FIS.}}{7}{table.2}\protected@file@percent }
+\newlabel{tab:mf}{{2}{7}{Data-driven membership functions of the Mamdani FIS}{table.2}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.4}Adaptive Median+MAD threshold with anti-poisoning}{7}{subsubsection.3.1.4}\protected@file@percent }
+\newlabel{eq:thr}{{8}{7}{Adaptive Median+MAD threshold with anti-poisoning}{equation.8}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.5}Mamdani fuzzy inference}{7}{subsubsection.3.1.5}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Top: sliding-window $CV_t$ over the evaluation stream. Bottom: the adaptive Median+MAD threshold $T_t$ against $CV_t$. Flood phases push $CV_t$ well below the threshold, so a CV-only upper-tail test misses them.}}{8}{figure.4}\protected@file@percent }
+\newlabel{fig:thr}{{4}{8}{Top: sliding-window $CV_t$ over the evaluation stream. Bottom: the adaptive Median+MAD threshold $T_t$ against $CV_t$. Flood phases push $CV_t$ well below the threshold, so a CV-only upper-tail test misses them}{figure.4}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.6}Defuzzification and decision}{8}{subsubsection.3.1.6}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Membership functions of the three antecedents (CV, packet rate, IAT deviation) and the attack-risk consequent.}}{9}{figure.5}\protected@file@percent }
+\newlabel{fig:mf}{{5}{9}{Membership functions of the three antecedents (CV, packet rate, IAT deviation) and the attack-risk consequent}{figure.5}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Interpretable fuzzy rule base.}}{9}{table.3}\protected@file@percent }
+\newlabel{tab:rules}{{3}{9}{Interpretable fuzzy rule base}{table.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Module 2: Multiclass Attack Identification}{9}{subsection.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.1}Traffic buffering and feature selection}{9}{subsubsection.3.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.2}Leakage-safe preprocessing and sequence construction}{9}{subsubsection.3.2.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Features used by Module 2.}}{10}{table.4}\protected@file@percent }
+\newlabel{tab:feat}{{4}{10}{Features used by Module 2}{table.4}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.3}Classifiers}{10}{subsubsection.3.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.4}INT8 post-training quantisation}{10}{subsubsection.3.2.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.5}Zero-day rejection}{10}{subsubsection.3.2.5}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Attack-family to mitigation mapping.}}{11}{table.5}\protected@file@percent }
+\newlabel{tab:mitig}{{5}{11}{Attack-family to mitigation mapping}{table.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Attack-Specific Mitigation and Re-Monitoring}{11}{subsection.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4}Dataset and Experimental Setup}{11}{section.4}\protected@file@percent }
+\newlabel{sec:setup}{{4}{11}{Dataset and Experimental Setup}{section.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}CICIoT2023 dataset}{11}{subsection.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Zero-day protocol}{11}{subsection.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Evaluation stream and metrics}{11}{subsection.4.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Anomaly detection performance on 4{,}999 windows.}}{12}{table.6}\protected@file@percent }
+\newlabel{tab:m1}{{6}{12}{Anomaly detection performance on 4{,}999 windows}{table.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Window-level confusion matrices of the simple CV, adaptive MAD and fuzzy detectors (TN/FP/FN/TP of 1424/74/3501/0, 1344/154/3378/123 and 974/524/364/3137 respectively).}}{12}{figure.6}\protected@file@percent }
+\newlabel{fig:cm}{{6}{12}{Window-level confusion matrices of the simple CV, adaptive MAD and fuzzy detectors (TN/FP/FN/TP of 1424/74/3501/0, 1344/154/3378/123 and 974/524/364/3137 respectively)}{figure.6}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Results and Discussion}{12}{section.5}\protected@file@percent }
+\newlabel{sec:results}{{5}{12}{Results and Discussion}{section.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Anomaly detection performance (Module 1)}{12}{subsection.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{\numberline {5.1.0.1}Sensitivity analysis.}{12}{paragraph.5.1.0.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Accuracy, precision, recall, F1 and FPR of the three anomaly detectors.}}{13}{figure.7}\protected@file@percent }
+\newlabel{fig:perf}{{7}{13}{Accuracy, precision, recall, F1 and FPR of the three anomaly detectors}{figure.7}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Alarm rate per traffic cohort.}}{13}{table.7}\protected@file@percent }
+\newlabel{tab:cohort}{{7}{13}{Alarm rate per traffic cohort}{table.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Multiclass classification performance (Module 2)}{13}{subsection.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Quantisation and computational efficiency}{13}{subsection.5.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Continuous fuzzy attack-risk score over the evaluation stream with the 0.35 and 0.65 decision boundaries.}}{14}{figure.8}\protected@file@percent }
+\newlabel{fig:risk}{{8}{14}{Continuous fuzzy attack-risk score over the evaluation stream with the 0.35 and 0.65 decision boundaries}{figure.8}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Sensitivity of detection performance to the sliding-window size and to the adaptive-threshold multiplier.}}{14}{figure.9}\protected@file@percent }
+\newlabel{fig:sens}{{9}{14}{Sensitivity of detection performance to the sliding-window size and to the adaptive-threshold multiplier}{figure.9}{}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {Window size $W$}}}{14}{figure.9}\protected@file@percent }
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {MAD multiplier $k$}}}{14}{figure.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Held-out (zero-day) attack analysis}{14}{subsection.5.4}\protected@file@percent }
+\newlabel{sec:zeroday}{{5.4}{14}{Held-out (zero-day) attack analysis}{subsection.5.4}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {8}{\ignorespaces Multiclass attack identification on the known-class test set.}}{15}{table.8}\protected@file@percent }
+\newlabel{tab:m2}{{8}{15}{Multiclass attack identification on the known-class test set}{table.8}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Accuracy/F1, latency and model size of the Random Forest, FP32 LSTM and INT8 LSTM.}}{15}{figure.10}\protected@file@percent }
+\newlabel{fig:m2cmp}{{10}{15}{Accuracy/F1, latency and model size of the Random Forest, FP32 LSTM and INT8 LSTM}{figure.10}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5}Interactive prototype}{15}{subsection.5.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6}Limitations}{15}{section.6}\protected@file@percent }
+\newlabel{sec:limits}{{6}{15}{Limitations}{section.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Training and validation loss and accuracy of the LSTM.}}{16}{figure.11}\protected@file@percent }
+\newlabel{fig:loss}{{11}{16}{Training and validation loss and accuracy of the LSTM}{figure.11}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Normalised confusion matrices of the LSTM before and after INT8 quantisation.}}{16}{figure.12}\protected@file@percent }
+\newlabel{fig:m2cm}{{12}{16}{Normalised confusion matrices of the LSTM before and after INT8 quantisation}{figure.12}{}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {FP32 LSTM}}}{16}{figure.12}\protected@file@percent }
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {INT8 LSTM}}}{16}{figure.12}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7}Conclusion and Future Work}{16}{section.7}\protected@file@percent }
+\newlabel{sec:conc}{{7}{16}{Conclusion and Future Work}{section.7}{}}
+\bibcite{jing2014}{{1}{}{{}}{{}}}
+\bibcite{benkhelifa2018}{{2}{}{{}}{{}}}
+\bibcite{luay2026}{{3}{}{{}}{{}}}
+\bibcite{labonne2020}{{4}{}{{}}{{}}}
+\@writefile{lot}{\contentsline {table}{\numberline {9}{\ignorespaces End-to-end gating of Module 2 by Module 1.}}{17}{table.9}\protected@file@percent }
+\newlabel{tab:e2e}{{9}{17}{End-to-end gating of Module 2 by Module 1}{table.9}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Streamlit prototype of the proposed IDS.}}{17}{figure.13}\protected@file@percent }
+\newlabel{fig:ui}{{13}{17}{Streamlit prototype of the proposed IDS}{figure.13}{}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {Dashboard view}}}{17}{figure.13}\protected@file@percent }
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {Verdict and rule explanation}}}{17}{figure.13}\protected@file@percent }
+\bibcite{nguyen2022}{{5}{}{{}}{{}}}
+\bibcite{rekha2023}{{6}{}{{}}{{}}}
+\bibcite{yang2017}{{7}{}{{}}{{}}}
+\bibcite{hamad2020}{{8}{}{{}}{{}}}
+\bibcite{pakmehr2024}{{9}{}{{}}{{}}}
+\bibcite{volety2019}{{10}{}{{}}{{}}}
+\bibcite{babu2010}{{11}{}{{}}{{}}}
+\bibcite{jahangeer2023}{{12}{}{{}}{{}}}
+\bibcite{abdulganiyu2023}{{13}{}{{}}{{}}}
+\bibcite{khraisat2019}{{14}{}{{}}{{}}}
+\bibcite{rakine2025}{{15}{}{{}}{{}}}
+\bibcite{palshikar2022}{{16}{}{{}}{{}}}
+\bibcite{mallidi2025}{{17}{}{{}}{{}}}
+\bibcite{arshad2020}{{18}{}{{}}{{}}}
+\bibcite{gholami2022}{{19}{}{{}}{{}}}
+\bibcite{misrak2025}{{20}{}{{}}{{}}}
+\bibcite{elhusseini2024}{{21}{}{{}}{{}}}
+\bibcite{sabeel2021}{{22}{}{{}}{{}}}
+\bibcite{sahin2025}{{23}{}{{}}{{}}}
+\bibcite{toupas2019}{{24}{}{{}}{{}}}
+\bibcite{heidari2023}{{25}{}{{}}{{}}}
+\bibcite{mondal2026}{{26}{}{{}}{{}}}
+\bibcite{lit_deauth}{{27}{}{{}}{{}}}
+\bibcite{lit_hybrid}{{28}{}{{}}{{}}}
+\bibcite{lit_wireless}{{29}{}{{}}{{}}}
+\bibcite{lit_bct}{{30}{}{{}}{{}}}
+\bibcite{lit_adaptive}{{31}{}{{}}{{}}}
+\bibcite{lit_energy}{{32}{}{{}}{{}}}
+\bibcite{chehade2026}{{33}{}{{}}{{}}}
+\bibcite{yu2025}{{34}{}{{}}{{}}}
+\providecommand\NAT@force@numbers{}\NAT@force@numbers
+\gdef \@abspage@last{19}

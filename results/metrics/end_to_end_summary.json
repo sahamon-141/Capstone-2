@@ -1,0 +1,24 @@
+{
+    "total_windows": 4999,
+    "normal_windows": {
+        "count": 1338,
+        "pct": 26.77,
+        "module2_invoked": false,
+        "action": "Bypasses Module 2 (IoT Power & Compute Saving)"
+    },
+    "suspicious_windows": {
+        "count": 489,
+        "pct": 9.78,
+        "module2_invoked": true,
+        "action": "Hands off to Module 2 for deep classification"
+    },
+    "attack_windows": {
+        "count": 3172,
+        "pct": 63.45,
+        "module2_invoked": true,
+        "action": "Hands off to Module 2 for deep classification"
+    },
+    "m2_total_invocations": 3661,
+    "m2_invocation_pct": 73.23,
+    "edge_power_saving_pct": 26.77
+}

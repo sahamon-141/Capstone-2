@@ -1,0 +1,127 @@
+{
+    "pipeline": "Module 2: Multiclass Attack Classification with INT8 Quantization",
+    "dataset": "CICIoT2023",
+    "configuration": {
+        "sequence_length": 50,
+        "features": [
+            "IAT",
+            "Rate",
+            "Srate",
+            "Drate",
+            "flow_duration",
+            "Duration",
+            "Header_Length",
+            "Tot size",
+            "Tot sum",
+            "Number",
+            "AVG",
+            "Std",
+            "Min",
+            "Max",
+            "Protocol Type",
+            "TCP",
+            "UDP",
+            "syn_count",
+            "ack_count"
+        ],
+        "classes": [
+            "BenignTraffic",
+            "Backdoor_Malware",
+            "BrowserHijacking",
+            "CommandInjection",
+            "DDoS-ACK_Fragmentation",
+            "DDoS-HTTP_Flood",
+            "DDoS-ICMP_Flood",
+            "DDoS-ICMP_Fragmentation",
+            "DDoS-PSHACK_Flood",
+            "DDoS-RSTFINFlood",
+            "DDoS-SYN_Flood",
+            "DDoS-SlowLoris",
+            "DDoS-SynonymousIP_Flood",
+            "DDoS-TCP_Flood",
+            "DDoS-UDP_Flood",
+            "DDoS-UDP_Fragmentation",
+            "DNS_Spoofing",
+            "DictionaryBruteForce",
+            "DoS-HTTP_Flood",
+            "DoS-SYN_Flood",
+            "DoS-TCP_Flood",
+            "DoS-UDP_Flood",
+            "MITM-ArpSpoofing",
+            "Recon-HostDiscovery",
+            "Recon-OSScan",
+            "Recon-PingSweep",
+            "Recon-PortScan",
+            "SqlInjection",
+            "Uploading_Attack",
+            "VulnerabilityScan",
+            "XSS"
+        ],
+        "held_out_classes": [
+            "Mirai-greeth_flood",
+            "Mirai-udpplain",
+            "Mirai-greip_flood"
+        ],
+        "rejection_threshold": 0.06434760764241218
+    },
+    "dataset_statistics": {
+        "num_train_sequences": 429,
+        "num_val_sequences": 88,
+        "num_test_sequences": 87,
+        "num_unseen_sequences": 111
+    },
+    "model_comparison": [
+        {
+            "Model": "Random Forest",
+            "Accuracy": 0.9425,
+            "Macro-F1": 0.9177,
+            "Weighted-F1": 0.9302,
+            "Latency (ms)": 0.1961,
+            "Model Size (MB)": 2.68
+        },
+        {
+            "Model": "FP32 LSTM",
+            "Accuracy": 0.3448,
+            "Macro-F1": 0.2047,
+            "Weighted-F1": 0.2118,
+            "Latency (ms)": 51.07,
+            "Model Size (MB)": 0.31
+        },
+        {
+            "Model": "INT8 LSTM",
+            "Accuracy": 0.3448,
+            "Macro-F1": 0.2173,
+            "Weighted-F1": 0.2248,
+            "Latency (ms)": 0.087,
+            "Model Size (MB)": 0.31
+        }
+    ],
+    "quantization_summary": {
+        "fp32_size_mb": 0.31,
+        "int8_size_mb": 0.31,
+        "size_reduction_pct": 0.0,
+        "prediction_agreement": 0.8506,
+        "fp32_p95_latency_ms": 55.096,
+        "int8_p95_latency_ms": 0.099,
+        "conversion_mode": "full_integer_int8"
+    },
+    "zero_day_evaluation": {
+        "rejection_threshold": 0.0643,
+        "known_test_samples": 87,
+        "unseen_test_samples": 111,
+        "known_macro_f1": 0.2047,
+        "known_accepted_accuracy": 0.4643,
+        "false_unknown_rate": 0.3563,
+        "zero_day_detection_rate": 0.0,
+        "mean_confidence_known": 0.1193,
+        "mean_confidence_unseen": 0.2023,
+        "unseen_misattributions_when_accepted": {
+            "DDoS-UDP_Fragmentation": 73,
+            "DoS-UDP_Flood": 38
+        }
+    },
+    "random_forest_baseline": {
+        "training_time_sec": 4.99,
+        "model_size_mb": 2.68
+    }
+}

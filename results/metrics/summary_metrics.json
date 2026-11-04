@@ -1,0 +1,166 @@
+{
+    "config": {
+        "window_size": 20,
+        "overlap": 0.5,
+        "step_size": 10,
+        "mad_k": 3.0,
+        "sample_size": 50000,
+        "held_out_attacks": [
+            "Mirai-greeth_flood",
+            "Mirai-udpplain",
+            "Mirai-greip_flood"
+        ],
+        "fuzzy_thresholds": {
+            "low": 0.35,
+            "high": 0.65
+        }
+    },
+    "baseline_statistics": {
+        "normal_mean_iat": 83625432.62264152,
+        "normal_std_iat": 18729195.688131843,
+        "normal_mean_rate": 1785.4408555062662,
+        "normal_std_rate": 4070.822458184254,
+        "normal_median_rate": 202.3899667881901,
+        "normal_cv_median": 1.000000000143856,
+        "normal_cv_mad": 0.105541597011644,
+        "normal_cv_mean": 1.0239580612435089,
+        "normal_cv_std": 0.2490720568104724,
+        "cv_percentiles": {
+            "p25": 0.8164965812672295,
+            "p50": 1.000000000143856,
+            "p75": 1.1055415970946032,
+            "p90": 1.3627702877424164,
+            "p95": 1.527525231523283,
+            "p99": 1.7320508076030197,
+            "min": 0.22941573453418337,
+            "max": 2.99999999868198
+        },
+        "rate_percentiles": {
+            "p25": 68.2942002733399,
+            "p50": 202.3899667881901,
+            "p75": 495.0490247601633,
+            "p90": 5465.337624311452,
+            "p95": 10530.087127705607,
+            "p99": 18687.312512692057,
+            "min": 29.79198282353978,
+            "max": 67017.56315124051
+        },
+        "num_normal_windows": 4999
+    },
+    "method_comparison": [
+        {
+            "method": "Simple CV",
+            "accuracy": 0.2849,
+            "precision": 0.0,
+            "recall_tpr": 0.0,
+            "f1_score": 0.0,
+            "false_positive_rate": 0.0494,
+            "false_negative_rate": 1.0,
+            "true_negatives": 1424,
+            "false_positives": 74,
+            "false_negatives": 3501,
+            "true_positives": 0,
+            "confusion_matrix": [
+                [
+                    1424,
+                    74
+                ],
+                [
+                    3501,
+                    0
+                ]
+            ],
+            "zero_day_detection_rate": 0.0
+        },
+        {
+            "method": "Adaptive MAD",
+            "accuracy": 0.2935,
+            "precision": 0.444,
+            "recall_tpr": 0.0351,
+            "f1_score": 0.0651,
+            "false_positive_rate": 0.1028,
+            "false_negative_rate": 0.9649,
+            "true_negatives": 1344,
+            "false_positives": 154,
+            "false_negatives": 3378,
+            "true_positives": 123,
+            "confusion_matrix": [
+                [
+                    1344,
+                    154
+                ],
+                [
+                    3378,
+                    123
+                ]
+            ],
+            "zero_day_detection_rate": 0.1161
+        },
+        {
+            "method": "Fuzzy Logic",
+            "accuracy": 0.8224,
+            "precision": 0.8569,
+            "recall_tpr": 0.896,
+            "f1_score": 0.876,
+            "false_positive_rate": 0.3498,
+            "false_negative_rate": 0.104,
+            "true_negatives": 974,
+            "false_positives": 524,
+            "false_negatives": 364,
+            "true_positives": 3137,
+            "confusion_matrix": [
+                [
+                    974,
+                    524
+                ],
+                [
+                    364,
+                    3137
+                ]
+            ],
+            "zero_day_detection_rate": 0.7588
+        }
+    ],
+    "cohort_results": {
+        "normal": {
+            "cohort": "Normal",
+            "num_windows": 1499,
+            "mean_attack_risk": 0.3739783409969952,
+            "std_attack_risk": 0.29020420406370856,
+            "detection_rate_simple": 0.049366244162775186,
+            "detection_rate_adaptive": 0.13542361574382922,
+            "detection_rate_fuzzy": 0.3495663775850567
+        },
+        "known_attacks": {
+            "cohort": "Known_Attacks",
+            "num_windows": 2499,
+            "mean_attack_risk": 0.7916051831064567,
+            "std_attack_risk": 0.16233794466917842,
+            "detection_rate_simple": 0.0,
+            "detection_rate_adaptive": 0.15726290516206481,
+            "detection_rate_fuzzy": 0.9507803121248499
+        },
+        "held_out_unseen": {
+            "cohort": "Held_Out_Unseen",
+            "num_windows": 999,
+            "mean_attack_risk": 0.5949270238042773,
+            "std_attack_risk": 0.27826092617237197,
+            "detection_rate_simple": 0.0,
+            "detection_rate_adaptive": 0.11611611611611612,
+            "detection_rate_fuzzy": 0.7587587587587588
+        }
+    },
+    "window_size_sensitivity": {
+        "10": 0.7273,
+        "20": 0.8227,
+        "50": 0.807,
+        "100": 0.75
+    },
+    "mad_k_sensitivity": {
+        "2.0": 0.2795,
+        "2.5": 0.216,
+        "3.0": 0.2135,
+        "3.5": 0.1815,
+        "4.0": 0.177
+    }
+}
