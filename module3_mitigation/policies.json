@@ -1,161 +1,193 @@
 {
-    "version": "1.0.0",
-    "description": "Attack-Specific Mitigation Policies for IoT and Wi-Fi Intrusion Defense (AWID3 & CICIoT2023)",
+    "version": "2.0.0",
+    "description": "Attack-family mitigation policies for the CICIoT2023 classes produced by Module 2. Each policy carries an action_class that tells the escalation controller how the action changes traffic: FILTER caps the source rate, BLOCK stops the source entirely, ALERT changes no traffic and only raises an operator notification.",
+    "dataset": "CICIoT2023",
     "policies": [
         {
-            "attack_type": "Deauth",
-            "mitigation_action": "ENABLE_PMF_AND_MONITOR",
-            "description": "Enable 802.11w Protected Management Frames (PMF) on AP; monitor suspicious management frames",
-            "required_info": ["source_mac"],
+            "attack_type": "Benign",
+            "mitigation_action": "NO_ACTION",
+            "description": "Traffic attributed to the benign class; no mitigation applied",
+            "required_info": [],
             "automated_execution": true,
             "requires_admin_approval": false,
             "remediation_type": "AUTOMATED_ACTION",
-            "confidence_threshold": 0.60,
-            "aliases": ["deauthentication", "deauth_flood", "wifi_deauth", "deauth"]
+            "confidence_threshold": 0.0,
+            "action_class": "ALERT",
+            "escalation_ladder": [],
+            "aliases": ["benigntraffic", "benign", "normal", "none"]
         },
         {
-            "attack_type": "Disas",
-            "mitigation_action": "ENABLE_PMF_MONITOR_DISAS",
-            "description": "Enable PMF and monitor suspicious disassociation activity across monitored BSSID",
-            "required_info": ["source_mac"],
-            "automated_execution": true,
-            "requires_admin_approval": false,
-            "remediation_type": "AUTOMATED_ACTION",
-            "confidence_threshold": 0.60,
-            "aliases": ["disassociation", "disas_flood", "disas"]
-        },
-        {
-            "attack_type": "(Re)Assoc",
-            "mitigation_action": "ENFORCE_AUTH_ASSOC_POLICY",
-            "description": "Enforce strict AP authentication and association rate limit policies; drop malformed frames",
-            "required_info": ["source_mac"],
-            "automated_execution": true,
-            "requires_admin_approval": false,
-            "remediation_type": "AUTOMATED_ACTION",
-            "confidence_threshold": 0.60,
-            "aliases": ["reassoc", "assoc", "association_flood", "reassociation"]
-        },
-        {
-            "attack_type": "Rogue_AP",
-            "mitigation_action": "ALERT_ROGUE_AP",
-            "description": "Generate high-priority rogue access point alert and notify network administrator for physical sweep",
-            "required_info": ["source_mac"],
-            "automated_execution": false,
-            "requires_admin_approval": true,
-            "remediation_type": "RECOMMENDED_MANUAL",
-            "confidence_threshold": 0.70,
-            "aliases": ["rogue_ap", "rogue_access_point", "unauthorized_ap"]
-        },
-        {
-            "attack_type": "Krack",
-            "mitigation_action": "RECOMMEND_FIRMWARE_UPDATE_KRACK",
-            "description": "Recommend WPA2 4-way handshake patch and AP/client firmware security updates (CVE-2017-13077)",
-            "required_info": ["source_mac"],
-            "automated_execution": false,
-            "requires_admin_approval": true,
-            "remediation_type": "RECOMMENDED_MANUAL",
-            "confidence_threshold": 0.75,
-            "aliases": ["krack", "key_reinstallation_attack", "wpa2_krack"]
-        },
-        {
-            "attack_type": "Kr00k",
-            "mitigation_action": "RECOMMEND_FIRMWARE_UPDATE_KR00K",
-            "description": "Recommend vulnerable Wi-Fi chipset firmware updates for all-zero TK encryption vulnerability (CVE-2019-15126)",
-            "required_info": ["source_mac"],
-            "automated_execution": false,
-            "requires_admin_approval": true,
-            "remediation_type": "RECOMMENDED_MANUAL",
-            "confidence_threshold": 0.75,
-            "aliases": ["kr00k", "krook", "cve_2019_15126"]
-        },
-        {
-            "attack_type": "SSH",
-            "mitigation_action": "APPLY_SSH_RATE_LIMIT",
-            "description": "Simulate SSH connection rate limiting and temporary source IP firewall throttle on TCP port 22",
+            "attack_type": "Volumetric_Flood",
+            "mitigation_action": "RATE_LIMIT_SOURCE",
+            "description": "Apply a per-source token bucket capped at the normal-traffic 95th percentile rate, then blackhole upstream if the flood persists",
             "required_info": ["source_ip"],
             "automated_execution": true,
             "requires_admin_approval": false,
             "remediation_type": "AUTOMATED_ACTION",
             "confidence_threshold": 0.60,
-            "aliases": ["ssh", "ssh_bruteforce", "ssh_attack", "dictionarybruteforce"]
+            "action_class": "FILTER",
+            "escalation_ladder": ["RATE_LIMIT_SOURCE", "BLOCK_SOURCE", "UPSTREAM_BLACKHOLE"],
+            "aliases": [
+                "ddos-udp_flood", "ddos-icmp_flood", "ddos-tcp_flood",
+                "ddos-synonymousip_flood", "dos-udp_flood", "dos-tcp_flood",
+                "udp_flood", "icmp_flood", "tcp_flood", "volumetric_flood"
+            ]
         },
         {
-            "attack_type": "Botnet",
-            "mitigation_action": "ISOLATE_INFECTED_DEVICE",
-            "description": "Simulate infected device network isolation via quarantine VLAN and dynamic MAC filter",
+            "attack_type": "TCP_State_Exhaustion",
+            "mitigation_action": "ENABLE_SYN_COOKIES",
+            "description": "Enable SYN cookies, expire half-open connections early and drop packets with invalid flag combinations",
+            "required_info": ["source_ip"],
+            "automated_execution": true,
+            "requires_admin_approval": false,
+            "remediation_type": "AUTOMATED_ACTION",
+            "confidence_threshold": 0.60,
+            "action_class": "FILTER",
+            "escalation_ladder": ["ENABLE_SYN_COOKIES", "RATE_LIMIT_SOURCE", "BLOCK_SOURCE"],
+            "aliases": [
+                "ddos-syn_flood", "dos-syn_flood", "ddos-pshack_flood",
+                "ddos-rstfinflood", "syn_flood", "pshack_flood", "rstfinflood"
+            ]
+        },
+        {
+            "attack_type": "Fragmentation_Attack",
+            "mitigation_action": "DROP_MALFORMED_FRAGMENTS",
+            "description": "Enforce a reassembly buffer limit per source and drop overlapping or incomplete fragments",
+            "required_info": ["source_ip"],
+            "automated_execution": true,
+            "requires_admin_approval": false,
+            "remediation_type": "AUTOMATED_ACTION",
+            "confidence_threshold": 0.60,
+            "action_class": "FILTER",
+            "escalation_ladder": ["DROP_MALFORMED_FRAGMENTS", "RATE_LIMIT_SOURCE", "BLOCK_SOURCE"],
+            "aliases": [
+                "ddos-icmp_fragmentation", "ddos-udp_fragmentation",
+                "ddos-ack_fragmentation", "icmp_fragmentation",
+                "udp_fragmentation", "ack_fragmentation", "fragmentation"
+            ]
+        },
+        {
+            "attack_type": "Slow_Application_Attack",
+            "mitigation_action": "LIMIT_CONCURRENT_CONNECTIONS",
+            "description": "Cap concurrent connections per source and shorten header and body read timeouts so partial requests are closed",
+            "required_info": ["source_ip"],
+            "automated_execution": true,
+            "requires_admin_approval": false,
+            "remediation_type": "AUTOMATED_ACTION",
+            "confidence_threshold": 0.60,
+            "action_class": "FILTER",
+            "escalation_ladder": ["LIMIT_CONCURRENT_CONNECTIONS", "BLOCK_SOURCE"],
+            "aliases": [
+                "ddos-slowloris", "slowloris", "ddos-http_flood",
+                "dos-http_flood", "http_flood", "slow_application_attack"
+            ]
+        },
+        {
+            "attack_type": "Reconnaissance",
+            "mitigation_action": "BLOCK_SCANNING_SOURCE",
+            "description": "Temporarily block the probing source, throttle further scan attempts and redirect it to a honeypot for observation",
+            "required_info": ["source_ip"],
+            "automated_execution": true,
+            "requires_admin_approval": false,
+            "remediation_type": "AUTOMATED_ACTION",
+            "confidence_threshold": 0.60,
+            "action_class": "BLOCK",
+            "escalation_ladder": ["BLOCK_SCANNING_SOURCE", "ISOLATE_SEGMENT"],
+            "aliases": [
+                "recon-portscan", "recon-osscan", "recon-hostdiscovery",
+                "recon-pingsweep", "vulnerabilityscan", "portscan", "osscan",
+                "hostdiscovery", "pingsweep", "reconnaissance", "scan"
+            ]
+        },
+        {
+            "attack_type": "Spoofing_MITM",
+            "mitigation_action": "ENFORCE_ARP_DNS_INTEGRITY",
+            "description": "Enable dynamic ARP inspection with static bindings for known devices and enforce DNSSEC validation on resolver responses",
             "required_info": ["source_mac"],
             "automated_execution": true,
             "requires_admin_approval": false,
             "remediation_type": "AUTOMATED_ACTION",
             "confidence_threshold": 0.65,
-            "aliases": ["botnet", "mirai", "mirai-udpplain", "mirai-greeth_flood", "mirai-greip_flood", "ddos-udp_flood", "ddos-icmp_flood", "ddos-syn_flood", "ddos-tcp_flood", "ddos-pshack_flood", "ddos-rstfinflood", "dos-udp_flood", "dos-tcp_flood", "dos-syn_flood"]
+            "action_class": "BLOCK",
+            "escalation_ladder": ["ENFORCE_ARP_DNS_INTEGRITY", "ISOLATE_SEGMENT"],
+            "aliases": [
+                "mitm-arpspoofing", "arpspoofing", "arp_spoofing",
+                "dns_spoofing", "dnsspoofing", "spoofing", "mitm"
+            ]
         },
         {
-            "attack_type": "Malware",
-            "mitigation_action": "QUARANTINE_ENDPOINT",
-            "description": "Simulate endpoint quarantine, block outbound C2 channels, and alert incident response team",
-            "required_info": ["source_ip", "source_mac"],
-            "automated_execution": true,
-            "requires_admin_approval": false,
-            "remediation_type": "AUTOMATED_ACTION",
-            "confidence_threshold": 0.65,
-            "aliases": ["malware", "backdoor_malware", "backdoor", "trojan", "ransomware", "commandinjection"]
-        },
-        {
-            "attack_type": "SQL_Injection",
+            "attack_type": "Web_Application_Attack",
             "mitigation_action": "ACTIVATE_WAF_RULE",
-            "description": "Simulate WAF rule activation to inspect and drop malicious SQL query payloads and parameter tampering",
-            "required_info": ["source_ip"],
-            "automated_execution": true,
-            "requires_admin_approval": false,
-            "remediation_type": "AUTOMATED_ACTION",
-            "confidence_threshold": 0.60,
-            "aliases": ["sqlinjection", "sql_injection", "sql_i", "web_exploit"]
-        },
-        {
-            "attack_type": "SSDP",
-            "mitigation_action": "RESTRICT_UDP_PORT_1900",
-            "description": "Simulate restricting unnecessary SSDP UDP port 1900 traffic and disable UPnP on external interface",
-            "required_info": ["source_ip"],
-            "automated_execution": true,
-            "requires_admin_approval": false,
-            "remediation_type": "AUTOMATED_ACTION",
-            "confidence_threshold": 0.60,
-            "aliases": ["ssdp", "ssdp_amplification", "upnp_abuse", "port_1900"]
-        },
-        {
-            "attack_type": "Evil_Twin",
-            "mitigation_action": "ALERT_EVIL_TWIN_VERIFY",
-            "description": "Generate suspicious AP alert, mark spoofed SSID/BSSID pair, and recommend identity verification",
-            "required_info": ["source_mac"],
-            "automated_execution": false,
-            "requires_admin_approval": true,
-            "remediation_type": "RECOMMENDED_MANUAL",
-            "confidence_threshold": 0.70,
-            "aliases": ["evil_twin", "mitm-arpspoofing", "arpspoofing", "ap_spoofing", "fake_ap"]
-        },
-        {
-            "attack_type": "Website_spoofing",
-            "mitigation_action": "BLOCK_MALICIOUS_DESTINATION",
-            "description": "Simulate blocking verified malicious destination domain and IP on DNS resolver and gateway proxy",
+            "description": "Activate the matching web application firewall signature so malicious payloads are filtered while legitimate requests still reach the service",
             "required_info": ["destination_ip"],
             "automated_execution": true,
             "requires_admin_approval": false,
             "remediation_type": "AUTOMATED_ACTION",
-            "confidence_threshold": 0.65,
-            "aliases": ["website_spoofing", "dns_spoofing", "phishing_domain", "fake_website", "browserhijacking"]
+            "confidence_threshold": 0.70,
+            "action_class": "FILTER",
+            "escalation_ladder": ["ACTIVATE_WAF_RULE", "BLOCK_SOURCE"],
+            "aliases": [
+                "sqlinjection", "sql_injection", "commandinjection",
+                "command_injection", "xss", "browserhijacking",
+                "browser_hijacking", "uploading_attack", "web_application_attack"
+            ]
+        },
+        {
+            "attack_type": "Credential_Attack",
+            "mitigation_action": "THROTTLE_AUTH_ATTEMPTS",
+            "description": "Apply exponential back-off on failed authentication, lock the targeted account after repeated failures and alert the operator",
+            "required_info": ["source_ip"],
+            "automated_execution": true,
+            "requires_admin_approval": false,
+            "remediation_type": "AUTOMATED_ACTION",
+            "confidence_threshold": 0.70,
+            "action_class": "FILTER",
+            "escalation_ladder": ["THROTTLE_AUTH_ATTEMPTS", "BLOCK_SOURCE"],
+            "aliases": [
+                "dictionarybruteforce", "dictionary_brute_force",
+                "bruteforce", "brute_force", "ssh_bruteforce", "credential_attack"
+            ]
+        },
+        {
+            "attack_type": "Malware_Backdoor",
+            "mitigation_action": "QUARANTINE_ENDPOINT",
+            "description": "Move the endpoint to a quarantine VLAN, block outbound command-and-control destinations and require an administrator to confirm before the device is cut off",
+            "required_info": ["source_ip"],
+            "automated_execution": false,
+            "requires_admin_approval": true,
+            "remediation_type": "RECOMMENDED_MANUAL",
+            "confidence_threshold": 0.75,
+            "action_class": "BLOCK",
+            "escalation_ladder": ["QUARANTINE_ENDPOINT"],
+            "aliases": [
+                "backdoor_malware", "backdoor", "malware", "trojan", "ransomware"
+            ]
+        },
+        {
+            "attack_type": "Botnet",
+            "mitigation_action": "ISOLATE_INFECTED_DEVICE",
+            "description": "Isolate the compromised device, block its command-and-control endpoints and force a credential reset before it rejoins the network. NOTE: the three Mirai classes are deliberately NOT aliased here. They are held out of training as the zero-day proxy, so letting them match a class policy would contaminate that experiment; they take the behaviour-based fallback route instead. Add the aliases back for a deployment in which Mirai is a known class.",
+            "required_info": ["source_ip"],
+            "automated_execution": true,
+            "requires_admin_approval": false,
+            "remediation_type": "AUTOMATED_ACTION",
+            "confidence_threshold": 0.70,
+            "action_class": "BLOCK",
+            "escalation_ladder": ["RATE_LIMIT_SOURCE", "ISOLATE_INFECTED_DEVICE"],
+            "aliases": ["botnet", "c2_beaconing"]
         }
     ],
     "fallback_policy": {
         "attack_type": "Unknown",
-        "mitigation_action": "ALERT_ADMIN_AND_LOG",
-        "description": "No automated mitigation policy matched. Log forensic packet telemetry and alert security operator",
+        "mitigation_action": "BEHAVIOUR_BASED_CONTAINMENT",
+        "description": "No class-specific policy matched, so the containment action is chosen from the traffic behaviour Module 1 measured (CV, mean rate and IAT deviation) and escalated until the fuzzy risk returns below the normal threshold",
         "required_info": [],
-        "automated_execution": false,
-        "requires_admin_approval": true,
-        "remediation_type": "RECOMMENDED_MANUAL",
+        "automated_execution": true,
+        "requires_admin_approval": false,
+        "remediation_type": "AUTOMATED_ACTION",
         "confidence_threshold": 0.0,
-        "aliases": ["unknown", "unknown_zero_day", "default"]
+        "action_class": "FILTER",
+        "escalation_ladder": ["RATE_LIMIT_SOURCE", "BLOCK_SOURCE", "ISOLATE_SEGMENT"],
+        "aliases": ["unknown", "unknown_zero_day", "zero_day", "default"]
     }
 }
-

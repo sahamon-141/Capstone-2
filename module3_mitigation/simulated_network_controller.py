@@ -123,8 +123,10 @@ class SimulatedNetworkController(BaseNetworkController):
 
         target = self._extract_target(event)
 
-        # 1. Check if policy is unsupported or fallback
-        if policy.attack_type == "Unknown" or policy.mitigation_action == "ALERT_ADMIN_AND_LOG":
+        # 1. Alert-only policies change no traffic and need an operator.
+        # "Unknown" is no longer routed here: a zero-day window gets a
+        # behaviour-based containment action instead of just an alert.
+        if policy.mitigation_action == "ALERT_ADMIN_AND_LOG":
             alert = {
                 "timestamp": datetime.now(timezone.utc).isoformat(),
                 "type": "UNSUPPORTED_ATTACK_ALERT",
@@ -251,6 +253,105 @@ class SimulatedNetworkController(BaseNetworkController):
                 f"[SIMULATED] Malicious destination {dest_ip} blocked in DNS sinkhole and gateway route table."
             )
             return self._record_success(action, target, msg, {"blocked_destination": dest_ip})
+
+        # ------------------------------------------------------------------
+        # CICIoT2023 attack-family actions (policies.json v2)
+        # ------------------------------------------------------------------
+        elif action == "NO_ACTION":
+            return self._record_success(
+                action, target,
+                "[SIMULATED] Traffic attributed to the benign class. No mitigation applied.",
+                {"traffic_affected": False},
+            )
+
+        elif action == "RATE_LIMIT_SOURCE":
+            ip = target.get("source_ip", "192.168.1.105")
+            self.rate_limited_ips[ip] = {
+                "policy": "TOKEN_BUCKET",
+                "cap": "normal_baseline_p95",
+                "port": "ALL",
+                "timestamp": datetime.now(timezone.utc).isoformat(),
+            }
+            msg = (
+                f"[SIMULATED] Per-source token bucket applied to {ip}, capped at the "
+                "normal-traffic 95th percentile rate. Excess packets dropped."
+            )
+            return self._record_success(action, target, msg, {"cap": "p95", "source_ip": ip})
+
+        elif action == "ENABLE_SYN_COOKIES":
+            msg = (
+                "[SIMULATED] SYN cookies enabled on the gateway, half-open connection "
+                "timeout reduced and packets with invalid flag combinations dropped."
+            )
+            return self._record_success(action, target, msg, {"syn_cookies": True})
+
+        elif action == "DROP_MALFORMED_FRAGMENTS":
+            msg = (
+                "[SIMULATED] Per-source IP reassembly buffer limit enforced. Overlapping "
+                "and incomplete fragments dropped before reassembly."
+            )
+            return self._record_success(action, target, msg, {"fragment_filter": True})
+
+        elif action == "LIMIT_CONCURRENT_CONNECTIONS":
+            ip = target.get("source_ip", "192.168.1.105")
+            msg = (
+                f"[SIMULATED] Concurrent connection cap applied to {ip} with shortened "
+                "header and body read timeouts, so partial requests are closed."
+            )
+            return self._record_success(action, target, msg, {"conn_cap": True, "source_ip": ip})
+
+        elif action == "THROTTLE_AUTH_ATTEMPTS":
+            ip = target.get("source_ip", "192.168.1.105")
+            self.rate_limited_ips[ip] = {"policy": "AUTH_BACKOFF", "port": "AUTH"}
+            msg = (
+                f"[SIMULATED] Exponential back-off applied to authentication attempts from {ip}. "
+                "Targeted account locked after repeated failures."
+            )
+            return self._record_success(action, target, msg, {"auth_backoff": True})
+
+        elif action in ("BLOCK_SOURCE", "BLOCK_SCANNING_SOURCE"):
+            ip = target.get("source_ip", "192.168.1.105")
+            self.rate_limited_ips[ip] = {"policy": "DROP_ALL", "port": "ALL"}
+            extra = (
+                " Further probes redirected to a honeypot for observation."
+                if action == "BLOCK_SCANNING_SOURCE" else ""
+            )
+            msg = f"[SIMULATED] All traffic from source {ip} dropped at the gateway.{extra}"
+            return self._record_success(action, target, msg, {"blocked_source": ip})
+
+        elif action == "UPSTREAM_BLACKHOLE":
+            ip = target.get("source_ip", "192.168.1.105")
+            self.blocked_destinations.add(ip)
+            msg = (
+                f"[SIMULATED] Upstream blackhole route installed for {ip}, so the flood is "
+                "discarded before it reaches the local link."
+            )
+            return self._record_success(action, target, msg, {"blackhole_source": ip})
+
+        elif action == "ISOLATE_SEGMENT":
+            mac = target.get("source_mac", "AA:BB:CC:DD:EE:FF")
+            self.isolated_macs.add(mac)
+            msg = (
+                "[SIMULATED] Affected network segment moved to an isolated VLAN and packet "
+                "capture started for forensic analysis."
+            )
+            return self._record_success(action, target, msg, {"segment_isolated": True})
+
+        elif action == "ENFORCE_ARP_DNS_INTEGRITY":
+            msg = (
+                "[SIMULATED] Dynamic ARP inspection enabled with static bindings for known "
+                "devices, and DNSSEC validation enforced on resolver responses."
+            )
+            return self._record_success(action, target, msg, {"arp_inspection": True, "dnssec": True})
+
+        elif action == "BEHAVIOUR_BASED_CONTAINMENT":
+            # The concrete rung is chosen by ZeroDayContainment and executed by
+            # the escalation controller; this records that the route was taken.
+            msg = (
+                "[SIMULATED] No class-specific policy matched. Containment selected from the "
+                "traffic behaviour measured by Module 1."
+            )
+            return self._record_success(action, target, msg, {"zero_day_route": True})
 
         else:
             return self._build_result(

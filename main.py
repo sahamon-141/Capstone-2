@@ -35,6 +35,7 @@ from src.fuzzy_system import IoTFuzzyAnomalyDetector
 from src.zero_day_experiment import ZeroDayExperiment
 from src.evaluation import PerformanceEvaluator
 from src.visualization import ResearchVisualizer
+from module3_mitigation.pipeline_evaluation import run_module3_evaluation
 
 
 def parse_arguments() -> argparse.Namespace:
@@ -274,6 +275,38 @@ def main():
     visualizer.plot_sensitivity_analysis(window_sens, k_sens)
 
     # --------------------------------------------------------------------------
+    # STEP 14: Module 3 - Attack-Specific Mitigation over every window
+    # --------------------------------------------------------------------------
+    print("\n" + "=" * 60)
+    print("STEP 14: MODULE 3 MITIGATION OVER THE FULL WINDOW STREAM")
+    print("=" * 60)
+    module3_summary = run_module3_evaluation(
+        windows_df=eval_windows_df,
+        fuzzy_detector=fuzzy_detector,
+        baseline_stats=baseline_stats,
+        held_out_classes=cfg.HELD_OUT_ATTACKS,
+        metrics_dir=cfg.METRICS_DIR,
+        risk_threshold=cfg.FUZZY_LOW_THRESHOLD,
+    )
+    cov = module3_summary["policy_coverage"]
+    con = module3_summary["containment"]
+    zd = module3_summary["zero_day"]
+    print(f"Windows sent to mitigation: {module3_summary['windows_sent_to_mitigation']:,} "
+          f"({module3_summary['windows_sent_to_mitigation_pct']:.2f}%)")
+    print(f"Matched a class policy:     {cov['matched_class_policy']:,} ({cov['matched_class_policy_pct']:.2f}%)")
+    print(f"Zero-day behaviour route:   {cov['zero_day_behaviour_route']:,} ({cov['zero_day_behaviour_route_pct']:.2f}%)")
+    sup = module3_summary["volume_suppression_by_first_action"]
+    print(f"Mean volume suppressed:     {sup.get('mean_pct', 0):.2f}% "
+          f"({sup.get('mean_rate_before', 0):,.0f} -> {sup.get('mean_rate_after', 0):,.0f} pkt/s)")
+    print(f"Cleared by filter alone:    {con['contained_by_filter_alone']:,} of {con['actionable_windows']:,} "
+          f"({con['contained_by_filter_alone_pct']:.2f}%)")
+    print(f"Escalated to a block:       {con['needed_disruptive_action']:,} ({con['needed_disruptive_action_pct']:.2f}%)")
+    print(f"Held-out windows mitigated: {zd['held_out_windows_reaching_mitigation']:,} "
+          f"(mean volume suppressed {zd['mean_volume_suppressed_pct']:.2f}%)")
+    print("NOTE: volume suppression is measured; risk containment is modelled.")
+    print("=" * 60 + "\n")
+
+    # --------------------------------------------------------------------------
     # Save Final Experiment Report
     # --------------------------------------------------------------------------
     summary_data = {
@@ -294,7 +327,8 @@ def main():
         "cohort_results": {k: {m: v for m, v in val.items() if m not in ["ground_truth", "pred_simple", "pred_adaptive", "pred_fuzzy", "fuzzy_risk_scores", "fuzzy_categories", "adaptive_thresholds"]}
                           for k, val in cohort_results.items()},
         "window_size_sensitivity": window_sens,
-        "mad_k_sensitivity": k_sens
+        "mad_k_sensitivity": k_sens,
+        "module3_mitigation": module3_summary
     }
     report_path = evaluator.save_summary_report(summary_data)
 
