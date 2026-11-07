@@ -1,0 +1,85 @@
+{
+    "note": "Nothing here is enforced on a live network. 'volume_suppression' is arithmetic on measured packet rates. 'containment' is modelled: the residual rate is re-scored by the Mamdani system of Module 1 and a window counts as contained when that risk falls below 0.35. A blocking action contains by construction, so 'contained_by_filter_alone' is the informative figure and 'contained_overall' is not an accuracy.",
+    "total_windows": 4999,
+    "windows_bypassed_by_module1": 1338,
+    "windows_sent_to_mitigation": 3661,
+    "windows_sent_to_mitigation_pct": 73.23,
+    "policy_coverage": {
+        "matched_class_policy": 2902,
+        "matched_class_policy_pct": 79.27,
+        "zero_day_behaviour_route": 759,
+        "zero_day_behaviour_route_pct": 20.73
+    },
+    "action_distribution": {
+        "RATE_LIMIT_SOURCE": 2594,
+        "ENABLE_SYN_COOKIES": 540,
+        "NO_ACTION": 527
+    },
+    "family_distribution": {
+        "Volumetric_Flood": 1835,
+        "Unknown (zero-day route)": 759,
+        "TCP_State_Exhaustion": 540,
+        "Benign": 527
+    },
+    "volume_suppression_by_first_action": {
+        "windows": 3134,
+        "mean_pct": 72.85,
+        "median_pct": 79.52,
+        "mean_rate_before": 10056.9,
+        "mean_rate_after": 495.05
+    },
+    "containment": {
+        "actionable_windows": 3134,
+        "contained_by_filter_alone": 3134,
+        "contained_by_filter_alone_pct": 100.0,
+        "needed_disruptive_action": 0,
+        "needed_disruptive_action_pct": 0.0,
+        "contained_overall": 3134,
+        "contained_at_step": {
+            "1": 3134
+        },
+        "mean_risk_drop": 0.6276
+    },
+    "collateral_on_benign_windows": {
+        "explanation": "Module 1 false positives that reach the mitigation stage. The best case assumes Module 2 labels them benign, so Module 3 leaves them alone. The worst case assumes Module 2 calls them an attack, so they are routed by behaviour; 'would_block' counts those that would then lose all traffic.",
+        "benign_windows_flagged_by_module1": 527,
+        "best_case_receiving_an_action": 0,
+        "best_case_receiving_a_blocking_action": 0,
+        "worst_case_receiving_a_blocking_action": 83,
+        "worst_case_blocked_pct_of_flagged_benign": 15.75
+    },
+    "families_exercised_by_this_stream": [
+        "Benign",
+        "TCP_State_Exhaustion",
+        "Unknown (zero-day route)",
+        "Volumetric_Flood"
+    ],
+    "families_defined_in_policy_file": [
+        "Benign",
+        "Botnet",
+        "Credential_Attack",
+        "Fragmentation_Attack",
+        "Malware_Backdoor",
+        "Reconnaissance",
+        "Slow_Application_Attack",
+        "Spoofing_MITM",
+        "TCP_State_Exhaustion",
+        "Volumetric_Flood",
+        "Web_Application_Attack"
+    ],
+    "zero_day": {
+        "held_out_classes": [
+            "mirai-greeth_flood",
+            "mirai-greip_flood",
+            "mirai-udpplain"
+        ],
+        "held_out_windows_reaching_mitigation": 759,
+        "contained_overall": 759,
+        "contained_overall_pct": 100.0,
+        "mean_volume_suppressed_pct": 57.72,
+        "behaviour_distribution": {
+            "CONSTANT_RATE_FLOOD": 759
+        }
+    },
+    "label_source": "ground_truth: Module 3 is driven by the window's true class so that its coverage and containment are measured independently of Module 2's error."
+}

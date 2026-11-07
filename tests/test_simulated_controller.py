@@ -48,11 +48,13 @@ class TestSimulatedNetworkController(unittest.TestCase):
         self.controller = SimulatedNetworkController()
         self.policy_engine = MitigationPolicyEngine()
 
-    def test_01_simulate_deauth_pmf_activation(self):
-        """Tests simulated PMF activation for Deauth attack."""
+    def test_01_simulate_volumetric_flood_rate_limit(self):
+        """A volumetric flood is capped per source, not blocked outright."""
+        ip = "192.168.1.185"
         event = AttackEvent(
-            attack_type="Deauth",
+            attack_type="DDoS-ICMP_Flood",
             confidence=0.97,
+            source_ip=ip,
             source_mac="00:11:22:33:44:55",
         )
         policy, _, _ = self.policy_engine.select_policy(event)
@@ -60,8 +62,9 @@ class TestSimulatedNetworkController(unittest.TestCase):
 
         self.assertEqual(res.status, ExecutionStatus.SIMULATED_SUCCESS)
         self.assertTrue(res.is_simulation)
-        self.assertTrue(self.controller.pmf_enabled)
-        self.assertIn("PMF", res.message)
+        self.assertEqual(res.action, "RATE_LIMIT_SOURCE")
+        self.assertIn(ip, self.controller.rate_limited_ips)
+        self.assertEqual(self.controller.rate_limited_ips[ip]["policy"], "TOKEN_BUCKET")
 
     def test_02_simulate_botnet_device_isolation(self):
         """Tests simulated device MAC quarantine for Botnet attack."""
@@ -74,16 +77,30 @@ class TestSimulatedNetworkController(unittest.TestCase):
         self.assertIn(mac, self.controller.isolated_macs)
         self.assertIn("VLAN 999", res.message)
 
-    def test_03_simulate_ssh_rate_limiting(self):
-        """Tests simulated SSH rate limiting on TCP port 22."""
+    def test_03_simulate_credential_attack_throttling(self):
+        """A dictionary brute force is throttled at the authentication layer."""
         ip = "192.168.1.150"
-        event = AttackEvent(attack_type="SSH", confidence=0.90, source_ip=ip)
+        event = AttackEvent(
+            attack_type="DictionaryBruteForce", confidence=0.90, source_ip=ip
+        )
         policy, _, _ = self.policy_engine.select_policy(event)
         res = self.controller.execute_mitigation(policy, event)
 
         self.assertEqual(res.status, ExecutionStatus.SIMULATED_SUCCESS)
+        self.assertEqual(res.action, "THROTTLE_AUTH_ATTEMPTS")
         self.assertIn(ip, self.controller.rate_limited_ips)
-        self.assertEqual(self.controller.rate_limited_ips[ip]["port"], 22)
+        self.assertEqual(self.controller.rate_limited_ips[ip]["policy"], "AUTH_BACKOFF")
+
+    def test_03b_reconnaissance_blocks_the_source(self):
+        """A low-rate scan cannot be rate limited away, so it is blocked."""
+        ip = "192.168.1.99"
+        event = AttackEvent(attack_type="Recon-PortScan", confidence=0.91, source_ip=ip)
+        policy, _, _ = self.policy_engine.select_policy(event)
+        res = self.controller.execute_mitigation(policy, event)
+
+        self.assertEqual(res.status, ExecutionStatus.SIMULATED_SUCCESS)
+        self.assertEqual(res.action, "BLOCK_SCANNING_SOURCE")
+        self.assertEqual(self.controller.rate_limited_ips[ip]["policy"], "DROP_ALL")
 
     def test_04_simulate_sql_injection_waf_rule(self):
         """Tests simulated WAF rule activation for SQL Injection."""
@@ -97,8 +114,8 @@ class TestSimulatedNetworkController(unittest.TestCase):
         self.assertGreater(len(self.controller.active_waf_rules), 0)
 
     def test_05_manual_remediation_requires_admin_approval(self):
-        """Tests that manual remediation policies (Rogue_AP, Krack, etc.) yield REQUIRES_ADMIN_APPROVAL."""
-        manual_attacks = ["Rogue_AP", "Krack", "Kr00k", "Evil_Twin"]
+        """Disruptive remediations must not run without an operator's approval."""
+        manual_attacks = ["Backdoor_Malware"]
         for att in manual_attacks:
             event = AttackEvent(attack_type=att, confidence=0.90, source_mac="11:22:33:44:55:66")
             policy, _, _ = self.policy_engine.select_policy(event)
@@ -111,14 +128,18 @@ class TestSimulatedNetworkController(unittest.TestCase):
             )
             self.assertEqual(policy.remediation_type, RemediationType.RECOMMENDED_MANUAL)
 
-    def test_06_unsupported_action_for_unknown_attack(self):
-        """Tests that uncataloged attacks return UNSUPPORTED_ACTION."""
-        event = AttackEvent(attack_type="Unseen_Novel_ZeroDay_999", confidence=0.85)
+    def test_06_unknown_attack_takes_the_behaviour_route(self):
+        """An uncataloged attack is contained by behaviour, not left to an alert."""
+        event = AttackEvent(
+            attack_type="Unseen_Novel_ZeroDay_999",
+            confidence=0.85,
+            source_ip="192.168.1.77",
+        )
         policy, _, _ = self.policy_engine.select_policy(event)
         res = self.controller.execute_mitigation(policy, event)
 
-        self.assertEqual(res.status, ExecutionStatus.UNSUPPORTED_ACTION)
-        self.assertIn("No automated mitigation", res.message)
+        self.assertEqual(res.status, ExecutionStatus.SIMULATED_SUCCESS)
+        self.assertEqual(res.action, "BEHAVIOUR_BASED_CONTAINMENT")
 
     def test_07_force_status_override(self):
         """Tests forced status parameter for testing failure scenarios."""

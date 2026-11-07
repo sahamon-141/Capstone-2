@@ -1,88 +1,101 @@
 """
-Traffic Simulator for Module 3.
+Illustrative traffic profiles for the Module 3 dashboard.
 
-Provides configurable, reproducible synthetic network traffic measurements
-before and after mitigation. Kept strictly separate from the verification engine
-to ensure verification mathematics remain unpolluted and testable across
-different outcomes (effective, partial, failed, zero-traffic, etc.).
+These drive the single-event demo path. They are **not** the evaluation: the
+authoritative numbers come from ``pipeline_evaluation.py``, which uses the
+packet rates measured on every window of the real stream. Anything produced
+here carries ``is_simulation=True``, and nothing in it should be quoted as a
+result.
+
+The profiles follow the same filter model as ``escalation_controller.py`` so the
+dashboard and the batch evaluation agree:
+
+* a *filter* caps the source at the normal 75th-percentile rate (495 pkt/s on
+  the CICIoT2023 baseline), or the median (202 pkt/s) for the tighter caps;
+* a *block* drops the source to zero;
+* an action that only raises an alert leaves the rate unchanged.
+
+Where a family appears in the evaluation stream, ``traffic_before`` is the
+median rate measured for it in ``results/window_features.csv``. The rest are
+marked illustrative.
+
+One caveat worth repeating in any write-up: percentage traffic reduction only
+describes volumetric attacks well. A WAF rule or an authentication back-off
+stops the attack without necessarily moving the packet rate much, so a low
+reduction there does not mean the mitigation failed.
 """
 
 from typing import Dict, Any, Optional, Tuple
 
+# Normal-traffic rate caps used by the filter model, in packets per second.
+CAP_P75 = 495.0
+CAP_P50 = 202.0
+
 
 class TrafficSimulator:
-    """Generates synthetic pre- and post-mitigation traffic observations."""
+    """Generates illustrative pre- and post-mitigation traffic observations."""
 
-    # Default baseline profiles per attack category (units: packets/minute over 60s window)
+    # Per-family profiles. "measured" marks a traffic_before taken from the
+    # dataset; "illustrative" marks a family the sampled stream does not contain.
     DEFAULT_PROFILES: Dict[str, Dict[str, Any]] = {
-        "Deauth": {
-            "traffic_before": 500.0,
-            "traffic_after": 15.0,
+        "Benign": {
+            "traffic_before": 203.58,      # measured: median benign window
+            "traffic_after": 203.58,       # no action taken
             "legitimate_traffic_impact": 0.0,
         },
-        "Disas": {
-            "traffic_before": 450.0,
-            "traffic_after": 12.0,
+        "Volumetric_Flood": {
+            "traffic_before": 2367.46,     # measured: median DDoS-ICMP_Flood window
+            "traffic_after": CAP_P75,      # per-source token bucket
             "legitimate_traffic_impact": 0.0,
         },
-        "(Re)Assoc": {
-            "traffic_before": 620.0,
-            "traffic_after": 25.0,
-            "legitimate_traffic_impact": 1.0,
-        },
-        "Rogue_AP": {
-            "traffic_before": 180.0,
-            "traffic_after": 180.0,  # Requires physical/manual admin removal
+        "TCP_State_Exhaustion": {
+            "traffic_before": 2356.68,     # measured: median DDoS-SYN_Flood window
+            "traffic_after": CAP_P75,      # SYN cookies plus early expiry
             "legitimate_traffic_impact": 0.0,
         },
-        "Krack": {
-            "traffic_before": 220.0,
-            "traffic_after": 220.0,  # Firmware update required
+        "Fragmentation_Attack": {
+            "traffic_before": 2000.0,      # illustrative
+            "traffic_after": CAP_P75,
             "legitimate_traffic_impact": 0.0,
         },
-        "Kr00k": {
-            "traffic_before": 210.0,
-            "traffic_after": 210.0,  # Firmware update required
-            "legitimate_traffic_impact": 0.0,
-        },
-        "SSH": {
-            "traffic_before": 400.0,
-            "traffic_after": 180.0,  # Rate limiting partially throttles brute force
+        "Slow_Application_Attack": {
+            "traffic_before": 300.0,       # illustrative; low rate by nature
+            "traffic_after": CAP_P50,      # connection cap plus shorter timeouts
             "legitimate_traffic_impact": 2.0,
         },
-        "Botnet": {
-            "traffic_before": 1200.0,
-            "traffic_after": 0.0,  # Full isolation
-            "legitimate_traffic_impact": 100.0,  # Total isolation halts all device traffic
+        "Reconnaissance": {
+            "traffic_before": 120.0,       # illustrative
+            "traffic_after": 0.0,          # source blocked
+            "legitimate_traffic_impact": 0.0,
         },
-        "Malware": {
-            "traffic_before": 800.0,
-            "traffic_after": 20.0,
-            "legitimate_traffic_impact": 85.0,
+        "Spoofing_MITM": {
+            "traffic_before": 240.0,       # illustrative
+            "traffic_after": 0.0,          # forged frames dropped
+            "legitimate_traffic_impact": 0.0,
         },
-        "SQL_Injection": {
-            "traffic_before": 350.0,
-            "traffic_after": 10.0,  # WAF filters payloads
+        "Web_Application_Attack": {
+            "traffic_before": 350.0,       # illustrative
+            "traffic_after": CAP_P50,      # WAF drops the malicious requests
             "legitimate_traffic_impact": 0.5,
         },
-        "SSDP": {
-            "traffic_before": 650.0,
-            "traffic_after": 8.0,  # Port 1900 restricted
-            "legitimate_traffic_impact": 5.0,  # May affect UPnP discovery
+        "Credential_Attack": {
+            "traffic_before": 400.0,       # illustrative
+            "traffic_after": CAP_P50,      # authentication back-off
+            "legitimate_traffic_impact": 2.0,
         },
-        "Evil_Twin": {
-            "traffic_before": 240.0,
-            "traffic_after": 240.0,  # Requires manual operator triage
-            "legitimate_traffic_impact": 0.0,
+        "Malware_Backdoor": {
+            "traffic_before": 800.0,       # illustrative
+            "traffic_after": 0.0,          # endpoint quarantined
+            "legitimate_traffic_impact": 100.0,  # the device loses all traffic
         },
-        "Website_spoofing": {
-            "traffic_before": 420.0,
-            "traffic_after": 5.0,  # DNS sinkhole blocks requests
-            "legitimate_traffic_impact": 0.0,
+        "Botnet": {
+            "traffic_before": 1200.0,      # illustrative
+            "traffic_after": 0.0,          # device isolated
+            "legitimate_traffic_impact": 100.0,
         },
         "Unknown": {
-            "traffic_before": 300.0,
-            "traffic_after": 300.0,
+            "traffic_before": 654.69,      # measured: median held-out Mirai window
+            "traffic_after": CAP_P75,      # behaviour route starts with a rate cap
             "legitimate_traffic_impact": 0.0,
         },
     }

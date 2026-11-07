@@ -62,6 +62,10 @@ class MitigationPolicyEngine:
                 remediation_type=RemediationType(p_data.get("remediation_type", "AUTOMATED_ACTION")),
                 confidence_threshold=float(p_data.get("confidence_threshold", 0.60)),
                 aliases=p_data.get("aliases", []),
+                action_class=p_data.get("action_class", "FILTER"),
+                escalation_ladder=p_data.get(
+                    "escalation_ladder", [p_data["mitigation_action"]]
+                ),
             )
             norm_key = self._normalize_name(policy.attack_type)
             self.policies[norm_key] = policy
@@ -84,6 +88,8 @@ class MitigationPolicyEngine:
                 remediation_type=RemediationType(fb.get("remediation_type", "RECOMMENDED_MANUAL")),
                 confidence_threshold=float(fb.get("confidence_threshold", 0.0)),
                 aliases=fb.get("aliases", []),
+                action_class=fb.get("action_class", "FILTER"),
+                escalation_ladder=fb.get("escalation_ladder", []),
             )
 
     def select_policy(self, event: AttackEvent) -> Tuple[MitigationPolicy, bool, List[str]]:

@@ -35,6 +35,20 @@ from module3_mitigation.scenarios import (
     get_scenario,
     list_all_scenarios,
 )
+from module3_mitigation.zero_day_containment import (
+    ZeroDayBehaviour,
+    ZeroDayContainment,
+    ZeroDayDecision,
+)
+from module3_mitigation.escalation_controller import (
+    ContainmentOutcome,
+    ContainmentStep,
+    EscalationController,
+)
+from module3_mitigation.pipeline_evaluation import (
+    Module3PipelineEvaluator,
+    run_module3_evaluation,
+)
 
 __all__ = [
     "AttackEvent",
@@ -55,5 +69,13 @@ __all__ = [
     "SCENARIOS_CATALOG",
     "get_scenario",
     "list_all_scenarios",
+    "ZeroDayBehaviour",
+    "ZeroDayContainment",
+    "ZeroDayDecision",
+    "ContainmentOutcome",
+    "ContainmentStep",
+    "EscalationController",
+    "Module3PipelineEvaluator",
+    "run_module3_evaluation",
 ]
 
