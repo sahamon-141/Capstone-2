@@ -61,6 +61,11 @@ class MitigationPolicy:
     remediation_type: RemediationType = RemediationType.AUTOMATED_ACTION
     confidence_threshold: float = 0.60
     aliases: List[str] = field(default_factory=list)
+    # How the action changes traffic: FILTER caps the source rate, BLOCK stops
+    # the source outright, ALERT leaves traffic untouched.
+    action_class: str = "FILTER"
+    # Actions to try in order, least disruptive first.
+    escalation_ladder: List[str] = field(default_factory=list)
 
     def to_dict(self) -> Dict[str, Any]:
         data = asdict(self)

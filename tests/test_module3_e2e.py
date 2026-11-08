@@ -81,15 +81,19 @@ class TestModule3EndToEnd(unittest.TestCase):
         # 3. Verify Module 3 correctly selected policy and executed simulated mitigation
         self.assertIsNotNone(record)
         self.assertEqual(record.attack_type, "DDoS-UDP_Flood")
-        self.assertEqual(record.mitigation_action, "ISOLATE_INFECTED_DEVICE")
+        # A UDP flood is a volumetric attack, usually from spoofed sources, so
+        # the correct response is a per-source rate limit, not isolating a device.
+        self.assertEqual(record.mitigation_action, "RATE_LIMIT_SOURCE")
         self.assertEqual(record.execution_status, ExecutionStatus.SIMULATED_SUCCESS)
         self.assertTrue(record.simulation_mode)
 
         # 4. Verify Traffic Verification
+        # A rate limit caps the source rather than removing all of its traffic,
+        # so some residual is expected and the reduction is partial, not total.
         self.assertGreater(record.traffic_before, 0.0)
-        self.assertEqual(record.traffic_after, 0.0)
-        self.assertEqual(record.reduction_percentage, 100.0)
-        self.assertEqual(record.verification_status, VerificationStatus.MITIGATION_EFFECTIVE)
+        self.assertLess(record.traffic_after, record.traffic_before)
+        self.assertGreater(record.reduction_percentage, 50.0)
+        self.assertEqual(record.verification_status, VerificationStatus.PARTIALLY_EFFECTIVE)
 
         # 5. Verify Database Record Persistence
         db_records = self.db.get_recent_records(limit=10)
@@ -97,10 +101,10 @@ class TestModule3EndToEnd(unittest.TestCase):
         row = db_records[0]
         self.assertEqual(row["attack_type"], "DDoS-UDP_Flood")
         self.assertEqual(row["source_mac"], "E4:5F:01:FE:DC:BA")
-        self.assertEqual(row["mitigation_action"], "ISOLATE_INFECTED_DEVICE")
+        self.assertEqual(row["mitigation_action"], "RATE_LIMIT_SOURCE")
         self.assertEqual(row["execution_status"], "SIMULATED_SUCCESS")
-        self.assertEqual(row["verification_status"], "MITIGATION_EFFECTIVE")
-        self.assertEqual(row["reduction_percentage"], 100.0)
+        self.assertEqual(row["verification_status"], "PARTIALLY_EFFECTIVE")
+        self.assertGreater(row["reduction_percentage"], 50.0)
 
         # 6. Verify Dashboard Data Readiness (dict representation)
         record_dict = record.to_dict()
@@ -108,7 +112,7 @@ class TestModule3EndToEnd(unittest.TestCase):
         self.assertIn("verification_status", record_dict)
         self.assertIn("reduction_percentage", record_dict)
         self.assertEqual(record_dict["execution_status"], "SIMULATED_SUCCESS")
-        self.assertEqual(record_dict["verification_status"], "MITIGATION_EFFECTIVE")
+        self.assertEqual(record_dict["verification_status"], "PARTIALLY_EFFECTIVE")
 
     def test_e2e_normal_traffic_bypasses_mitigation(self):
         """Verifies that normal traffic (Module 2 not invoked) does not trigger mitigation."""

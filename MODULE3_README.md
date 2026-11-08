@@ -44,7 +44,7 @@ Module 3 completes the **Three-Stage Hierarchical IoT Intrusion Defense System**
 │                                                                              │
 │   ┌─────────────────────────────┐         ┌──────────────────────────────┐   │
 │   │ A. Attack Info Receiver     │ ──────> │ B. Mitigation Policy Engine  │   │
-│   │    (Module 2/ESP32 payload) │         │    (policies.json, 13 AWID3) │   │
+│   │    (Module 2/ESP32 payload) │         │    (policies.json, CICIoT2023)│   │
 │   └─────────────────────────────┘         └──────────────┬───────────────┘   │
 │                                                          │                   │
 │                                                          ▼                   │
@@ -74,7 +74,7 @@ Module 3 completes the **Three-Stage Hierarchical IoT Intrusion Defense System**
 | Component | Class / File | Primary Responsibility |
 |---|---|---|
 | **Attack Information Receiver** | `MitigationEngine.parse_attack_payload()` in `mitigation_engine.py` | Ingests predictions from Module 2 or simulation, normalizes timestamps, sensor ID (`ESP32_01`), source MAC/IP, and traffic statistics. |
-| **Mitigation Policy Engine** | `MitigationPolicyEngine` in `mitigation_policies.py` | Evaluates external `policies.json`. Resolves attack categories (including AWID3 attack types and CICIoT2023 aliases), validates confidence thresholds, and enforces administrator approval flags. |
+| **Mitigation Policy Engine** | `MitigationPolicyEngine` in `mitigation_policies.py` | Evaluates external `policies.json`. Resolves CICIoT2023 classes onto attack families via aliases, validates confidence thresholds, and enforces administrator approval flags. |
 | **Simulated Network Controller** | `SimulatedNetworkController` in `simulated_network_controller.py` | Implements an abstract `BaseNetworkController` adapter. Safely simulates PMF activation, VLAN isolation, rate limiting, and WAF rules in-memory on Windows without altering OS network settings. |
 | **Traffic Simulator** | `TrafficSimulator` in `traffic_simulator.py` | Standalone generator of reproducible before- and after-mitigation traffic measurements across all attack profiles. Kept strictly separate from verification math. |
 | **Mitigation Verification Engine** | `MitigationVerifier` in `mitigation_verifier.py` | Computes percentage traffic reduction over equal observation windows. Assigns effectiveness status (`MITIGATION_EFFECTIVE`, `PARTIALLY_EFFECTIVE`, `MITIGATION_FAILED`, `INSUFFICIENT_DATA`). |
@@ -134,32 +134,86 @@ Module 3 can receive attack events directly via JSON payload or REST endpoint `P
 
 Policies are defined in an external JSON configuration file (`module3_mitigation/policies.json`), eliminating hardcoded `if/elif` statements.
 
-### Supported AWID3 Attack Categories & Mitigations
+### Supported CICIoT2023 attack families and their actions
 
-| Attack Category | Canonical Action | Remediation Type | Automated? | Admin Approval? | Default Action Description |
+The policy file is keyed to the classes Module 2 actually predicts. Every
+CICIoT2023 class reaches one of these families; `action_class` tells the
+escalation controller how the action changes traffic (`FILTER` caps the source
+rate, `BLOCK` stops it, `ALERT` changes nothing).
+
+| Family | Action | action_class | Automated? | Approval? | Covers |
 |---|---|---|---|---|---|
-| **Deauth** | `ENABLE_PMF_AND_MONITOR` | `AUTOMATED_ACTION` | Yes | No | Enable 802.11w Protected Management Frames (PMF) on AP; monitor suspicious management frames |
-| **Disas** | `ENABLE_PMF_MONITOR_DISAS` | `AUTOMATED_ACTION` | Yes | No | Enable PMF and monitor suspicious disassociation activity across monitored BSSID |
-| **(Re)Assoc** | `ENFORCE_AUTH_ASSOC_POLICY` | `AUTOMATED_ACTION` | Yes | No | Enforce strict AP authentication and association rate limit policies; drop malformed frames |
-| **Rogue_AP** | `ALERT_ROGUE_AP` | `RECOMMENDED_MANUAL` | No | **Yes** | Generate high-priority rogue access point alert and notify network administrator for physical sweep |
-| **Krack** | `RECOMMEND_FIRMWARE_UPDATE_KRACK` | `RECOMMENDED_MANUAL` | No | **Yes** | Recommend WPA2 4-way handshake patch and AP/client firmware security updates (CVE-2017-13077) |
-| **Kr00k** | `RECOMMEND_FIRMWARE_UPDATE_KR00K` | `RECOMMENDED_MANUAL` | No | **Yes** | Recommend vulnerable Wi-Fi chipset firmware updates for all-zero TK encryption vulnerability (CVE-2019-15126) |
-| **SSH** | `APPLY_SSH_RATE_LIMIT` | `AUTOMATED_ACTION` | Yes | No | Simulate SSH connection rate limiting and temporary source IP firewall throttle on TCP port 22 |
-| **Botnet** | `ISOLATE_INFECTED_DEVICE` | `AUTOMATED_ACTION` | Yes | No | Simulate infected device network isolation via quarantine VLAN 999 and dynamic MAC filter |
-| **Malware** | `QUARANTINE_ENDPOINT` | `AUTOMATED_ACTION` | Yes | No | Simulate endpoint quarantine, block outbound C2 channels, and alert incident response team |
-| **SQL_Injection** | `ACTIVATE_WAF_RULE` | `AUTOMATED_ACTION` | Yes | No | Simulate WAF rule activation to inspect and drop malicious SQL query payloads and parameter tampering |
-| **SSDP** | `RESTRICT_UDP_PORT_1900` | `AUTOMATED_ACTION` | Yes | No | Simulate restricting unnecessary SSDP UDP port 1900 traffic and disable UPnP on external interface |
-| **Evil_Twin** | `ALERT_EVIL_TWIN_VERIFY` | `RECOMMENDED_MANUAL` | No | **Yes** | Generate suspicious AP alert, mark spoofed SSID/BSSID pair, and recommend identity verification |
-| **Website_spoofing**| `BLOCK_MALICIOUS_DESTINATION` | `AUTOMATED_ACTION` | Yes | No | Simulate blocking verified malicious destination domain and IP on DNS resolver and gateway proxy |
-| **Unknown** | `ALERT_ADMIN_AND_LOG` | `RECOMMENDED_MANUAL` | No | **Yes** | Fallback policy: log forensic packet telemetry and alert security operator |
+| **Benign** | `NO_ACTION` | ALERT | Yes | No | BenignTraffic |
+| **Volumetric_Flood** | `RATE_LIMIT_SOURCE` | FILTER | Yes | No | DDoS/DoS UDP, ICMP and TCP floods, SynonymousIP |
+| **TCP_State_Exhaustion** | `ENABLE_SYN_COOKIES` | FILTER | Yes | No | SYN, PSHACK and RSTFIN floods |
+| **Fragmentation_Attack** | `DROP_MALFORMED_FRAGMENTS` | FILTER | Yes | No | ICMP, UDP and ACK fragmentation |
+| **Slow_Application_Attack** | `LIMIT_CONCURRENT_CONNECTIONS` | FILTER | Yes | No | SlowLoris, HTTP floods |
+| **Reconnaissance** | `BLOCK_SCANNING_SOURCE` | BLOCK | Yes | No | PortScan, OSScan, HostDiscovery, PingSweep, VulnerabilityScan |
+| **Spoofing_MITM** | `ENFORCE_ARP_DNS_INTEGRITY` | BLOCK | Yes | No | MITM-ArpSpoofing, DNS_Spoofing |
+| **Web_Application_Attack** | `ACTIVATE_WAF_RULE` | FILTER | Yes | No | SqlInjection, CommandInjection, XSS, BrowserHijacking, Uploading_Attack |
+| **Credential_Attack** | `THROTTLE_AUTH_ATTEMPTS` | FILTER | Yes | No | DictionaryBruteForce |
+| **Malware_Backdoor** | `QUARANTINE_ENDPOINT` | BLOCK | No | **Yes** | Backdoor_Malware |
+| **Botnet** | `ISOLATE_INFECTED_DEVICE` | BLOCK | Yes | No | a named botnet (see the note below on Mirai) |
+| **Unknown (fallback)** | `BEHAVIOUR_BASED_CONTAINMENT` | FILTER | Yes | No | anything with no class policy, including zero-day |
 
-### Automated vs. Recommended Manual Remediations
-Certain attacks (such as KRACK, Kr00k, Rogue AP, and Evil Twin) cannot be mitigated purely by a local packet filter or firewall rule; they require human investigation or physical device patching. The engine distinguishes these:
-- `AUTOMATED_ACTION`: Execution proceeds immediately in simulation.
-- `RECOMMENDED_MANUAL`: Automatically flags `REQUIRES_ADMIN_APPROVAL` with detailed advisory instructions.
+Two choices worth explaining:
 
-### Low-Confidence Predictions
-If `confidence < policy.confidence_threshold` (e.g. SQL Injection with confidence 0.42 < 0.60), the policy engine automatically marks the action as requiring administrator confirmation (`REQUIRES_ADMIN_APPROVAL`).
+* **Floods are rate limited, not isolated.** A DDoS flood usually arrives from
+  spoofed or remote sources, so isolating a local device does not stop it and
+  cuts off a device that may be innocent.
+* **The Mirai classes are deliberately not aliased to Botnet.** They are held
+  out of training as the zero-day proxy, so letting them match a class policy
+  would contaminate that experiment. They take the behaviour route instead. Add
+  the aliases back for a deployment where Mirai is a known class.
+
+### Zero-day containment
+
+A classifier cannot name an attack it has never seen, so the fallback policy
+does not just raise an alert. `zero_day_containment.py` picks a containment
+ladder from the behaviour Module 1 already measured:
+
+| Observed | Behaviour | Ladder |
+|---|---|---|
+| CV low, rate above the normal median | `CONSTANT_RATE_FLOOD` | rate limit → block → upstream blackhole |
+| rate above normal p95, deviation high | `VOLUMETRIC_SURGE` | rate limit → blackhole → isolate |
+| CV high, rate not high | `SLOW_PROBE` | block the source → isolate segment |
+| flagged but no recognised shape | `UNCLASSIFIED_ANOMALY` | rate limit → block → isolate |
+
+The CV and deviation breakpoints are the same ones the Mamdani membership
+functions use, so the behaviour classes line up with the rules that flagged the
+window. On CICIoT2023 this identifies all 759 held-out Mirai windows as
+constant-rate floods from timing alone, without knowing the class name.
+
+### Escalation and re-verification
+
+`escalation_controller.py` walks the ladder least disruptive rung first, and
+after each rung re-scores the window with the **real** Mamdani system from
+`src/fuzzy_system.py`. A window is contained once that risk falls below 0.35;
+otherwise the controller escalates.
+
+Be careful what you claim from this. Two different things are reported:
+
+* **Volume suppression** is `(rate − min(rate, cap)) / rate`. Both rates are
+  measured, so this is arithmetic on real numbers.
+* **Risk containment** is modelled. The residual rate is re-scored while CV and
+  IAT deviation are held at their observed values, because there is no way to
+  predict how a token bucket reshapes packet timing without a live testbed.
+  That makes it a conservative lower bound. A blocking action contains by
+  construction, so `contained_by_filter_alone` is the informative figure and
+  `contained_overall` is not an accuracy.
+
+### Automated vs. recommended manual remediations
+
+Quarantining an endpoint cuts off all of its traffic, so that policy requires an
+administrator to approve it even at high confidence.
+- `AUTOMATED_ACTION`: execution proceeds immediately in simulation.
+- `RECOMMENDED_MANUAL`: flags `REQUIRES_ADMIN_APPROVAL` with advisory detail.
+
+### Low-confidence predictions
+
+If `confidence < policy.confidence_threshold` (for example SQL injection at 0.42
+against a 0.70 threshold), the policy engine marks the action as requiring
+administrator confirmation.
 
 ---
 
@@ -286,9 +340,33 @@ OK
 
 ## 10. Limitations of Simulation Mode
 
-1. **No Physical Traffic Reduction:** Simulated reductions reflect modeled mathematical outcomes; actual packets traveling over your Wi-Fi interface are neither throttled nor dropped.
-2. **Client Hardware Independence:** Operating in simulation mode means protected stations and rogue APs do not experience actual 802.11 deauthentication disconnections.
-3. **Synthetic Post-Mitigation Flow:** In production simulation, post-mitigation traffic is generated via the calibrated `TrafficSimulator` profile rather than real-time hardware packet capture.
+Read this before quoting any Module 3 number in a report or paper.
+
+1. **Nothing is enforced.** No packet on a real interface is throttled or
+   dropped. Every action is recorded in memory only.
+2. **Risk containment is modelled.** The residual rate after a filter is
+   re-scored by the real Mamdani system, but CV and IAT deviation are held at
+   their observed values, so the figure is a conservative lower bound rather
+   than a measurement. A blocking action contains by construction, so
+   `contained_overall` is not an accuracy.
+3. **Volume suppression is measured.** `(rate − min(rate, cap)) / rate` uses
+   the real packet rate of each window, so this one is arithmetic on real data.
+4. **The dashboard profiles are illustrative.** `traffic_simulator.py` drives
+   the single-event demo path. The authoritative numbers come from
+   `pipeline_evaluation.py`, which runs over every window of the real stream.
+5. **Percentage reduction suits volumetric attacks only.** A WAF rule or an
+   authentication back-off stops an attack without moving the packet rate much,
+   so a low reduction there does not mean the mitigation failed.
+6. **Only some families are exercised.** The sampled evaluation stream contains
+   floods, Mirai and benign traffic. The reconnaissance, spoofing, web,
+   credential and malware policies are defined and unit tested but never
+   triggered by this stream; `families_exercised_by_this_stream` in
+   `module3_metrics.json` records which ones ran.
+7. **Driven by the true class.** The batch evaluation uses each window's
+   ground-truth label so Module 3's coverage and containment are measured
+   independently of Module 2's error. That means Module 1 false positives are
+   correctly left alone, which is the best case for collateral;
+   `worst_case_receiving_a_blocking_action` gives the other bound.
 
 ---
 

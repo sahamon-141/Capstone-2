@@ -60,52 +60,85 @@ class TestMitigationEngine(unittest.TestCase):
             log_dir=self.test_log_dir,
         )
 
-    def test_01_all_13_awid3_categories_supported(self):
-        """Tests that all 13 AWID3 categories match valid policies."""
-        expected_attacks = [
-            "Deauth",
-            "Disas",
-            "(Re)Assoc",
-            "Rogue_AP",
-            "Krack",
-            "Kr00k",
-            "SSH",
-            "Botnet",
-            "Malware",
-            "SQL_Injection",
-            "SSDP",
-            "Evil_Twin",
-            "Website_spoofing",
+    def test_01_every_ciciot2023_class_is_covered(self):
+        """Every CICIoT2023 class Module 2 can predict must reach a real policy.
+
+        The three Mirai classes are the exception: they are held out as the
+        zero-day proxy, so they must NOT match a class policy.
+        """
+        covered = [
+            "BenignTraffic",
+            "DDoS-UDP_Flood", "DDoS-ICMP_Flood", "DDoS-TCP_Flood",
+            "DDoS-SynonymousIP_Flood", "DoS-UDP_Flood", "DoS-TCP_Flood",
+            "DDoS-SYN_Flood", "DoS-SYN_Flood", "DDoS-PSHACK_Flood", "DDoS-RSTFINFlood",
+            "DDoS-ICMP_Fragmentation", "DDoS-UDP_Fragmentation", "DDoS-ACK_Fragmentation",
+            "DDoS-SlowLoris", "DDoS-HTTP_Flood", "DoS-HTTP_Flood",
+            "Recon-PortScan", "Recon-OSScan", "Recon-HostDiscovery",
+            "Recon-PingSweep", "VulnerabilityScan",
+            "MITM-ArpSpoofing", "DNS_Spoofing",
+            "SqlInjection", "CommandInjection", "XSS", "BrowserHijacking",
+            "Uploading_Attack", "DictionaryBruteForce", "Backdoor_Malware",
         ]
         policy_engine = self.engine.policy_engine
-        for attack_name in expected_attacks:
-            event = AttackEvent(attack_type=attack_name, confidence=0.95)
-            policy, is_low, _ = policy_engine.select_policy(event)
-            self.assertNotEqual(
-                policy.attack_type,
-                "Unknown",
-                f"Attack category '{attack_name}' should have a specific policy",
+        for name in covered:
+            policy, _, _ = policy_engine.select_policy(
+                AttackEvent(attack_type=name, confidence=0.95)
             )
-            self.assertFalse(is_low)
+            self.assertNotEqual(
+                policy.attack_type, "Unknown",
+                f"CICIoT2023 class '{name}' fell through to the fallback policy",
+            )
 
-    def test_02_ciciot2023_aliases_resolved(self):
-        """Tests that common CICIoT2023 classes map cleanly to mitigation policies."""
+    def test_01b_held_out_mirai_has_no_class_policy(self):
+        """Mirai is the held-out zero-day proxy, so it must take the fallback route."""
+        for name in ("Mirai-greeth_flood", "Mirai-udpplain", "Mirai-greip_flood"):
+            policy, _, _ = self.engine.policy_engine.select_policy(
+                AttackEvent(attack_type=name, confidence=0.95)
+            )
+            self.assertEqual(
+                policy.attack_type, "Unknown",
+                f"Held-out class '{name}' must not match a class policy",
+            )
+            self.assertEqual(policy.mitigation_action, "BEHAVIOUR_BASED_CONTAINMENT")
+
+    def test_02_classes_map_to_the_right_family(self):
+        """Classes must reach the family whose action actually suits them."""
         alias_tests = {
-            "SqlInjection": "SQL_Injection",
-            "Backdoor_Malware": "Malware",
-            "DictionaryBruteForce": "SSH",
-            "MITM-ArpSpoofing": "Evil_Twin",
-            "DNS_Spoofing": "Website_spoofing",
-            "Mirai-udpplain": "Botnet",
-            "DDoS-UDP_Flood": "Botnet",
+            "DDoS-UDP_Flood": "Volumetric_Flood",
+            "DDoS-ICMP_Flood": "Volumetric_Flood",
+            "DDoS-SYN_Flood": "TCP_State_Exhaustion",
+            "DDoS-RSTFINFlood": "TCP_State_Exhaustion",
+            "DDoS-UDP_Fragmentation": "Fragmentation_Attack",
+            "DDoS-SlowLoris": "Slow_Application_Attack",
+            "Recon-PortScan": "Reconnaissance",
+            "VulnerabilityScan": "Reconnaissance",
+            "MITM-ArpSpoofing": "Spoofing_MITM",
+            "DNS_Spoofing": "Spoofing_MITM",
+            "SqlInjection": "Web_Application_Attack",
+            "XSS": "Web_Application_Attack",
+            "DictionaryBruteForce": "Credential_Attack",
+            "Backdoor_Malware": "Malware_Backdoor",
+            "BenignTraffic": "Benign",
         }
         for ciciot_name, expected_canonical in alias_tests.items():
-            event = AttackEvent(attack_type=ciciot_name, confidence=0.90)
+            event = AttackEvent(attack_type=ciciot_name, confidence=0.95)
             policy, _, _ = self.engine.policy_engine.select_policy(event)
             self.assertEqual(
                 policy.attack_type,
                 expected_canonical,
                 f"CICIoT class '{ciciot_name}' should map to '{expected_canonical}'",
+            )
+
+    def test_02b_floods_are_not_treated_as_infected_devices(self):
+        """A flood from a spoofed source must not isolate a local device."""
+        for name in ("DDoS-UDP_Flood", "DDoS-ICMP_Flood", "DoS-TCP_Flood"):
+            policy, _, _ = self.engine.policy_engine.select_policy(
+                AttackEvent(attack_type=name, confidence=0.95)
+            )
+            self.assertNotIn(
+                policy.mitigation_action,
+                ("ISOLATE_INFECTED_DEVICE", "QUARANTINE_ENDPOINT"),
+                f"'{name}' should be rate limited, not isolated",
             )
 
     def test_03_low_confidence_requires_admin_approval(self):
@@ -119,15 +152,16 @@ class TestMitigationEngine(unittest.TestCase):
         self.assertEqual(record.execution_status, ExecutionStatus.REQUIRES_ADMIN_APPROVAL)
         self.assertIn("LOW CONFIDENCE", record.action_description)
 
-    def test_04_unknown_attack_category(self):
-        """Tests that completely unknown attack category triggers fallback policy."""
+    def test_04_unknown_attack_gets_containment_not_just_an_alert(self):
+        """An unnamed attack must still be contained, not merely logged."""
         event = AttackEvent(
             attack_type="Unknown_Super_Exploit_9000",
             confidence=0.88,
+            source_ip="192.168.1.77",
         )
         record = self.engine.process_attack(event)
-        self.assertEqual(record.execution_status, ExecutionStatus.UNSUPPORTED_ACTION)
-        self.assertEqual(record.mitigation_action, "ALERT_ADMIN_AND_LOG")
+        self.assertEqual(record.execution_status, ExecutionStatus.SIMULATED_SUCCESS)
+        self.assertEqual(record.mitigation_action, "BEHAVIOUR_BASED_CONTAINMENT")
 
     def test_05_database_persistence_and_retrieval(self):
         """Tests that mitigation records are properly stored and retrieved from SQLite."""
