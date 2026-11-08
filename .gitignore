@@ -1,2 +1,5 @@
 .venv/
 data/
+# large trained artefacts: rebuild with python -m ids.train_module2
+models/pipeline/*.pkl
+__pycache__/

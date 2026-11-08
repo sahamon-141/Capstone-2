@@ -1,3 +1,16 @@
+# IoT Sentinel: Detect → Classify → Mitigate (CICIoT2023)
+
+> **Start here:** [PROJECT_GUIDE.md](PROJECT_GUIDE.md) explains the full three-module pipeline,
+> how to run it, the measured accuracy, and a demo script.
+>
+> ```bash
+> python -m ids.prepare_data && python -m ids.train_module2 && streamlit run app.py
+> ```
+>
+> The sections below document the original Module 1 research code in `src/`.
+
+---
+
 # IAT-Based Fuzzy Logic Anomaly Detection for IoT Networks (CICIoT2023)
 
 A research-oriented Python project for detecting known and **zero-day/unseen** IoT network anomalies using **Inter-Arrival Time (IAT)** statistical dispersion and an interpretable **Mamdani Fuzzy Inference System**.

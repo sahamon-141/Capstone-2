@@ -1,0 +1,460 @@
+% interacttfpsample.tex  (updated: three-module pipeline, results from results/pipeline/metrics.json)
+% v1.01 - June 2016
+
+\documentclass[]{interact}
+
+\usepackage{epstopdf}% To incorporate .eps illustrations using PDFLaTeX, etc.
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{amsmath,amssymb}
+\usepackage{subfigure}% Support for small, `sub' figures and tables
+
+\usepackage[numbers,sort&compress,merge]{natbib}% Citation support using natbib.sty
+\bibpunct[, ]{(}{)}{,}{n}{,}{,}% Citation support using natbib.sty
+\renewcommand\bibfont{\fontsize{10}{12}\selectfont}% Bibliography support using natbib.sty
+\renewcommand\citenumfont[1]{\textit{#1}}% Citation numbers in italic font using natbib.sty
+\renewcommand\bibnumfmt[1]{(#1)}% Parentheses enclose ref. numbers in list using natbib.sty
+
+\theoremstyle{plain}% Theorem-like structures
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+\newtheorem{notation}{Notation}
+
+\begin{document}
+
+\title{Inter-Arrival Time Based Fuzzy Anomaly Detection, Quantized Multiclass Attack Classification and Verified Attack-Specific Mitigation for Resource-Constrained IoT Networks}
+
+\maketitle
+
+\begin{abstract}
+We Know that IoT networks are vulnerable to different attacks like DoS, DDoS, botnet, Spoofing, etc. IoT devices also have limited computational resources, so they can't run a heavy model on every traffic window, and existing approaches are not capable enough of detecting zero-day attacks. Our system addresses these issues with three modules. The first module analyses the inter-arrival time (IAT) of incoming traffic using a sliding window. The coefficient of variation, packet rate and IAT deviation of every window, together with a behaviour-deviation score learned only from normal traffic, are given to a Mamdani fuzzy inference system that outputs the attack risk of the window. If the traffic is normal, the second module stays idle; only suspicious or attack windows are forwarded to it. There, a Random Forest identifies the specific type of attack, an INT8-quantised neural network provides a lightweight alternative for edge devices, and a nearest-neighbour open-set check marks traffic that does not match any known attack as a possible zero-day. The third module selects an attack-specific mitigation playbook, decides whether the action can run automatically or needs analyst approval, applies it, and verifies the result by running the first module again on the traffic after mitigation. The system is evaluated on the CICIoT2023 dataset with the whole Mirai botnet family held out as unseen attacks. The fuzzy detector achieved 99.77\% recall and 99.77\% F1-score with a 7.5\% false-positive rate, compared with 15.91\% recall using IAT timing alone, and detected 100\% of the unseen Mirai windows. The Random Forest achieved 90.85\% accuracy on 31 known classes (93.42\% at attack-family level, 94.56\% at window level). The INT8 model is 74.6\% smaller than its FP32 version with 98.5\% prediction agreement, and the open-set check labelled 100\% of Mirai windows as unknown. In an end-to-end stream, 54.9\% of the windows bypassed the second module and 96.9\% of mitigations were verified to bring the traffic back to normal. Hence the proposed method provides a lightweight approach for multiclass attack detection and attack-specific mitigation in a resource-constrained environment.
+\end{abstract}
+
+\begin{keywords}
+IoT security; Intrusion detection system; Inter-arrival time; Fuzzy logic; Zero-day attack; INT8 quantization; Attack mitigation; CICIoT2023
+\end{keywords}
+
+
+\section{Introduction}
+In Today's world, in this technological era, one of the most growing Technology that plays a very important role is IoT. Due to which many industries, communication and security is dependent on IoT\cite{rekha2023study} which leads to very increased deployment and usage of IoT Devices. IoT Devices communicate through simple network which increases the security and privacy concerns\cite{yang2017survey}. Therefore we need to understand the importance of Security in IoT devices. We have many constraints with IoT devices, they are resource constrained and can't handle large models and Advanced Security Systems.\cite{hamad2020realizing}
+
+These characteristics of IoT Network makes them vulnerable to various types of cyber attacks like DoS/ DDoS\cite{pakmehr2024ddos} - it happens when the the device/ network resource is overwhelmed with excessive traffic. BotNet/ Mirai - these are the the network/group of compromised devices used for malicious activities. Brute Force - it's very basic repeated attempts to gain unauthorized trust\cite{volety2019cracking}. Spoofing - it's pretending to be legitimate or trusted source\cite{babu2010comprehensive}. Network/ port Scanning - probing to discover available ports or vulnerabilities all these attacks can affect IoT Network which can impact on availability of the network and devices, authentication, network resources, communication\cite{jahangeer2023review}, connected devices and therefore we need a continuous and effective monitoring and detection system that can detect and support appropriate mitigation for malicious activities in IoT Network System. Therefore, continuous and effective monitoring of IoT network traffic is required to detect malicious activities and apply appropriate mitigation mechanisms.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\linewidth]{iot_attack_landscape.png}
+    \caption{IoT network attack landscape and potential impact of cyberattacks.}
+    \label{fig:iot_attack_landscape}
+\end{figure}
+
+To address this requirement, Intrusion Detection Systems (IDS) are used to monitor network traffic and identify suspicious or malicious activities, it analyzes traffic or features associated with the incoming traffic\cite{abdulganiyu2023systematic}, helps identify normal vs malicious behavior and also raises an alert when suspicious activity is detected. Traditional IDS approaches may rely on predefined signatures or rules, which can limit their ability to recognize changing attack patterns.\cite{khraisat2019survey} Therefore, ML and DL-based approaches have been explored to learn patterns from network traffic and identify malicious behavior. it's used because ML/DL approaches can learn patterns from network traffic without relying only on predefined attack signatures.\cite{rakine2025comprehensive} ML-based IDS approaches can perform binary classification, where network traffic is classified as either normal or malicious. However, binary classification does not provide information about the specific type of attack\cite{palshikar2022distinguishes} because different type of attacks are required to be mitigated with different responses. Multiclass IDS approach can further classify malicious traffic into specific attack categories, providing more detailed information about the nature of the detected attack. However, although ML/DL-based multiclass IDS can provide detailed attack classification, their computational and memory requirements can make deployment challenging in resource-constrained IoT environments. \cite{mallidi2025advancements}
+
+Due to limitations of resources and memory in IoT devices, running a complex ML/DL- based model can be a issue or a problem. Therefore, lightweight and resource-efficient IDS models are required in IoT devices which is optimal for resource constrained IoT environment,\cite{arshad2020intrusion} For this resource optimization techniques can be used to optimally reduce the resource requirements of ML/DL models, out of which one of the approach is Quantization. \cite{gholami2022survey}Quantization reduces the numerical precision which is used to represent the parameters of any model. which results in reduced model size and computational requirements and at the same time it maintains detection performance. Therefore Quantizing the IDS can result in help of making the Multiclass Detection system more suitable for resource constrained IoT environment. \cite{misrak2025lightweight}
+
+But only resource efficiency alone can not address the challenge of detecting previously unseen or zero-day attacks\cite{el2024advanced}. Existing IDS or ML/DL-based models are trained using known traffic and attack patterns and when traffic behaves differently from patterns seen during training\cite{sabeel2021building}, classification of attacks can be difficult. Therefore, detecting abnormal behavior is important in addition to classifying known attack types.
+Anomaly detection can help identify different traffic behavior that differs from normal behavior, which makes it useful for detecting potentially unseen attack patterns.
+One traffic characteristic that can be used for identifying unseen attack is Packet Inter-Arrival Time (IAT), which is basically the interval of time between two consecutive packets.\cite{sahin2025leveraging}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\linewidth]{iat_diagram.png}
+    \caption{Illustration of Packet Inter-Arrival Time (IAT) and sliding windows over consecutive IAT values.}
+    \label{fig:iat}
+\end{figure}
+
+To analyze the variations in Packet Inter-Arrival Time, a sliding-window approach can be used to check the traffic behavior over the incoming packets.
+In these each of window the IAT values of incoming consecutive packets are considered of which Standard deviation/ Variance is calculated to measure the variation in packet arrival time and frequency, if the numbers crosses a predefined threshold, the traffic is considered potentially abnormal, This anomaly can trigger the multiclass IDS for further classification of the suspicious traffic.\cite{toupas2019intrusion} The multiclass IDS can further classify the suspicious traffic into corresponding attack category bases on the traffic patterns and based on the identified type an appropriate mitigation technique can be applied to the incoming suspicious traffic. ex - for mitigating DDoS attack we use rate Limiting and traffic filtering.
+After applying the specific mitigation technique, the network can be analyzed again to determine whether the abnormal behavior of traffic has been reduced, and if the abnormal behavior is still in the traffic the further mitigation or action can be initiated.
+
+Based on the above challenges, there is a need for IoT intrusion detection system that can address both resource constraints and detect the abnormal attack behavior and also support in appropriate mitigation.\cite{heidari2023internet} Therefore, this work proposes a resource- constrained multiclass intrusion detection and mitigation system for IoT network and devices. The proposed approach uses Packet Inter-Arrival Time (IAT) with sliding window bases standard deviation analysis approach to identify abnormal traffic behavior. A quantized multiclass IDS is then used to classify the suspicious traffic into different categories of attack and based on the identified type of attack an appropriate mitigation technique is applied\cite{mondal2026quantized}, followed by re-analysis of the network traffic to verify the reduction of anomaly. The overall approach aims to provide a lightweight and resource-efficient mechanism for detecting, classifying , and mitigating malicious activities in resource constrained IoT networks.
+
+
+\subsection{Novelty}
+The novelty of our work is that, instead of running a heavy multiclass IDS on every traffic window, the system first uses a lightweight IAT-based fuzzy logic module, forwards only suspicious or attack windows to the classifier, and closes the loop with a mitigation module that checks whether its own action worked. The main contributions of this work are:
+
+\begin{enumerate}
+\item A three-module IDS (detect, classify, mitigate). In an end-to-end stream, 54.9\% of the windows bypassed the multiclass module, which saves the computation of IoT devices.
+\item A fuzzy detector that combines the coefficient of variation, packet rate and IAT deviation with a behaviour-deviation score learned only from normal traffic. It detects flooding attacks (whose CV collapses towards 0) as well as attacks whose timing looks normal, raising recall from 15.91\% (IAT timing alone) to 99.77\% while staying unsupervised.
+\item An INT8 post-training-quantised neural network with integer-only matrix arithmetic, which is 74.6\% smaller than its FP32 version with 98.5\% prediction agreement.
+\item A nearest-neighbour open-set check that labels 100\% of the unseen Mirai windows as unknown, where the earlier softmax-confidence rejection detected 0\%.
+\item An attack-specific mitigation module with escalation and approval logic that verifies each action by re-running the fuzzy detector. 96.9\% of the mitigations returned the traffic to the normal risk zone.
+\end{enumerate}
+
+
+\section{Literature Survey}
+
+%sahajit
+~\cite{ppdowdaorsuttf2026} Proposed IDS systems that use packet features like MAC address, packet length, source IP, and destination IP. However, these attributes contain sensitive and private information, leading to privacy concerns. To address this problem, a paper demonstrated how IAT (Inter Arrival Time) can detect stealthy slow DoS and spoofing attacks on IoT networks. Recent studies have used IAT with deep learning and reinforcement learning models, but these attacks were tested in simulated lab environments, questioning real-life effectiveness. Although several papers implemented similar IDS, most focus on attack detection, while effective attack mitigation remains comparatively limited. Therefore, this research aims to preserve privacy and explore appropriate mitigation mechanisms for IoT systems.
+
+~\cite{whffi2026} Existing multiclass intrusion detection techniques often segment network traffic into temporal sliding windows to observe how normal traffic morphs into malicious activity. Conventional frameworks evaluate deep convolutional feature extractors against handcrafted summary statistics, finding that simpler statistical descriptors with tree-based classifiers like XGBoost can outperform complex deep learning models. However, calculating over a hundred statistical attributes per block introduces processing latency, making such pipelines impractical for resource-constrained IoT devices. Furthermore, these supervised models remain vulnerable to novel zero-day attacks and lack automated mitigation mechanisms to suppress detected threats.
+
+~\cite{wtai2025} Similarly, other prevailing intrusion detection strategies focus on identifying compromised hardware nodes using statistical outlier rejection and time-frequency spectral transforms. These architectures extract temporal traffic statistics across sliding windows, compress them using deep autoencoders, and employ swarm-optimized classifiers to identify anomalies. Despite reasonable detection accuracy, these multi-stage processes incur significant computational and memory overheads. Moreover, detection accuracy and responsiveness degrade under elevated attack intensities, and the framework ultimately stops at flagging infected nodes without providing autonomous countermeasures.
+
+~\cite{eict2025} Current papers have proposed an edge-friendly intrusion detection approach for resource-constrained IoT environments using Boosted Convolution Trees (BCT). Existing CNN/LSTM-based IDS algorithms can provide a effective intrusion detection but the model size and computational requirements are very large that makes deployment challenging. BCT combines 1D convolution features extraction, soft decision trees and boosting, and was evaluated using CIC-IoT2023, XIIoTID, and Edge-IIoTset. BCT achieved competitive intrusion-detection performance with smaller model size and faster inference than CNN/LSTM approaches. However, performance can be affected by imbalanced attack classes, and the model was not fully deployed, tested and validated on physical real world environments.
+
+~\cite{lidsfiot2025} While studying another paper, The author proposed a lightweight intrusion detection system for IoT environment using improved feature engineering and advanced dynamic quantization. This paper used combination of RAL-MIFS, two-stage IPCA, DNN-BiLSTM, QAT, PTDQ, Optuna for feature selection, dimensionality-reduction, intrusion classification and hyperparameter optimization. QAT and PTDQ are integrated to reduce model resource consumption. The data used to evaluate and verify was CIC-IDS2017 and CIC-IoT2023. The numbers on paper reported high detection and classification performance with comparable reduction in model size after quantization. However, class imbalance remains a challenge, specially for minority attack classes, and the evaluation was not done on actual resource constrained IoT devices.
+
+~\cite{dynamic_ids2025} While going through another paper, the author proposed a lightweight dynamic threshold method for real-time network anomaly detection on edge devices. It combines a 30-second sliding window, the 3$\sigma$ statistical rule, Kolmogorov-Smirnov normality check, and protocol-aware filtering, tracking just two features --- packets/sec and bytes/sec. Tested on CICIDS2017, NSL-KDD, and simulated industrial traffic, it achieved 94.7\%--96.2\% accuracy with only 5.1\% CPU usage and fewer false alarms. However, it assumes fairly normal traffic behavior, struggles with non-stationary patterns like periodic spikes, and hasn't been validated on a real industrial system long-term.
+
+~\cite{energy_ids2025} While going through another paper, the author came up with an energy-conscious deep learning framework for intrusion detection built specifically for edge computing devices. It combines SeparableConv1D layers, SMOTE, structured pruning and Quantization-Aware Training to keep feature extraction lightweight, deal with class imbalance, and shrink the model size. Tested on NSL-KDD and deployed on Raspberry Pi 4, it achieved 86.2\% accuracy using just 94,408 parameters, with 3.6x faster inference and 60\% less power draw compared to LSTM-based models. That said, the model still misses a good number of attack instances even after tuning the threshold, and since it's only tested on NSL-KDD, it's not really clear how well it would hold up on real, mixed IoT traffic.
+
+
+\section{Proposed Methodology}
+
+The proposed system detects anomalous network traffic by analysing the inter-arrival time (IAT) and behaviour of the incoming traffic, identifies the type of attack, and applies and verifies an attack-specific mitigation. It contains three modules: an IAT-based fuzzy anomaly detection module (Module 1), a multiclass attack identification module (Module 2) and an attack-specific mitigation and verification module (Module 3). Module 1 checks every window and determines whether it is anomalous. If the traffic is normal, it continues without further processing and Modules 2 and 3 stay idle. When suspicious or attack behaviour is detected, the window is forwarded to Module 2, which identifies the attack type or flags it as unknown. Module 3 then selects and applies the matching mitigation and re-runs Module 1 on the traffic to check that the anomaly has been removed. The overall workflow is shown in Fig.~\ref{fig:workflow}.
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{fig_overall_workflow.png}
+\caption{Overall workflow of the proposed system. Module 1 checks every window; only suspicious or attack windows are sent to Module 2, and Module 3 mitigates the identified attack and verifies the result with Module 1.}
+\label{fig:workflow}
+\end{figure}
+
+
+\subsection{Dataset Preparation}
+The CICIoT2023 dataset is captured from 105 real IoT devices and is given as flow-level records with 46 numeric features and 34 labels: benign traffic and 33 attacks grouped into 7 families (DDoS, DoS, Mirai, Reconnaissance, Spoofing, Web-based and Brute Force). Because the training file is 1.6~GB, it is read in chunks and sampled with a cap per class, giving 153,135 training records. The separate test file gives 37,187 test records that are never used for training or calibration. To evaluate unseen attacks, all three Mirai classes (Mirai-greeth\_flood, Mirai-greip\_flood and Mirai-udpplain) are excluded from the training of Module 2 and are only used at test time.
+
+
+\subsection{IAT-Based Fuzzy Anomaly Detection Module (Module 1)}
+
+The IAT-based fuzzy anomaly detection module determines whether incoming IoT network traffic exhibits anomalous behaviour. It uses the packet inter-arrival time, sliding windows, statistical feature extraction, a normal traffic baseline and fuzzy logic to give the attack risk of every window. Normal traffic continues along the normal path, whereas suspicious or attack traffic is forwarded to the multiclass attack identification module.
+
+\subsubsection{Input Records and Inter-Arrival Time}
+The CICIoT2023 dataset is given as flow-level records and does not contain raw packet timestamps. Each record already contains the inter-arrival time ($\mathrm{IAT}_i$) calculated by the feature extractor of the dataset, as well as the packet rate ($\mathrm{Rate}_i$), number of packets and flow duration. We do not create any artificial timestamps; the given $\mathrm{IAT}_i$ is used directly as the timing signal of the traffic. Since the rows of the public CSV files are shuffled, the evaluation windows are assembled from test records of the traffic class under test, optionally mixed with benign background records (Section~\ref{sec:setup}).
+
+\subsubsection{Sliding Windows}
+The records are divided into sliding windows of $W = 20$ records. In a live deployment consecutive windows overlap by 50\% (step $S = 10$), so window $t$ covers records $[tS,\; tS + W - 1]$. For evaluation, the ground-truth label of each window is given by the fraction of attack records in it:
+\begin{equation}
+  a_t = \frac{1}{W}\sum_{i=1}^{W} \mathbf{1}\!\left(y_i \neq \text{Benign}\right),
+  \qquad
+  y_t =
+  \begin{cases}
+    1, & a_t \ge 0.5\\
+    0, & \text{otherwise}
+  \end{cases}
+\end{equation}
+Here, $y_i$ is the label of the $i$-th record in the window, $a_t$ is the fraction of attack records in window $t$, and $y_t$ is the label of the window, which is 1 if half or more of the records are attack records and 0 otherwise.
+
+\subsubsection{Window Feature Extraction}
+From the IAT and rate values of each window, statistical features are calculated to describe the traffic behaviour. First, the mean IAT ($\mu_t$) is calculated as follows:
+\begin{equation}
+  \mu_t = \frac{1}{W}\sum_{i=1}^{W}\mathrm{IAT}_i
+\end{equation}
+Here, $W$ is the number of records in a window and $\mu_t$ is the average IAT of that window. Using this, the standard deviation ($\sigma_t$) is calculated as follows:
+\begin{equation}
+  \sigma_t = \sqrt{\frac{1}{W}\sum_{i=1}^{W}\left(\mathrm{IAT}_i-\mu_t\right)^2}
+\end{equation}
+Here, $\sigma_t$ is the standard deviation of the IAT values and indicates how much the arrival intervals vary around their mean. To measure the relative variation in IAT values, the coefficient of variation (CV) is determined as follows:
+\begin{equation}
+  CV_t = \frac{\sigma_t}{\mu_t + \epsilon}, \qquad \epsilon = 10^{-12}
+\end{equation}
+Here, $CV_t$ is the coefficient of variation of the current window. A higher CV indicates greater relative variation in arrival intervals, whereas a lower CV indicates more consistent intervals. Next, to measure the volume of traffic, the packet rate of the window ($\tilde{R}_t$) is calculated as the median of the record rates:
+\begin{equation}
+  \tilde{R}_t = \operatorname{Median}\left(\mathrm{Rate}_1, \ldots, \mathrm{Rate}_W\right)
+\end{equation}
+The median is used instead of the mean because the rate feature of CICIoT2023 is heavy-tailed. A single benign record with an extreme rate would otherwise raise the mean of the whole window and cause a false alarm. Then the IAT deviation ($D_t$) measures how much the mean IAT of the current window differs from the mean IAT of normal traffic:
+\begin{equation}
+  D_t = \frac{\left|\mu_t-\mu_{N}\right|}{\mu_{N}}
+\end{equation}
+Here, $\mu_N$ is the mean IAT of normal traffic, obtained from the normal traffic baseline.
+
+Normal IoT traffic shows natural random variation in packet arrival, and its CV stays around 1 (the median CV of benign training windows is 1.00). In flooding attacks like DoS/DDoS, attack tools send packets at almost constant intervals, so the CV drops close to 0. In our data the median window CV is 0.001 for DDoS and below 0.001 for DoS. In slow scanning attacks the probes are irregular and widely spaced, which increases both CV and $D_t$. Since attacks can push the CV either \emph{down} or \emph{up}, an upper threshold on CV is not enough and misses flooding attacks.
+
+Timing features alone are also not enough when the attack does not change the timing of the traffic. Reconnaissance, spoofing, web and brute-force records have a window CV close to that of benign traffic, and when normal background records are mixed into a flood window they break its regular timing. Therefore a fourth input, the behaviour deviation ($B_t$), is calculated. All 46 record features are compressed with $x \mapsto \operatorname{sign}(x)\log(1+|x|)$ and standardised with the mean and standard deviation of benign training records. For each record $i$ in the window, $d_i$ is the mean Euclidean distance to its $k=5$ nearest benign training records. The behaviour deviation is then:
+\begin{equation}
+  B_t = \frac{\operatorname{Median}\left(d_1, \ldots, d_W\right)}{\theta_B}
+\end{equation}
+Here, $\theta_B$ is the 99th percentile of the same statistic over 1,000 windows of held-out benign training records, so $B_t > 1$ means the window is more unusual than 99\% of normal windows. $B_t$ is learned only from normal traffic and does not use any attack label, so Module 1 remains an unsupervised anomaly detector and can still detect unseen attacks.
+
+\subsubsection{Normal Traffic Baseline}
+The normal traffic baseline is calculated only from benign training traffic; no attack traffic, and in particular no held-out attack traffic, is used. The baseline stores the mean normal IAT ($\mu_N$), the median and percentiles of normal window CV values and the median normal rate, together with the benign reference records and the threshold $\theta_B$ used for $B_t$. The median and median absolute deviation (MAD) of normal CV values are calculated as follows:
+\begin{equation}
+  M = \operatorname{Median}(CV), \qquad
+  \mathrm{MAD} = \operatorname{Median}\left(\left|CV - M\right|\right)
+\end{equation}
+Here, $M$ is the median of normal CV values, and $\mathrm{MAD}$ is the median absolute deviation of normal CV values from their median. The median of normal CV ($M = 1.00$) is used as the centre of the Medium CV membership function, and $\mu_N$ is used to calculate $D_t$.
+
+\subsubsection{Mamdani Fuzzy Inference}
+A Mamdani fuzzy inference system takes the four window features $(CV_t, \tilde{R}_t, D_t, B_t)$ as input and gives a continuous attack risk $A_t \in [0,1]$ as output. Each input has three linguistic terms (Low, Medium, High) defined with triangular (\texttt{trimf}) and trapezoidal (\texttt{trapmf}) membership functions, given in Table~\ref{tab:mf}. These terms are based on the behaviour of normal traffic: the normal CV stays around its median ($M \approx 1.0$), normal windows have a small IAT deviation, and the Low/Medium boundary of $B_t$ lies just above the 99th percentile of normal windows.
+
+\begin{table}[h]
+\centering
+\caption{Membership functions of the fuzzy inputs and output.}
+\label{tab:mf}
+\begin{tabular}{llll}
+\toprule
+Variable & Low & Medium & High \\
+\midrule
+$CV_t$ $[0,6]$             & trimf(0, 0, 0.65)   & trimf(0.50, $M$, 1.55)   & trapmf(1.40, 1.80, 6, 6) \\
+$\tilde{R}_t$ $[0,50000]$  & trimf(0, 0, 350)    & trimf(200, 600, 1500)    & trapmf(1000, 2500, 50000, 50000) \\
+$D_t$ $[0,5]$              & trimf(0, 0, 0.18)   & trimf(0.12, 0.35, 0.65)  & trapmf(0.50, 0.90, 5, 5) \\
+$B_t$ $[0,10]$             & trimf(0, 0, 1.15)   & trimf(1.0, 1.3, 1.7)     & trapmf(1.4, 1.9, 10, 10) \\
+$A_t$ $[0,1]$              & trimf(0, 0, 0.35)   & trimf(0.25, 0.50, 0.75)  & trapmf(0.60, 0.85, 1, 1) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{fig_membership_functions.png}
+\caption{Membership functions of the fuzzy inputs $CV_t$, $\tilde{R}_t$, $D_t$ and the output attack risk $A_t$ with Normal, Suspicious and Attack zones (the $B_t$ functions are listed in Table~\ref{tab:mf}).}
+\label{fig:mf}
+\end{figure}
+
+The fuzzy inference system consists of 15 Mamdani rules (Table~\ref{tab:rules}). Rules 4--13 detect timing and volume anomalies, for example rule 12, which captures constant-rate floods with an abnormally low CV and a high rate. Rules 1--3 describe normal traffic and also require the behaviour to be normal. Rules 14 and 15 raise the risk when the records do not resemble normal traffic. The strength of a rule is the minimum of the membership degrees in its IF part (AND = min). Each rule clips its output set at that strength, and the clipped sets are combined with the maximum operator. The final attack risk is obtained with centroid defuzzification:
+\begin{equation}
+  A_t = \frac{\int z\,\mu_{\mathrm{agg}}(z)\,dz}{\int \mu_{\mathrm{agg}}(z)\,dz}
+\end{equation}
+Here, $z$ represents the values of attack risk, $\mu_{\mathrm{agg}}(z)$ is the combined output membership of all the rules, and $A_t$ is the final attack risk of window $t$. If no rule fires, the window is assigned the undecided value $A_t = 0.5$. To quantify the benefit of $B_t$, a timing-only variant with the three inputs $(CV_t, \tilde{R}_t, D_t)$ and the 13 original rules (rules 1--13 without the $B_t$ conditions) is also evaluated.
+
+\begin{table}[h]
+\centering
+\caption{Fuzzy rule base.}
+\label{tab:rules}
+\begin{tabular}{cll}
+\toprule
+\# & IF & THEN Risk \\
+\midrule
+1  & $CV_t$ Medium $\wedge$ $\tilde{R}_t$ Low $\wedge$ $D_t$ Low $\wedge$ $B_t$ Low & Low \\
+2  & $CV_t$ Low $\wedge$ $\tilde{R}_t$ Low $\wedge$ $D_t$ Low $\wedge$ $B_t$ Low & Low \\
+3  & $CV_t$ Medium $\wedge$ $\tilde{R}_t$ Low $\wedge$ $D_t$ Medium $\wedge$ $B_t$ Low & Low \\
+4  & $CV_t$ High $\wedge$ $\tilde{R}_t$ High & High \\
+5  & $CV_t$ High $\wedge$ $D_t$ High & High \\
+6  & $\tilde{R}_t$ High $\wedge$ $D_t$ High & High \\
+7  & $CV_t$ Medium $\wedge$ $\tilde{R}_t$ High & High \\
+8  & $CV_t$ High $\wedge$ $\tilde{R}_t$ Medium & High \\
+9  & $CV_t$ Medium $\wedge$ $\tilde{R}_t$ Medium $\wedge$ $D_t$ Medium & Medium \\
+10 & $\tilde{R}_t$ High & High \\
+11 & $D_t$ High & High \\
+12 & $CV_t$ Low $\wedge$ $\tilde{R}_t$ High & High \\
+13 & $CV_t$ High $\wedge$ $\tilde{R}_t$ Low & Medium \\
+14 & $B_t$ High & High \\
+15 & $B_t$ Medium & Medium \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsubsection{Decision and Hand-off to Module 2}
+The attack risk obtained from the fuzzy logic controller is used to classify the incoming traffic into three categories:
+\begin{equation}
+  \text{Decision}_t =
+  \begin{cases}
+    \text{Normal},     & A_t < 0.35\\
+    \text{Suspicious}, & 0.35 \le A_t < 0.65\\
+    \text{Attack},     & A_t \ge 0.65
+  \end{cases}
+\end{equation}
+If the traffic is identified as normal, it continues without further processing and Modules 2 and 3 stay idle, which saves computation and power on the IoT device. If the traffic is identified as suspicious or attack, the window is considered anomalous ($\hat{y}_t = 1$) and is forwarded to the multiclass attack identification module to determine the type of attack.
+
+\subsection{Multiclass Attack Identification Module (Module 2)}
+
+Once Module 1 identifies a traffic window as anomalous, the window is forwarded to the multiclass attack identification module. The objective of this module is to classify which attack is happening in the network, or to recognise that it is an unseen attack, while keeping the computation small for resource-constrained IoT devices. It uses a record-level classifier with window voting, an INT8-quantised neural network for edge devices, and a nearest-neighbour open-set check for unknown attacks.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{fig_module2_pipeline.png}
+\caption{Workflow of the multiclass attack identification module.}
+\label{fig:module2}
+\end{figure}
+
+\subsubsection{Features}
+Module 2 uses all 46 numeric flow features of CICIoT2023, including the timing and rate features (IAT, Rate, Srate, Drate, flow\_duration, Duration), the size features (Header\_Length, Tot~sum, Tot~size, Min, Max, AVG, Std, Number, Magnitude, Radius, Covariance, Variance, Weight), the TCP flag numbers and counts, and the protocol indicators (HTTP, HTTPS, DNS, Telnet, SMTP, SSH, IRC, TCP, UDP, DHCP, ARP, ICMP, IPv, LLC). The labels are never used as input. The classifier covers the 31 known classes (benign traffic and 30 known attacks). The three Mirai classes are excluded from training and validation and are reserved for the unseen-attack evaluation. 15\% of the known training records are held out as a validation set for calibration.
+
+\subsubsection{Random Forest with Window Voting}
+The main classifier is a Random Forest with 60 trees, a maximum depth of 20, at least 3 samples per leaf and balanced class weights per bootstrap sample. Each of the $W = 20$ records in a flagged window is classified, and the window label is decided by a majority vote over the records predicted as attacks:
+\begin{equation}
+  \hat{c}_t =
+  \begin{cases}
+    \arg\max_{c \neq \text{Benign}} \; n_t(c), & \sum_{c \neq \text{Benign}} n_t(c) \ge 0.3\,W\\
+    \text{Benign}, & \text{otherwise}
+  \end{cases}
+\end{equation}
+Here, $n_t(c)$ is the number of records in window $t$ predicted as class $c$. Benign background records are ignored when attack records make up at least 30\% of the window. The confidence of the decision is the mean predicted probability of $\hat{c}_t$ over the voting records. If Module 2 finds only benign traffic, it overrules the Module 1 alarm and no mitigation is applied.
+
+\subsubsection{INT8 Post-Training Quantization}
+Storing and processing a 32-bit floating-point (FP32) model takes more memory and processing power, which is not ideal for resource-constrained IoT devices. For edge deployment, a multilayer perceptron with the structure 46 $\rightarrow$ 128 $\rightarrow$ 64 $\rightarrow$ 33 (ReLU activations, softmax output) is trained with the Adam optimiser (learning rate $2\times10^{-3}$, batch size 512, early stopping on 10\% of the training data). The inputs are log-compressed and quantised to 8-bit integers with a per-feature affine quantiser fitted on the training minimum and maximum:
+\begin{equation}
+  s = \frac{r_{\max}-r_{\min}}{255}, \qquad
+  z = \operatorname{round}\!\left(-128 - \frac{r_{\min}}{s}\right), \qquad
+  q = \operatorname{clip}\!\left(\operatorname{round}\!\left(\tfrac{r}{s}\right) + z,\,-128,\,127\right)
+\end{equation}
+Here, $s$ is the scale factor, $z$ is the zero-point offset, and $q$ is the quantised 8-bit integer, which is clipped to stay within $[-128, 127]$; the real value is recovered as $r \approx s\,(q - z)$. After training, the input standardisation is folded into the first layer, the weights of each layer are quantised symmetrically to INT8 ($w_q = \operatorname{round}(w / s_w)$, $s_w = \max|w| / 127$), and the activations are quantised to INT8 with scales calibrated on 5,000 training records (99.9th percentile). The matrix products are computed as INT8 $\times$ INT8 $\rightarrow$ INT32 accumulations and rescaled afterwards, as on a microcontroller or DSP.
+
+\subsubsection{Unknown-Attack Detection}
+A supervised classifier always predicts one of the known classes, so an unseen attack is wrongly assigned to a known attack. In our earlier experiments, rejecting predictions with a low maximum softmax probability detected none of the unseen Mirai traffic, because the classifier was confident on the unseen floods. We therefore use an open-set check based on distance in feature space. The training records of the known classes (a random subset of 60,000) are log-compressed, standardised and stored in a nearest-neighbour index. For a flagged window, the zero-day score is:
+\begin{equation}
+  Z_t = \frac{\operatorname{Median}_{i \in \mathcal{A}_t}\; \min_{j} \left\lVert \mathbf{x}_i - \mathbf{x}_j^{\text{train}} \right\rVert}{\theta_Z}
+\end{equation}
+Here, $\mathcal{A}_t$ is the set of records predicted as attacks in window $t$, $\mathbf{x}_j^{\text{train}}$ are the stored known training records, and $\theta_Z$ is the 97.5th percentile of the same statistic over windows of the validation set. The final decision of Module 2 is:
+\begin{equation}
+  \hat{Y}_t =
+  \begin{cases}
+    \hat{c}_t, & Z_t \le 1\\
+    \text{Unknown / zero-day}, & Z_t > 1
+  \end{cases}
+\end{equation}
+If $Z_t > 1$, the window is anomalous but further from every known class than 97.5\% of known validation windows, so it is flagged as a possible zero-day attack instead of being forced into a known class.
+
+\subsection{Attack-Specific Mitigation and Verification Module (Module 3)}
+
+Once Module 2 has identified the attack, Module 3 decides how to respond, applies the response and verifies whether it worked.
+
+\subsubsection{Playbook Selection}
+Each attack family has a mitigation playbook (Table~\ref{tab:playbooks}) with a severity level, a two-stage escalation ladder of actions with their expected efficacy, and long-term recommendations. Each of the 33 attack classes also has a class-specific tip, for example SYN cookies for SYN floods, shorter header timeouts for SlowLoris, static ARP entries for ARP spoofing and parameterised queries for SQL injection. Unknown windows use a conservative containment playbook.
+
+\begin{table}[h]
+\centering
+\caption{Attack-family mitigation playbooks (stage 1 / stage 2, with assumed efficacy).}
+\label{tab:playbooks}
+\small
+\begin{tabular}{lll}
+\toprule
+Family & Stage 1 action & Stage 2 action \\
+\midrule
+DDoS & Per-source rate limiting + SYN cookies (0.75) & Upstream filtering / blackhole (0.97) \\
+DoS & Rate-limit the source (0.80) & Block the source address (0.99) \\
+Mirai & Quarantine infected devices (0.90) & Block Telnet and C\&C traffic (0.98) \\
+Recon & Throttle and block the scanner (0.85) & Redirect to a honeypot (0.97) \\
+Spoofing & Enforce ARP/DNS integrity (0.85) & Dynamic ARP inspection + port isolation (0.97) \\
+Web & Activate WAF rules (0.85) & Block source and isolate host (0.98) \\
+Brute Force & Lock out after repeated failures (0.90) & Block source and require MFA (0.99) \\
+Unknown & Rate-limit and capture traffic (0.70) & Isolate the affected segment (0.97) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsubsection{Automatic Execution or Analyst Approval}
+An action is executed automatically only if three conditions hold: the attack is known, the Module 2 confidence is at least 0.60, and the first action is not disruptive to legitimate users. Otherwise the plan is shown to an analyst for approval. This keeps fast automatic responses for high-confidence floods while preventing the system from blocking traffic on uncertain or unknown decisions.
+
+\subsubsection{Action and Verification Loop}
+The action is applied through a network controller, which is simulated in this work. It filters the records that Module 2 predicted as attacks; each targeted record is removed with probability equal to the action's efficacy. The ground-truth labels are not used, so classification errors carry through to the mitigation result. The removed records are replaced by benign records, since legitimate traffic keeps arriving. Module 1 is then run again on the traffic after the action. If the new attack risk is below 0.35, the attack is considered resolved, which also means that the CV of the window has returned close to its normal value. Otherwise the next, stronger stage of the playbook is applied and checked in the same way. If the risk stays high after all stages, the incident is escalated to the security team.
+
+\section{Result Analysis}
+This section evaluates the proposed three-module IoT intrusion detection system on the CICIoT2023 dataset. The results are analysed in terms of detection recall, precision, F1-score and false-positive rate for Module 1; classification accuracy, macro-F1, model size and latency for Module 2; unseen-attack detection; and end-to-end behaviour including mitigation.
+
+\subsection{Experimental Setup}\label{sec:setup}
+The system is implemented in Python with scikit-learn, NumPy and pandas, and a Streamlit dashboard shows every step of the pipeline. All random seeds are fixed (seed 42). Module 1 is evaluated on 1,360 windows of 20 test records, 40 for each of the 34 classes (benign, the 30 known attacks and the 3 held-out Mirai classes). Module 2 is evaluated at record level on all 32,687 test records of the known classes, and at window level on windows of 70\% attack records and 30\% benign background records (30 windows per attack class). The end-to-end evaluation uses a stream of normal, DDoS-SYN, Recon-PortScan, Mirai-udpplain and DoS-UDP phases (39 windows per run, each attack window containing 80\% attack records), repeated with 10 random seeds, giving 390 windows.
+
+\subsection{Anomaly Detection Performance}
+Table~\ref{tab:anomaly_performance} compares the timing-only variant of the fuzzy detector with the final detector that also uses the behaviour deviation $B_t$. The timing-only detector is very precise (99.06\%) but detects only 15.91\% of the attack windows. A flood window containing a few benign records loses its regular timing, and attacks such as reconnaissance or web exploits do not change the timing at all. With $B_t$, the detector reaches a recall of 99.77\%, a precision of 99.77\%, an F1-score of 99.77\% and a balanced accuracy of 96.14\%. Its false-positive rate is 7.5\% (3 of 40 benign windows), and these windows are checked again by Module 2 rather than blocked. As Fig.~\ref{fig:m1family} shows, every attack family is detected in at least 98.5\% of its windows. The lowest class is Recon-OSScan at 92.5\%, and all other classes are detected in 100\% of their windows.
+
+\begin{table}[htbp]
+\centering
+\caption{Performance of Module 1 on 1,360 test windows.}
+\label{tab:anomaly_performance}
+\renewcommand{\arraystretch}{1.15}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lcccccc}
+\hline
+\textbf{Method} & \textbf{Recall} & \textbf{Precision} & \textbf{F1-Score} & \textbf{Bal. Acc.} & \textbf{FPR} & \textbf{Unseen Mirai} \\
+\hline
+IAT timing only (3 inputs)        & 15.91\% & 99.06\% & 27.42\% & 55.45\% & 5.00\% & 33.33\% \\
+IAT timing + behaviour $B_t$      & 99.77\% & 99.77\% & 99.77\% & 96.14\% & 7.50\% & 100.00\% \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\textwidth]{m1_flag_rate_by_family.png}
+\caption{Share of windows flagged by Module 1 for each traffic family, with and without the behaviour deviation input (for the Benign family this is the false-alarm rate).}
+\label{fig:m1family}
+\end{figure}
+
+In our earlier evaluation on a phased stream of 4,999 windows, the timing-only fuzzy detector was compared with two statistical baselines on the same windows: a static CV threshold ($CV_t > P_{95}$ of normal CV) and an adaptive median--MAD threshold ($T_t = \operatorname{Median}(H_t) + 3\,\operatorname{MAD}(H_t)$ over a history of accepted normal windows). The static and adaptive thresholds reached only 0.00\% and 3.51\% recall, compared with 89.60\% for the fuzzy detector. Both thresholds only test for an unusually \emph{high} CV, while flooding attacks lower it. These numbers come from a different stream construction and are not directly comparable with Table~\ref{tab:anomaly_performance}, but they show that a single upper threshold on CV is not suitable for IoT flood detection.
+
+\subsection{Multiclass Classification Performance}
+Table~\ref{tab:classification_performance} shows the record-level performance of Module 2 on the 31 known classes. The Random Forest achieved an accuracy of 90.85\%, a macro-F1 of 79.34\% and a weighted-F1 of 91.22\%. Its accuracy at attack-family level, which decides the mitigation playbook, is 93.42\%. At window level, with 30\% benign background records, the voting rule raises the accuracy to 94.56\% for the exact class and 95.44\% for the family. All flood classes (DDoS, DoS) reach an F1-score of at least 0.97 (Fig.~\ref{fig:m2perclass}). The weaker classes are rare web and reconnaissance attacks with very few records in the dataset, such as SQL injection (0.37), XSS (0.46), uploading attack (0.32) and Recon-PingSweep (0.29). Their errors mostly stay inside the correct family (Fig.~\ref{fig:m2family}). The FP32 multilayer perceptron achieved 77.95\% accuracy and 83.57\% family accuracy. After INT8 quantisation it achieved 77.85\% and 83.49\%, a drop of only 0.1 percentage points, and it agreed with the FP32 model on 98.51\% of the records.
+
+\begin{table}[htbp]
+\centering
+\caption{Record-level performance of the Module 2 classifiers on 32,687 test records (31 known classes).}
+\label{tab:classification_performance}
+\renewcommand{\arraystretch}{1.15}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lccccc}
+\hline
+\textbf{Model} & \textbf{Accuracy} & \textbf{Macro-F1} & \textbf{Family Acc.} & \textbf{Size} & \textbf{Latency / window} \\
+\hline
+Random Forest (FP32) & 90.85\% & 79.34\% & 93.42\% & 118.3 MB & 7.09 ms \\
+MLP (FP32)           & 77.95\% & 63.15\% & 83.57\% & 63.6 KB  & --      \\
+MLP (INT8)           & 77.85\% & 63.17\% & 83.49\% & 16.2 KB  & 0.58 ms \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.7\textwidth]{m2_family_confusion.png}
+\caption{Normalised attack-family confusion matrix of the Random Forest on the test records.}
+\label{fig:m2family}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.75\textwidth]{m2_per_class_f1.png}
+\caption{Per-class F1-score of the Random Forest on the test records.}
+\label{fig:m2perclass}
+\end{figure}
+
+\subsection{Computational Efficiency}
+The efficiency of the system is measured using model size, inference time and the share of windows that need Module 2. The INT8 model needs 16.2~KB, which is 74.6\% smaller than its FP32 version (63.6~KB), and classifies a window of 20 records in a median of 0.58~ms on a desktop CPU, compared with 7.09~ms for the Random Forest. The Random Forest is the more accurate classifier, but at 118.3~MB it is better suited to a gateway than to a constrained device, where the INT8 model is the intended choice. In the end-to-end stream of 390 windows, Module 1 classified 214 windows (54.9\%) as normal; these bypassed Modules 2 and 3 entirely, and the remaining 176 windows (45.1\%) were sent for further analysis. The stream deliberately contains a large share of attack windows (41\%). In operational IoT networks, where most traffic is normal, the share of windows that skip the classifier would be even higher.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{fig_module2_invocation.png}
+\caption{Distribution of windows by the fuzzy logic decision; only suspicious and attack windows are sent to Module 2.}
+\label{fig:routing}
+\end{figure}
+
+\subsection{Held-Out Attack Analysis}
+The system is tested with the three held-out Mirai classes (Mirai-greeth\_flood, Mirai-greip\_flood and Mirai-udpplain), which are not included in Module 2's training classes. Module 1 flagged 100\% of the Mirai windows, because it only compares the traffic with normal behaviour and does not depend on attack labels. The open-set check of Module 2 labelled 100\% of the Mirai windows as unknown, while only 4.44\% of the windows of known attacks were wrongly labelled unknown. In our earlier experiments, the confidence-based rejection detected 0\% of the Mirai windows, and the unseen floods were classified as known attacks such as DDoS-UDP\_Fragmentation and DoS-UDP\_Flood. Measuring the distance to known traffic, instead of relying on the classifier's confidence, prevents the system from forcing unseen attacks into a known class. These windows are then handled by the containment playbook with analyst approval.
+
+\subsection{End-to-End Mitigation Performance}
+In the end-to-end stream of 390 windows (160 attack windows, 230 normal windows), Module 1 detected 158 of the 160 attack windows (98.75\%) and raised 18 false alarms on the 230 normal windows (7.8\%). Module 2 cleared 13 of these 18 false alarms as benign, so only 5 normal windows reached Module 3. Module 3 executed 163 mitigation plans, and 158 of them (96.9\%) were verified by Module 1 to bring the attack risk below 0.35. 78.5\% of the plans were resolved by the first-stage action, and the rest needed escalation to the second stage. The automatic/approval logic allowed automatic responses for high-confidence floods (Module 2 confidence 0.77--1.00 for DDoS and DoS windows) and sent low-confidence decisions, such as SQL injection or port scanning, and all unknown attacks to an analyst.
+
+\subsection{Limitations}
+The CICIoT2023 CSV files do not contain raw packet timestamps, so the timing analysis relies on the IAT feature provided by the dataset. Since the CSV rows are shuffled, the evaluation windows are assembled from test records rather than taken from a continuous capture. The network controller of Module 3 is simulated, and the efficacy values of the actions are assumptions rather than measurements. The rare web and reconnaissance classes have few records, which limits their per-class F1-score. Finally, latency was measured on a desktop CPU; measurements on physical IoT hardware are left for future work.
+
+\section{Conclusion}
+
+This study addressed the problem of detecting, classifying and mitigating attacks in resource-constrained IoT networks, where devices can't run a heavy model on every traffic window and unseen attacks are difficult to identify. The proposed system uses the inter-arrival time of the traffic in sliding windows, and a Mamdani fuzzy inference system combines the coefficient of variation, packet rate, IAT deviation and a behaviour deviation learned only from normal traffic to find the attack risk of every window. On CICIoT2023, the fuzzy detector achieved 99.77\% recall and F1-score with a 7.5\% false-positive rate, compared with 15.91\% recall using timing features alone, and it detected 100\% of the unseen Mirai windows. Only suspicious or attack windows are forwarded to the classifiers, so 54.9\% of the windows bypassed the second module. The Random Forest identified 31 known classes with 90.85\% accuracy (93.42\% at family level and 94.56\% at window level). The INT8-quantised neural network is 74.6\% smaller than its FP32 version with 98.5\% prediction agreement, and the nearest-neighbour open-set check labelled all unseen Mirai windows as unknown. Finally, the mitigation module applied attack-specific playbooks and verified 96.9\% of the mitigations by re-running the fuzzy detector. Future work will evaluate the system on raw packet captures with real timestamps, deploy the INT8 model and the mitigation actions on physical IoT gateways, and improve the classification of rare web and reconnaissance attacks.
+
+\section*{Acknowledgement(s)}
+
+An unnumbered section, e.g.\ \verb"\section*{Acknowledgements}", may be used for thanks, etc.\ if required and included \emph{in the non-anonymous version} before any Notes or References.
+
+
+\section*{Disclosure statement}
+
+An unnumbered section, e.g.\ \verb"\section*{Disclosure statement}", may be used to declare any potential conflict of interest and included \emph{in the non-anonymous version} before any Notes or References, after any Acknowledgments and before any Funding information.
+
+
+\section*{Funding}
+
+An unnumbered section, e.g.\ \verb"\section*{Funding}", may be used for grant details, etc.\ if required and included \emph{in the non-anonymous version} before any Notes or References.
+
+
+\section*{Notes on contributor(s)}
+
+An unnumbered section, e.g.\ \verb"\section*{Notes on contributors}", may be included \emph{in the non-anonymous version} if required. A photograph may be added if requested.
+
+
+\section*{Notes}
+
+An unnumbered `Notes' section may be included before the References (if using the \verb"endnotes" package, use the command \verb"\theendnotes" where the notes are to appear, instead of creating a \verb"\section").
+
+
+\bibliographystyle{tfp}
+\bibliography{interacttfpsample}
+
+
+\end{document}

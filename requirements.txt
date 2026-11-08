@@ -14,5 +14,10 @@ seaborn>=0.12.0
 streamlit>=1.30.0
 flask>=3.0.0
 
-# Deep Learning & Quantization (Module 2)
+# Pipeline data + tests
+pyarrow>=14.0.0
+altair>=5.0.0
+pytest>=8.0.0
+
+# Deep Learning (legacy LSTM experiments only; not needed for app.py) & Quantization (Module 2)
 tensorflow>=2.15.0
