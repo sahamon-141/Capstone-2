@@ -1,3 +1,8 @@
+> **Note (merged Module 3):** the app and the end-to-end pipeline use `ids/module3_mitigation.py`, which imports
+> `policies.json` and `zero_day_containment.py` from this package and adds flow-level verification with the full
+> Module 1. See [PROJECT_GUIDE.md](PROJECT_GUIDE.md), section 2, step 4. The rest of this document describes the
+> standalone evaluation on the older `src/` pipeline (`run_module3.py`, `main.py` step 14).
+
 # Module 3: Attack-Specific Mitigation and Verification (Windows Simulation)
 
 ## Table of Contents

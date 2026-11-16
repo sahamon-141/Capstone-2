@@ -37,7 +37,7 @@
 \maketitle
 
 \begin{abstract}
-We Know that IoT networks are vulnerable to different attacks like DoS, DDoS, botnet, Spoofing, etc. IoT devices also have limited computational resources, so they can't run a heavy model on every traffic window, and existing approaches are not capable enough of detecting zero-day attacks. Our system addresses these issues with three modules. The first module analyses the inter-arrival time (IAT) of incoming traffic using a sliding window. The coefficient of variation, packet rate and IAT deviation of every window, together with a behaviour-deviation score learned only from normal traffic, are given to a Mamdani fuzzy inference system that outputs the attack risk of the window. If the traffic is normal, the second module stays idle; only suspicious or attack windows are forwarded to it. There, a Random Forest identifies the specific type of attack, an INT8-quantised neural network provides a lightweight alternative for edge devices, and a nearest-neighbour open-set check marks traffic that does not match any known attack as a possible zero-day. The third module selects an attack-specific mitigation playbook, decides whether the action can run automatically or needs analyst approval, applies it, and verifies the result by running the first module again on the traffic after mitigation. The system is evaluated on the CICIoT2023 dataset with the whole Mirai botnet family held out as unseen attacks. The fuzzy detector achieved 99.77\% recall and 99.77\% F1-score with a 7.5\% false-positive rate, compared with 15.91\% recall using IAT timing alone, and detected 100\% of the unseen Mirai windows. The Random Forest achieved 90.85\% accuracy on 31 known classes (93.42\% at attack-family level, 94.56\% at window level). The INT8 model is 74.6\% smaller than its FP32 version with 98.5\% prediction agreement, and the open-set check labelled 100\% of Mirai windows as unknown. In an end-to-end stream, 54.9\% of the windows bypassed the second module and 96.9\% of mitigations were verified to bring the traffic back to normal. Hence the proposed method provides a lightweight approach for multiclass attack detection and attack-specific mitigation in a resource-constrained environment.
+We Know that IoT networks are vulnerable to different attacks like DoS, DDoS, botnet, Spoofing, etc. IoT devices also have limited computational resources, so they can't run a heavy model on every traffic window, and existing approaches are not capable enough of detecting zero-day attacks. Our system addresses these issues with three modules. The first module analyses the inter-arrival time (IAT) of incoming traffic using a sliding window. The coefficient of variation, packet rate and IAT deviation of every window, together with a behaviour-deviation score learned only from normal traffic, are given to a Mamdani fuzzy inference system that outputs the attack risk of the window. If the traffic is normal, the second module stays idle; only suspicious or attack windows are forwarded to it. There, a Random Forest identifies the specific type of attack, an INT8-quantised neural network provides a lightweight alternative for edge devices, and a nearest-neighbour open-set check marks traffic that does not match any known attack as a possible zero-day. The third module routes known attacks to one of 10 attack-specific mitigation policies and unknown attacks to a containment ladder chosen from their traffic shape, decides whether the action can run automatically or needs analyst approval, applies it, and verifies the result by running the first module again on the traffic after mitigation. The system is evaluated on the CICIoT2023 dataset with the whole Mirai botnet family held out as unseen attacks. The fuzzy detector achieved 99.77\% recall and 99.77\% F1-score with a 7.5\% false-positive rate, compared with 15.91\% recall using IAT timing alone, and detected 100\% of the unseen Mirai windows. The Random Forest achieved 90.85\% accuracy on 31 known classes (93.42\% at attack-family level, 94.56\% at window level). The INT8 model is 74.6\% smaller than its FP32 version with 98.5\% prediction agreement, and the open-set check labelled 100\% of Mirai windows as unknown. In an end-to-end stream, 54.9\% of the windows bypassed the second module and 97.6\% of the mitigations were verified to bring the traffic back to normal; across all 33 attack classes, 94.4\% of known attacks were routed to the correct mitigation policy and 95.7\% of the mitigations were verified. Hence the proposed method provides a lightweight approach for multiclass attack detection and attack-specific mitigation in a resource-constrained environment.
 \end{abstract}
 
 \begin{keywords}
@@ -86,7 +86,7 @@ The novelty of our work is that, instead of running a heavy multiclass IDS on ev
 \item A fuzzy detector that combines the coefficient of variation, packet rate and IAT deviation with a behaviour-deviation score learned only from normal traffic. It detects flooding attacks (whose CV collapses towards 0) as well as attacks whose timing looks normal, raising recall from 15.91\% (IAT timing alone) to 99.77\% while staying unsupervised.
 \item An INT8 post-training-quantised neural network with integer-only matrix arithmetic, which is 74.6\% smaller than its FP32 version with 98.5\% prediction agreement.
 \item A nearest-neighbour open-set check that labels 100\% of the unseen Mirai windows as unknown, where the earlier softmax-confidence rejection detected 0\%.
-\item An attack-specific mitigation module with escalation and approval logic that verifies each action by re-running the fuzzy detector. 96.9\% of the mitigations returned the traffic to the normal risk zone.
+\item A mitigation module that routes known attacks to 10 attack-specific policy families and unknown attacks to containment ladders chosen from their traffic shape, with escalation and approval logic. It verifies each action by re-running the fuzzy detector: across all 33 attack classes, 95.7\% of the mitigations returned the traffic to the normal risk zone.
 \end{enumerate}
 
 
@@ -305,37 +305,54 @@ If $Z_t > 1$, the window is anomalous but further from every known class than 97
 
 \subsection{Attack-Specific Mitigation and Verification Module (Module 3)}
 
-Once Module 2 has identified the attack, Module 3 decides how to respond, applies the response and verifies whether it worked.
+Once Module 2 has identified the attack, or reported that it is unknown, Module 3 decides how to respond, applies the response and verifies whether it worked. It works in four steps: routing, approval, action and verification.
 
-\subsubsection{Playbook Selection}
-Each attack family has a mitigation playbook (Table~\ref{tab:playbooks}) with a severity level, a two-stage escalation ladder of actions with their expected efficacy, and long-term recommendations. Each of the 33 attack classes also has a class-specific tip, for example SYN cookies for SYN floods, shorter header timeouts for SlowLoris, static ARP entries for ARP spoofing and parameterised queries for SQL injection. Unknown windows use a conservative containment playbook.
+\subsubsection{Routing to a Mitigation Policy}
+If Module 2 names a known class, the class is looked up in a policy table that maps all 31 known CICIoT2023 classes to 10 attack policy families (Table~\ref{tab:playbooks}). The families follow how an attack is stopped rather than how it is named. For example, SYN, PSH-ACK and RST-FIN floods share the TCP state exhaustion policy, because all of them are stopped by stateful filtering and SYN cookies, while UDP and ICMP floods share the volumetric flood policy. Each policy has a description, a confidence threshold, an escalation ladder that starts with the least disruptive action, and long-term recommendations. A class-specific tip is shown as well, for example a shorter header timeout for SlowLoris or parameterised queries for SQL injection.
+
+If Module 2 reports the window as unknown, there is no class to look up. Instead the ladder is chosen from the \emph{shape} of the suspicious traffic, measured on the records that Module 2 marked as attack:
+\begin{equation}
+  \text{Shape}_t =
+  \begin{cases}
+    \text{Constant-rate flood}, & CV_t < 0.05 \;\text{or}\; \left(CV_t < 0.65 \wedge \bar{R}_t > R_{50}\right)\\
+    \text{Volumetric surge}, & \bar{R}_t > R_{95} \wedge D_t > 0.5\\
+    \text{Slow probe}, & CV_t > 1.40 \wedge \bar{R}_t \le R_{95}\\
+    \text{Volumetric surge}, & \bar{R}_t > R_{95}\\
+    \text{Unclassified anomaly}, & \text{otherwise}
+  \end{cases}
+  \label{eq:shape}
+\end{equation}
+Here, $\bar{R}_t$ is the mean rate of the suspicious records, and $R_{50}$ and $R_{95}$ are the median and 95th percentile of the mean rate of benign windows. The CV and deviation breakpoints are the same as in the membership functions of Module 1. The condition $CV_t < 0.05$ was added because no benign window in CICIoT2023 has a CV below about 0.23, so such regular timing is machine-generated whatever the packet rate. Some Mirai GRE floods have a per-record rate below the benign median, and the rate condition alone would miss them. Each shape has its own ladder: constant-rate floods are rate-limited, then blocked, then blackholed upstream; slow probes are blocked and then the segment is isolated; unclassified anomalies are rate-limited, blocked and then isolated.
 
 \begin{table}[h]
 \centering
-\caption{Attack-family mitigation playbooks (stage 1 / stage 2, with assumed efficacy).}
+\caption{Mitigation policy families and their escalation ladders (assumed efficacy of each action in brackets).}
 \label{tab:playbooks}
 \small
 \begin{tabular}{lll}
 \toprule
-Family & Stage 1 action & Stage 2 action \\
+Policy family (classes) & Ladder & Auto threshold \\
 \midrule
-DDoS & Per-source rate limiting + SYN cookies (0.75) & Upstream filtering / blackhole (0.97) \\
-DoS & Rate-limit the source (0.80) & Block the source address (0.99) \\
-Mirai & Quarantine infected devices (0.90) & Block Telnet and C\&C traffic (0.98) \\
-Recon & Throttle and block the scanner (0.85) & Redirect to a honeypot (0.97) \\
-Spoofing & Enforce ARP/DNS integrity (0.85) & Dynamic ARP inspection + port isolation (0.97) \\
-Web & Activate WAF rules (0.85) & Block source and isolate host (0.98) \\
-Brute Force & Lock out after repeated failures (0.90) & Block source and require MFA (0.99) \\
-Unknown & Rate-limit and capture traffic (0.70) & Isolate the affected segment (0.97) \\
+Volumetric flood (UDP, ICMP, TCP, SynonymousIP floods) & rate limit (0.75) $\rightarrow$ block (0.98) $\rightarrow$ blackhole (0.97) & 0.60 \\
+TCP state exhaustion (SYN, PSH-ACK, RST-FIN floods) & SYN cookies (0.80) $\rightarrow$ rate limit $\rightarrow$ block & 0.60 \\
+Fragmentation (ICMP, UDP, ACK fragmentation) & drop fragments (0.80) $\rightarrow$ rate limit $\rightarrow$ block & 0.60 \\
+Slow application (SlowLoris, HTTP floods) & limit connections (0.80) $\rightarrow$ block & 0.60 \\
+Reconnaissance (scans, sweeps, vuln.\ scan) & block scanner (0.97) $\rightarrow$ isolate segment (0.97) & 0.60 \\
+Spoofing / MITM (ARP, DNS spoofing) & ARP/DNS integrity (0.95) $\rightarrow$ isolate segment & 0.65 \\
+Web application (SQLi, XSS, command inj., ...) & WAF rule (0.85) $\rightarrow$ block & 0.70 \\
+Credential (dictionary brute force) & throttle logins (0.85) $\rightarrow$ block & 0.70 \\
+Malware / backdoor & quarantine endpoint (0.97) & admin \\
+Botnet (no class after holding out Mirai) & rate limit $\rightarrow$ isolate device (0.95) & 0.70 \\
+Zero-day (by traffic shape) & see Eq.~(\ref{eq:shape}) & -- \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 \subsubsection{Automatic Execution or Analyst Approval}
-An action is executed automatically only if three conditions hold: the attack is known, the Module 2 confidence is at least 0.60, and the first action is not disruptive to legitimate users. Otherwise the plan is shown to an analyst for approval. This keeps fast automatic responses for high-confidence floods while preventing the system from blocking traffic on uncertain or unknown decisions.
+The first action of a known attack is executed automatically only if four conditions hold: Module 2's confidence reaches the threshold of the policy (0.60--0.75), the policy does not require an administrator, the attack is known, and the action only filters or limits traffic. Actions that block or isolate traffic always need an analyst, because a wrong decision would cut off legitimate devices. For a zero-day window, a reversible rate limit may start automatically, but any blocking stage waits for an analyst. This gives fast automatic responses for confident flood decisions while preventing the system from blocking traffic on uncertain or unknown decisions.
 
 \subsubsection{Action and Verification Loop}
-The action is applied through a network controller, which is simulated in this work. It filters the records that Module 2 predicted as attacks; each targeted record is removed with probability equal to the action's efficacy. The ground-truth labels are not used, so classification errors carry through to the mitigation result. The removed records are replaced by benign records, since legitimate traffic keeps arriving. Module 1 is then run again on the traffic after the action. If the new attack risk is below 0.35, the attack is considered resolved, which also means that the CV of the window has returned close to its normal value. Otherwise the next, stronger stage of the playbook is applied and checked in the same way. If the risk stays high after all stages, the incident is escalated to the security team.
+The action is applied through a network controller, which is simulated in this work. It filters the records that Module 2 predicted as attacks, and each targeted record is removed with probability equal to the action's assumed efficacy. The ground-truth labels are not used, so classification errors carry through to the mitigation result. The removed records are replaced by benign records, since legitimate traffic keeps arriving. Module 1, with all four inputs, is then run again on the traffic after the action. If the new attack risk is below 0.35, the attack is considered resolved, which also means that the CV of the window has returned close to its normal value. Otherwise the next, stronger action of the ladder is applied and checked in the same way. If the risk stays high after all stages, the incident is escalated to the security team. Two quantities are reported for each action: the share of the packet rate of the targeted records that was removed (volume suppression), and whether the re-measured risk fell below 0.35.
 
 \section{Result Analysis}
 This section evaluates the proposed three-module IoT intrusion detection system on the CICIoT2023 dataset. The results are analysed in terms of detection recall, precision, F1-score and false-positive rate for Module 1; classification accuracy, macro-F1, model size and latency for Module 2; unseen-attack detection; and end-to-end behaviour including mitigation.
@@ -418,15 +435,45 @@ The efficiency of the system is measured using model size, inference time and th
 \subsection{Held-Out Attack Analysis}
 The system is tested with the three held-out Mirai classes (Mirai-greeth\_flood, Mirai-greip\_flood and Mirai-udpplain), which are not included in Module 2's training classes. Module 1 flagged 100\% of the Mirai windows, because it only compares the traffic with normal behaviour and does not depend on attack labels. The open-set check of Module 2 labelled 100\% of the Mirai windows as unknown, while only 4.44\% of the windows of known attacks were wrongly labelled unknown. In our earlier experiments, the confidence-based rejection detected 0\% of the Mirai windows, and the unseen floods were classified as known attacks such as DDoS-UDP\_Fragmentation and DoS-UDP\_Flood. Measuring the distance to known traffic, instead of relying on the classifier's confidence, prevents the system from forcing unseen attacks into a known class. These windows are then handled by the containment playbook with analyst approval.
 
-\subsection{End-to-End Mitigation Performance}
-In the end-to-end stream of 390 windows (160 attack windows, 230 normal windows), Module 1 detected 158 of the 160 attack windows (98.75\%) and raised 18 false alarms on the 230 normal windows (7.8\%). Module 2 cleared 13 of these 18 false alarms as benign, so only 5 normal windows reached Module 3. Module 3 executed 163 mitigation plans, and 158 of them (96.9\%) were verified by Module 1 to bring the attack risk below 0.35. 78.5\% of the plans were resolved by the first-stage action, and the rest needed escalation to the second stage. The automatic/approval logic allowed automatic responses for high-confidence floods (Module 2 confidence 0.77--1.00 for DDoS and DoS windows) and sent low-confidence decisions, such as SQL injection or port scanning, and all unknown attacks to an analyst.
+\subsection{Mitigation Performance}
+Module 3 was evaluated through the full pipeline, driven by Module 2's predictions, on 645 windows: 15 windows for each of the 33 attack classes (80\% attack and 20\% benign records) and 150 benign windows. 491 windows reached Module 3. Known attacks were routed to the policy family of their true class in 94.39\% of the cases, and 95.72\% of the plans were verified by Module 1 to bring the attack risk below 0.35. The mean risk fell from 0.73 to 0.17, and the mean CV of the windows after mitigation was 0.99, close to the normal value of 1.0. 88.5\% of the resolved windows were resolved by the first action, and the first action removed 82.31\% of the packet rate of the targeted records on average. Blocking or isolation was needed in 32.79\% of the plans, and 62.12\% of the plans could start automatically. Table~\ref{tab:m3family} shows the results per policy family. The filtering families (volumetric flood, TCP state exhaustion, fragmentation, slow application) start automatically and are resolved in 94--100\% of the windows. Reconnaissance, spoofing, web, credential and malware plans need an analyst, because their first action blocks traffic or Module 2's confidence is below the policy threshold. The botnet policy was not used, because its only CICIoT2023 classes are the held-out Mirai classes.
+
+\begin{table}[h]
+\centering
+\caption{Module 3 results per policy family (645-window coverage evaluation, driven by Module 2 predictions).}
+\label{tab:m3family}
+\small
+\begin{tabular}{lccccc}
+\toprule
+Policy family & Windows & Resolved & Automatic & Single stage & Volume removed \\
+\midrule
+Volumetric flood        & 90 & 94.4\%  & 100\% & 74.4\%  & 77.0\% \\
+TCP state exhaustion    & 60 & 95.0\%  & 100\% & 70.0\%  & 76.0\% \\
+Fragmentation           & 45 & 100\%   & 100\% & 88.9\%  & 83.3\% \\
+Slow application        & 45 & 100\%   & 100\% & 93.3\%  & 76.5\% \\
+Reconnaissance          & 60 & 96.7\%  & 0\%   & 96.7\%  & 97.1\% \\
+Spoofing / MITM         & 32 & 96.9\%  & 0\%   & 96.9\%  & 93.8\% \\
+Web application         & 66 & 90.9\%  & 0\%   & 84.8\%  & 84.3\% \\
+Credential              & 12 & 100\%   & 0\%   & 100\%   & 90.3\% \\
+Malware / backdoor      & 15 & 86.7\%  & 0\%   & 100\%   & 100\% \\
+Zero-day (traffic shape)& 66 & 97.0\%  & 98.5\% & 83.3\% & 72.1\% \\
+\midrule
+All                     & 491 & 95.7\% & 62.1\% & 85.1\% & 82.3\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+All 45 held-out Mirai windows reached Module 3 and took the zero-day route. 37 of them (82.2\%) were recognised as constant-rate floods from their traffic shape. The other 8 were unclassified anomalies, usually because a benign record that Module 2 had marked as attack broke the regular timing. 97.78\% of the Mirai windows were resolved. The 66 zero-day plans also include known-attack windows that Module 2 marked as unknown, which are contained by the same shape-based ladders.
+
+\subsection{End-to-End Performance}
+In the end-to-end stream of 390 windows (160 attack windows, 230 normal windows), Module 1 detected 158 of the 160 attack windows (98.75\%) and raised 18 false alarms on the 230 normal windows (7.8\%). 54.87\% of the windows bypassed Modules 2 and 3. Module 2 cleared 13 of the 18 false alarms as benign, so only 5 normal windows reached Module 3. Those 5 were assigned a policy whose ladder includes blocking, which in deployment would wait for an analyst's approval. Module 3 executed 163 plans: 74.85\% through a class policy and 25.15\% through the zero-day route. 159 of them (97.55\%) were verified to bring the risk below 0.35, 143 with the first action and 16 after escalating to the second. The mean risk fell from 0.78 to 0.16, and 74.23\% of the plans could start automatically.
 
 \subsection{Limitations}
 The CICIoT2023 CSV files do not contain raw packet timestamps, so the timing analysis relies on the IAT feature provided by the dataset. Since the CSV rows are shuffled, the evaluation windows are assembled from test records rather than taken from a continuous capture. The network controller of Module 3 is simulated, and the efficacy values of the actions are assumptions rather than measurements. The rare web and reconnaissance classes have few records, which limits their per-class F1-score. Finally, latency was measured on a desktop CPU; measurements on physical IoT hardware are left for future work.
 
 \section{Conclusion}
 
-This study addressed the problem of detecting, classifying and mitigating attacks in resource-constrained IoT networks, where devices can't run a heavy model on every traffic window and unseen attacks are difficult to identify. The proposed system uses the inter-arrival time of the traffic in sliding windows, and a Mamdani fuzzy inference system combines the coefficient of variation, packet rate, IAT deviation and a behaviour deviation learned only from normal traffic to find the attack risk of every window. On CICIoT2023, the fuzzy detector achieved 99.77\% recall and F1-score with a 7.5\% false-positive rate, compared with 15.91\% recall using timing features alone, and it detected 100\% of the unseen Mirai windows. Only suspicious or attack windows are forwarded to the classifiers, so 54.9\% of the windows bypassed the second module. The Random Forest identified 31 known classes with 90.85\% accuracy (93.42\% at family level and 94.56\% at window level). The INT8-quantised neural network is 74.6\% smaller than its FP32 version with 98.5\% prediction agreement, and the nearest-neighbour open-set check labelled all unseen Mirai windows as unknown. Finally, the mitigation module applied attack-specific playbooks and verified 96.9\% of the mitigations by re-running the fuzzy detector. Future work will evaluate the system on raw packet captures with real timestamps, deploy the INT8 model and the mitigation actions on physical IoT gateways, and improve the classification of rare web and reconnaissance attacks.
+This study addressed the problem of detecting, classifying and mitigating attacks in resource-constrained IoT networks, where devices can't run a heavy model on every traffic window and unseen attacks are difficult to identify. The proposed system uses the inter-arrival time of the traffic in sliding windows, and a Mamdani fuzzy inference system combines the coefficient of variation, packet rate, IAT deviation and a behaviour deviation learned only from normal traffic to find the attack risk of every window. On CICIoT2023, the fuzzy detector achieved 99.77\% recall and F1-score with a 7.5\% false-positive rate, compared with 15.91\% recall using timing features alone, and it detected 100\% of the unseen Mirai windows. Only suspicious or attack windows are forwarded to the classifiers, so 54.9\% of the windows bypassed the second module. The Random Forest identified 31 known classes with 90.85\% accuracy (93.42\% at family level and 94.56\% at window level). The INT8-quantised neural network is 74.6\% smaller than its FP32 version with 98.5\% prediction agreement, and the nearest-neighbour open-set check labelled all unseen Mirai windows as unknown. Finally, the mitigation module routed 94.4\% of known attacks to the correct one of 10 policy families, contained unseen attacks through ladders chosen from their traffic shape, and verified 95.7\% of the mitigations across all 33 attack classes by re-running the fuzzy detector. Future work will evaluate the system on raw packet captures with real timestamps, deploy the INT8 model and the mitigation actions on physical IoT gateways, and improve the classification of rare web and reconnaissance attacks.
 
 \section*{Acknowledgement(s)}
 

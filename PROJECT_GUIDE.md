@@ -7,7 +7,7 @@ A three-module intrusion detection and response system for IoT networks, built a
 |---|---|---|
 | **1. Detection** | *Is this traffic window anomalous?* | Packet inter-arrival time (IAT) statistics + behaviour deviation → Mamdani fuzzy logic → risk 0–1 |
 | **2. Classification** | *Which attack is it, or is it unknown?* | Random Forest (accurate) or INT8-quantised MLP (edge) + nearest-neighbour zero-day check |
-| **3. Mitigation** | *What do we do, and did it work?* | Attack-family playbook → auto / analyst approval → simulated controller → re-run Module 1 to verify |
+| **3. Mitigation** | *What do we do, and did it work?* | Class → 1 of 10 policy families, or unknown → ladder chosen from the traffic shape → auto / analyst approval → simulated controller → re-run Module 1 to verify |
 
 ---
 
@@ -17,8 +17,9 @@ A three-module intrusion detection and response system for IoT networks, built a
 pip install -r requirements.txt
 python -m ids.prepare_data       # ~2 min: samples CICIoT2023 into data/processed/*.parquet
 python -m ids.train_module2      # ~4 min: trains Module 2, calibrates Module 1, writes metrics
+python -m ids.evaluate_module3   # ~3 min: evaluates Module 3 over all 33 attack classes
 streamlit run app.py             # opens http://localhost:8501
-python -m pytest tests/test_pipeline.py -q   # 5 end-to-end tests
+python -m pytest tests/test_pipeline.py -q   # 8 end-to-end tests
 ```
 
 (The raw dataset must be at `data/ciciot2023/train.csv` and `test.csv`.)
@@ -80,15 +81,39 @@ For each window:
 * If Module 2 finds only benign traffic, it overrules a Module 1 false alarm and nothing is mitigated.
 
 ### Step 4: Module 3, mitigation & verification (`ids/module3_mitigation.py`)
-1. **Playbook** per family (8: DDoS, DoS, Mirai, Recon, Spoofing, Web, BruteForce, Unknown). Each playbook has
-   a severity level, an explanation, a 2-stage **escalation ladder** of actions with example Linux commands
-   (iptables / sysctl / tc), and long-term recommendations. There is also a class-specific tip for each of the
-   33 classes (e.g. SYN flood → SYN cookies, SlowLoris → shorter header timeout, ARP spoofing → static ARP).
-2. **Auto vs. analyst approval:** the action runs automatically only if Module 2's confidence is ≥ 60%, the
-   attack is known, and the first action is not disruptive. Otherwise an analyst must approve
-   (the app shows an "Approve & apply" button).
+Module 3 merges the two earlier versions: the policy table and zero-day router of `module3_mitigation/`
+with the flow-level verification of `ids/`. There is now only one Module 3.
+
+1. **Routing.**
+   * **Known attack:** the class Module 2 predicted is looked up in `module3_mitigation/policies.json`, which maps
+     all 31 known classes to **10 policy families**, grouped by *how the attack is stopped*:
+
+     | Policy family | Classes | Escalation ladder (least disruptive first) |
+     |---|---|---|
+     | Volumetric flood | UDP / ICMP / TCP / SynonymousIP floods | rate limit → block → upstream blackhole |
+     | TCP state exhaustion | SYN, PSH-ACK, RST-FIN floods | SYN cookies → rate limit → block |
+     | Fragmentation | ICMP / UDP / ACK fragmentation | drop fragments → rate limit → block |
+     | Slow application | SlowLoris, HTTP floods | limit connections → block |
+     | Reconnaissance | port/OS scan, host discovery, ping sweep, vuln. scan | block scanner → isolate segment |
+     | Spoofing / MITM | ARP spoofing, DNS spoofing | ARP/DNS integrity → isolate segment |
+     | Web application | SQLi, XSS, command injection, browser hijacking, upload | WAF rule → block |
+     | Credential | dictionary brute force | throttle logins → block |
+     | Malware / backdoor | backdoor malware | quarantine endpoint (admin only) |
+     | Botnet | (only Mirai, which is held out, so unused) | rate limit → isolate device |
+
+     Each policy also has an explanation, long-term recommendations, a class-specific tip
+     (e.g. SlowLoris → shorter header timeout) and example Linux commands.
+   * **Unknown (zero-day):** there is no class to look up, so the ladder is chosen from the **shape** of the flows
+     Module 2 marked as attack. CV < 0.05 (or low CV at an above-normal rate) means a **constant-rate flood**
+     (rate limit → block → blackhole). High CV at a low rate means a **slow probe** (block scanner → isolate).
+     High rate with shifted timing means a **volumetric surge**. Anything else is an **unclassified anomaly**
+     (rate limit → block → isolate).
+2. **Auto vs. analyst approval:** the first action runs automatically only if the attack is known, Module 2's
+   confidence reaches the policy's threshold (60–75%), the policy does not demand an administrator, and the
+   action only *filters / limits*. **Blocking or isolating always needs an analyst.** A zero-day window may start
+   with a reversible rate limit automatically, but a blocking stage waits for an analyst.
 3. **Simulated controller:** the action filters the flows **Module 2 marked as attacks** (not the ground-truth
-   labels), each with the action's efficacy (e.g. 75% for rate limiting). Normal traffic keeps flowing.
+   labels), each with the action's assumed efficacy (filters 75–85%, blocks 95–98%). Normal traffic keeps flowing.
 4. **Verification:** **Module 1 is re-run** on the post-mitigation traffic. If the risk is < 0.35, the attack is
    resolved and CV returns to ≈ 1.0, which is the paper's idea of "the IAT deviation returning to normal".
    Otherwise the next, stronger stage is applied.
@@ -136,9 +161,32 @@ For each window:
 In the earlier version, the LSTM with softmax-confidence rejection detected **0%** of Mirai and labelled
 it as UDP floods. The nearest-neighbour open-set check fixes this.
 
-### End-to-end (Network Monitor, "Mixed day" scenario, 39 windows)
-All 16 attack windows were detected, 17/17 mitigations were verified (risk back below 0.35), and Module 2
-was skipped for ~49% of windows. The numbers vary slightly per run because windows are sampled randomly.
+### Module 3: mitigation (`python -m ids.evaluate_module3`, driven by Module 2's predictions)
+645 windows: 15 for each of the 33 attack classes (80% attack + 20% benign flows) and 150 benign windows.
+
+| Measure | Result |
+|---|---|
+| Windows reaching Module 3 | 491 |
+| Known attacks routed to the correct policy family | **94.4%** |
+| Mitigations verified (risk back below 0.35) | **95.7%** (85% with a single action) |
+| Risk before → after | 0.73 → 0.17 (CV back to 0.99, normal ≈ 1.0) |
+| Attack volume removed by the first action | 82.3% |
+| Plans that could start automatically | 62.1% |
+| Plans that needed a blocking action | 32.8% |
+| Mirai windows: zero-day route / "constant-rate flood" shape / resolved | 100% / 82% / 97.8% |
+
+Per family, the filtering policies (volumetric flood, TCP state, fragmentation, slow application) start
+automatically and resolve 94–100% of their windows. Reconnaissance, spoofing, web, credential and malware
+need an analyst because their first action blocks traffic, or because Module 2 is less confident on those classes.
+
+### End-to-end ("Mixed day" stream, 10 seeds × 39 windows = 390 windows)
+| Measure | Result |
+|---|---|
+| Attack windows detected by Module 1 | 158 / 160 (98.75%) |
+| False alarms by Module 1 | 18 / 230 (7.8%); Module 2 cleared 13 of them |
+| Windows that skipped Modules 2 and 3 | 54.9% |
+| Mitigations verified | 159 / 163 (97.6%): 143 at stage 1, 16 at stage 2 |
+| Route | 74.9% class policy, 25.1% zero-day |
 
 ---
 
@@ -150,12 +198,15 @@ was skipped for ~49% of windows. The numbers vary slightly per run because windo
 | Module 1 | 3 inputs (CV, mean rate, D). Mean rate was easily skewed by one extreme flow | Same fuzzy design + **behaviour deviation B** (unsupervised, benign-only) + robust median rate. Recall 15.9% → **99.8%** on mixed windows |
 | Module 2 | LSTM 34.5% accuracy; RF 94% on only 87 test sequences | RF **90.9% / 94.6% (window)** on 32.7k test flows; new **INT8 MLP** (16 KB) with real integer inference |
 | Zero-day | Softmax rejection: **0%** of Mirai detected | Nearest-neighbour open-set check: **100%** of Mirai detected, 4.4% false unknowns |
-| Module 3 | Generic policies (many for Wi-Fi attacks not in the dataset), random "traffic reduction" numbers | Playbooks for every CICIoT2023 family + 33 class tips, auto/approval logic, escalation, **verification by re-running Module 1** |
+| Module 3 | Two separate versions: Wi-Fi-oriented policies with random "traffic reduction" numbers (later rebuilt for CICIoT2023 but run only on the old pipeline), and a simple 8-playbook version in the app | **One merged Module 3**: 10 CICIoT2023 policy families + traffic-shape zero-day routing, auto/approval logic, escalation, **verification by re-running the full Module 1**. 95.7% verified across all 33 attack classes |
 | Frontend | One long page mixing everything | 5 pages: Overview, **Live Attack Lab** (4 numbered steps), Network Monitor, Model Performance, How It Works |
 | Tests | Module 2/3 unit tests | + `tests/test_pipeline.py` end-to-end (fuzzy matches skfuzzy, benign stays idle, flood → classified → mitigated, Mirai → unknown, mitigation does not use ground truth) |
 
 The old frontend is kept in `legacy/app_v1.py` and the Flask UI in `legacy/web_flask/` for reference.
-The old `src/` and `module3_mitigation/` code is untouched.
+The old `src/` code is untouched. `module3_mitigation/` is still the source of the policy table
+(`policies.json`) and the zero-day router (`zero_day_containment.py`), which `ids/module3_mitigation.py` imports.
+Its other parts (SQLite history, Wi-Fi scenarios, `run_module3.py`, `main.py` step 14) belong to the old
+`src/` pipeline and are not used by the app.
 
 ---
 
@@ -170,7 +221,8 @@ The old `src/` and `module3_mitigation/` code is untouched.
      below 0.35 and CV returning to ≈ 1.
 3. **`Benign · BenignTraffic`**: risk ≈ 0.15 → NORMAL. Modules 2 and 3 stay idle (saves compute).
 4. **`Mirai · Mirai-greeth_flood`** (zero-day): Module 1 flags it, Module 2 reports **Unknown**,
-   and Module 3 uses the containment playbook with **analyst approval**.
+   and Module 3 takes the **zero-day route**: it shows the traffic shape (usually "constant-rate flood") and starts
+   with a reversible rate limit; blocking would need an analyst.
 5. **`Web · SqlInjection`**: low confidence → analyst approval. Explain why the system is careful here.
 6. Sidebar: switch Module 1 to **"IAT timing only"** on the same window to show why behaviour B was added.
    Switch Module 2 to **INT8** to show the edge model (≈ 1 ms per window).
@@ -191,7 +243,10 @@ ids/config.py                 paths, class → family taxonomy, thresholds
 ids/prepare_data.py           Step 0: sample CICIoT2023
 ids/module1_detection.py      Module 1: IAT features, behaviour B, NumPy Mamdani fuzzy engine
 ids/module2_classification.py Module 2: RF wrapper, INT8 quantiser + INT8 MLP, zero-day check
-ids/module3_mitigation.py     Module 3: playbooks, approval logic, simulated controller, verification
+ids/module3_mitigation.py     Module 3: policy routing, zero-day shape routing, approval, simulated controller, verification
+ids/evaluate_module3.py       Module 3 evaluation -> results/pipeline/module3_metrics.json
+module3_mitigation/policies.json         the 10 policy families (used by ids/module3_mitigation.py)
+module3_mitigation/zero_day_containment.py  the traffic-shape router (used by ids/module3_mitigation.py)
 ids/pipeline.py               chains the modules; builds demo windows and streams
 ids/train_module2.py          trains/evaluates everything, writes results/pipeline/
 app.py                        Streamlit frontend (5 pages)

@@ -1,0 +1,129 @@
+building windows ...
+4400 train windows, 1824 test windows
+SAE-PSVM ...
+HFF-XGB ...
+DNN-KDQ ...
+{
+ "detection": {
+  "IATFCM": {
+   "recall": 0.9621,
+   "precision": 0.9915,
+   "f1": 0.9766,
+   "fpr": 0.0542,
+   "zero_day_detection": 1.0
+  },
+  "DT-3sigma": {
+   "recall": 0.0871,
+   "precision": 0.9583,
+   "f1": 0.1597,
+   "fpr": 0.025,
+   "zero_day_detection": 0.1319
+  },
+  "PP-TTF": {
+   "recall": 0.983,
+   "precision": 0.9994,
+   "f1": 0.9911,
+   "fpr": 0.0042,
+   "zero_day_detection": 1.0
+  },
+  "SAE-PSVM": {
+   "recall": 0.8605,
+   "precision": 1.0,
+   "f1": 0.925,
+   "fpr": 0.0,
+   "zero_day_detection": 0.9931
+  }
+ },
+ "classification": {
+  "IATFCM-RF": {
+   "accuracy": 0.9298,
+   "macro_f1": 0.9454,
+   "family_accuracy": 0.9405,
+   "zero_day_flagged_unknown": 1.0
+  },
+  "IATFCM-INT8": {
+   "accuracy": 0.6851,
+   "macro_f1": 0.6757,
+   "family_accuracy": 0.7,
+   "zero_day_flagged_unknown": 1.0
+  },
+  "HFF-XGB": {
+   "accuracy": 0.9845,
+   "macro_f1": 0.9834,
+   "family_accuracy": 0.994,
+   "zero_day_flagged_unknown": 0.0
+  },
+  "PP-TTF (cls)": {
+   "accuracy": 0.9006,
+   "macro_f1": 0.8998,
+   "family_accuracy": 0.9363,
+   "zero_day_flagged_unknown": 0.0
+  },
+  "DNN-KDQ": {
+   "accuracy": 0.6506,
+   "macro_f1": 0.6083,
+   "family_accuracy": 0.7131,
+   "zero_day_flagged_unknown": 0.0
+  }
+ }
+}
+{
+ "IATFCM": {
+  "task": "detection",
+  "size_kb": 1619.555,
+  "latency_ms": 2.679,
+  "n_features": 4
+ },
+ "DT-3sigma": {
+  "task": "detection",
+  "size_kb": 0.031,
+  "latency_ms": 0.157,
+  "n_features": 2
+ },
+ "PP-TTF": {
+  "task": "detection",
+  "size_kb": 683.072,
+  "latency_ms": 5.854,
+  "n_features": 30
+ },
+ "PP-TTF (cls)": {
+  "task": "classification",
+  "size_kb": 6225.063,
+  "latency_ms": 6.003,
+  "n_features": 30
+ },
+ "SAE-PSVM": {
+  "task": "detection",
+  "size_kb": 340.248,
+  "latency_ms": 2.825,
+  "n_features": 46,
+  "pso_best": {
+   "C": 39.65998521048612,
+   "gamma": 0.02404238883243161
+  }
+ },
+ "IATFCM-RF": {
+  "task": "classification",
+  "size_kb": 115554.95,
+  "n_features": 46,
+  "latency_ms": 11.37
+ },
+ "IATFCM-INT8": {
+  "task": "classification",
+  "size_kb": 16.184,
+  "n_features": 46,
+  "latency_ms": 5.825
+ },
+ "HFF-XGB": {
+  "task": "classification",
+  "size_kb": 4906.115,
+  "n_features": 230,
+  "latency_ms": 2.671
+ },
+ "DNN-KDQ": {
+  "task": "classification",
+  "size_kb": 6.152,
+  "n_features": 46,
+  "latency_ms": 0.969
+ }
+}

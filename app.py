@@ -162,7 +162,7 @@ digraph G {
         ({mlp['size_reduction_pct']:.0f}% smaller than FP32).</div>""", unsafe_allow_html=True)
     with c3:
         st.markdown(f"""<div class='card'><h4>3️⃣ Module 3 · Mitigation</h4>
-        <div class='big'>8</div><div class='muted'>attack-family playbooks + 33 class-specific tips</div><br>
+        <div class='big'>10 + 4</div><div class='muted'>attack policies + zero-day traffic-shape ladders</div><br>
         Chooses an action, decides <b>auto vs. analyst approval</b>, applies it in a simulated
         controller, then <b>re-runs Module 1</b> to verify the traffic is normal again.</div>""",
                     unsafe_allow_html=True)
@@ -334,13 +334,20 @@ elif page.startswith("🧪"):
         plan = res.m3
         with st.container(border=True):
             step_header(4, "MODULE 3: Mitigation & suggestions",
-                        "What should we do? Pick a playbook, apply it (simulated controller), and verify by re-running Module 1.")
+                        "What should we do? Route to a policy, apply it (simulated controller), and verify by re-running Module 1.")
             l, r = st.columns([1.3, 1])
             with l:
+                route_txt = ("📋 Route: <b>class policy</b> (Module 2 named the attack)" if plan.route == "class_policy"
+                             else "🧬 Route: <b>zero-day, by traffic shape</b> (no known class to look up)")
+                st.markdown(route_txt, unsafe_allow_html=True)
                 st.markdown(f"<span class='pill' style='background:{SEV_COLOR[plan.severity]}'>{plan.severity}</span> "
-                            f"&nbsp;<b>{plan.family}</b>: {FAMILY_DESCRIPTION.get(plan.family, '')}",
+                            f"&nbsp;Policy family: <b>{plan.family.replace('_', ' ')}</b>",
                             unsafe_allow_html=True)
+                if plan.behaviour:
+                    st.markdown(f"**Traffic shape: {plan.behaviour}.** {plan.behaviour_reason}")
                 st.markdown(f"**Why it matters:** {plan.why}")
+                if plan.policy_description:
+                    st.markdown(f"**Policy:** {plan.policy_description}")
                 if plan.class_tip:
                     st.markdown(f"**Specific to {plan.attack_class}:** {plan.class_tip}")
             with r:
@@ -351,8 +358,9 @@ elif page.startswith("🧪"):
 
             st.markdown("**Response plan (escalation ladder)**")
             for i, a in enumerate(plan.actions, 1):
-                with st.expander(f"Stage {i}: {a.name}  ·  expected to stop ~{a.efficacy:.0%} of attack flows"
-                                 f"{'  ·  ⚠ disruptive' if a.disruptive else ''}", expanded=(i == 1)):
+                kind = {"cap": "filter / limit", "stop": "block / isolate (needs analyst)", "alert": "alert only"}[a.kind]
+                with st.expander(f"Stage {i}: {a.name}  ·  {kind}  ·  assumed to stop ~{a.efficacy:.0%} of attack flows",
+                                 expanded=(i == 1)):
                     st.write(a.description)
                     st.code(a.command, language="bash")
 
@@ -368,7 +376,7 @@ elif page.startswith("🧪"):
                           "attack flows": f"{s.attack_flows_before} → {s.attack_flows_after}",
                           "risk": f"{s.risk_before:.2f} → {s.risk_after:.2f}",
                           "CV": f"{s.cv_before:.2f} → {s.cv_after:.2f}",
-                          "packet rate": f"{s.rate_before:,.0f} → {s.rate_after:,.0f}",
+                          "attack volume removed": f"{s.volume_suppression:.0%}",
                           "result": "✅ resolved" if s.resolved else "↗ escalate"} for s in plan.steps]
                 st.dataframe(pd.DataFrame(srows), hide_index=True, use_container_width=True)
                 pts = [{"point": "before", "risk": plan.steps[0].risk_before}] + \
@@ -385,8 +393,11 @@ elif page.startswith("🧪"):
                            f"{last.risk_after:.2f} and CV returned to {last.cv_after:.2f} (normal ≈ {P.m1.baseline['cv_median']:.2f}). "
                            "Traffic is back to normal.", "b-green")
                 else:
-                    banner(f"⚠️ Risk is still {last.risk_after:.2f} after all automated stages. "
+                    banner(f"⚠️ Risk is still {last.risk_after:.2f} after every stage of the ladder. "
                            "Escalate to the security team.", "b-amber")
+                if plan.needed_disruptive_action and plan.auto_execute:
+                    st.caption("A blocking stage was needed; in deployment it would wait for an analyst's approval "
+                               "(the first stage ran automatically).")
                 if st.button("↺ Reset mitigation"):
                     lab["res"] = P.run(res.window, model=engine_key, mitigate=False, m1_mode=m1_mode)
                     lab["done"] = False
@@ -432,6 +443,7 @@ elif page.startswith("📡"):
                 "M2 invoked": r.m2 is not None,
                 "M2 class": r.m2.attack_class if r.m2 else "—",
                 "M2 family": r.m2.family if r.m2 else "—",
+                "M3 route": ("policy: " + r.m3.family if r.m3.route == "class_policy" else "zero-day: " + r.m3.behaviour) if r.m3 else "—",
                 "M3 action": r.m3.steps[-1].action.name if (r.m3 and r.m3.steps) else "—",
                 "risk after M3": r.m3.steps[-1].risk_after if (r.m3 and r.m3.steps) else r.m1.risk,
                 "resolved": (r.m3.resolved if r.m3 else None),
@@ -481,8 +493,8 @@ elif page.startswith("📊"):
     st.caption("Measured on the separate CICIoT2023 test file. The Mirai family was never used for training.")
     m1, m2 = M["module1"], M["module2"]
     rf, mlp, we = m2["random_forest"], m2["mlp"], m2["window_eval"]
-    t1, t2, t3, t4 = st.tabs(["Module 1 · Detection", "Module 2 · Classification",
-                              "Zero-day (Mirai)", "Earlier experiments"])
+    t1, t2, t5, t3, t4 = st.tabs(["Module 1 · Detection", "Module 2 · Classification", "Module 3 · Mitigation",
+                                  "Zero-day (Mirai)", "Earlier experiments"])
 
     with t1:
         st.markdown(f"Evaluated on **{m1['windows']} windows** (40 per class, 20 flows each, from the test file).")
@@ -565,6 +577,39 @@ elif page.startswith("📊"):
                 "check catches Mirai variants that look unlike all known traffic. Variants that resemble a known flood "
                 "are mapped to that flood's playbook, which is still a sensible response.")
 
+    with t5:
+        import json as _json3
+        m3p = METRICS_DIR / "module3_metrics.json"
+        if not m3p.exists():
+            st.info("Run `python -m ids.evaluate_module3` to produce the Module 3 evaluation.")
+        else:
+            m3m = _json3.loads(m3p.read_text())
+            cv3, md = m3m["coverage"], m3m["mixed_day_stream"]
+            st.markdown(f"Full pipeline, **driven by Module 2's predictions**: {cv3['windows']} windows covering all 33 "
+                        "attack classes (15 windows each, 80% attack + 20% benign flows) and 150 benign windows.")
+            k = st.columns(5)
+            k[0].metric("Windows reaching Module 3", cv3["reached_module3"])
+            k[1].metric("Resolved (risk < 0.35)", f"{cv3['resolved_pct']:.1f}%")
+            k[2].metric("Correct policy family", f"{m3m['known_attacks_routed_to_correct_policy_pct']:.1f}%",
+                        help="Known attacks routed to the policy of their true class")
+            k[3].metric("Attack volume removed (1st action)", f"{cv3['mean_volume_suppression_first_action_pct']:.1f}%")
+            k[4].metric("Needed a blocking action", f"{cv3['needed_disruptive_action_pct']:.1f}%")
+            st.markdown("**Per policy family**")
+            fam = pd.DataFrame(m3m["coverage_per_policy_family"]).rename(columns={
+                "policy_family": "policy family", "resolved_pct": "resolved", "auto_pct": "automatic",
+                "stage1_resolved": "resolved by stage 1", "volume_suppression": "volume removed (stage 1)"})
+            st.dataframe(fam.style.format({c: "{:.1%}" for c in ["resolved", "automatic", "resolved by stage 1",
+                                                                 "volume removed (stage 1)"]}),
+                         hide_index=True, use_container_width=True)
+            zd = m3m["zero_day"]
+            st.markdown(f"**Zero-day (Mirai):** {zd['routed_zero_day_pct']:.0f}% took the traffic-shape route; shapes "
+                        + ", ".join(f"{k} ×{v}" for k, v in zd["behaviour_distribution"].items())
+                        + f"; {zd['resolved_pct']:.1f}% resolved.")
+            st.markdown(f"**Mixed-day stream** (10 seeds × 39 windows): {md['bypassed_module2_pct']:.1f}% of windows skipped "
+                        f"Modules 2–3, {md['reached_module3']} reached Module 3, {md['resolved_pct']:.1f}% resolved "
+                        f"(risk {md['mean_risk_before']:.2f} → {md['mean_risk_after']:.2f}, CV back to {md['mean_cv_after']:.2f}).")
+            st.caption(m3m["note"])
+
     with t4:
         st.markdown("Results of the earlier version of the project (paper draft), kept for comparison.")
         import json as _json
@@ -639,12 +684,20 @@ else:
 """)
     st.markdown("### Step 3 · Module 3: mitigation and verification")
     st.markdown("""
-1. **Playbook selection** by attack family (DDoS, DoS, Mirai, Recon, Spoofing, Web, BruteForce, Unknown),
-   plus a class-specific tip (e.g. SYN flood → SYN cookies).
-2. **Auto vs. approval**: automatic only if confidence ≥ 60%, the attack is known, and the action is not
-   disruptive. Otherwise an analyst must approve.
+1. **Routing.** If Module 2 named the attack, its class is looked up in `module3_mitigation/policies.json`:
+   **10 attack policy families** (volumetric flood, TCP state exhaustion, fragmentation, slow application,
+   reconnaissance, spoofing/MITM, web application, credential, malware/backdoor, botnet), each with an
+   escalation ladder, plus a class-specific tip (e.g. SYN flood → SYN cookies).
+   If Module 2 said **Unknown**, there is no class to look up, so the ladder is chosen from the **shape** of the
+   suspicious flows: CV ≈ 0 → constant-rate flood (rate-limit → block → blackhole); high CV at low rate →
+   slow probe (block scanner → isolate); high rate + shifted timing → volumetric surge; otherwise
+   unclassified anomaly (rate-limit → block → isolate).
+2. **Auto vs. approval**: the first action runs automatically only if the attack is known, Module 2's
+   confidence reaches the policy's threshold (60–75%), the policy does not require an administrator, and the
+   action only filters/limits. Blocking or isolating always needs an analyst. A zero-day window may start with
+   a reversible rate limit automatically.
 3. **Apply** (simulated controller): flows that Module 2 marked as attacks are filtered with the action's
-   efficacy, while legitimate traffic keeps flowing.
+   assumed efficacy (filters ≈ 75–85%, blocks ≈ 95–98%), while legitimate traffic keeps flowing.
 4. **Verify**: Module 1 re-computes the risk on the new traffic. If it is < 0.35 the attack is resolved
    (CV is back near normal). If not, escalate to the next, stronger stage.
 """)

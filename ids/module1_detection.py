@@ -103,14 +103,20 @@ RULES_TIMING = [
 ]
 
 # Full mode: the "normal" rules also require normal behaviour, plus two behaviour rules.
+# R13 (slow probe) additionally needs the flows to look unusual: benign CICIoT2023 windows often have
+# CV 1.5-2.4 because their IAT values are bimodal, so "CV high and rate low" alone fired on ~5% of
+# benign TRAINING windows. Requiring B to be at least medium halved those false alarms at a 0.1-point
+# recall cost (ablation in ids/ablation.py).
 RULES_FULL = [
     ("R1", {"cv": "medium", "rate": "low", "dev": "low", "beh": "low"}, "low", "Normal IoT behaviour: natural jitter, low rate, usual timing, normal flows"),
     ("R2", {"cv": "low", "rate": "low", "dev": "low", "beh": "low"}, "low", "Regular low-rate sensor beaconing with normal flows"),
     ("R3", {"cv": "medium", "rate": "low", "dev": "medium", "beh": "low"}, "low", "Normal traffic with slightly shifted timing"),
-] + RULES_TIMING[3:] + [
+] + RULES_TIMING[3:12] + [
+    ("R13", {"cv": "high", "rate": "low", "beh": "medium"}, "medium", "Slow, irregular probing with unusual flows (stealthy scan)"),
     ("R14", {"beh": "high"}, "high", "Flows look unlike any normal traffic (learned from benign data only)"),
     ("R15", {"beh": "medium"}, "medium", "Flows are somewhat unusual: worth a closer look"),
 ]
+RULES_FULL_ORIGINAL_R13 = RULES_FULL[:12] + [RULES_TIMING[12]] + RULES_FULL[13:]   # kept for the ablation
 RULES = RULES_FULL
 
 

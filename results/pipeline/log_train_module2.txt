@@ -1,0 +1,38 @@
+
+=== Module 1: baseline & evaluation ===
+timing-only {'windows': 1360, 'accuracy': 0.1824, 'balanced_accuracy': 0.5545, 'precision': 0.9906, 'recall': 0.1591, 'f1': 0.2742, 'fpr': 0.05, 'confusion': {'tn': 38, 'fp': 2, 'fn': 1110, 'tp': 210}, 'detection_rate_by_family': {'BruteForce': 0.2, 'DDoS': 0.1292, 'DoS': 0.25, 'Mirai': 0.3333, 'Recon': 0.075, 'Spoofing': 0.1875, 'Web': 0.125}, 'benign_false_alarm_rate': 0.05, 'mirai_zero_day_detection': 0.3333}
+full {'windows': 1360, 'accuracy': 0.9963, 'balanced_accuracy': 0.9739, 'precision': 0.9985, 'recall': 0.9977, 'f1': 0.9981, 'fpr': 0.05, 'confusion': {'tn': 38, 'fp': 2, 'fn': 3, 'tp': 1317}, 'detection_rate_by_family': {'BruteForce': 1.0, 'DDoS': 1.0, 'DoS': 1.0, 'Mirai': 1.0, 'Recon': 0.985, 'Spoofing': 1.0, 'Web': 1.0}, 'benign_false_alarm_rate': 0.05, 'mirai_zero_day_detection': 1.0}
+
+=== Module 2: training ===
+RF {'accuracy': 0.9085, 'macro_f1': 0.7934, 'weighted_f1': 0.9122, 'family_accuracy': 0.9342, 'family_macro_f1': 0.7862, 'train_seconds': 2.7791, 'latency_ms_per_flow': 0.0057, 'size_mb': 118.3281}
+MLP {
+ "fp32": {
+  "accuracy": 0.7795147918132591,
+  "macro_f1": 0.6315322924842133,
+  "family_accuracy": 0.8356839110349681,
+  "size_kb": 63.62109375
+ },
+ "int8": {
+  "accuracy": 0.778474622938783,
+  "macro_f1": 0.6317387562446377,
+  "family_accuracy": 0.8349190809802062,
+  "size_kb": 16.18359375,
+  "latency_ms_per_flow": 0.010962717778262502
+ },
+ "agreement_fp32_int8": 0.9851011105332396,
+ "train_seconds": 69.0702109336853,
+ "architecture": "46 -> 128 -> 64 -> 31 (ReLU)",
+ "size_reduction_pct": 74.56253453674711
+}
+
+=== Module 2: window-level evaluation ===
+{
+ "note": "windows of 20 flows: 70% attack + 30% benign background",
+ "known_class_accuracy": 0.9455555555555556,
+ "known_family_accuracy": 0.9544444444444444,
+ "known_false_unknown_rate": 0.044444444444444446,
+ "mirai_flagged_unknown": 1.0,
+ "mirai_assigned_to": {}
+}
+
+Saved models and metrics.

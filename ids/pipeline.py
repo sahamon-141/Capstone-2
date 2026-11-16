@@ -71,7 +71,8 @@ class IDSPipeline:
         res.m2 = self.m2.classify_window(window, model=model)
         if res.m2.family == "Benign":
             return res          # Module 2 overrules a Module 1 false alarm: nothing to mitigate
-        plan = self.m3.plan(res.m2.family, res.m2.attack_class, res.m2.confidence)
+        plan = self.m3.plan(res.m2.attack_class, res.m2.confidence, res.m2.is_zero_day, window,
+                            targeted=res.m2.attack_flow_mask)
         if mitigate:
             plan = self.m3.execute_and_verify(plan, window, res.m2.attack_flow_mask)
         res.m3 = plan

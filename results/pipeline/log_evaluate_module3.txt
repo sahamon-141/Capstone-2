@@ -1,0 +1,183 @@
+{
+ "note": "Driven by Module 2 predictions. The network controller is simulated: an action removes each flow Module 2 marked as attack with the action's assumed efficacy, removed flows are replaced by benign traffic, and Module 1 is re-run on the result. 'resolved' = risk < 0.35.",
+ "coverage": {
+  "windows": 645,
+  "attack_windows": 495,
+  "benign_windows": 150,
+  "module1_detected_attack_pct": 98.79,
+  "module1_false_alarm_pct": 3.33,
+  "bypassed_module2_pct": 23.41,
+  "reached_module3": 489,
+  "route_class_policy_pct": 86.5,
+  "route_zero_day_pct": 13.5,
+  "resolved_pct": 96.11,
+  "resolved_at_stage": {
+   "1": 418,
+   "2": 51,
+   "3": 1
+  },
+  "auto_execute_pct": 62.37,
+  "needed_disruptive_action_pct": 31.9,
+  "mean_risk_before": 0.7288,
+  "mean_risk_after": 0.1755,
+  "mean_cv_after": 0.9911,
+  "mean_volume_suppression_first_action_pct": 82.24,
+  "benign_windows_reaching_module3": 0,
+  "benign_windows_blocked": 0
+ },
+ "coverage_per_policy_family": [
+  {
+   "policy_family": "Credential_Attack",
+   "windows": 12,
+   "resolved_pct": 1.0,
+   "auto_pct": 0.0,
+   "stage1_resolved": 1.0,
+   "volume_suppression": 0.8457
+  },
+  {
+   "policy_family": "Fragmentation_Attack",
+   "windows": 45,
+   "resolved_pct": 0.9555555555555556,
+   "auto_pct": 1.0,
+   "stage1_resolved": 0.8444,
+   "volume_suppression": 0.7597
+  },
+  {
+   "policy_family": "Malware_Backdoor",
+   "windows": 15,
+   "resolved_pct": 1.0,
+   "auto_pct": 0.0,
+   "stage1_resolved": 1.0,
+   "volume_suppression": 0.9999
+  },
+  {
+   "policy_family": "Reconnaissance",
+   "windows": 60,
+   "resolved_pct": 0.9333333333333333,
+   "auto_pct": 0.0,
+   "stage1_resolved": 0.9333,
+   "volume_suppression": 0.954
+  },
+  {
+   "policy_family": "Slow_Application_Attack",
+   "windows": 45,
+   "resolved_pct": 0.9777777777777777,
+   "auto_pct": 1.0,
+   "stage1_resolved": 0.9333,
+   "volume_suppression": 0.8312
+  },
+  {
+   "policy_family": "Spoofing_MITM",
+   "windows": 30,
+   "resolved_pct": 1.0,
+   "auto_pct": 0.0,
+   "stage1_resolved": 1.0,
+   "volume_suppression": 0.9857
+  },
+  {
+   "policy_family": "TCP_State_Exhaustion",
+   "windows": 60,
+   "resolved_pct": 0.9833333333333333,
+   "auto_pct": 1.0,
+   "stage1_resolved": 0.7667,
+   "volume_suppression": 0.7955
+  },
+  {
+   "policy_family": "Volumetric_Flood",
+   "windows": 90,
+   "resolved_pct": 0.9666666666666667,
+   "auto_pct": 1.0,
+   "stage1_resolved": 0.7667,
+   "volume_suppression": 0.7408
+  },
+  {
+   "policy_family": "Web_Application_Attack",
+   "windows": 66,
+   "resolved_pct": 0.9090909090909091,
+   "auto_pct": 0.0,
+   "stage1_resolved": 0.8485,
+   "volume_suppression": 0.8573
+  },
+  {
+   "policy_family": "Zero-day",
+   "windows": 66,
+   "resolved_pct": 0.9696969696969697,
+   "auto_pct": 0.9848484848484849,
+   "stage1_resolved": 0.8182,
+   "volume_suppression": 0.7211
+  }
+ ],
+ "known_attacks_routed_to_correct_policy_pct": 94.82,
+ "zero_day": {
+  "mirai_windows": 45,
+  "reached_module3": 45,
+  "routed_zero_day_pct": 100.0,
+  "behaviour_distribution": {
+   "Constant-rate flood": 37,
+   "Unclassified anomaly": 8
+  },
+  "resolved_pct": 95.56
+ },
+ "mixed_day_stream": {
+  "windows": 390,
+  "attack_windows": 160,
+  "benign_windows": 230,
+  "module1_detected_attack_pct": 98.75,
+  "module1_false_alarm_pct": 3.48,
+  "bypassed_module2_pct": 57.44,
+  "reached_module3": 161,
+  "route_class_policy_pct": 74.53,
+  "route_zero_day_pct": 25.47,
+  "resolved_pct": 98.76,
+  "resolved_at_stage": {
+   "1": 136,
+   "2": 23
+  },
+  "auto_execute_pct": 75.16,
+  "needed_disruptive_action_pct": 38.51,
+  "mean_risk_before": 0.7907,
+  "mean_risk_after": 0.1616,
+  "mean_cv_after": 0.9829,
+  "mean_volume_suppression_first_action_pct": 80.15,
+  "benign_windows_reaching_module3": 3,
+  "benign_windows_blocked": 3
+ },
+ "first_actions": [
+  [
+   "RATE_LIMIT_SOURCE",
+   155
+  ],
+  [
+   "ACTIVATE_WAF_RULE",
+   66
+  ],
+  [
+   "BLOCK_SCANNING_SOURCE",
+   61
+  ],
+  [
+   "ENABLE_SYN_COOKIES",
+   60
+  ],
+  [
+   "DROP_MALFORMED_FRAGMENTS",
+   45
+  ],
+  [
+   "LIMIT_CONCURRENT_CONNECTIONS",
+   45
+  ],
+  [
+   "ENFORCE_ARP_DNS_INTEGRITY",
+   30
+  ],
+  [
+   "QUARANTINE_ENDPOINT",
+   15
+  ],
+  [
+   "THROTTLE_AUTH_ATTEMPTS",
+   12
+  ]
+ ]
+}

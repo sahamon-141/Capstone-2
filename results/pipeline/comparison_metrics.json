@@ -1,0 +1,268 @@
+{
+  "protocol": {
+    "train_windows": 4400,
+    "test_windows": 1824,
+    "shares": [
+      0.5,
+      0.6,
+      0.7,
+      0.8,
+      0.9,
+      1.0
+    ],
+    "test_attack_windows_per_class_per_share": 8,
+    "benign_test_windows": 240
+  },
+  "resources": {
+    "IATFCM": {
+      "task": "detection",
+      "size_kb": 1619.5546875,
+      "latency_ms": 2.678980666666272,
+      "n_features": 4
+    },
+    "DT-3sigma": {
+      "task": "detection",
+      "size_kb": 0.03125,
+      "latency_ms": 0.15734866666510547,
+      "n_features": 2
+    },
+    "PP-TTF": {
+      "task": "detection",
+      "size_kb": 683.072265625,
+      "latency_ms": 5.853560666667666,
+      "n_features": 30
+    },
+    "PP-TTF (cls)": {
+      "task": "classification",
+      "size_kb": 6225.0634765625,
+      "latency_ms": 6.003030000004704,
+      "n_features": 30
+    },
+    "SAE-PSVM": {
+      "task": "detection",
+      "size_kb": 340.248046875,
+      "latency_ms": 2.8248326666653156,
+      "n_features": 46,
+      "pso_best": {
+        "C": 39.65998521048612,
+        "gamma": 0.02404238883243161
+      }
+    },
+    "IATFCM-RF": {
+      "task": "classification",
+      "size_kb": 115554.9501953125,
+      "n_features": 46,
+      "latency_ms": 11.37018800000078
+    },
+    "IATFCM-INT8": {
+      "task": "classification",
+      "size_kb": 16.18359375,
+      "n_features": 46,
+      "latency_ms": 5.824696000005739
+    },
+    "HFF-XGB": {
+      "task": "classification",
+      "size_kb": 4906.115234375,
+      "n_features": 230,
+      "latency_ms": 2.6705820000036815
+    },
+    "DNN-KDQ": {
+      "task": "classification",
+      "size_kb": 6.15234375,
+      "n_features": 46,
+      "latency_ms": 0.9694933333351703
+    }
+  },
+  "detection": {
+    "IATFCM": {
+      "recall": 0.9621212121212122,
+      "precision": 0.9915419648666233,
+      "f1": 0.9766100608779238,
+      "fpr": 0.05416666666666667,
+      "recall_by_share": {
+        "0.5": 0.8560606060606061,
+        "0.6": 0.946969696969697,
+        "0.7": 0.9810606060606061,
+        "0.8": 0.9962121212121212,
+        "0.9": 0.9924242424242424,
+        "1.0": 1.0
+      },
+      "recall_by_family": {
+        "BruteForce": 0.875,
+        "DDoS": 0.9982638888888888,
+        "DoS": 1.0,
+        "Mirai": 1.0,
+        "Recon": 0.8833333333333333,
+        "Spoofing": 0.90625,
+        "Web": 0.9444444444444444
+      },
+      "zero_day_detection": 1.0
+    },
+    "DT-3sigma": {
+      "recall": 0.08712121212121213,
+      "precision": 0.9583333333333334,
+      "f1": 0.15972222222222227,
+      "fpr": 0.025,
+      "recall_by_share": {
+        "0.5": 0.07954545454545454,
+        "0.6": 0.045454545454545456,
+        "0.7": 0.08333333333333333,
+        "0.8": 0.09848484848484848,
+        "0.9": 0.10606060606060606,
+        "1.0": 0.10984848484848485
+      },
+      "recall_by_family": {
+        "BruteForce": 0.0,
+        "DDoS": 0.13541666666666666,
+        "DoS": 0.13541666666666666,
+        "Mirai": 0.13194444444444445,
+        "Recon": 0.008333333333333333,
+        "Spoofing": 0.03125,
+        "Web": 0.034722222222222224
+      },
+      "zero_day_detection": 0.13194444444444445
+    },
+    "PP-TTF": {
+      "recall": 0.9829545454545454,
+      "precision": 0.9993581514762516,
+      "f1": 0.9910884786760026,
+      "fpr": 0.004166666666666667,
+      "recall_by_share": {
+        "0.5": 0.946969696969697,
+        "0.6": 0.9810606060606061,
+        "0.7": 0.9810606060606061,
+        "0.8": 0.9886363636363636,
+        "0.9": 1.0,
+        "1.0": 1.0
+      },
+      "recall_by_family": {
+        "BruteForce": 1.0,
+        "DDoS": 1.0,
+        "DoS": 1.0,
+        "Mirai": 1.0,
+        "Recon": 0.9375,
+        "Spoofing": 1.0,
+        "Web": 0.9583333333333334
+      },
+      "zero_day_detection": 1.0
+    },
+    "SAE-PSVM": {
+      "recall": 0.860479797979798,
+      "precision": 1.0,
+      "f1": 0.9250084832032576,
+      "fpr": 0.0,
+      "recall_by_share": {
+        "0.5": 0.6893939393939394,
+        "0.6": 0.8143939393939394,
+        "0.7": 0.8825757575757576,
+        "0.8": 0.8977272727272727,
+        "0.9": 0.9318181818181818,
+        "1.0": 0.946969696969697
+      },
+      "recall_by_family": {
+        "BruteForce": 0.5625,
+        "DDoS": 0.9965277777777778,
+        "DoS": 1.0,
+        "Mirai": 0.9930555555555556,
+        "Recon": 0.675,
+        "Spoofing": 0.3541666666666667,
+        "Web": 0.8020833333333334
+      },
+      "zero_day_detection": 0.9930555555555556
+    }
+  },
+  "classification": {
+    "IATFCM-RF": {
+      "accuracy": 0.9297619047619048,
+      "macro_f1": 0.945436345581279,
+      "family_accuracy": 0.9404761904761905,
+      "accuracy_by_share": {
+        "0.5": 0.9333333333333333,
+        "0.6": 0.9291666666666667,
+        "0.7": 0.9333333333333333,
+        "0.8": 0.9708333333333333,
+        "0.9": 0.9458333333333333,
+        "1.0": 0.95
+      },
+      "zero_day_flagged_unknown": 1.0,
+      "mirai_assigned_to": {
+        "Unknown (zero-day)": 144
+      }
+    },
+    "IATFCM-INT8": {
+      "accuracy": 0.6851190476190476,
+      "macro_f1": 0.6756832063109038,
+      "family_accuracy": 0.7,
+      "accuracy_by_share": {
+        "0.5": 0.6875,
+        "0.6": 0.7291666666666666,
+        "0.7": 0.7041666666666667,
+        "0.8": 0.7375,
+        "0.9": 0.7541666666666667,
+        "1.0": 0.7458333333333333
+      },
+      "zero_day_flagged_unknown": 1.0,
+      "mirai_assigned_to": {
+        "Unknown (zero-day)": 144
+      }
+    },
+    "HFF-XGB": {
+      "accuracy": 0.9845238095238096,
+      "macro_f1": 0.9834390858274793,
+      "family_accuracy": 0.9940476190476191,
+      "accuracy_by_share": {
+        "0.5": 0.9375,
+        "0.6": 0.9833333333333333,
+        "0.7": 1.0,
+        "0.8": 0.9875,
+        "0.9": 1.0,
+        "1.0": 0.9833333333333333
+      },
+      "zero_day_flagged_unknown": 0.0,
+      "mirai_assigned_to": {
+        "DDoS-UDP_Fragmentation": 141,
+        "BenignTraffic": 1,
+        "DDoS-ACK_Fragmentation": 1,
+        "DDoS-UDP_Flood": 1
+      }
+    },
+    "PP-TTF (cls)": {
+      "accuracy": 0.9005952380952381,
+      "macro_f1": 0.8998048288084729,
+      "family_accuracy": 0.9363095238095238,
+      "accuracy_by_share": {
+        "0.5": 0.7416666666666667,
+        "0.6": 0.85,
+        "0.7": 0.9,
+        "0.8": 0.9166666666666666,
+        "0.9": 0.975,
+        "1.0": 0.9958333333333333
+      },
+      "zero_day_flagged_unknown": 0.0,
+      "mirai_assigned_to": {
+        "DDoS-SlowLoris": 65,
+        "DDoS-HTTP_Flood": 39,
+        "DoS-TCP_Flood": 33,
+        "DDoS-UDP_Fragmentation": 5
+      }
+    },
+    "DNN-KDQ": {
+      "accuracy": 0.6505952380952381,
+      "macro_f1": 0.6083263979735634,
+      "family_accuracy": 0.7130952380952381,
+      "accuracy_by_share": {
+        "0.5": 0.6166666666666667,
+        "0.6": 0.6291666666666667,
+        "0.7": 0.6625,
+        "0.8": 0.65,
+        "0.9": 0.6708333333333333,
+        "1.0": 0.675
+      },
+      "zero_day_flagged_unknown": 0.0,
+      "mirai_assigned_to": {
+        "DDoS-ACK_Fragmentation": 96,
+        "DDoS-UDP_Flood": 48
+      }
+    }
+  }
+}

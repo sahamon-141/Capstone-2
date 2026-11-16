@@ -48,9 +48,31 @@ def test_mirai_is_unknown_to_module2(P):
     assert hits >= 7
 
 
+def test_mirai_takes_the_zero_day_shape_route(P):
+    routes = []
+    for s in range(6):
+        r = P.run(P.make_window("Mirai-udpplain", 0.8, seed=s))
+        routes.append((r.m3.route, r.m3.behaviour))
+    assert all(route == "zero_day_behaviour" for route, _ in routes)
+    assert sum(b == "Constant-rate flood" for _, b in routes) >= 4
+
+
+def test_every_known_class_has_a_policy(P):
+    from ids.config import FAMILY_OF, HELD_OUT_CLASSES
+    for cls in FAMILY_OF:
+        if cls not in HELD_OUT_CLASSES:
+            assert P.m3.family_of(cls) is not None, cls
+
+
+def test_blocking_needs_an_analyst(P):
+    w = P.make_window("Recon-PortScan", 0.8, seed=1)
+    plan = P.m3.plan("Recon-PortScan", 0.99, False, w)
+    assert plan.family == "Reconnaissance" and plan.actions[0].disruptive and not plan.auto_execute
+
+
 def test_mitigation_does_not_use_ground_truth(P):
     w = P.make_window("DoS-UDP_Flood", 1.0, seed=3)
-    plan = P.m3.plan("DoS", "DoS-UDP_Flood", 0.9)
+    plan = P.m3.plan("DoS-UDP_Flood", 0.9, False, w)
     # nothing targeted -> nothing filtered, whatever the labels say
     out = P.m3.execute_and_verify(plan, w, np.zeros(len(w), dtype=bool))
     assert out.steps[0].attack_flows_after == out.steps[0].attack_flows_before

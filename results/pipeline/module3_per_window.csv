@@ -1,0 +1,1036 @@
+scenario,true_label,true_family,m1_risk,m1_flagged,m2_class,m2_zero_day,m3,route,policy_family,behaviour,auto,stages_used,resolved,first_action,final_action,needed_disruptive,risk_before,risk_after,cv_after,volume_suppression_first
+coverage,Backdoor_Malware,Web,0.6532124580338464,True,Backdoor_Malware,False,True,class_policy,Malware_Backdoor,,False,1.0,True,QUARANTINE_ENDPOINT,QUARANTINE_ENDPOINT,True,0.6532124580338464,0.148966730807315,1.3627702878482923,0.999997833003692
+coverage,Backdoor_Malware,Web,0.6433066449728315,True,Backdoor_Malware,False,True,class_policy,Malware_Backdoor,,False,1.0,True,QUARANTINE_ENDPOINT,QUARANTINE_ENDPOINT,True,0.6433066449728315,0.15469835535684368,0.9045340338517409,1.0
+coverage,Backdoor_Malware,Web,0.6243811095529532,True,Backdoor_Malware,False,True,class_policy,Malware_Backdoor,,False,1.0,True,QUARANTINE_ENDPOINT,QUARANTINE_ENDPOINT,True,0.6243811095529532,0.14354162570916215,0.73379938598606,0.9999933403396768
+coverage,Backdoor_Malware,Web,0.5347122005300285,True,Backdoor_Malware,False,True,class_policy,Malware_Backdoor,,False,1.0,True,QUARANTINE_ENDPOINT,QUARANTINE_ENDPOINT,True,0.5347122005300285,0.14328196204051946,1.1055415970184796,1.0
+coverage,Backdoor_Malware,Web,0.5951336234701234,True,Backdoor_Malware,False,True,class_policy,Malware_Backdoor,,False,1.0,True,QUARANTINE_ENDPOINT,QUARANTINE_ENDPOINT,True,0.5951336234701234,0.1399070198750944,0.9045340338142154,1.0
+coverage,Backdoor_Malware,Web,0.5,True,Backdoor_Malware,False,True,class_policy,Malware_Backdoor,,False,1.0,True,QUARANTINE_ENDPOINT,QUARANTINE_ENDPOINT,True,0.5,0.17014545035747586,1.5275252317157106,1.0
+coverage,Backdoor_Malware,Web,0.49999999999999994,True,Backdoor_Malware,False,True,class_policy,Malware_Backdoor,,False,1.0,True,QUARANTINE_ENDPOINT,QUARANTINE_ENDPOINT,True,0.49999999999999994,0.14276229499765758,1.0000039801687326,0.9999934436595138
+coverage,Backdoor_Malware,Web,0.5,True,Backdoor_Malware,False,True,class_policy,Malware_Backdoor,,False,1.0,True,QUARANTINE_ENDPOINT,QUARANTINE_ENDPOINT,True,0.5,0.1505308579451194,0.816500037838828,0.9978158446938974
+coverage,Backdoor_Malware,Web,0.536992076722114,True,Backdoor_Malware,False,True,class_policy,Malware_Backdoor,,False,1.0,True,QUARANTINE_ENDPOINT,QUARANTINE_ENDPOINT,True,0.536992076722114,0.14655268461589713,1.000000000007775,1.0
+coverage,Backdoor_Malware,Web,0.5,True,Backdoor_Malware,False,True,class_policy,Malware_Backdoor,,False,1.0,True,QUARANTINE_ENDPOINT,QUARANTINE_ENDPOINT,True,0.5,0.14121074028279873,0.9045340339504507,1.0
+coverage,Backdoor_Malware,Web,0.49999999999999994,True,Backdoor_Malware,False,True,class_policy,Malware_Backdoor,,False,1.0,True,QUARANTINE_ENDPOINT,QUARANTINE_ENDPOINT,True,0.49999999999999994,0.1459747867867048,1.362770287853238,1.0
+coverage,Backdoor_Malware,Web,0.5279816183632268,True,Backdoor_Malware,False,True,class_policy,Malware_Backdoor,,False,1.0,True,QUARANTINE_ENDPOINT,QUARANTINE_ENDPOINT,True,0.5279816183632268,0.14660061142793582,0.9045340338013543,1.0
+coverage,Backdoor_Malware,Web,0.5,True,Backdoor_Malware,False,True,class_policy,Malware_Backdoor,,False,1.0,True,QUARANTINE_ENDPOINT,QUARANTINE_ENDPOINT,True,0.5,0.15988197228416912,0.9045340338377227,1.0
+coverage,Backdoor_Malware,Web,0.5330354770044158,True,Backdoor_Malware,False,True,class_policy,Malware_Backdoor,,False,1.0,True,QUARANTINE_ENDPOINT,QUARANTINE_ENDPOINT,True,0.5330354770044158,0.14285478473444657,1.224744871512467,1.0
+coverage,Backdoor_Malware,Web,0.5073278208373906,True,Backdoor_Malware,False,True,class_policy,Malware_Backdoor,,False,1.0,True,QUARANTINE_ENDPOINT,QUARANTINE_ENDPOINT,True,0.5073278208373906,0.17014545036266804,1.5275252317605017,1.0
+coverage,BenignTraffic,Benign,0.1440329685514087,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.14391565014432536,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.15378890871466044,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.14597478677737669,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.15072283671828413,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.1459747867811883,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.14728078533879452,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.14328243144776065,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.14570786718874926,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.153392599653939,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.14328089922152054,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.8172425862642394,True,BenignTraffic,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.14030640849494014,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.14886917427571394,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.8025000000000001,True,BenignTraffic,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.14597478678901138,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.15443214398788765,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.14583550500553563,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.15565494538417027,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.14264056727602237,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.13741518749843118,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.14199019945164087,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.15074640915458795,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.15077777774263762,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.15075368314410534,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.15856776135482897,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.14466901422368703,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.15074809837526126,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.15074927016500186,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.14937907158513752,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.14863469432638757,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.14200994972721043,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.15571582782008767,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.15252924179565766,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.14349058795427316,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.1484657930029098,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.14328183465169397,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.1400539479716682,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.14497493008883033,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.1420099585446802,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.15350312505790023,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.15596265854538677,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.14707811691871683,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.15074852495942412,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.15081227608152842,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.1432736638753032,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.1473922552734088,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.14500386003010923,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.15074932242287065,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.14201062187109043,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.14201000184035129,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.14668374675313642,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.1555109661651714,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.14567563989933838,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.14328060630107875,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.15075699108821092,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.1383378316593206,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.14985090042585178,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.1418073584090326,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.14484702343563938,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.14983257907464592,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.1483104848651086,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.14997657669704773,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.17014545037224194,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.15990799140937226,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.48994206449452277,True,BenignTraffic,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.15194158064221697,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.15075029258206907,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.14200877110131885,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.14831048486086698,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.17014545033236503,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.15034577016917688,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.15074629101286938,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.1439698262350622,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.14597478678149375,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.14278832455072513,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.1548656023098831,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.14757815234742347,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.15074956831100722,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.14670585112763443,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.14491531465190594,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.15075207225530782,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.14537591353601476,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.15540064812246981,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.14200858392083665,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.14083107450375945,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.15075114320326616,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.15959097103941045,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.15074643812291758,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.17014545034371914,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.15721443733689572,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.1475850784527764,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.15410174083657274,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.15074649596821044,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.14711682776078386,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.14313500158326628,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.17014545033591127,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.14597478676142073,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.1459747867513391,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.14889054969207444,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.14579765718089238,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.1420067751147048,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.1358181429168252,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.1758366697507641,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.15428523600377358,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.14704837239881646,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.15260590900867996,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.14251768171297993,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.14328145236648096,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.14475553189204324,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.14669262464174065,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.8025000000000002,True,BenignTraffic,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.15270461206228833,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.14693335423997977,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.14505632367133753,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.1480799365638035,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.2212171588759775,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.14553477789720795,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.14597478677426023,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.14295794793195712,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.1428096014486325,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.15075095239481093,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.14822825609909523,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.15671867637365705,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.15074779236612224,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.15130167379299786,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.1495656561619344,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.15297778342911583,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.1487185894847308,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.14109252816782497,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.14200920785227036,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.14794675076039204,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.1432830384401204,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.15071383358868295,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.1431659865400959,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.14875276500194368,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.15074732974337215,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.14268343180477253,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.8172423593922373,True,BenignTraffic,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.15134244584156456,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.15351594592331827,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.14831048486534001,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.1547694464086472,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.14328079306990657,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.14352373064701524,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.16196554704493668,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.14597478678809797,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.15074720385258264,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.15337284230590534,False,,False,False,,,,,,,,,,,,,
+coverage,BenignTraffic,Benign,0.1444206024441336,False,,False,False,,,,,,,,,,,,,
+coverage,BrowserHijacking,Web,0.5,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,2.0,True,RATE_LIMIT_SOURCE,BLOCK_SOURCE,True,0.5,0.13844360557859678,0.9045340338376348,0.007201598144064514
+coverage,BrowserHijacking,Web,0.5101270391393646,True,BrowserHijacking,False,True,class_policy,Web_Application_Attack,,False,2.0,True,ACTIVATE_WAF_RULE,BLOCK_SOURCE,True,0.5101270391393646,0.15168405985917655,0.816496581102708,0.9991451324927366
+coverage,BrowserHijacking,Web,0.5000000000000001,True,BrowserHijacking,False,True,class_policy,Web_Application_Attack,,False,1.0,True,ACTIVATE_WAF_RULE,ACTIVATE_WAF_RULE,False,0.5000000000000001,0.15847808961505302,1.3627710897464524,0.9071945938598677
+coverage,BrowserHijacking,Web,0.5949230191073883,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Unclassified anomaly,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.5949230191073883,0.14931393749216243,1.2247452920610584,0.8980228739829148
+coverage,BrowserHijacking,Web,0.5,True,BrowserHijacking,False,True,class_policy,Web_Application_Attack,,False,1.0,True,ACTIVATE_WAF_RULE,ACTIVATE_WAF_RULE,False,0.5,0.14212469152227852,0.9045340339903055,1.0
+coverage,BrowserHijacking,Web,0.5000000000000001,True,BrowserHijacking,False,True,class_policy,Web_Application_Attack,,False,1.0,True,ACTIVATE_WAF_RULE,ACTIVATE_WAF_RULE,False,0.5000000000000001,0.17014545035468726,1.5275252316916543,0.9983573847698263
+coverage,BrowserHijacking,Web,0.5,True,BrowserHijacking,False,True,class_policy,Web_Application_Attack,,False,1.0,True,ACTIVATE_WAF_RULE,ACTIVATE_WAF_RULE,False,0.5,0.1431265997099198,1.1055422534154755,0.9840120496458145
+coverage,BrowserHijacking,Web,0.5000000000000001,True,BrowserHijacking,False,True,class_policy,Web_Application_Attack,,False,1.0,True,ACTIVATE_WAF_RULE,ACTIVATE_WAF_RULE,False,0.5000000000000001,0.1420084282788729,1.2247448715269267,1.0
+coverage,BrowserHijacking,Web,0.5314234879667902,True,BrowserHijacking,False,True,class_policy,Web_Application_Attack,,False,1.0,True,ACTIVATE_WAF_RULE,ACTIVATE_WAF_RULE,False,0.5314234879667902,0.14252435811075348,0.9045340337818588,0.9950975159380179
+coverage,BrowserHijacking,Web,0.5,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Unclassified anomaly,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.5,0.17014545034569176,1.5275252316140528,0.9998654447103491
+coverage,BrowserHijacking,Web,0.5,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Volumetric surge,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.5,0.158093098618058,1.0000009133428052,0.9970430734786447
+coverage,BrowserHijacking,Web,0.57374062243109,True,BrowserHijacking,False,True,class_policy,Web_Application_Attack,,False,1.0,True,ACTIVATE_WAF_RULE,ACTIVATE_WAF_RULE,False,0.57374062243109,0.14831044381130437,0.6546539439733885,0.9941843212543313
+coverage,BrowserHijacking,Web,0.5,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Unclassified anomaly,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.5,0.16164997530539754,1.0000006114835918,0.971065137994819
+coverage,BrowserHijacking,Web,0.49999999999999994,True,BrowserHijacking,False,True,class_policy,Web_Application_Attack,,False,1.0,True,ACTIVATE_WAF_RULE,ACTIVATE_WAF_RULE,False,0.49999999999999994,0.15068562165156585,0.8164968780312168,0.9994969768056118
+coverage,BrowserHijacking,Web,0.5000000000000001,True,BrowserHijacking,False,True,class_policy,Web_Application_Attack,,False,1.0,True,ACTIVATE_WAF_RULE,ACTIVATE_WAF_RULE,False,0.5000000000000001,0.1399806809345158,0.9045343467282395,0.999979403291078
+coverage,CommandInjection,Web,0.5,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Unclassified anomaly,True,2.0,True,RATE_LIMIT_SOURCE,BLOCK_SOURCE,True,0.5,0.15117055359037807,0.9045340339081359,0.5299524459033795
+coverage,CommandInjection,Web,0.5,True,CommandInjection,False,True,class_policy,Web_Application_Attack,,False,1.0,True,ACTIVATE_WAF_RULE,ACTIVATE_WAF_RULE,False,0.5,0.154453245207842,1.1055460482023831,0.7945650419806947
+coverage,CommandInjection,Web,0.5,True,CommandInjection,False,True,class_policy,Web_Application_Attack,,False,1.0,True,ACTIVATE_WAF_RULE,ACTIVATE_WAF_RULE,False,0.5,0.15074960707111554,0.8164965811610239,0.9736937362361541
+coverage,CommandInjection,Web,0.49999999999999994,True,CommandInjection,False,True,class_policy,Web_Application_Attack,,False,1.0,True,ACTIVATE_WAF_RULE,ACTIVATE_WAF_RULE,False,0.49999999999999994,0.14328367306770426,1.105541596889754,0.4346434816962812
+coverage,CommandInjection,Web,0.559417343668919,True,CommandInjection,False,True,class_policy,Web_Application_Attack,,False,1.0,True,ACTIVATE_WAF_RULE,ACTIVATE_WAF_RULE,False,0.559417343668919,0.1548657699167749,1.105541596992447,0.048507513218250864
+coverage,CommandInjection,Web,0.49999999999999994,True,CommandInjection,False,True,class_policy,Web_Application_Attack,,False,1.0,True,ACTIVATE_WAF_RULE,ACTIVATE_WAF_RULE,False,0.49999999999999994,0.15008723258005657,0.8165051310812061,0.9300019728911992
+coverage,CommandInjection,Web,0.5000000000000001,True,CommandInjection,False,True,class_policy,Web_Application_Attack,,False,1.0,True,ACTIVATE_WAF_RULE,ACTIVATE_WAF_RULE,False,0.5000000000000001,0.15074755984423813,0.8164965811855532,1.0
+coverage,CommandInjection,Web,0.5,True,CommandInjection,False,True,class_policy,Web_Application_Attack,,False,1.0,True,ACTIVATE_WAF_RULE,ACTIVATE_WAF_RULE,False,0.5,0.15096011370199738,0.9045377672739255,0.9953068487337922
+coverage,CommandInjection,Web,0.49999999999999994,True,CommandInjection,False,True,class_policy,Web_Application_Attack,,False,1.0,True,ACTIVATE_WAF_RULE,ACTIVATE_WAF_RULE,False,0.49999999999999994,0.15631793876407804,1.1055415968539524,0.2335190723374696
+coverage,CommandInjection,Web,0.5,True,CommandInjection,False,True,class_policy,Web_Application_Attack,,False,1.0,True,ACTIVATE_WAF_RULE,ACTIVATE_WAF_RULE,False,0.5,0.14830999436967998,0.6546569338072074,0.9975672870575003
+coverage,CommandInjection,Web,0.5343336116769223,True,CommandInjection,False,True,class_policy,Web_Application_Attack,,False,1.0,True,ACTIVATE_WAF_RULE,ACTIVATE_WAF_RULE,False,0.5343336116769223,0.1567866085382517,0.9045429514354855,0.7045324337187862
+coverage,CommandInjection,Web,0.49999999999999994,True,CommandInjection,False,True,class_policy,Web_Application_Attack,,False,1.0,True,ACTIVATE_WAF_RULE,ACTIVATE_WAF_RULE,False,0.49999999999999994,0.1574625697556535,1.0000107258139246,0.2244721794105694
+coverage,CommandInjection,Web,0.49999999999999994,True,CommandInjection,False,True,class_policy,Web_Application_Attack,,False,1.0,True,ACTIVATE_WAF_RULE,ACTIVATE_WAF_RULE,False,0.49999999999999994,0.14328611282452428,1.1055415968183144,0.9997365219835165
+coverage,CommandInjection,Web,0.5,True,CommandInjection,False,True,class_policy,Web_Application_Attack,,False,1.0,True,ACTIVATE_WAF_RULE,ACTIVATE_WAF_RULE,False,0.5,0.15604628234831716,0.8165051803974548,0.6652659578762423
+coverage,CommandInjection,Web,0.49999999999999994,True,CommandInjection,False,True,class_policy,Web_Application_Attack,,False,1.0,True,ACTIVATE_WAF_RULE,ACTIVATE_WAF_RULE,False,0.49999999999999994,0.1605703671778122,0.5773617444609516,0.9895256529358849
+coverage,DDoS-ACK_Fragmentation,DDoS,0.8543693693695275,True,DDoS-ACK_Fragmentation,False,True,class_policy,Fragmentation_Attack,,True,2.0,True,DROP_MALFORMED_FRAGMENTS,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.20148188573313694,0.7337993858240056,0.09306437446098559
+coverage,DDoS-ACK_Fragmentation,DDoS,0.8543693693695275,True,DDoS-ACK_Fragmentation,False,True,class_policy,Fragmentation_Attack,,True,1.0,True,DROP_MALFORMED_FRAGMENTS,DROP_MALFORMED_FRAGMENTS,False,0.8543693693695275,0.13894305160179063,0.8766375403914268,0.9928170346858011
+coverage,DDoS-ACK_Fragmentation,DDoS,0.8543693693695275,True,DDoS-ACK_Fragmentation,False,True,class_policy,Fragmentation_Attack,,True,1.0,True,DROP_MALFORMED_FRAGMENTS,DROP_MALFORMED_FRAGMENTS,False,0.8543693693695275,0.1602144601472754,0.8766373464959034,0.9996455240553871
+coverage,DDoS-ACK_Fragmentation,DDoS,0.8543693693695275,True,DDoS-ACK_Fragmentation,False,True,class_policy,Fragmentation_Attack,,True,1.0,True,DROP_MALFORMED_FRAGMENTS,DROP_MALFORMED_FRAGMENTS,False,0.8543693693695275,0.14124730907110042,0.9689148564926042,0.8904371278116092
+coverage,DDoS-ACK_Fragmentation,DDoS,0.8543693693695275,True,DDoS-ACK_Fragmentation,False,True,class_policy,Fragmentation_Attack,,True,1.0,True,DROP_MALFORMED_FRAGMENTS,DROP_MALFORMED_FRAGMENTS,False,0.8543693693695275,0.1460823724089797,0.8766385628376506,0.7051850090687637
+coverage,DDoS-ACK_Fragmentation,DDoS,0.8543693693695275,True,DDoS-ACK_Fragmentation,False,True,class_policy,Fragmentation_Attack,,True,1.0,True,DROP_MALFORMED_FRAGMENTS,DROP_MALFORMED_FRAGMENTS,False,0.8543693693695275,0.1431573286967053,0.8942624299578161,0.054630126399729195
+coverage,DDoS-ACK_Fragmentation,DDoS,0.8543693693695275,True,DDoS-ACK_Fragmentation,False,True,class_policy,Fragmentation_Attack,,True,1.0,True,DROP_MALFORMED_FRAGMENTS,DROP_MALFORMED_FRAGMENTS,False,0.8543693693695275,0.1553990932943145,0.9873944828246756,0.7050984929345772
+coverage,DDoS-ACK_Fragmentation,DDoS,0.8543693693695275,True,DDoS-ACK_Fragmentation,False,True,class_policy,Fragmentation_Attack,,True,1.0,True,DROP_MALFORMED_FRAGMENTS,DROP_MALFORMED_FRAGMENTS,False,0.8543693693695275,0.15143813053020644,0.9873982419640108,0.9993406863150343
+coverage,DDoS-ACK_Fragmentation,DDoS,0.8543693693695275,True,DDoS-ACK_Fragmentation,False,True,class_policy,Fragmentation_Attack,,True,2.0,True,DROP_MALFORMED_FRAGMENTS,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.14911682709841703,0.968914515003011,0.0005483894394816557
+coverage,DDoS-ACK_Fragmentation,DDoS,0.8543693693695275,True,DDoS-ACK_Fragmentation,False,True,class_policy,Fragmentation_Attack,,True,1.0,True,DROP_MALFORMED_FRAGMENTS,DROP_MALFORMED_FRAGMENTS,False,0.8543693693695275,0.1521657191103547,0.8575533143190008,0.8435871798597891
+coverage,DDoS-ACK_Fragmentation,DDoS,0.8543693693695275,True,DDoS-ACK_Fragmentation,False,True,class_policy,Fragmentation_Attack,,True,1.0,True,DROP_MALFORMED_FRAGMENTS,DROP_MALFORMED_FRAGMENTS,False,0.8543693693695275,0.15946611667328955,1.1590933690406626,0.9847773069259202
+coverage,DDoS-ACK_Fragmentation,DDoS,0.8543693693695275,True,DDoS-ACK_Fragmentation,False,True,class_policy,Fragmentation_Attack,,True,1.0,True,DROP_MALFORMED_FRAGMENTS,DROP_MALFORMED_FRAGMENTS,False,0.8543693693695275,0.14320464281767906,0.9874011678210927,0.45114956751293356
+coverage,DDoS-ACK_Fragmentation,DDoS,0.8543693693695275,True,DDoS-ACK_Fragmentation,False,True,class_policy,Fragmentation_Attack,,True,1.0,True,DROP_MALFORMED_FRAGMENTS,DROP_MALFORMED_FRAGMENTS,False,0.8543693693695275,0.15851937400378863,1.070053159487705,0.7784344256517086
+coverage,DDoS-ACK_Fragmentation,DDoS,0.8543693693695275,True,DDoS-ACK_Fragmentation,False,True,class_policy,Fragmentation_Attack,,True,1.0,True,DROP_MALFORMED_FRAGMENTS,DROP_MALFORMED_FRAGMENTS,False,0.8543693693695275,0.304311104386718,1.0000000003810192,1.0
+coverage,DDoS-ACK_Fragmentation,DDoS,0.8543693693695275,True,DDoS-ACK_Fragmentation,False,True,class_policy,Fragmentation_Attack,,True,1.0,True,DROP_MALFORMED_FRAGMENTS,DROP_MALFORMED_FRAGMENTS,False,0.8543693693695275,0.1419584441103696,1.285588395773271,0.9989813768980028
+coverage,DDoS-HTTP_Flood,DDoS,0.8543693693695275,True,DDoS-HTTP_Flood,False,True,class_policy,Slow_Application_Attack,,True,1.0,True,LIMIT_CONCURRENT_CONNECTIONS,LIMIT_CONCURRENT_CONNECTIONS,False,0.8543693693695275,0.15818627515309205,0.6766387414615179,0.9235989881580516
+coverage,DDoS-HTTP_Flood,DDoS,0.8543693693695275,True,DDoS-HTTP_Flood,False,True,class_policy,Slow_Application_Attack,,True,1.0,True,LIMIT_CONCURRENT_CONNECTIONS,LIMIT_CONCURRENT_CONNECTIONS,False,0.8543693693695275,0.1625099584831882,0.9101085549263295,0.5057750444145614
+coverage,DDoS-HTTP_Flood,DDoS,0.8543693693695275,True,DDoS-HTTP_Flood,False,True,class_policy,Slow_Application_Attack,,True,1.0,True,LIMIT_CONCURRENT_CONNECTIONS,LIMIT_CONCURRENT_CONNECTIONS,False,0.8543693693695275,0.16031090130025102,1.4631130034798814,0.8285752715169961
+coverage,DDoS-HTTP_Flood,DDoS,0.8543693693695275,True,DDoS-HTTP_Flood,False,True,class_policy,Slow_Application_Attack,,True,1.0,True,LIMIT_CONCURRENT_CONNECTIONS,LIMIT_CONCURRENT_CONNECTIONS,False,0.8543693693695275,0.14636226491173174,0.8945204818121779,0.81570116984401
+coverage,DDoS-HTTP_Flood,DDoS,0.8543693693695275,True,DDoS-HTTP_Flood,False,True,class_policy,Slow_Application_Attack,,True,1.0,True,LIMIT_CONCURRENT_CONNECTIONS,LIMIT_CONCURRENT_CONNECTIONS,False,0.8543693693695275,0.18596900721974274,1.4631202817697047,0.9997970194832146
+coverage,DDoS-HTTP_Flood,DDoS,0.8543693693695275,True,DDoS-HTTP_Flood,False,True,class_policy,Slow_Application_Attack,,True,1.0,True,LIMIT_CONCURRENT_CONNECTIONS,LIMIT_CONCURRENT_CONNECTIONS,False,0.8543693693695275,0.1469950456432492,0.9269701236811586,0.9999993391161927
+coverage,DDoS-HTTP_Flood,DDoS,0.8543693693695275,True,DDoS-HTTP_Flood,False,True,class_policy,Slow_Application_Attack,,True,1.0,True,LIMIT_CONCURRENT_CONNECTIONS,LIMIT_CONCURRENT_CONNECTIONS,False,0.8543693693695275,0.14961496418471482,0.9690909955980264,0.9999921986113931
+coverage,DDoS-HTTP_Flood,DDoS,0.8543693693695275,True,DDoS-HTTP_Flood,False,True,class_policy,Slow_Application_Attack,,True,1.0,True,LIMIT_CONCURRENT_CONNECTIONS,LIMIT_CONCURRENT_CONNECTIONS,False,0.8543693693695275,0.15855757678533555,1.0699511080880837,0.009591609093922204
+coverage,DDoS-HTTP_Flood,DDoS,0.8543693693695275,True,DDoS-HTTP_Flood,False,True,class_policy,Slow_Application_Attack,,True,1.0,True,LIMIT_CONCURRENT_CONNECTIONS,LIMIT_CONCURRENT_CONNECTIONS,False,0.8543693693695275,0.1555633761629903,1.1831007107701232,0.8628072520245189
+coverage,DDoS-HTTP_Flood,DDoS,0.8543693693695275,True,DDoS-HTTP_Flood,False,True,class_policy,Slow_Application_Attack,,True,1.0,True,LIMIT_CONCURRENT_CONNECTIONS,LIMIT_CONCURRENT_CONNECTIONS,False,0.8543693693695275,0.14494342941153726,1.089685756302123,0.0003514946815478259
+coverage,DDoS-HTTP_Flood,DDoS,0.8543693693695275,True,DDoS-HTTP_Flood,False,True,class_policy,Slow_Application_Attack,,True,2.0,True,LIMIT_CONCURRENT_CONNECTIONS,BLOCK_SOURCE,True,0.8543693693695275,0.1553566416713242,1.000000000218981,0.13482760109402636
+coverage,DDoS-HTTP_Flood,DDoS,0.8543693693695275,True,DDoS-HTTP_Flood,False,True,class_policy,Slow_Application_Attack,,True,1.0,True,LIMIT_CONCURRENT_CONNECTIONS,LIMIT_CONCURRENT_CONNECTIONS,False,0.8543693693695275,0.15075094571524067,0.8164965812226459,1.0
+coverage,DDoS-HTTP_Flood,DDoS,0.8543693693695275,True,DDoS-HTTP_Flood,False,True,class_policy,Slow_Application_Attack,,True,1.0,True,LIMIT_CONCURRENT_CONNECTIONS,LIMIT_CONCURRENT_CONNECTIONS,False,0.8543693693695275,0.13800701525051878,0.9271013556014757,0.9999434175624399
+coverage,DDoS-HTTP_Flood,DDoS,0.8543693693695275,True,DDoS-HTTP_Flood,False,True,class_policy,Slow_Application_Attack,,True,1.0,True,LIMIT_CONCURRENT_CONNECTIONS,LIMIT_CONCURRENT_CONNECTIONS,False,0.8543693693695275,0.15967876223944025,0.8768008616893465,0.9996384602871987
+coverage,DDoS-HTTP_Flood,DDoS,0.8543693693695275,True,DDoS-HTTP_Flood,False,True,class_policy,Slow_Application_Attack,,True,1.0,True,LIMIT_CONCURRENT_CONNECTIONS,LIMIT_CONCURRENT_CONNECTIONS,False,0.8543693693695275,0.1488155361136293,0.7098534105000471,0.6371567138816522
+coverage,DDoS-ICMP_Flood,DDoS,0.8543693693695275,True,DDoS-ICMP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.14626084697841088,1.1593935050138346,0.993771871290467
+coverage,DDoS-ICMP_Flood,DDoS,0.8543693693695275,True,DDoS-ICMP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.1455489960279706,0.894712573773475,0.24699373584726625
+coverage,DDoS-ICMP_Flood,DDoS,0.8543693693695275,True,DDoS-ICMP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.15056255650173644,0.9104444707753084,0.08969814626284534
+coverage,DDoS-ICMP_Flood,DDoS,0.8543693693695275,True,DDoS-ICMP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.16254649245906272,1.225253301105785,0.9006853279265801
+coverage,DDoS-ICMP_Flood,DDoS,0.8543693693695275,True,DDoS-ICMP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.15079258973544368,0.7729114171847317,0.002643125823663439
+coverage,DDoS-ICMP_Flood,DDoS,0.8543693693695275,True,DDoS-ICMP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.16177004457970473,0.83703767802234,0.9856900319079123
+coverage,DDoS-ICMP_Flood,DDoS,0.8543693693695275,True,DDoS-ICMP_Flood,False,True,class_policy,Volumetric_Flood,,True,2.0,True,RATE_LIMIT_SOURCE,BLOCK_SOURCE,True,0.8543693693695275,0.15204968245979872,0.8164965811065275,0.2082728327676704
+coverage,DDoS-ICMP_Flood,DDoS,0.8543693693695275,True,DDoS-ICMP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.14779360856677604,0.9692682803140481,0.9604010667002573
+coverage,DDoS-ICMP_Flood,DDoS,0.8543693693695275,True,DDoS-ICMP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.16220125439178754,0.9233585745414005,0.49682886876763355
+coverage,DDoS-ICMP_Flood,DDoS,0.8543693693695275,True,DDoS-ICMP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.14612754040500175,0.8237450111498958,0.7582263883828171
+coverage,DDoS-ICMP_Flood,DDoS,0.8543693693695275,True,DDoS-ICMP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.15840976822979289,1.0036450729481625,0.745793441473595
+coverage,DDoS-ICMP_Flood,DDoS,0.8543693693695275,True,DDoS-ICMP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.14988238698827322,1.3125450898359357,0.9995401422006485
+coverage,DDoS-ICMP_Flood,DDoS,0.8543693693695275,True,DDoS-ICMP_Flood,False,True,class_policy,Volumetric_Flood,,True,2.0,True,RATE_LIMIT_SOURCE,BLOCK_SOURCE,True,0.8543693693695275,0.16183889035405272,0.577350269414098,0.6191862668524313
+coverage,DDoS-ICMP_Flood,DDoS,0.8543693693695275,True,DDoS-ICMP_Flood,False,True,class_policy,Volumetric_Flood,,True,2.0,True,RATE_LIMIT_SOURCE,BLOCK_SOURCE,True,0.8543693693695275,0.15770930070138084,1.1055415969795128,0.8780639290345941
+coverage,DDoS-ICMP_Flood,DDoS,0.8543693693695275,True,DDoS-ICMP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.14251615897105646,1.2562022174349052,0.9999916175685304
+coverage,DDoS-ICMP_Fragmentation,DDoS,0.8543693693695275,True,DDoS-ICMP_Fragmentation,False,True,class_policy,Fragmentation_Attack,,True,1.0,True,DROP_MALFORMED_FRAGMENTS,DROP_MALFORMED_FRAGMENTS,False,0.8543693693695275,0.15963593179931346,0.8576101884126045,0.9903049644670068
+coverage,DDoS-ICMP_Fragmentation,DDoS,0.8543693693695275,True,DDoS-ICMP_Fragmentation,False,True,class_policy,Fragmentation_Attack,,True,1.0,True,DROP_MALFORMED_FRAGMENTS,DROP_MALFORMED_FRAGMENTS,False,0.8543693693695275,0.14699718868617884,0.7098309757358702,0.999781477569403
+coverage,DDoS-ICMP_Fragmentation,DDoS,0.8543693693695275,True,DDoS-ICMP_Fragmentation,False,True,class_policy,Fragmentation_Attack,,True,1.0,True,DROP_MALFORMED_FRAGMENTS,DROP_MALFORMED_FRAGMENTS,False,0.8543693693695275,0.14200242966184637,1.0246341232262344,0.5781762933272858
+coverage,DDoS-ICMP_Fragmentation,DDoS,0.8543693693695275,True,DDoS-ICMP_Fragmentation,False,True,class_policy,Fragmentation_Attack,,True,1.0,True,DROP_MALFORMED_FRAGMENTS,DROP_MALFORMED_FRAGMENTS,False,0.8543693693695275,0.14801679999999706,0.9229822527137541,0.01038631164657522
+coverage,DDoS-ICMP_Fragmentation,DDoS,0.8543693693695275,True,DDoS-ICMP_Fragmentation,False,True,class_policy,Fragmentation_Attack,,True,1.0,True,DROP_MALFORMED_FRAGMENTS,DROP_MALFORMED_FRAGMENTS,False,0.8543693693695275,0.3079496402613341,0.6770029399594697,0.9977861294927168
+coverage,DDoS-ICMP_Fragmentation,DDoS,0.8543693693695275,True,DDoS-ICMP_Fragmentation,False,True,class_policy,Fragmentation_Attack,,True,1.0,True,DROP_MALFORMED_FRAGMENTS,DROP_MALFORMED_FRAGMENTS,False,0.8543693693695275,0.1672294844847401,0.5374923413883287,0.993671374652614
+coverage,DDoS-ICMP_Fragmentation,DDoS,0.8543693693695275,True,DDoS-ICMP_Fragmentation,False,True,class_policy,Fragmentation_Attack,,True,1.0,True,DROP_MALFORMED_FRAGMENTS,DROP_MALFORMED_FRAGMENTS,False,0.8543693693695275,0.15331067044022167,0.7264539176803526,0.9993140054064533
+coverage,DDoS-ICMP_Fragmentation,DDoS,0.8543693693695275,True,DDoS-ICMP_Fragmentation,False,True,class_policy,Fragmentation_Attack,,True,1.0,True,DROP_MALFORMED_FRAGMENTS,DROP_MALFORMED_FRAGMENTS,False,0.8543693693695275,0.1534429991189192,1.183218953316085,0.30945120533063586
+coverage,DDoS-ICMP_Fragmentation,DDoS,0.8543693693695275,True,DDoS-ICMP_Fragmentation,False,True,class_policy,Fragmentation_Attack,,True,1.0,True,DROP_MALFORMED_FRAGMENTS,DROP_MALFORMED_FRAGMENTS,False,0.8543693693695275,0.14475699703586334,0.9486781300148901,0.2001546630743274
+coverage,DDoS-ICMP_Fragmentation,DDoS,0.8543693693695275,True,DDoS-ICMP_Fragmentation,False,True,class_policy,Fragmentation_Attack,,True,1.0,True,DROP_MALFORMED_FRAGMENTS,DROP_MALFORMED_FRAGMENTS,False,0.8543693693695275,0.15317269759734067,0.8767760764290631,0.998950394829498
+coverage,DDoS-ICMP_Fragmentation,DDoS,0.8543693693695275,True,DDoS-ICMP_Fragmentation,False,True,class_policy,Fragmentation_Attack,,True,1.0,True,DROP_MALFORMED_FRAGMENTS,DROP_MALFORMED_FRAGMENTS,False,0.8543693693695275,0.14307150462893248,1.1831917094331796,0.8180981857820007
+coverage,DDoS-ICMP_Fragmentation,DDoS,0.8543693693695275,True,DDoS-ICMP_Fragmentation,False,True,class_policy,Fragmentation_Attack,,True,1.0,True,DROP_MALFORMED_FRAGMENTS,DROP_MALFORMED_FRAGMENTS,False,0.8543693693695275,0.15093780853751915,1.1055532786223732,0.9384300124466654
+coverage,DDoS-ICMP_Fragmentation,DDoS,0.8543693693695275,True,DDoS-ICMP_Fragmentation,False,True,class_policy,Fragmentation_Attack,,True,1.0,True,DROP_MALFORMED_FRAGMENTS,DROP_MALFORMED_FRAGMENTS,False,0.8543693693695275,0.15103993682284525,0.8944078689426032,0.9972456471503434
+coverage,DDoS-ICMP_Fragmentation,DDoS,0.8543693693695275,True,DDoS-ICMP_Fragmentation,False,True,class_policy,Fragmentation_Attack,,True,1.0,True,DROP_MALFORMED_FRAGMENTS,DROP_MALFORMED_FRAGMENTS,False,0.8543693693695275,0.14150949475558355,0.876740786954846,0.9631018924569222
+coverage,DDoS-ICMP_Fragmentation,DDoS,0.8543693693695275,True,DDoS-ICMP_Fragmentation,False,True,class_policy,Fragmentation_Attack,,True,1.0,True,DROP_MALFORMED_FRAGMENTS,DROP_MALFORMED_FRAGMENTS,False,0.8543693693695275,0.1498269007328781,0.8080376678419693,0.9338112208386606
+coverage,DDoS-PSHACK_Flood,DDoS,0.8543693693695275,True,DDoS-PSHACK_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,2.0,True,ENABLE_SYN_COOKIES,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.15848616860941298,1.1329720838805055,0.3684841964280432
+coverage,DDoS-PSHACK_Flood,DDoS,0.8543693693695275,True,DDoS-PSHACK_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.15853974664033724,1.0032663954564434,0.6381040862110585
+coverage,DDoS-PSHACK_Flood,DDoS,0.8543693693695275,True,DDoS-PSHACK_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.15272739281582473,0.7909120183974282,0.998652563102643
+coverage,DDoS-PSHACK_Flood,DDoS,0.8543693693695275,True,DDoS-PSHACK_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.1531162588767848,0.7098440654374375,0.8202558111527698
+coverage,DDoS-PSHACK_Flood,DDoS,0.8543693693695275,True,DDoS-PSHACK_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.14869376421850203,0.9099234213451399,0.8621673961140929
+coverage,DDoS-PSHACK_Flood,DDoS,0.8543693693695275,True,DDoS-PSHACK_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.1495914049784304,0.8943031201977889,0.6351091804769993
+coverage,DDoS-PSHACK_Flood,DDoS,0.8543693693695275,True,DDoS-PSHACK_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,3.0,True,ENABLE_SYN_COOKIES,BLOCK_SOURCE,True,0.8543693693695275,0.14628415047365065,1.000000000091282,0.9998642957277293
+coverage,DDoS-PSHACK_Flood,DDoS,0.8543693693695275,True,DDoS-PSHACK_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.14635869312515476,0.9874432476130172,0.9668679548393369
+coverage,DDoS-PSHACK_Flood,DDoS,0.8543693693695275,True,DDoS-PSHACK_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.15272979161366718,0.7909175450161756,0.9138836869601379
+coverage,DDoS-PSHACK_Flood,DDoS,0.8543693693695275,True,DDoS-PSHACK_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.28474395514397965,0.8078862515857763,0.9345943085264703
+coverage,DDoS-PSHACK_Flood,DDoS,0.8543693693695275,True,DDoS-PSHACK_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,2.0,True,ENABLE_SYN_COOKIES,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.15384740249572404,1.0245840692560697,0.9733786754548255
+coverage,DDoS-PSHACK_Flood,DDoS,0.8543693693695275,True,DDoS-PSHACK_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,2.0,True,ENABLE_SYN_COOKIES,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.15781291833835398,0.9486118190790228,0.7916953236185571
+coverage,DDoS-PSHACK_Flood,DDoS,0.8543693693695275,True,DDoS-PSHACK_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.31658322750177104,0.876661990648141,0.999961447923533
+coverage,DDoS-PSHACK_Flood,DDoS,0.8543693693695275,True,DDoS-PSHACK_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.21956622896654926,1.0895586180553793,0.9998206415542873
+coverage,DDoS-PSHACK_Flood,DDoS,0.8543693693695275,True,DDoS-PSHACK_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.1585126985043368,1.070075645242975,0.23080069572340134
+coverage,DDoS-RSTFINFlood,DDoS,0.8543693693695275,True,DDoS-RSTFINFlood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.15852474277391368,1.0700399606025712,0.9995940129144664
+coverage,DDoS-RSTFINFlood,DDoS,0.8543693693695275,True,DDoS-RSTFINFlood,False,True,class_policy,TCP_State_Exhaustion,,True,3.0,False,ENABLE_SYN_COOKIES,BLOCK_SOURCE,True,0.8543693693695275,0.8025000000000002,1.7320508075558319,0.8953775264520559
+coverage,DDoS-RSTFINFlood,DDoS,0.8543693693695275,True,DDoS-RSTFINFlood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.2237034078420519,0.987384972437492,0.7234600883963063
+coverage,DDoS-RSTFINFlood,DDoS,0.8543693693695275,True,DDoS-RSTFINFlood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.1442454026189941,1.1590815443915503,0.9934782330379628
+coverage,DDoS-RSTFINFlood,DDoS,0.8543693693695275,True,DDoS-RSTFINFlood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.15151813938451747,0.8942437627544697,0.00046462723818518903
+coverage,DDoS-RSTFINFlood,DDoS,0.8543693693695275,True,DDoS-RSTFINFlood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.15274014388953652,0.7908924997726244,0.7876084735450046
+coverage,DDoS-RSTFINFlood,DDoS,0.8543693693695275,True,DDoS-RSTFINFlood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.15119478132335573,0.9873791628185081,0.21090237483956975
+coverage,DDoS-RSTFINFlood,DDoS,0.8543693693695275,True,DDoS-RSTFINFlood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.15798182201881797,0.6922283215142773,0.9810403953294973
+coverage,DDoS-RSTFINFlood,DDoS,0.8543693693695275,True,DDoS-RSTFINFlood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.15852389904762812,1.0700402157566298,0.6551504756462252
+coverage,DDoS-RSTFINFlood,DDoS,0.8543693693695275,True,DDoS-RSTFINFlood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.15062977558230564,1.3119931504713838,0.8831542316243951
+coverage,DDoS-RSTFINFlood,DDoS,0.8543693693695275,True,DDoS-RSTFINFlood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.15879884937050914,0.7414777133005982,0.44399333552093223
+coverage,DDoS-RSTFINFlood,DDoS,0.8543693693695275,True,DDoS-RSTFINFlood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.1558072874282086,0.8766238105712664,0.7724956847192352
+coverage,DDoS-RSTFINFlood,DDoS,0.8543693693695275,True,DDoS-RSTFINFlood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.1527403964064547,0.7908907290050773,0.8999895762379545
+coverage,DDoS-RSTFINFlood,DDoS,0.8543693693695275,True,DDoS-RSTFINFlood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.15341879642781087,0.9485884842871196,0.9432563293519377
+coverage,DDoS-RSTFINFlood,DDoS,0.8543693693695275,True,DDoS-RSTFINFlood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.14927976890867556,0.709810094752098,0.9999825896782542
+coverage,DDoS-SYN_Flood,DDoS,0.8543693693695275,True,DDoS-SYN_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.1466391935288175,0.8083661464877728,0.9069570994162661
+coverage,DDoS-SYN_Flood,DDoS,0.8543693693695275,True,DDoS-SYN_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,2.0,True,ENABLE_SYN_COOKIES,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.14591893070813156,0.6739083656989378,0.005402174722059394
+coverage,DDoS-SYN_Flood,DDoS,0.8543693693695275,True,DDoS-SYN_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.15372275146617187,0.8770319735916535,0.8235612061615945
+coverage,DDoS-SYN_Flood,DDoS,0.8543693693695275,True,DDoS-SYN_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,2.0,True,ENABLE_SYN_COOKIES,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.1587756121371517,0.8375395886223828,0.350690593247147
+coverage,DDoS-SYN_Flood,DDoS,0.8543693693695275,True,DDoS-SYN_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.155917427610748,0.9693522842193987,0.6787861675912812
+coverage,DDoS-SYN_Flood,DDoS,0.8543693693695275,True,DDoS-SYN_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.1583658377360835,1.0705283623670874,0.793892511367637
+coverage,DDoS-SYN_Flood,DDoS,0.8543693693695275,True,DDoS-SYN_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.1532999103919049,1.1594420236852114,0.8529777498634835
+coverage,DDoS-SYN_Flood,DDoS,0.8543693693695275,True,DDoS-SYN_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.15256033380484713,0.741905508666822,0.9197618075649748
+coverage,DDoS-SYN_Flood,DDoS,0.8543693693695275,True,DDoS-SYN_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,2.0,True,ENABLE_SYN_COOKIES,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.3308659445883329,0.7268098233448442,0.8703997984082137
+coverage,DDoS-SYN_Flood,DDoS,0.8543693693695275,True,DDoS-SYN_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.15628140716411862,0.9488760253957835,0.9512302790231529
+coverage,DDoS-SYN_Flood,DDoS,0.8543693693695275,True,DDoS-SYN_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,2.0,True,ENABLE_SYN_COOKIES,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.15075161724900582,0.8164965810340242,0.9960496954153611
+coverage,DDoS-SYN_Flood,DDoS,0.8543693693695275,True,DDoS-SYN_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,2.0,True,ENABLE_SYN_COOKIES,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.15666215055848248,0.8578146921568276,0.7983209580201641
+coverage,DDoS-SYN_Flood,DDoS,0.8543693693695275,True,DDoS-SYN_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.16014970831028547,1.0247299627211242,0.9664611596222741
+coverage,DDoS-SYN_Flood,DDoS,0.8543693693695275,True,DDoS-SYN_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,2.0,True,ENABLE_SYN_COOKIES,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.15843752406974454,1.1331369051468636,0.8894820619851678
+coverage,DDoS-SYN_Flood,DDoS,0.8543693693695275,True,DDoS-SYN_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.13831838646238082,0.8238371220253303,0.8368888491583485
+coverage,DDoS-SlowLoris,DDoS,0.6316342471551603,True,DDoS-SlowLoris,False,True,class_policy,Slow_Application_Attack,,True,1.0,True,LIMIT_CONCURRENT_CONNECTIONS,LIMIT_CONCURRENT_CONNECTIONS,False,0.6316342471551603,0.14912476190358046,1.344871172463712,0.9716553859009307
+coverage,DDoS-SlowLoris,DDoS,0.8521893084129857,True,DDoS-SlowLoris,False,True,class_policy,Slow_Application_Attack,,True,1.0,True,LIMIT_CONCURRENT_CONNECTIONS,LIMIT_CONCURRENT_CONNECTIONS,False,0.8521893084129857,0.15835567746036766,0.8765764032448451,0.9976109771621107
+coverage,DDoS-SlowLoris,DDoS,0.8543693693695275,True,DDoS-SlowLoris,False,True,class_policy,Slow_Application_Attack,,True,1.0,True,LIMIT_CONCURRENT_CONNECTIONS,LIMIT_CONCURRENT_CONNECTIONS,False,0.8543693693695275,0.14142030850635,1.2560056287905954,0.9996646281839877
+coverage,DDoS-SlowLoris,DDoS,0.8543693693695275,True,DDoS-SlowLoris,False,True,class_policy,Slow_Application_Attack,,True,1.0,True,LIMIT_CONCURRENT_CONNECTIONS,LIMIT_CONCURRENT_CONNECTIONS,False,0.8543693693695275,0.1559287122836363,1.433495258367946,0.9997996858299333
+coverage,DDoS-SlowLoris,DDoS,0.8543693693695275,True,DDoS-SlowLoris,False,True,class_policy,Slow_Application_Attack,,True,1.0,True,LIMIT_CONCURRENT_CONNECTIONS,LIMIT_CONCURRENT_CONNECTIONS,False,0.8543693693695275,0.16031989331812918,1.0699793091078889,0.9993484262886275
+coverage,DDoS-SlowLoris,DDoS,0.8543693693695275,True,DDoS-SlowLoris,False,True,class_policy,Slow_Application_Attack,,True,1.0,True,LIMIT_CONCURRENT_CONNECTIONS,LIMIT_CONCURRENT_CONNECTIONS,False,0.8543693693695275,0.15169881997823778,1.203403789242215,0.7204859992935432
+coverage,DDoS-SlowLoris,DDoS,0.8543693693695275,True,DDoS-SlowLoris,False,True,class_policy,Slow_Application_Attack,,True,1.0,True,LIMIT_CONCURRENT_CONNECTIONS,LIMIT_CONCURRENT_CONNECTIONS,False,0.8543693693695275,0.1518522124720991,0.6316433384493311,0.998490757221346
+coverage,DDoS-SlowLoris,DDoS,0.8533462375096739,True,DDoS-SlowLoris,False,True,class_policy,Slow_Application_Attack,,True,1.0,True,LIMIT_CONCURRENT_CONNECTIONS,LIMIT_CONCURRENT_CONNECTIONS,False,0.8533462375096739,0.15938534575958488,0.8231228644577326,0.6126373751845278
+coverage,DDoS-SlowLoris,DDoS,0.8543693693695275,True,DDoS-SlowLoris,False,True,class_policy,Slow_Application_Attack,,True,1.0,True,LIMIT_CONCURRENT_CONNECTIONS,LIMIT_CONCURRENT_CONNECTIONS,False,0.8543693693695275,0.1520910634459187,0.7536020345218688,0.9994625377958632
+coverage,DDoS-SlowLoris,DDoS,0.8543693693695275,True,DDoS-SlowLoris,False,True,class_policy,Slow_Application_Attack,,True,1.0,True,LIMIT_CONCURRENT_CONNECTIONS,LIMIT_CONCURRENT_CONNECTIONS,False,0.8543693693695275,0.1442627796233296,1.024556979233141,0.9626377724894359
+coverage,DDoS-SlowLoris,DDoS,0.8543693693695275,True,DDoS-SlowLoris,False,True,class_policy,Slow_Application_Attack,,True,1.0,True,LIMIT_CONCURRENT_CONNECTIONS,LIMIT_CONCURRENT_CONNECTIONS,False,0.8543693693695275,0.14752583334403704,0.8077876206978335,0.9332179819793425
+coverage,DDoS-SlowLoris,DDoS,0.8543693693695275,True,DDoS-SlowLoris,False,True,class_policy,Slow_Application_Attack,,True,1.0,True,LIMIT_CONCURRENT_CONNECTIONS,LIMIT_CONCURRENT_CONNECTIONS,False,0.8543693693695275,0.14422915030138386,0.6921992634935961,0.9967997168002104
+coverage,DDoS-SlowLoris,DDoS,0.8543693693695275,True,DDoS-SlowLoris,False,True,class_policy,Slow_Application_Attack,,True,1.0,True,LIMIT_CONCURRENT_CONNECTIONS,LIMIT_CONCURRENT_CONNECTIONS,False,0.8543693693695275,0.3340129163216935,1.0245568035083796,0.9748153074799631
+coverage,DDoS-SlowLoris,DDoS,0.5000000000000001,True,DDoS-SlowLoris,False,True,class_policy,Slow_Application_Attack,,True,1.0,True,LIMIT_CONCURRENT_CONNECTIONS,LIMIT_CONCURRENT_CONNECTIONS,False,0.5000000000000001,0.1545632734561715,0.8765755066893223,0.9739606358205294
+coverage,DDoS-SlowLoris,DDoS,0.8543693693695275,True,DDoS-SlowLoris,False,True,class_policy,Slow_Application_Attack,,True,1.0,True,LIMIT_CONCURRENT_CONNECTIONS,LIMIT_CONCURRENT_CONNECTIONS,False,0.8543693693695275,0.14911636034800663,0.8575146681190227,0.9555237489301315
+coverage,DDoS-SynonymousIP_Flood,DDoS,0.8543693693695275,True,DDoS-SynonymousIP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.1527566193334553,0.7908636633129257,0.9854952105595894
+coverage,DDoS-SynonymousIP_Flood,DDoS,0.8543693693695275,True,DDoS-SynonymousIP_Flood,False,True,class_policy,Volumetric_Flood,,True,2.0,True,RATE_LIMIT_SOURCE,BLOCK_SOURCE,True,0.8543693693695275,0.1411115626624634,1.0000000002143212,0.7029730550733867
+coverage,DDoS-SynonymousIP_Flood,DDoS,0.8543693693695275,True,DDoS-SynonymousIP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.1447950197424337,0.6922119597137506,0.21344824708572552
+coverage,DDoS-SynonymousIP_Flood,DDoS,0.8543693693695275,True,DDoS-SynonymousIP_Flood,False,True,class_policy,Volumetric_Flood,,True,2.0,True,RATE_LIMIT_SOURCE,BLOCK_SOURCE,True,0.8543693693695275,0.15588216436047744,1.1055415969698896,0.7186625174788306
+coverage,DDoS-SynonymousIP_Flood,DDoS,0.8543693693695275,True,DDoS-SynonymousIP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.1590678177107712,0.5865431605460507,0.2084568678692843
+coverage,DDoS-SynonymousIP_Flood,DDoS,0.8543693693695275,True,DDoS-SynonymousIP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.14477279801308016,1.0245639283007186,1.0
+coverage,DDoS-SynonymousIP_Flood,DDoS,0.8543693693695275,True,DDoS-SynonymousIP_Flood,False,True,class_policy,Volumetric_Flood,,True,2.0,True,RATE_LIMIT_SOURCE,BLOCK_SOURCE,True,0.8543693693695275,0.15269894156783545,0.8373959458231954,0.9233175528192908
+coverage,DDoS-SynonymousIP_Flood,DDoS,0.8543693693695275,True,DDoS-SynonymousIP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.13925158059021914,0.9485665973879832,0.7769051633881371
+coverage,DDoS-SynonymousIP_Flood,DDoS,0.8543693693695275,True,DDoS-SynonymousIP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.15270398535604954,0.8373964765397478,0.9996710982616583
+coverage,DDoS-SynonymousIP_Flood,DDoS,0.8543693693695275,True,DDoS-SynonymousIP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.1473749750230755,1.0480923611070498,0.9711187607944636
+coverage,DDoS-SynonymousIP_Flood,DDoS,0.8543693693695275,True,DDoS-SynonymousIP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.15460134692870928,0.6767183055514652,0.47521912084870055
+coverage,DDoS-SynonymousIP_Flood,DDoS,0.8543693693695275,True,DDoS-SynonymousIP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.13919115395883824,0.8942088548705043,0.9254132372895517
+coverage,DDoS-SynonymousIP_Flood,DDoS,0.8543693693695275,True,DDoS-SynonymousIP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.1727137584440307,0.8765975598528241,0.9743439188068655
+coverage,DDoS-SynonymousIP_Flood,DDoS,0.8543693693695275,True,DDoS-SynonymousIP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.14275186502421222,0.6922118778239561,0.9176680521563622
+coverage,DDoS-SynonymousIP_Flood,DDoS,0.8543693693695275,True,DDoS-SynonymousIP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.16082371606137513,0.9688706779014484,0.9936702171627267
+coverage,DDoS-TCP_Flood,DDoS,0.8543693693695275,True,DDoS-TCP_Flood,False,True,class_policy,Volumetric_Flood,,True,2.0,True,RATE_LIMIT_SOURCE,BLOCK_SOURCE,True,0.8543693693695275,0.16039336967282727,1.10554159693126,0.9572732263921395
+coverage,DDoS-TCP_Flood,DDoS,0.8543693693695275,True,DDoS-TCP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.15562709462467308,0.8239038301381356,0.5875651338905912
+coverage,DDoS-TCP_Flood,DDoS,0.8543693693695275,True,DDoS-TCP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.16240518866664536,0.7557074390582122,0.7856841453235327
+coverage,DDoS-TCP_Flood,DDoS,0.8543693693695275,True,DDoS-TCP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.14200684293616503,1.2247448713221973,1.0
+coverage,DDoS-TCP_Flood,DDoS,0.8543693693695275,True,DDoS-TCP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.14693953794638565,0.8770789321772946,0.9530764272759575
+coverage,DDoS-TCP_Flood,DDoS,0.8543693693695275,True,DDoS-TCP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.1606574149299953,0.9694023029114474,0.8171662912556401
+coverage,DDoS-TCP_Flood,DDoS,0.8543693693695275,True,DDoS-TCP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.1560784299211378,1.2043374490372503,0.652916427239912
+coverage,DDoS-TCP_Flood,DDoS,0.8543693693695275,True,DDoS-TCP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.14348075511639505,0.9880657224332128,0.8346435984442566
+coverage,DDoS-TCP_Flood,DDoS,0.8543693693695275,True,DDoS-TCP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.14849927543671618,0.969417849593384,0.8869690954741292
+coverage,DDoS-TCP_Flood,DDoS,0.8543693693695275,True,DDoS-TCP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.15083209369438516,0.7730055336008635,0.8814854457392481
+coverage,DDoS-TCP_Flood,DDoS,0.8543693693695275,True,DDoS-TCP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.15960047818664125,0.8372768252986431,6.686353797080713e-05
+coverage,DDoS-TCP_Flood,DDoS,0.8543693693695275,True,DDoS-TCP_Flood,False,True,class_policy,Volumetric_Flood,,True,3.0,False,RATE_LIMIT_SOURCE,UPSTREAM_BLACKHOLE,True,0.8543693693695275,0.8274559830454739,0.4200840255582827,0.5763625542756862
+coverage,DDoS-TCP_Flood,DDoS,0.8543693693695275,True,DDoS-TCP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.14092468468732774,1.2562450171587827,0.9998990620852098
+coverage,DDoS-TCP_Flood,DDoS,0.8543693693695275,True,DDoS-TCP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.15842756998454263,0.7913192436611417,0.9999542547681103
+coverage,DDoS-TCP_Flood,DDoS,0.8543693693695275,True,DDoS-TCP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.14281219840776646,0.8084155122284672,0.8090069275206169
+coverage,DDoS-UDP_Flood,DDoS,0.8543693693695275,True,DDoS-UDP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.15187249551802867,0.98772072263131,0.8810510065349352
+coverage,DDoS-UDP_Flood,DDoS,0.8543693693695275,True,DDoS-UDP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.15516051402317302,1.2859761460281107,0.8226812259846104
+coverage,DDoS-UDP_Flood,DDoS,0.8543693693695275,True,DDoS-UDP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.15445317492398553,1.1835128616377046,0.7581131640988672
+coverage,DDoS-UDP_Flood,DDoS,0.8543693693695275,True,DDoS-UDP_Flood,False,True,class_policy,Volumetric_Flood,,True,2.0,True,RATE_LIMIT_SOURCE,BLOCK_SOURCE,True,0.8543693693695275,0.14299225500171936,0.733799385908577,0.39372252177270195
+coverage,DDoS-UDP_Flood,DDoS,0.8543693693695275,True,DDoS-UDP_Flood,False,True,class_policy,Volumetric_Flood,,True,2.0,True,RATE_LIMIT_SOURCE,BLOCK_SOURCE,True,0.8543693693695275,0.1483104848734648,0.6546536708190961,0.44302804223633496
+coverage,DDoS-UDP_Flood,DDoS,0.8543693693695275,True,DDoS-UDP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.15110706319784661,0.6484475672839937,0.5272068584343194
+coverage,DDoS-UDP_Flood,DDoS,0.8543693693695275,True,DDoS-UDP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.15751808205789883,1.0481821689095592,0.6500067314976747
+coverage,DDoS-UDP_Flood,DDoS,0.8543693693695275,True,DDoS-UDP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.14926318501828106,1.0484220833972964,0.8819694279136117
+coverage,DDoS-UDP_Flood,DDoS,0.8543693693695275,True,DDoS-UDP_Flood,False,True,class_policy,Volumetric_Flood,,True,2.0,True,RATE_LIMIT_SOURCE,BLOCK_SOURCE,True,0.8543693693695275,0.1701454503315831,1.527525231492342,0.4317959845804076
+coverage,DDoS-UDP_Flood,DDoS,0.8543693693695275,True,DDoS-UDP_Flood,False,True,class_policy,Volumetric_Flood,,True,3.0,False,RATE_LIMIT_SOURCE,UPSTREAM_BLACKHOLE,True,0.8543693693695275,0.49290973335113886,1.2247448714427331,0.8197854870648056
+coverage,DDoS-UDP_Flood,DDoS,0.8543693693695275,True,DDoS-UDP_Flood,False,True,class_policy,Volumetric_Flood,,True,2.0,True,RATE_LIMIT_SOURCE,BLOCK_SOURCE,True,0.8543693693695275,0.1509764475886037,1.0000000001714962,0.6776040450401444
+coverage,DDoS-UDP_Flood,DDoS,0.8543693693695275,True,DDoS-UDP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.15838003460404826,1.0704946705036746,0.8001422460946859
+coverage,DDoS-UDP_Flood,DDoS,0.8543693693695275,True,DDoS-UDP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.15668495994835874,0.6012104946837687,0.699584915281064
+coverage,DDoS-UDP_Flood,DDoS,0.8543693693695275,True,DDoS-UDP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.15838715167027093,1.0036938920287022,0.7879572903984743
+coverage,DDoS-UDP_Flood,DDoS,0.8543693693695275,True,DDoS-UDP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.14482586105633927,1.024728103901674,0.9660437636618378
+coverage,DDoS-UDP_Fragmentation,DDoS,0.8543693693695275,True,DDoS-UDP_Fragmentation,False,True,class_policy,Fragmentation_Attack,,True,1.0,True,DROP_MALFORMED_FRAGMENTS,DROP_MALFORMED_FRAGMENTS,False,0.8543693693695275,0.1573960285481962,1.3119425905543245,0.8311807933725401
+coverage,DDoS-UDP_Fragmentation,DDoS,0.8543693693695275,True,DDoS-UDP_Fragmentation,False,True,class_policy,Fragmentation_Attack,,True,1.0,True,DROP_MALFORMED_FRAGMENTS,DROP_MALFORMED_FRAGMENTS,False,0.8543693693695275,0.15808073626832256,0.6767070106975259,0.41959186045998986
+coverage,DDoS-UDP_Fragmentation,DDoS,0.8543693693695275,True,DDoS-UDP_Fragmentation,False,True,class_policy,Fragmentation_Attack,,True,1.0,True,DROP_MALFORMED_FRAGMENTS,DROP_MALFORMED_FRAGMENTS,False,0.8543693693695275,0.16022379250890495,1.0606810285104493,0.9593980105136708
+coverage,DDoS-UDP_Fragmentation,DDoS,0.8543693693695275,True,DDoS-UDP_Fragmentation,False,True,class_policy,Fragmentation_Attack,,True,1.0,True,DROP_MALFORMED_FRAGMENTS,DROP_MALFORMED_FRAGMENTS,False,0.8543693693695275,0.3175109233007886,0.894193259284454,0.8579256098706513
+coverage,DDoS-UDP_Fragmentation,DDoS,0.8543693693695275,True,DDoS-UDP_Fragmentation,False,True,class_policy,Fragmentation_Attack,,True,2.0,True,DROP_MALFORMED_FRAGMENTS,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.15515221549581865,0.9269802933345438,0.9829386303134078
+coverage,DDoS-UDP_Fragmentation,DDoS,0.8543693693695275,True,DDoS-UDP_Fragmentation,False,True,class_policy,Fragmentation_Attack,,True,1.0,True,DROP_MALFORMED_FRAGMENTS,DROP_MALFORMED_FRAGMENTS,False,0.8543693693695275,0.14683266445323295,1.048084344416973,0.9789658252822677
+coverage,DDoS-UDP_Fragmentation,DDoS,0.8543693693695275,True,DDoS-UDP_Fragmentation,False,True,class_policy,Fragmentation_Attack,,True,1.0,True,DROP_MALFORMED_FRAGMENTS,DROP_MALFORMED_FRAGMENTS,False,0.8543693693695275,0.153487617239808,0.9873231984981902,0.5834942580946914
+coverage,DDoS-UDP_Fragmentation,DDoS,0.8543693693695275,True,DDoS-UDP_Fragmentation,False,True,class_policy,Fragmentation_Attack,,True,3.0,False,DROP_MALFORMED_FRAGMENTS,BLOCK_SOURCE,True,0.8543693693695275,0.6054882821173247,0.5190949350407541,0.924477588184773
+coverage,DDoS-UDP_Fragmentation,DDoS,0.8543693693695275,True,DDoS-UDP_Fragmentation,False,True,class_policy,Fragmentation_Attack,,True,1.0,True,DROP_MALFORMED_FRAGMENTS,DROP_MALFORMED_FRAGMENTS,False,0.8543693693695275,0.17469420580657988,1.285538231961836,0.23595849265257862
+coverage,DDoS-UDP_Fragmentation,DDoS,0.8543693693695275,True,DDoS-UDP_Fragmentation,False,True,class_policy,Fragmentation_Attack,,True,3.0,False,DROP_MALFORMED_FRAGMENTS,BLOCK_SOURCE,True,0.8543693693695275,0.4814109244388781,0.733799386008508,0.9398088274167647
+coverage,DDoS-UDP_Fragmentation,DDoS,0.8543693693695275,True,DDoS-UDP_Fragmentation,False,True,class_policy,Fragmentation_Attack,,True,2.0,True,DROP_MALFORMED_FRAGMENTS,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.15667730815672223,1.2247448715040878,0.6257647046093366
+coverage,DDoS-UDP_Fragmentation,DDoS,0.8543693693695275,True,DDoS-UDP_Fragmentation,False,True,class_policy,Fragmentation_Attack,,True,2.0,True,DROP_MALFORMED_FRAGMENTS,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.15076183302922735,0.9045340338622986,0.9910639795339621
+coverage,DDoS-UDP_Fragmentation,DDoS,0.8543693693695275,True,DDoS-UDP_Fragmentation,False,True,class_policy,Fragmentation_Attack,,True,1.0,True,DROP_MALFORMED_FRAGMENTS,DROP_MALFORMED_FRAGMENTS,False,0.8543693693695275,0.15275964822598206,0.7908523214254972,0.9730071922082394
+coverage,DDoS-UDP_Fragmentation,DDoS,0.8543693693695275,True,DDoS-UDP_Fragmentation,False,True,class_policy,Fragmentation_Attack,,True,1.0,True,DROP_MALFORMED_FRAGMENTS,DROP_MALFORMED_FRAGMENTS,False,0.8543693693695275,0.14465556922899916,0.7536059525194632,0.9777874540119161
+coverage,DDoS-UDP_Fragmentation,DDoS,0.8543693693695275,True,DDoS-UDP_Fragmentation,False,True,class_policy,Fragmentation_Attack,,True,1.0,True,DROP_MALFORMED_FRAGMENTS,DROP_MALFORMED_FRAGMENTS,False,0.8543693693695275,0.15066645593008626,0.7262778609277482,0.6809588574762138
+coverage,DNS_Spoofing,Spoofing,0.5,True,DNS_Spoofing,False,True,class_policy,Spoofing_MITM,,False,1.0,True,ENFORCE_ARP_DNS_INTEGRITY,ENFORCE_ARP_DNS_INTEGRITY,True,0.5,0.13831865717846842,1.0000000000879696,1.0
+coverage,DNS_Spoofing,Spoofing,0.3609941466777723,True,DNS_Spoofing,False,True,class_policy,Spoofing_MITM,,False,1.0,True,ENFORCE_ARP_DNS_INTEGRITY,ENFORCE_ARP_DNS_INTEGRITY,True,0.3609941466777723,0.17014545034578718,1.527525231614876,1.0
+coverage,DNS_Spoofing,Spoofing,0.6391860735097468,True,DNS_Spoofing,False,True,class_policy,Spoofing_MITM,,False,1.0,True,ENFORCE_ARP_DNS_INTEGRITY,ENFORCE_ARP_DNS_INTEGRITY,True,0.6391860735097468,0.14360699973737776,1.0000000000624785,0.9999032874322491
+coverage,DNS_Spoofing,Spoofing,0.5,True,DNS_Spoofing,False,True,class_policy,Spoofing_MITM,,False,1.0,True,ENFORCE_ARP_DNS_INTEGRITY,ENFORCE_ARP_DNS_INTEGRITY,True,0.5,0.1432838893272285,1.1055415969830191,0.9873905413780178
+coverage,DNS_Spoofing,Spoofing,0.49613731351551627,True,DNS_Spoofing,False,True,class_policy,Spoofing_MITM,,False,1.0,True,ENFORCE_ARP_DNS_INTEGRITY,ENFORCE_ARP_DNS_INTEGRITY,True,0.49613731351551627,0.15374653292448076,1.1055415970247022,0.9886477351369284
+coverage,DNS_Spoofing,Spoofing,0.5454981911968123,True,DNS_Spoofing,False,True,class_policy,Spoofing_MITM,,False,1.0,True,ENFORCE_ARP_DNS_INTEGRITY,ENFORCE_ARP_DNS_INTEGRITY,True,0.5454981911968123,0.14584472021672532,1.1055419894939111,0.9991117150289549
+coverage,DNS_Spoofing,Spoofing,0.5976713156521979,True,DNS_Spoofing,False,True,class_policy,Spoofing_MITM,,False,1.0,True,ENFORCE_ARP_DNS_INTEGRITY,ENFORCE_ARP_DNS_INTEGRITY,True,0.5976713156521979,0.14959974127704265,1.0000003548897898,0.9935296366880961
+coverage,DNS_Spoofing,Spoofing,0.49999999999999994,True,DNS_Spoofing,False,True,class_policy,Spoofing_MITM,,False,1.0,True,ENFORCE_ARP_DNS_INTEGRITY,ENFORCE_ARP_DNS_INTEGRITY,True,0.49999999999999994,0.14328004259588126,1.1055415970158022,1.0
+coverage,DNS_Spoofing,Spoofing,0.5,True,DNS_Spoofing,False,True,class_policy,Spoofing_MITM,,False,1.0,True,ENFORCE_ARP_DNS_INTEGRITY,ENFORCE_ARP_DNS_INTEGRITY,True,0.5,0.14209621896112362,0.9045340340115157,1.0
+coverage,DNS_Spoofing,Spoofing,0.8475542768694091,True,DNS_Spoofing,False,True,class_policy,Spoofing_MITM,,False,1.0,True,ENFORCE_ARP_DNS_INTEGRITY,ENFORCE_ARP_DNS_INTEGRITY,True,0.8475542768694091,0.14384217875257044,0.9045340338015296,1.0
+coverage,DNS_Spoofing,Spoofing,0.5000000000000001,True,DNS_Spoofing,False,True,class_policy,Spoofing_MITM,,False,1.0,True,ENFORCE_ARP_DNS_INTEGRITY,ENFORCE_ARP_DNS_INTEGRITY,True,0.5000000000000001,0.14243954096444403,0.9045343800443764,0.9805267048770377
+coverage,DNS_Spoofing,Spoofing,0.49999999999999994,True,DNS_Spoofing,False,True,class_policy,Spoofing_MITM,,False,1.0,True,ENFORCE_ARP_DNS_INTEGRITY,ENFORCE_ARP_DNS_INTEGRITY,True,0.49999999999999994,0.15068199885080807,1.1055420145205745,0.9993844099271038
+coverage,DNS_Spoofing,Spoofing,0.5,True,DNS_Spoofing,False,True,class_policy,Spoofing_MITM,,False,1.0,True,ENFORCE_ARP_DNS_INTEGRITY,ENFORCE_ARP_DNS_INTEGRITY,True,0.5,0.1531162588767848,1.000000000071079,1.0
+coverage,DNS_Spoofing,Spoofing,0.5000000000000001,True,DNS_Spoofing,False,True,class_policy,Spoofing_MITM,,False,1.0,True,ENFORCE_ARP_DNS_INTEGRITY,ENFORCE_ARP_DNS_INTEGRITY,True,0.5000000000000001,0.14831048484945902,0.6546536709787871,1.0
+coverage,DNS_Spoofing,Spoofing,0.5187246968074088,True,DNS_Spoofing,False,True,class_policy,Spoofing_MITM,,False,1.0,True,ENFORCE_ARP_DNS_INTEGRITY,ENFORCE_ARP_DNS_INTEGRITY,True,0.5187246968074088,0.14018425581315855,0.9045340337441129,1.0
+coverage,DictionaryBruteForce,BruteForce,0.50805341696055,True,DictionaryBruteForce,False,True,class_policy,Credential_Attack,,False,1.0,True,THROTTLE_AUTH_ATTEMPTS,THROTTLE_AUTH_ATTEMPTS,False,0.50805341696055,0.14535485646202384,1.1055415968285136,0.3992732787115566
+coverage,DictionaryBruteForce,BruteForce,0.168813028820718,False,,False,False,,,,,,,,,,,,,
+coverage,DictionaryBruteForce,BruteForce,0.45926436749555377,True,DictionaryBruteForce,False,True,class_policy,Credential_Attack,,False,1.0,True,THROTTLE_AUTH_ATTEMPTS,THROTTLE_AUTH_ATTEMPTS,False,0.45926436749555377,0.14324967583416603,1.1055416264463547,0.9016800247536079
+coverage,DictionaryBruteForce,BruteForce,0.4883540648768967,True,DictionaryBruteForce,False,True,class_policy,Credential_Attack,,False,1.0,True,THROTTLE_AUTH_ATTEMPTS,THROTTLE_AUTH_ATTEMPTS,False,0.4883540648768967,0.1432626620316646,1.1055416196248937,0.9319828654245903
+coverage,DictionaryBruteForce,BruteForce,0.49999999999999994,True,DictionaryBruteForce,False,True,class_policy,Credential_Attack,,False,1.0,True,THROTTLE_AUTH_ATTEMPTS,THROTTLE_AUTH_ATTEMPTS,False,0.49999999999999994,0.1565292791492388,1.3627702879063013,1.0
+coverage,DictionaryBruteForce,BruteForce,0.48832816368504234,True,DictionaryBruteForce,False,True,class_policy,Credential_Attack,,False,1.0,True,THROTTLE_AUTH_ATTEMPTS,THROTTLE_AUTH_ATTEMPTS,False,0.48832816368504234,0.16170201875562817,1.1055416389524244,0.8553791957323184
+coverage,DictionaryBruteForce,BruteForce,0.5000000000000001,True,DictionaryBruteForce,False,True,class_policy,Credential_Attack,,False,1.0,True,THROTTLE_AUTH_ATTEMPTS,THROTTLE_AUTH_ATTEMPTS,False,0.5000000000000001,0.15071779497382012,0.8164966141203587,0.8066834465465789
+coverage,DictionaryBruteForce,BruteForce,0.5224952548192474,True,DictionaryBruteForce,False,True,class_policy,Credential_Attack,,False,1.0,True,THROTTLE_AUTH_ATTEMPTS,THROTTLE_AUTH_ATTEMPTS,False,0.5224952548192474,0.1639553549052092,0.7337994309062696,0.4808218433661371
+coverage,DictionaryBruteForce,BruteForce,0.5,True,DictionaryBruteForce,False,True,class_policy,Credential_Attack,,False,1.0,True,THROTTLE_AUTH_ATTEMPTS,THROTTLE_AUTH_ATTEMPTS,False,0.5,0.17014545036247194,1.5275252317588102,1.0
+coverage,DictionaryBruteForce,BruteForce,0.5063586802578882,True,DictionaryBruteForce,False,True,class_policy,Credential_Attack,,False,1.0,True,THROTTLE_AUTH_ATTEMPTS,THROTTLE_AUTH_ATTEMPTS,False,0.5063586802578882,0.1432786646755809,1.1055415968355482,0.8873394057456059
+coverage,DictionaryBruteForce,BruteForce,0.5,True,DictionaryBruteForce,False,True,class_policy,Credential_Attack,,False,1.0,True,THROTTLE_AUTH_ATTEMPTS,THROTTLE_AUTH_ATTEMPTS,False,0.5,0.15512162177272396,1.105541620070325,0.9488383609585964
+coverage,DictionaryBruteForce,BruteForce,0.5,True,DictionaryBruteForce,False,True,class_policy,Credential_Attack,,False,1.0,True,THROTTLE_AUTH_ATTEMPTS,THROTTLE_AUTH_ATTEMPTS,False,0.5,0.14847909928422687,0.9045340690014216,0.988354100849941
+coverage,DictionaryBruteForce,BruteForce,0.6597680503827233,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Slow probe / scan,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.6597680503827233,0.14597479065380484,1.362770316988651,1.0
+coverage,DictionaryBruteForce,BruteForce,0.5,True,DictionaryBruteForce,False,True,class_policy,Credential_Attack,,False,1.0,True,THROTTLE_AUTH_ATTEMPTS,THROTTLE_AUTH_ATTEMPTS,False,0.5,0.14328018005850132,1.1055415967883613,0.9482609200655711
+coverage,DictionaryBruteForce,BruteForce,0.5,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Unclassified anomaly,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.5,0.14490800308828747,0.904534033814908,0.9628178996036642
+coverage,DoS-HTTP_Flood,DoS,0.8543693693695275,True,DoS-HTTP_Flood,False,True,class_policy,Slow_Application_Attack,,True,1.0,True,LIMIT_CONCURRENT_CONNECTIONS,LIMIT_CONCURRENT_CONNECTIONS,False,0.8543693693695275,0.1416995515511782,0.8949878197006067,0.13494859620904365
+coverage,DoS-HTTP_Flood,DoS,0.8543693693695275,True,DoS-HTTP_Flood,False,True,class_policy,Slow_Application_Attack,,True,1.0,True,LIMIT_CONCURRENT_CONNECTIONS,LIMIT_CONCURRENT_CONNECTIONS,False,0.8543693693695275,0.14277117190955693,0.8771756950689591,0.9997194626351174
+coverage,DoS-HTTP_Flood,DoS,0.8543693693695275,True,DoS-HTTP_Flood,False,True,class_policy,Slow_Application_Attack,,True,1.0,True,LIMIT_CONCURRENT_CONNECTIONS,LIMIT_CONCURRENT_CONNECTIONS,False,0.8543693693695275,0.15460574548362813,0.9271904765817068,0.9999086814992064
+coverage,DoS-HTTP_Flood,DoS,0.8543693693695275,True,DoS-HTTP_Flood,False,True,class_policy,Slow_Application_Attack,,True,2.0,False,LIMIT_CONCURRENT_CONNECTIONS,BLOCK_SOURCE,True,0.8543693693695275,0.47405397938578375,0.9045340338264387,0.9934654344379001
+coverage,DoS-HTTP_Flood,DoS,0.8543693693695275,True,DoS-HTTP_Flood,False,True,class_policy,Slow_Application_Attack,,True,1.0,True,LIMIT_CONCURRENT_CONNECTIONS,LIMIT_CONCURRENT_CONNECTIONS,False,0.8543693693695275,0.15798731782962697,0.8503721494820943,0.9929367339849968
+coverage,DoS-HTTP_Flood,DoS,0.8543693693695275,True,DoS-HTTP_Flood,False,True,class_policy,Slow_Application_Attack,,True,1.0,True,LIMIT_CONCURRENT_CONNECTIONS,LIMIT_CONCURRENT_CONNECTIONS,False,0.8543693693695275,0.15847632037525117,0.9489790306650141,0.999659191036658
+coverage,DoS-HTTP_Flood,DoS,0.8543693693695275,True,DoS-HTTP_Flood,False,True,class_policy,Slow_Application_Attack,,True,1.0,True,LIMIT_CONCURRENT_CONNECTIONS,LIMIT_CONCURRENT_CONNECTIONS,False,0.8543693693695275,0.14851595455913041,0.9489817425419573,0.9765932826247457
+coverage,DoS-HTTP_Flood,DoS,0.8543693693695275,True,DoS-HTTP_Flood,False,True,class_policy,Slow_Application_Attack,,True,1.0,True,LIMIT_CONCURRENT_CONNECTIONS,LIMIT_CONCURRENT_CONNECTIONS,False,0.8543693693695275,0.15248218199784616,0.7914076937515279,0.9999442019721636
+coverage,DoS-HTTP_Flood,DoS,0.8543693693695275,True,DoS-HTTP_Flood,False,True,class_policy,Slow_Application_Attack,,True,1.0,True,LIMIT_CONCURRENT_CONNECTIONS,LIMIT_CONCURRENT_CONNECTIONS,False,0.8543693693695275,0.1502425053382404,0.8085383200638546,0.9960338857428666
+coverage,DoS-HTTP_Flood,DoS,0.8543693693695275,True,DoS-HTTP_Flood,False,True,class_policy,Slow_Application_Attack,,True,1.0,True,LIMIT_CONCURRENT_CONNECTIONS,LIMIT_CONCURRENT_CONNECTIONS,False,0.8543693693695275,0.15247956637772186,0.7914066391820531,0.9996771413044753
+coverage,DoS-HTTP_Flood,DoS,0.8543693693695275,True,DoS-HTTP_Flood,False,True,class_policy,Slow_Application_Attack,,True,1.0,True,LIMIT_CONCURRENT_CONNECTIONS,LIMIT_CONCURRENT_CONNECTIONS,False,0.8543693693695275,0.1580027974518884,1.25630458069478,0.9717082416550061
+coverage,DoS-HTTP_Flood,DoS,0.8543693693695275,True,DoS-HTTP_Flood,False,True,class_policy,Slow_Application_Attack,,True,1.0,True,LIMIT_CONCURRENT_CONNECTIONS,LIMIT_CONCURRENT_CONNECTIONS,False,0.8543693693695275,0.1594687631727149,0.8949830209663175,0.9960972099256651
+coverage,DoS-HTTP_Flood,DoS,0.8543693693695275,True,DoS-HTTP_Flood,False,True,class_policy,Slow_Application_Attack,,True,1.0,True,LIMIT_CONCURRENT_CONNECTIONS,LIMIT_CONCURRENT_CONNECTIONS,False,0.8543693693695275,0.14889470064447632,1.2861347359770374,0.009822918909664802
+coverage,DoS-HTTP_Flood,DoS,0.8543693693695275,True,DoS-HTTP_Flood,False,True,class_policy,Slow_Application_Attack,,True,2.0,True,LIMIT_CONCURRENT_CONNECTIONS,BLOCK_SOURCE,True,0.8543693693695275,0.15819365682684852,1.2247448716442997,0.9209033553555149
+coverage,DoS-HTTP_Flood,DoS,0.8543693693695275,True,DoS-HTTP_Flood,False,True,class_policy,Slow_Application_Attack,,True,1.0,True,LIMIT_CONCURRENT_CONNECTIONS,LIMIT_CONCURRENT_CONNECTIONS,False,0.8543693693695275,0.15666846216492464,0.89498622359398,0.6003549976522082
+coverage,DoS-SYN_Flood,DoS,0.8543693693695275,True,DoS-SYN_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,2.0,True,ENABLE_SYN_COOKIES,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.1522002386593964,0.7337993858181865,0.77280765412612
+coverage,DoS-SYN_Flood,DoS,0.8543693693695275,True,DoS-SYN_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.14922248536733854,0.6486884691035841,0.9999975622636138
+coverage,DoS-SYN_Flood,DoS,0.8543693693695275,True,DoS-SYN_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,2.0,True,ENABLE_SYN_COOKIES,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.2950660125946988,0.9695433999125707,0.5563379877045161
+coverage,DoS-SYN_Flood,DoS,0.8543693693695275,True,DoS-SYN_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.14764251373633713,0.9882374414083502,0.9880042272901237
+coverage,DoS-SYN_Flood,DoS,0.8543693693695275,True,DoS-SYN_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.14735864852245298,0.710329354461362,0.9426129510930801
+coverage,DoS-SYN_Flood,DoS,0.8543693693695275,True,DoS-SYN_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,2.0,True,ENABLE_SYN_COOKIES,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.17014545035978115,1.5275252317355976,0.22652063077149986
+coverage,DoS-SYN_Flood,DoS,0.8543693693695275,True,DoS-SYN_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.14526038865516158,1.204553880367606,0.9909335962602136
+coverage,DoS-SYN_Flood,DoS,0.8543693693695275,True,DoS-SYN_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.1540033626888456,0.8772005122683354,0.9884811141849049
+coverage,DoS-SYN_Flood,DoS,0.8543693693695275,True,DoS-SYN_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.14610852992396262,0.9108519400860142,0.8518894072088741
+coverage,DoS-SYN_Flood,DoS,0.8543693693695275,True,DoS-SYN_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.15232058468823426,0.7423585802015011,0.8956128450576785
+coverage,DoS-SYN_Flood,DoS,0.8543693693695275,True,DoS-SYN_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.15316422635596982,0.94900640169161,0.9767234406472747
+coverage,DoS-SYN_Flood,DoS,0.8543693693695275,True,DoS-SYN_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.15351106002215378,0.7914435010252265,0.8314538609172596
+coverage,DoS-SYN_Flood,DoS,0.8543693693695275,True,DoS-SYN_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.1509670901539008,0.7270126926701747,0.9593242209335598
+coverage,DoS-SYN_Flood,DoS,0.8543693693695275,True,DoS-SYN_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.14341848854342554,1.048574835683792,0.7960452391606004
+coverage,DoS-SYN_Flood,DoS,0.8543693693695275,True,DoS-SYN_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.14354883067773305,1.1595926612414675,0.9904182778937509
+coverage,DoS-TCP_Flood,DoS,0.8543693693695275,True,DoS-TCP_Flood,False,True,class_policy,Volumetric_Flood,,True,2.0,True,RATE_LIMIT_SOURCE,BLOCK_SOURCE,True,0.8543693693695275,0.14884896994041977,1.2247448714415379,0.2109447243374929
+coverage,DoS-TCP_Flood,DoS,0.8543693693695275,True,DoS-TCP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.1426945109340833,0.6926179696500928,0.9951019132862384
+coverage,DoS-TCP_Flood,DoS,0.8543693693695275,True,DoS-TCP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.14901389149417618,1.0486291428531351,0.5535954487758281
+coverage,DoS-TCP_Flood,DoS,0.8543693693695275,True,DoS-TCP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.13920081081623378,0.8579633849576582,0.9921144016110669
+coverage,DoS-TCP_Flood,DoS,0.8543693693695275,True,DoS-TCP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.14973227013270882,0.9109305677732213,0.6862204398741205
+coverage,DoS-TCP_Flood,DoS,0.8543693693695275,True,DoS-TCP_Flood,False,True,class_policy,Volumetric_Flood,,True,2.0,True,RATE_LIMIT_SOURCE,BLOCK_SOURCE,True,0.8543693693695275,0.14661755336724086,0.9045340339837439,0.9923976854546532
+coverage,DoS-TCP_Flood,DoS,0.8543693693695275,True,DoS-TCP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.1521572878440169,0.8951011211711901,0.24714212655512036
+coverage,DoS-TCP_Flood,DoS,0.8543693693695275,True,DoS-TCP_Flood,False,True,class_policy,Volumetric_Flood,,True,2.0,True,RATE_LIMIT_SOURCE,BLOCK_SOURCE,True,0.8543693693695275,0.17014545033864434,1.5275252315532575,0.8814518929667843
+coverage,DoS-TCP_Flood,DoS,0.8543693693695275,True,DoS-TCP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.15995882370614461,1.0486269713486565,0.9907715944007388
+coverage,DoS-TCP_Flood,DoS,0.8543693693695275,True,DoS-TCP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.15816982289055834,0.8772538934959085,0.717163707036451
+coverage,DoS-TCP_Flood,DoS,0.8543693693695275,True,DoS-TCP_Flood,False,True,class_policy,Volumetric_Flood,,True,3.0,False,RATE_LIMIT_SOURCE,UPSTREAM_BLACKHOLE,True,0.8543693693695275,0.4289722548279724,1.0000000001759455,0.7657311283010295
+coverage,DoS-TCP_Flood,DoS,0.8543693693695275,True,DoS-TCP_Flood,False,True,class_policy,Volumetric_Flood,,True,2.0,True,RATE_LIMIT_SOURCE,BLOCK_SOURCE,True,0.8543693693695275,0.15074997730111966,0.8164965811338307,0.9691783639626034
+coverage,DoS-TCP_Flood,DoS,0.8543693693695275,True,DoS-TCP_Flood,False,True,class_policy,Volumetric_Flood,,True,2.0,True,RATE_LIMIT_SOURCE,BLOCK_SOURCE,True,0.8543693693695275,0.149952230418459,1.105541596905459,0.8328111761627098
+coverage,DoS-TCP_Flood,DoS,0.8543693693695275,True,DoS-TCP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.14692591756654225,0.8086449348445566,0.792885703846389
+coverage,DoS-TCP_Flood,DoS,0.8543693693695275,True,DoS-TCP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.14801471229282437,0.9695983886324967,0.8117374207806825
+coverage,DoS-UDP_Flood,DoS,0.8543693693695275,True,DoS-UDP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.15444880798736507,0.8578759240985661,0.8179224900910111
+coverage,DoS-UDP_Flood,DoS,0.8543693693695275,True,DoS-UDP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.15254734918623344,0.824030791584778,0.9863563575513776
+coverage,DoS-UDP_Flood,DoS,0.8543693693695275,True,DoS-UDP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.1592319265089627,0.8374161900854484,0.704512107149055
+coverage,DoS-UDP_Flood,DoS,0.8543693693695275,True,DoS-UDP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.15084828971964623,0.773043542141286,0.8524990819762288
+coverage,DoS-UDP_Flood,DoS,0.8543693693695275,True,DoS-UDP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.1522313266026503,0.6896267063107323,0.3391730085963771
+coverage,DoS-UDP_Flood,DoS,0.8543693693695275,True,DoS-UDP_Flood,False,True,class_policy,Volumetric_Flood,,True,2.0,True,RATE_LIMIT_SOURCE,BLOCK_SOURCE,True,0.8543693693695275,0.14906841611332822,0.7337993859142696,0.6241837755750024
+coverage,DoS-UDP_Flood,DoS,0.8543693693695275,True,DoS-UDP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.1535777401773326,1.3128082037464222,0.8145678391216602
+coverage,DoS-UDP_Flood,DoS,0.8543693693695275,True,DoS-UDP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.15362399058877216,1.048519619150013,0.8193091563816486
+coverage,DoS-UDP_Flood,DoS,0.8543693693695275,True,DoS-UDP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.15248847966822418,0.7913869984062578,0.8526257473136178
+coverage,DoS-UDP_Flood,DoS,0.8543693693695275,True,DoS-UDP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.14929693146481846,0.969477141864401,0.21940274914883973
+coverage,DoS-UDP_Flood,DoS,0.8543693693695275,True,DoS-UDP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.1595668419910276,1.0903624793594078,0.7189664057231374
+coverage,DoS-UDP_Flood,DoS,0.8543693693695275,True,DoS-UDP_Flood,False,True,class_policy,Volumetric_Flood,,True,2.0,True,RATE_LIMIT_SOURCE,BLOCK_SOURCE,True,0.8543693693695275,0.14775186938347748,1.3627702876901562,0.8360283096940897
+coverage,DoS-UDP_Flood,DoS,0.8543693693695275,True,DoS-UDP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.15012957334387192,0.7102842508134027,0.9109283957291187
+coverage,DoS-UDP_Flood,DoS,0.8543693693695275,True,DoS-UDP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.1559111742452886,1.1063400793885754,0.8820602755929388
+coverage,DoS-UDP_Flood,DoS,0.8543693693695275,True,DoS-UDP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.15710676264302223,1.0485222247567052,0.903341186740986
+coverage,MITM-ArpSpoofing,Spoofing,0.6320996064427319,True,MITM-ArpSpoofing,False,True,class_policy,Spoofing_MITM,,False,1.0,True,ENFORCE_ARP_DNS_INTEGRITY,ENFORCE_ARP_DNS_INTEGRITY,True,0.6320996064427319,0.1483104822073241,0.6546536885548114,0.8887882466820198
+coverage,MITM-ArpSpoofing,Spoofing,0.5185783414438457,True,MITM-ArpSpoofing,False,True,class_policy,Spoofing_MITM,,False,1.0,True,ENFORCE_ARP_DNS_INTEGRITY,ENFORCE_ARP_DNS_INTEGRITY,True,0.5185783414438457,0.1487420059684981,1.3627703259332162,0.9996432529551866
+coverage,MITM-ArpSpoofing,Spoofing,0.5,True,MITM-ArpSpoofing,False,True,class_policy,Spoofing_MITM,,False,1.0,True,ENFORCE_ARP_DNS_INTEGRITY,ENFORCE_ARP_DNS_INTEGRITY,True,0.5,0.1557850370313677,0.8164965809613005,0.9722690784168199
+coverage,MITM-ArpSpoofing,Spoofing,0.5,True,MITM-ArpSpoofing,False,True,class_policy,Spoofing_MITM,,False,1.0,True,ENFORCE_ARP_DNS_INTEGRITY,ENFORCE_ARP_DNS_INTEGRITY,True,0.5,0.15208005113587095,1.224744904441029,0.9420942116908024
+coverage,MITM-ArpSpoofing,Spoofing,0.8421646559308035,True,MITM-ArpSpoofing,False,True,class_policy,Spoofing_MITM,,False,1.0,True,ENFORCE_ARP_DNS_INTEGRITY,ENFORCE_ARP_DNS_INTEGRITY,True,0.8421646559308035,0.15153959880621248,1.1055416248040386,0.9801006792346251
+coverage,MITM-ArpSpoofing,Spoofing,0.8400976048586615,True,MITM-ArpSpoofing,False,True,class_policy,Spoofing_MITM,,False,1.0,True,ENFORCE_ARP_DNS_INTEGRITY,ENFORCE_ARP_DNS_INTEGRITY,True,0.8400976048586615,0.15181058868965738,0.9045340760973576,0.965136130250511
+coverage,MITM-ArpSpoofing,Spoofing,0.7085614756431354,True,MITM-ArpSpoofing,False,True,class_policy,Spoofing_MITM,,False,1.0,True,ENFORCE_ARP_DNS_INTEGRITY,ENFORCE_ARP_DNS_INTEGRITY,True,0.7085614756431354,0.15807983459557823,1.0000000002483507,1.0
+coverage,MITM-ArpSpoofing,Spoofing,0.524688553888327,True,MITM-ArpSpoofing,False,True,class_policy,Spoofing_MITM,,False,1.0,True,ENFORCE_ARP_DNS_INTEGRITY,ENFORCE_ARP_DNS_INTEGRITY,True,0.524688553888327,0.14597478675356537,1.36277028760356,0.9925535340872362
+coverage,MITM-ArpSpoofing,Spoofing,0.6501084880936782,True,MITM-ArpSpoofing,False,True,class_policy,Spoofing_MITM,,False,1.0,True,ENFORCE_ARP_DNS_INTEGRITY,ENFORCE_ARP_DNS_INTEGRITY,True,0.6501084880936782,0.14533811649937495,1.2247448715757674,0.9916885737675583
+coverage,MITM-ArpSpoofing,Spoofing,0.54985787019026,True,MITM-ArpSpoofing,False,True,class_policy,Spoofing_MITM,,False,1.0,True,ENFORCE_ARP_DNS_INTEGRITY,ENFORCE_ARP_DNS_INTEGRITY,True,0.54985787019026,0.14387748210806733,0.9045340340184322,1.0
+coverage,MITM-ArpSpoofing,Spoofing,0.6653527343360933,True,MITM-ArpSpoofing,False,True,class_policy,Spoofing_MITM,,False,1.0,True,ENFORCE_ARP_DNS_INTEGRITY,ENFORCE_ARP_DNS_INTEGRITY,True,0.6653527343360933,0.15072830986754795,0.8164966037160752,0.9377357938675394
+coverage,MITM-ArpSpoofing,Spoofing,0.6853288073244108,True,MITM-ArpSpoofing,False,True,class_policy,Spoofing_MITM,,False,1.0,True,ENFORCE_ARP_DNS_INTEGRITY,ENFORCE_ARP_DNS_INTEGRITY,True,0.6853288073244108,0.14774861788849827,0.7337993859383789,1.0
+coverage,MITM-ArpSpoofing,Spoofing,0.5707430058612399,True,MITM-ArpSpoofing,False,True,class_policy,Spoofing_MITM,,False,1.0,True,ENFORCE_ARP_DNS_INTEGRITY,ENFORCE_ARP_DNS_INTEGRITY,True,0.5707430058612399,0.150728471491234,0.8164966028113486,0.9779407381250103
+coverage,MITM-ArpSpoofing,Spoofing,0.5283943561297951,True,MITM-ArpSpoofing,False,True,class_policy,Spoofing_MITM,,False,1.0,True,ENFORCE_ARP_DNS_INTEGRITY,ENFORCE_ARP_DNS_INTEGRITY,True,0.5283943561297951,0.15711864420495283,1.105541648269589,0.9756945870752621
+coverage,MITM-ArpSpoofing,Spoofing,0.5,True,MITM-ArpSpoofing,False,True,class_policy,Spoofing_MITM,,False,1.0,True,ENFORCE_ARP_DNS_INTEGRITY,ENFORCE_ARP_DNS_INTEGRITY,True,0.5,0.14098653405410216,0.9045340338479696,1.0
+coverage,Mirai-greeth_flood,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,2.0,True,RATE_LIMIT_SOURCE,BLOCK_SOURCE,True,0.8543693693695275,0.15122776373649227,0.6546536710473485,0.6667595508040809
+coverage,Mirai-greeth_flood,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.15856334601417624,1.1327167843338992,0.9690823240041826
+coverage,Mirai-greeth_flood,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Unclassified anomaly,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.1515620929126861,1.1041728807801099,0.8292604424022629
+coverage,Mirai-greeth_flood,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,2.0,True,RATE_LIMIT_SOURCE,BLOCK_SOURCE,True,0.8543693693695275,0.17014545035982892,1.5275252317360095,0.4815484195877542
+coverage,Mirai-greeth_flood,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.157075829837398,0.7256863698219556,0.929891706658277
+coverage,Mirai-greeth_flood,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Unclassified anomaly,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.16168774360867497,0.5706223458303431,0.9698304457813139
+coverage,Mirai-greeth_flood,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Unclassified anomaly,True,2.0,True,RATE_LIMIT_SOURCE,BLOCK_SOURCE,True,0.8543693693695275,0.1468609618047072,1.1055415971503628,0.361701405731248
+coverage,Mirai-greeth_flood,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.14701659957177052,1.0886131447092873,0.9995128483969287
+coverage,Mirai-greeth_flood,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Unclassified anomaly,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.15874170547878017,1.1041453865811943,0.7537516763666796
+coverage,Mirai-greeth_flood,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.15058264175283306,0.7723883981478983,0.9991709897033921
+coverage,Mirai-greeth_flood,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.1516700450451222,0.6473802259651062,0.9997299544800428
+coverage,Mirai-greeth_flood,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Unclassified anomaly,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.1552254023160657,0.7387584202792655,0.9043670909409443
+coverage,Mirai-greeth_flood,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Unclassified anomaly,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.15057396690407412,0.7723699923628425,0.7950273611130129
+coverage,Mirai-greeth_flood,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,2.0,True,RATE_LIMIT_SOURCE,BLOCK_SOURCE,True,0.8543693693695275,0.15395417067783532,0.926799455534482,0.6682373874707694
+coverage,Mirai-greeth_flood,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.16075369279353344,0.9865737885177994,0.7522917432936734
+coverage,Mirai-greip_flood,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.14504840090719046,0.8936704856222212,0.00542808862179045
+coverage,Mirai-greip_flood,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.15047133812653113,0.7258108731558971,0.9999369814313019
+coverage,Mirai-greip_flood,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,2.0,True,RATE_LIMIT_SOURCE,BLOCK_SOURCE,True,0.8543693693695275,0.14204986252598034,0.9045340340078885,0.9947649653460325
+coverage,Mirai-greip_flood,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.14213719836814714,1.158704517071209,0.7331761207455276
+coverage,Mirai-greip_flood,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.16093630262503764,0.7732033943995535,0.0002918486303774559
+coverage,Mirai-greip_flood,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.14973590658531494,0.8761763189412193,0.9770972895065494
+coverage,Mirai-greip_flood,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,2.0,True,RATE_LIMIT_SOURCE,BLOCK_SOURCE,True,0.8543693693695275,0.1369178561231688,1.0243906725739471,0.35272195387888505
+coverage,Mirai-greip_flood,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.1596897041787213,0.6876770818811055,0.0020202748489643874
+coverage,Mirai-greip_flood,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.15830578690757946,1.2026513257641245,0.9731974037016863
+coverage,Mirai-greip_flood,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.15585311799159127,1.4329547093790784,0.8118484562742292
+coverage,Mirai-greip_flood,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Unclassified anomaly,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.14464461832216058,1.2557911945259552,0.8873984649584621
+coverage,Mirai-greip_flood,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.1578033462769618,0.8414829954358108,0.9172521003413923
+coverage,Mirai-greip_flood,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.1484046078170632,0.9482429577362451,0.0003550270436052383
+coverage,Mirai-greip_flood,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.1601805855512977,0.8457516492693571,0.9999594202810502
+coverage,Mirai-greip_flood,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Unclassified anomaly,True,3.0,False,RATE_LIMIT_SOURCE,ISOLATE_SEGMENT,True,0.8543693693695275,0.8132609058974419,0.5000000000950583,0.9614640949046838
+coverage,Mirai-udpplain,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.14516501614980742,0.857106085091936,0.876136531325807
+coverage,Mirai-udpplain,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.15987035311075803,1.0599662657526683,0.4494536984592131
+coverage,Mirai-udpplain,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.14431422897870375,0.8280144477887513,0.6204490676081869
+coverage,Mirai-udpplain,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,3.0,False,RATE_LIMIT_SOURCE,UPSTREAM_BLACKHOLE,True,0.8543693693695275,0.6880539716035668,1.732050807382493,0.15689190604350145
+coverage,Mirai-udpplain,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,2.0,True,RATE_LIMIT_SOURCE,BLOCK_SOURCE,True,0.8543693693695275,0.14665875596220396,0.9045340337895992,0.48173157604518657
+coverage,Mirai-udpplain,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.1606549784161954,0.9300519035882119,0.07922357955609394
+coverage,Mirai-udpplain,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.1500946679820406,0.6473140179987881,0.9633283290921415
+coverage,Mirai-udpplain,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.14085697598391342,1.284879178159232,0.8914137883989434
+coverage,Mirai-udpplain,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.15351394742414862,0.7255528985599509,0.7565136980221219
+coverage,Mirai-udpplain,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.1596066394840044,0.9937136169799522,0.6124234708059665
+coverage,Mirai-udpplain,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.1581656900045054,0.9214217033550116,0.5654350902545136
+coverage,Mirai-udpplain,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.1446728611869322,0.8452829607992773,0.7996832583787457
+coverage,Mirai-udpplain,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.15165232693385186,1.2023097494487138,0.8007051252312531
+coverage,Mirai-udpplain,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.1387194171343784,0.8933478244261207,0.3742108185908076
+coverage,Mirai-udpplain,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.15583330701314713,0.6918254973770408,0.9512270929931579
+coverage,Recon-HostDiscovery,Recon,0.8543693693695275,True,Recon-HostDiscovery,False,True,class_policy,Reconnaissance,,False,2.0,False,BLOCK_SCANNING_SOURCE,ISOLATE_SEGMENT,True,0.8543693693695275,0.8172430419647796,1.9999999993354647,1.0
+coverage,Recon-HostDiscovery,Recon,0.8543693693695275,True,Recon-HostDiscovery,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.8543693693695275,0.14835344490331479,1.1055415969590892,1.0
+coverage,Recon-HostDiscovery,Recon,0.8543693693695275,True,Recon-HostDiscovery,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.8543693693695275,0.1548893136366019,0.7337993859597131,1.0
+coverage,Recon-HostDiscovery,Recon,0.8543693693695275,True,Recon-HostDiscovery,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.8543693693695275,0.14328270092065032,1.1055415967735207,0.9995586313749069
+coverage,Recon-HostDiscovery,Recon,0.8543693693695275,True,Recon-HostDiscovery,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.8543693693695275,0.14525280299179322,1.1055415968908415,1.0
+coverage,Recon-HostDiscovery,Recon,0.8543693693695275,True,Recon-HostDiscovery,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.8543693693695275,0.15085450349796997,1.2247448714683462,1.0
+coverage,Recon-HostDiscovery,Recon,0.5624302227043455,True,Recon-HostDiscovery,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.5624302227043455,0.14212785734340508,1.0000000001445288,1.0
+coverage,Recon-HostDiscovery,Recon,0.8543693693695275,True,Recon-HostDiscovery,False,True,class_policy,Reconnaissance,,False,2.0,False,BLOCK_SCANNING_SOURCE,ISOLATE_SEGMENT,True,0.8543693693695275,0.8274575116325538,0.42008402547286205,1.0
+coverage,Recon-HostDiscovery,Recon,0.5960893657586029,True,Recon-HostDiscovery,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.5960893657586029,0.1453176607818442,1.224744871574019,1.0
+coverage,Recon-HostDiscovery,Recon,0.8543693693695275,True,Recon-HostDiscovery,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.8543693693695275,0.14383559651145025,1.105541596948516,1.0
+coverage,Recon-HostDiscovery,Recon,0.6480742260479703,True,Recon-HostDiscovery,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.6480742260479703,0.13807014747183732,1.0000000001505658,1.0
+coverage,Recon-HostDiscovery,Recon,0.5,True,Recon-HostDiscovery,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.5,0.14328176094924924,1.1055415969351825,1.0
+coverage,Recon-HostDiscovery,Recon,0.8543693693695275,True,Recon-HostDiscovery,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.8543693693695275,0.1526075745446521,0.8164968796956025,0.998790859605257
+coverage,Recon-HostDiscovery,Recon,0.8525338063508676,True,Recon-HostDiscovery,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.8525338063508676,0.14484831406979,1.0000000000548768,1.0
+coverage,Recon-HostDiscovery,Recon,0.8543693693695275,True,Recon-HostDiscovery,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.8543693693695275,0.1389934317987978,0.9045340339065633,1.0
+coverage,Recon-OSScan,Recon,0.22118593429189604,False,,False,False,,,,,,,,,,,,,
+coverage,Recon-OSScan,Recon,0.16096020090045393,False,,False,False,,,,,,,,,,,,,
+coverage,Recon-OSScan,Recon,0.39605690058456344,True,Recon-OSScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.39605690058456344,0.13382448671634498,1.0000000002796123,1.0
+coverage,Recon-OSScan,Recon,0.5,True,Recon-OSScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.5,0.160572151465597,0.5773502912236834,0.9815061964334506
+coverage,Recon-OSScan,Recon,0.5,True,Recon-OSScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.5,0.1701454503530349,1.5275252316774,1.0
+coverage,Recon-OSScan,Recon,0.5,True,Recon-OSScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.5,0.1464002508196853,1.000000000232639,0.9998667802468667
+coverage,Recon-OSScan,Recon,0.7532299260646449,True,Recon-OSScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.7532299260646449,0.1605721548607235,0.5773502694335487,1.0
+coverage,Recon-OSScan,Recon,0.422369736430063,True,Recon-OSScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.422369736430063,0.14753160660534392,1.105541622253889,0.9958402639893185
+coverage,Recon-OSScan,Recon,0.45561786537023,True,Recon-OSScan,False,True,class_policy,Reconnaissance,,False,2.0,False,BLOCK_SCANNING_SOURCE,ISOLATE_SEGMENT,True,0.45561786537023,0.8172508141445969,2.0000000690606643,1.0
+coverage,Recon-OSScan,Recon,0.5,True,Recon-OSScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.5,0.14768859540893375,0.9045340337710781,1.0
+coverage,Recon-OSScan,Recon,0.4655339756698487,True,Recon-OSScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.4655339756698487,0.14951116101223533,1.0000000231196375,0.981841648920053
+coverage,Recon-OSScan,Recon,0.5662157763159327,True,Recon-OSScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.5662157763159327,0.15076723208343562,0.8164966040811402,0.11689820762203385
+coverage,Recon-OSScan,Recon,0.5,True,Recon-OSScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.5,0.14367726343686904,1.1055415968746656,1.0
+coverage,Recon-OSScan,Recon,0.157196661936576,False,,False,False,,,,,,,,,,,,,
+coverage,Recon-OSScan,Recon,0.14983702639382113,False,,False,False,,,,,,,,,,,,,
+coverage,Recon-PingSweep,Recon,0.5755870742108421,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Unclassified anomaly,True,2.0,True,RATE_LIMIT_SOURCE,BLOCK_SOURCE,True,0.5755870742108421,0.145915796632656,1.2247448715474014,0.8529422290683331
+coverage,Recon-PingSweep,Recon,0.6699119061822026,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Unclassified anomaly,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.6699119061822026,0.14314100343771932,0.733799421742699,0.9151255939182168
+coverage,Recon-PingSweep,Recon,0.709080485744483,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Unclassified anomaly,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.709080485744483,0.15682542838568897,0.9045340727910998,0.7395973330257
+coverage,Recon-PingSweep,Recon,0.40164971654862963,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Unclassified anomaly,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.40164971654862963,0.15080569857190654,0.8164966274848537,0.7237215522462337
+coverage,Recon-PingSweep,Recon,0.4799747434126682,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Unclassified anomaly,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.4799747434126682,0.13850399280393036,1.0000000482967661,0.860444192582734
+coverage,Recon-PingSweep,Recon,0.5538548656277144,True,Recon-PingSweep,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.5538548656277144,0.15074913678155033,0.8164965811191707,1.0
+coverage,Recon-PingSweep,Recon,0.4999999999999999,True,Recon-OSScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.4999999999999999,0.14222178286431159,0.9045340501046261,1.0
+coverage,Recon-PingSweep,Recon,0.5240103215339856,True,Recon-PingSweep,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.5240103215339856,0.15210707679964802,1.000000000201524,0.9965714473572934
+coverage,Recon-PingSweep,Recon,0.5373632581189283,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Unclassified anomaly,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.5373632581189283,0.14831047833172506,0.6546537143360976,0.9267283125151573
+coverage,Recon-PingSweep,Recon,0.5078596486762937,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Unclassified anomaly,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.5078596486762937,0.14586418681416338,1.1055416311028672,0.7797867452893463
+coverage,Recon-PingSweep,Recon,0.5316398849905715,True,SqlInjection,False,True,class_policy,Web_Application_Attack,,False,1.0,True,ACTIVATE_WAF_RULE,ACTIVATE_WAF_RULE,False,0.5316398849905715,0.14661229190379776,0.7337994124156872,0.8834315594207348
+coverage,Recon-PingSweep,Recon,0.5,True,Recon-PingSweep,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.5,0.1444820515835894,1.2247448939772898,0.9577098736038258
+coverage,Recon-PingSweep,Recon,0.39166711848523594,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Unclassified anomaly,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.39166711848523594,0.15357730121051785,0.9045340788382841,0.888643085010033
+coverage,Recon-PingSweep,Recon,0.8383647846066219,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Unclassified anomaly,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8383647846066219,0.14340029845639052,1.2247448714715115,0.9051106946966692
+coverage,Recon-PingSweep,Recon,0.586099055407465,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Unclassified anomaly,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.586099055407465,0.13964053907425064,0.9045340504844115,0.9782785116693655
+coverage,Recon-PortScan,Recon,0.8543693693695275,True,Recon-PortScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.8543693693695275,0.14989679282763949,1.1055415967705051,0.9593164081326098
+coverage,Recon-PortScan,Recon,0.5000000000000001,True,Recon-PortScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.5000000000000001,0.1518883415943199,1.1055416326907903,0.9934683451083319
+coverage,Recon-PortScan,Recon,0.49999999999999994,True,Recon-PortScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.49999999999999994,0.1540062508134419,1.2247449099569292,0.667877376980104
+coverage,Recon-PortScan,Recon,0.8543693693695275,True,Recon-PortScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.8543693693695275,0.14737105083354143,1.1055416325929557,0.7219432565911762
+coverage,Recon-PortScan,Recon,0.5,True,Recon-PortScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.5,0.1701454503392632,1.5275252315585965,0.999452592118506
+coverage,Recon-PortScan,Recon,0.6624509272329514,True,Recon-PortScan,False,True,class_policy,Reconnaissance,,False,2.0,False,BLOCK_SCANNING_SOURCE,ISOLATE_SEGMENT,True,0.6624509272329514,0.8132603893889208,0.5000000002240576,1.0
+coverage,Recon-PortScan,Recon,0.5042374807556254,True,Recon-PortScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.5042374807556254,0.14650046319482102,0.9045340339322266,1.0
+coverage,Recon-PortScan,Recon,0.8543693693695275,True,Recon-PortScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.8543693693695275,0.14834631478317037,1.0000000291243607,1.0
+coverage,Recon-PortScan,Recon,0.5922672744336479,True,Recon-PortScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.5922672744336479,0.15085845758034458,0.904534064351287,0.9861896647192478
+coverage,Recon-PortScan,Recon,0.5,True,Recon-PortScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.5,0.146867733451541,1.2247448714098004,1.0
+coverage,Recon-PortScan,Recon,0.5,True,Recon-PortScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.5,0.14597478678695575,1.3627702878551287,0.9376141232958086
+coverage,Recon-PortScan,Recon,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Unclassified anomaly,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.14739921584776766,1.224744871511581,0.7408753486734054
+coverage,Recon-PortScan,Recon,0.5102916559564203,True,Recon-PortScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.5102916559564203,0.1512049180545729,1.105541632495118,0.8983846643547444
+coverage,Recon-PortScan,Recon,0.8543693693695275,True,Recon-PortScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.8543693693695275,0.1549319838758838,0.9045340340253981,0.9999673710738506
+coverage,Recon-PortScan,Recon,0.8285628623279011,True,Recon-PortScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.8285628623279011,0.1459747867780893,1.3627702877883272,0.9966232331725445
+coverage,SqlInjection,Web,0.4973836873434794,True,SqlInjection,False,True,class_policy,Web_Application_Attack,,False,1.0,True,ACTIVATE_WAF_RULE,ACTIVATE_WAF_RULE,False,0.4973836873434794,0.15473998900878908,0.9045340448659804,0.7461872015600205
+coverage,SqlInjection,Web,0.5,True,SqlInjection,False,True,class_policy,Web_Application_Attack,,False,1.0,True,ACTIVATE_WAF_RULE,ACTIVATE_WAF_RULE,False,0.5,0.15244322399734597,1.2247448852606713,0.0040134283988318975
+coverage,SqlInjection,Web,0.6435342621730121,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Unclassified anomaly,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.6435342621730121,0.1526532516193444,0.8164965891556011,0.8362450862768702
+coverage,SqlInjection,Web,0.58313782368942,True,SqlInjection,False,True,class_policy,Web_Application_Attack,,False,2.0,False,ACTIVATE_WAF_RULE,BLOCK_SOURCE,True,0.58313782368942,0.8025,1.7320508072984766,0.9500727464661256
+coverage,SqlInjection,Web,0.49999999999999994,True,SqlInjection,False,True,class_policy,Web_Application_Attack,,False,1.0,True,ACTIVATE_WAF_RULE,ACTIVATE_WAF_RULE,False,0.49999999999999994,0.14858260916919735,1.1055416069234674,0.8787533187886358
+coverage,SqlInjection,Web,0.5863083173306062,True,SqlInjection,False,True,class_policy,Web_Application_Attack,,False,1.0,True,ACTIVATE_WAF_RULE,ACTIVATE_WAF_RULE,False,0.5863083173306062,0.14660392286452673,1.2247448782455101,0.9549801042862041
+coverage,SqlInjection,Web,0.5,True,SqlInjection,False,True,class_policy,Web_Application_Attack,,False,1.0,True,ACTIVATE_WAF_RULE,ACTIVATE_WAF_RULE,False,0.5,0.14519924715471588,1.0000000000668692,0.7957580148706473
+coverage,SqlInjection,Web,0.5389913164380367,True,SqlInjection,False,True,class_policy,Web_Application_Attack,,False,2.0,True,ACTIVATE_WAF_RULE,BLOCK_SOURCE,True,0.5389913164380367,0.15602657420486046,1.105541596834724,0.9997713702383809
+coverage,SqlInjection,Web,0.5620372386983303,True,SqlInjection,False,True,class_policy,Web_Application_Attack,,False,2.0,False,ACTIVATE_WAF_RULE,BLOCK_SOURCE,True,0.5620372386983303,0.8025000000000001,1.7320508077056396,0.8635203363765578
+coverage,SqlInjection,Web,0.5,True,Recon-HostDiscovery,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.5,0.1440798366081613,0.9045340339510236,1.0
+coverage,SqlInjection,Web,0.5,True,SqlInjection,False,True,class_policy,Web_Application_Attack,,False,2.0,True,ACTIVATE_WAF_RULE,BLOCK_SOURCE,True,0.5,0.17014545035423206,1.5275252316877272,0.9847366694553393
+coverage,SqlInjection,Web,0.5,True,SqlInjection,False,True,class_policy,Web_Application_Attack,,False,1.0,True,ACTIVATE_WAF_RULE,ACTIVATE_WAF_RULE,False,0.5,0.14326587667786075,0.7337993900326645,0.99974777530655
+coverage,SqlInjection,Web,0.49999999999999994,True,SqlInjection,False,True,class_policy,Web_Application_Attack,,False,1.0,True,ACTIVATE_WAF_RULE,ACTIVATE_WAF_RULE,False,0.49999999999999994,0.15074461476604922,0.8164965809364144,0.7892331917573885
+coverage,SqlInjection,Web,0.530647054853788,True,SqlInjection,False,True,class_policy,Web_Application_Attack,,False,1.0,True,ACTIVATE_WAF_RULE,ACTIVATE_WAF_RULE,False,0.530647054853788,0.14245085096900462,0.904534038218174,0.9987234886287942
+coverage,SqlInjection,Web,0.5149081858436081,True,SqlInjection,False,True,class_policy,Web_Application_Attack,,False,1.0,True,ACTIVATE_WAF_RULE,ACTIVATE_WAF_RULE,False,0.5149081858436081,0.14278862154446723,1.000000005271662,0.9532506633003904
+coverage,Uploading_Attack,Web,0.49266041795245985,True,Uploading_Attack,False,True,class_policy,Web_Application_Attack,,False,1.0,True,ACTIVATE_WAF_RULE,ACTIVATE_WAF_RULE,False,0.49266041795245985,0.14597478677394113,1.3627702877570742,0.8439526292447598
+coverage,Uploading_Attack,Web,0.49999999999999994,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Unclassified anomaly,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.49999999999999994,0.14200749251946723,1.224744871401231,0.0018954333407019686
+coverage,Uploading_Attack,Web,0.5,True,Uploading_Attack,False,True,class_policy,Web_Application_Attack,,False,1.0,True,ACTIVATE_WAF_RULE,ACTIVATE_WAF_RULE,False,0.5,0.15127406543135222,1.224749901237387,0.8800721221874166
+coverage,Uploading_Attack,Web,0.6097924739310124,True,Uploading_Attack,False,True,class_policy,Web_Application_Attack,,False,2.0,False,ACTIVATE_WAF_RULE,BLOCK_SOURCE,True,0.6097924739310124,0.8024999999999998,1.73205080731675,0.9602476874387555
+coverage,Uploading_Attack,Web,0.5,True,Uploading_Attack,False,True,class_policy,Web_Application_Attack,,False,1.0,True,ACTIVATE_WAF_RULE,ACTIVATE_WAF_RULE,False,0.5,0.15946771900371368,1.2247498878932197,0.9997103120818384
+coverage,Uploading_Attack,Web,0.4999999999999999,True,Uploading_Attack,False,True,class_policy,Web_Application_Attack,,False,2.0,True,ACTIVATE_WAF_RULE,BLOCK_SOURCE,True,0.4999999999999999,0.1601491186555518,1.0000000002174905,0.9958500055132936
+coverage,Uploading_Attack,Web,0.49999999999999994,True,Uploading_Attack,False,True,class_policy,Web_Application_Attack,,False,2.0,False,ACTIVATE_WAF_RULE,BLOCK_SOURCE,True,0.49999999999999994,0.8172427753311721,2.0000000001769767,0.9995292038527002
+coverage,Uploading_Attack,Web,0.5,True,Uploading_Attack,False,True,class_policy,Web_Application_Attack,,False,1.0,True,ACTIVATE_WAF_RULE,ACTIVATE_WAF_RULE,False,0.5,0.14404237893955488,1.224744871389092,0.9999878829055361
+coverage,Uploading_Attack,Web,0.49999999999999994,True,Uploading_Attack,False,True,class_policy,Web_Application_Attack,,False,1.0,True,ACTIVATE_WAF_RULE,ACTIVATE_WAF_RULE,False,0.49999999999999994,0.15344731513611487,0.7338027329614122,0.9993361418060771
+coverage,Uploading_Attack,Web,0.5,True,Uploading_Attack,False,True,class_policy,Web_Application_Attack,,False,1.0,True,ACTIVATE_WAF_RULE,ACTIVATE_WAF_RULE,False,0.5,0.14188332313843136,1.0000000000806404,0.9995271738668137
+coverage,Uploading_Attack,Web,0.5859899880469777,True,CommandInjection,False,True,class_policy,Web_Application_Attack,,False,1.0,True,ACTIVATE_WAF_RULE,ACTIVATE_WAF_RULE,False,0.5859899880469777,0.1547518494549139,0.9045340339082444,0.9999947062388801
+coverage,Uploading_Attack,Web,0.49999999999999994,True,Uploading_Attack,False,True,class_policy,Web_Application_Attack,,False,1.0,True,ACTIVATE_WAF_RULE,ACTIVATE_WAF_RULE,False,0.49999999999999994,0.17191269441122614,1.1055460606030587,0.9161670074217556
+coverage,Uploading_Attack,Web,0.49999999999999994,True,Uploading_Attack,False,True,class_policy,Web_Application_Attack,,False,1.0,True,ACTIVATE_WAF_RULE,ACTIVATE_WAF_RULE,False,0.49999999999999994,0.1565415605709082,0.8165029634349826,0.9995940952854376
+coverage,Uploading_Attack,Web,0.49999999999999994,True,Uploading_Attack,False,True,class_policy,Web_Application_Attack,,False,1.0,True,ACTIVATE_WAF_RULE,ACTIVATE_WAF_RULE,False,0.49999999999999994,0.14380432512388136,1.0000040562152748,0.9986793440799613
+coverage,Uploading_Attack,Web,0.5,True,Uploading_Attack,False,True,class_policy,Web_Application_Attack,,False,1.0,True,ACTIVATE_WAF_RULE,ACTIVATE_WAF_RULE,False,0.5,0.14157056014422173,0.9045377722778096,0.3992676158446724
+coverage,VulnerabilityScan,Recon,0.5,True,VulnerabilityScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.5,0.15266753120271465,0.8374593131872831,0.9996382435054273
+coverage,VulnerabilityScan,Recon,0.5000000000000001,True,VulnerabilityScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.5000000000000001,0.15033889468044181,0.9270534210254606,0.9937401106477349
+coverage,VulnerabilityScan,Recon,0.5,True,VulnerabilityScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.5,0.14758780944650857,1.2857432183742987,0.9831735961647814
+coverage,VulnerabilityScan,Recon,0.5,True,VulnerabilityScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.5,0.14103439275402357,1.0000000002178862,1.0
+coverage,VulnerabilityScan,Recon,0.5,True,VulnerabilityScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.5,0.14872440969653894,1.224744871564247,1.0
+coverage,VulnerabilityScan,Recon,0.5,True,VulnerabilityScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.5,0.15369747414848178,0.927053564800454,0.996282101084982
+coverage,VulnerabilityScan,Recon,0.5,True,VulnerabilityScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.5,0.13999156848828817,0.904534033878488,1.0
+coverage,VulnerabilityScan,Recon,0.5,True,VulnerabilityScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.5,0.15846853269348865,1.1330327166531347,0.9987654105681195
+coverage,VulnerabilityScan,Recon,0.5,True,VulnerabilityScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.5,0.14865111841874226,1.0246388607326504,0.08027828032990125
+coverage,VulnerabilityScan,Recon,0.5000000000000001,True,VulnerabilityScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.5000000000000001,0.1523195007627651,0.9045340338536411,1.0
+coverage,VulnerabilityScan,Recon,0.5,True,VulnerabilityScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.5,0.14663983247795764,1.2247448714038007,1.0
+coverage,VulnerabilityScan,Recon,0.5,True,VulnerabilityScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.5,0.14652935626686406,0.7536670423913293,0.9960873627783893
+coverage,VulnerabilityScan,Recon,0.5,True,VulnerabilityScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.5,0.1507499676792144,0.8164965812620054,1.0
+coverage,VulnerabilityScan,Recon,0.5,True,VulnerabilityScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.5,0.14924857875607495,1.3627702878837291,1.0
+coverage,VulnerabilityScan,Recon,0.49999999999999994,True,VulnerabilityScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.49999999999999994,0.15267626360974512,0.9045340338548181,1.0
+coverage,XSS,Web,0.4691668577097289,True,XSS,False,True,class_policy,Web_Application_Attack,,False,1.0,True,ACTIVATE_WAF_RULE,ACTIVATE_WAF_RULE,False,0.4691668577097289,0.15686508605416685,1.105541596897986,0.9849009024120521
+coverage,XSS,Web,0.47834643341678845,True,XSS,False,True,class_policy,Web_Application_Attack,,False,1.0,True,ACTIVATE_WAF_RULE,ACTIVATE_WAF_RULE,False,0.47834643341678845,0.14831048485920947,0.6546536709139256,0.9892923315662846
+coverage,XSS,Web,0.5,True,XSS,False,True,class_policy,Web_Application_Attack,,False,2.0,False,ACTIVATE_WAF_RULE,BLOCK_SOURCE,True,0.5,0.6294166386021776,1.999999999567747,0.9980030784581911
+coverage,XSS,Web,0.4793503312717113,True,XSS,False,True,class_policy,Web_Application_Attack,,False,1.0,True,ACTIVATE_WAF_RULE,ACTIVATE_WAF_RULE,False,0.4793503312717113,0.1532565574921969,1.0000000000154525,0.9998610046319909
+coverage,XSS,Web,0.5813989692057917,True,XSS,False,True,class_policy,Web_Application_Attack,,False,1.0,True,ACTIVATE_WAF_RULE,ACTIVATE_WAF_RULE,False,0.5813989692057917,0.15292433031299849,0.9045407388819312,0.022418884516758664
+coverage,XSS,Web,0.49030087307409753,True,XSS,False,True,class_policy,Web_Application_Attack,,False,1.0,True,ACTIVATE_WAF_RULE,ACTIVATE_WAF_RULE,False,0.49030087307409753,0.13588415807773946,0.9045407407549775,0.8826188990707722
+coverage,XSS,Web,0.49903893657668663,True,XSS,False,True,class_policy,Web_Application_Attack,,False,1.0,True,ACTIVATE_WAF_RULE,ACTIVATE_WAF_RULE,False,0.49903893657668663,0.1535056387760714,1.2247448717206786,0.9332272188841058
+coverage,XSS,Web,0.5000000000000001,True,XSS,False,True,class_policy,Web_Application_Attack,,False,1.0,True,ACTIVATE_WAF_RULE,ACTIVATE_WAF_RULE,False,0.5000000000000001,0.1499811569102172,1.3627760608738202,0.8033776054267883
+coverage,XSS,Web,0.49999999999999994,True,XSS,False,True,class_policy,Web_Application_Attack,,False,2.0,False,ACTIVATE_WAF_RULE,BLOCK_SOURCE,True,0.49999999999999994,0.517882560280326,1.7320508072508467,0.9253899314082076
+coverage,XSS,Web,0.4719841067224256,True,XSS,False,True,class_policy,Web_Application_Attack,,False,1.0,True,ACTIVATE_WAF_RULE,ACTIVATE_WAF_RULE,False,0.4719841067224256,0.1473098209655243,1.1055415967893083,0.6888480040011128
+coverage,XSS,Web,0.5,True,XSS,False,True,class_policy,Web_Application_Attack,,False,1.0,True,ACTIVATE_WAF_RULE,ACTIVATE_WAF_RULE,False,0.5,0.14846998325304406,1.1055460533889931,0.9651447963570112
+coverage,XSS,Web,0.4734196206917276,True,XSS,False,True,class_policy,Web_Application_Attack,,False,1.0,True,ACTIVATE_WAF_RULE,ACTIVATE_WAF_RULE,False,0.4734196206917276,0.1556696752408728,1.1055494019940684,0.9946931372623312
+coverage,XSS,Web,0.4819918389446633,True,XSS,False,True,class_policy,Web_Application_Attack,,False,1.0,True,ACTIVATE_WAF_RULE,ACTIVATE_WAF_RULE,False,0.4819918389446633,0.15398705157887102,0.8165000861086711,0.8302122771078164
+coverage,XSS,Web,0.2505416589977714,False,,False,False,,,,,,,,,,,,,
+coverage,XSS,Web,0.6448877817692216,True,XSS,False,True,class_policy,Web_Application_Attack,,False,1.0,True,ACTIVATE_WAF_RULE,ACTIVATE_WAF_RULE,False,0.6448877817692216,0.15933348538312836,1.0000040611326508,0.9001408402249429
+mixed_day,BenignTraffic,Benign,0.15234029869363158,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.14912666682854986,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.15139565455210732,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.1516523358257244,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.14616355354256474,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.14498420924643207,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.14198460359683468,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.13880683341648495,False,,False,False,,,,,,,,,,,,,
+mixed_day,DDoS-SYN_Flood,DDoS,0.8543693693695275,True,DDoS-SYN_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.1384172496168561,0.9105405025137067,0.9986818443878067
+mixed_day,DDoS-SYN_Flood,DDoS,0.8543693693695275,True,DDoS-SYN_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.1492532468988336,0.6484830087723156,0.8915183638265515
+mixed_day,DDoS-SYN_Flood,DDoS,0.8543693693695275,True,DDoS-SYN_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.14296764801388667,0.8770263557250833,0.9938318682559015
+mixed_day,DDoS-SYN_Flood,DDoS,0.8543693693695275,True,DDoS-SYN_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.15817371680692086,1.2190135707752634,0.33869391247246006
+mixed_day,BenignTraffic,Benign,0.15111304292826597,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.1495053737411117,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.15074893520611965,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.14421447809745117,False,,False,False,,,,,,,,,,,,,
+mixed_day,Recon-PortScan,Recon,0.8543693693695275,True,Recon-PortScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.8543693693695275,0.17014545032892328,1.527525231469397,0.9982267125776914
+mixed_day,Recon-PortScan,Recon,0.5,True,Recon-PortScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.5,0.14455214449415402,0.9045340982528128,0.8899815443796697
+mixed_day,Recon-PortScan,Recon,0.5846024090755875,True,Recon-PortScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.5846024090755875,0.15006335947557686,1.2247448714908922,0.9997964370725205
+mixed_day,Recon-PortScan,Recon,0.4736575201437137,True,Recon-PortScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.4736575201437137,0.14956402912780647,1.1055416273819048,1.0
+mixed_day,BenignTraffic,Benign,0.1507482377595236,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.1490333696947409,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.14328362912645046,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.14519731706206945,False,,False,False,,,,,,,,,,,,,
+mixed_day,Mirai-udpplain,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.14458402172952065,0.8933709253619897,0.8407903596642243
+mixed_day,Mirai-udpplain,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,2.0,True,RATE_LIMIT_SOURCE,BLOCK_SOURCE,True,0.8543693693695275,0.15086795846325804,0.9267636802875533,0.28893958304205114
+mixed_day,Mirai-udpplain,Mirai,0.8543692687522702,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543692687522702,0.1419521143931215,1.3109282763118704,0.8299874354225246
+mixed_day,Mirai-udpplain,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.16047723319814522,0.6756244555043746,0.5480741869956922
+mixed_day,BenignTraffic,Benign,0.8025000000000003,True,BenignTraffic,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.13919660738684503,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.1507504182480274,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.14416530505783012,False,,False,False,,,,,,,,,,,,,
+mixed_day,DoS-UDP_Flood,DoS,0.8543693693695275,True,DoS-UDP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.14893150039731168,0.857895162554252,0.806731086282612
+mixed_day,DoS-UDP_Flood,DoS,0.8543693693695275,True,DoS-UDP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.1461913427254158,1.0903651687351419,0.639736808954544
+mixed_day,DoS-UDP_Flood,DoS,0.8543693693695275,True,DoS-UDP_Flood,False,True,class_policy,Volumetric_Flood,,True,2.0,True,RATE_LIMIT_SOURCE,BLOCK_SOURCE,True,0.8543693693695275,0.14611750708145638,0.9045340338913105,0.47516549453168655
+mixed_day,DoS-UDP_Flood,DoS,0.8543693693695275,True,DoS-UDP_Flood,False,True,class_policy,Volumetric_Flood,,True,2.0,True,RATE_LIMIT_SOURCE,BLOCK_SOURCE,True,0.8543693693695275,0.14856204246129906,1.0000000000949583,0.8150385328673722
+mixed_day,BenignTraffic,Benign,0.15074816891067758,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.15133715801123382,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.13962449045583056,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.14316634891327784,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.15075201593499582,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.14502601689761638,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.15289749951887174,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.15285344407430967,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.14597478681321463,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.15074785370083513,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.1551542141494876,False,,False,False,,,,,,,,,,,,,
+mixed_day,DDoS-SYN_Flood,DDoS,0.8543693693695275,True,DDoS-SYN_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.15515883234344946,0.7729709058978725,0.8852436477770296
+mixed_day,DDoS-SYN_Flood,DDoS,0.8543693693695275,True,DDoS-SYN_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.15178968341632104,0.632042696446926,0.9629097874823802
+mixed_day,DDoS-SYN_Flood,DDoS,0.8543693693695275,True,DDoS-SYN_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.14930584452314302,0.857815481808933,0.9785996304166452
+mixed_day,DDoS-SYN_Flood,DDoS,0.8543693693695275,True,DDoS-SYN_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.15050855144338995,0.8083575015173311,0.8663846111920677
+mixed_day,BenignTraffic,Benign,0.15074627233939994,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.14831048485086679,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.14201082785114982,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.14734628500140737,False,,False,False,,,,,,,,,,,,,
+mixed_day,Recon-PortScan,Recon,0.49503628728514504,True,Recon-PortScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.49503628728514504,0.14597479295493912,1.3627703343257984,0.9926820860898936
+mixed_day,Recon-PortScan,Recon,0.5,True,Recon-PortScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.5,0.14328087574354342,1.1055415969091766,1.0
+mixed_day,Recon-PortScan,Recon,0.7943281385364473,True,Recon-PortScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.7943281385364473,0.15074739534140688,0.8164965810909086,1.0
+mixed_day,Recon-PortScan,Recon,0.5906360306265994,True,Recon-PortScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.5906360306265994,0.14839530922731967,1.3627702878269716,0.9999519025826823
+mixed_day,BenignTraffic,Benign,0.14765195705237566,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.14439532731610513,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.1428458791581972,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.14425610480325707,False,,False,False,,,,,,,,,,,,,
+mixed_day,Mirai-udpplain,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.15437470740847659,1.1039074885994355,0.2964364939063622
+mixed_day,Mirai-udpplain,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,2.0,True,RATE_LIMIT_SOURCE,BLOCK_SOURCE,True,0.8543693693695275,0.1529981035437507,1.1055415968167965,0.764415280995049
+mixed_day,Mirai-udpplain,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.15996794134396544,1.343355076935149,0.6661322252726078
+mixed_day,Mirai-udpplain,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,2.0,True,RATE_LIMIT_SOURCE,BLOCK_SOURCE,True,0.8543693693695275,0.15159603586462708,0.9999999999659115,0.39082072007997615
+mixed_day,BenignTraffic,Benign,0.15211578401780285,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.13893084721216867,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.15074939751293556,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.1492058670451076,False,,False,False,,,,,,,,,,,,,
+mixed_day,DoS-UDP_Flood,DoS,0.8543693693695275,True,DoS-UDP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.14923531024077596,1.0903612449105518,0.6865456421594995
+mixed_day,DoS-UDP_Flood,DoS,0.8543693693695275,True,DoS-UDP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.14485990525220063,0.969482589573961,0.9314349460245837
+mixed_day,DoS-UDP_Flood,DoS,0.8543693693695275,True,DoS-UDP_Flood,False,True,class_policy,Volumetric_Flood,,True,2.0,True,RATE_LIMIT_SOURCE,BLOCK_SOURCE,True,0.8543693693695275,0.15074761254930363,0.8164965810778037,0.8222523958951078
+mixed_day,DoS-UDP_Flood,DoS,0.8543693693695275,True,DoS-UDP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.14702218360081787,1.2861184964346308,0.9073943532522377
+mixed_day,BenignTraffic,Benign,0.14817645350859432,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.17014545032610698,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.15184432486024882,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.14310413897346966,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.14597478679292394,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.1412605308381694,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.14200807372045338,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.15129989967579788,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.14200909473831314,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.1390194216142507,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.15223651542127045,False,,False,False,,,,,,,,,,,,,
+mixed_day,DDoS-SYN_Flood,DDoS,0.8543693693695275,True,DDoS-SYN_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.15836789185822303,1.0705302178359544,0.8469672445167289
+mixed_day,DDoS-SYN_Flood,DDoS,0.8543693693695275,True,DDoS-SYN_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.1469465885451382,0.6637221401888243,0.9978635682172259
+mixed_day,DDoS-SYN_Flood,DDoS,0.8543693693695275,True,DDoS-SYN_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.14290766707656563,1.2042340562620932,0.49647276005074936
+mixed_day,DDoS-SYN_Flood,DDoS,0.8543693693695275,True,DDoS-SYN_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.1583703439272907,1.0705247424903623,0.8046750773745994
+mixed_day,BenignTraffic,Benign,0.15143594768052204,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.15074737947840697,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.2688613642989684,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.26867465804180235,False,,False,False,,,,,,,,,,,,,
+mixed_day,Recon-PortScan,Recon,0.6946095936209083,True,Recon-PortScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.6946095936209083,0.14004107077962874,0.9045340339180573,0.9988199394692121
+mixed_day,Recon-PortScan,Recon,0.8543693693695275,True,Recon-PortScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.8543693693695275,0.14876007348282289,1.1055416285398751,1.0
+mixed_day,Recon-PortScan,Recon,0.5,True,Recon-PortScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.5,0.1512530645388435,0.7337993858688271,1.0
+mixed_day,Recon-PortScan,Recon,0.5447545927240547,True,Recon-OSScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.5447545927240547,0.1507474643733506,0.8164965810331113,1.0
+mixed_day,BenignTraffic,Benign,0.15993252339916353,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.1392148771328265,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.14328121011958095,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.14200852939118772,False,,False,False,,,,,,,,,,,,,
+mixed_day,Mirai-udpplain,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,2.0,True,RATE_LIMIT_SOURCE,BLOCK_SOURCE,True,0.8543693693695275,0.15315629436864778,0.8164965811131888,0.7577652869938603
+mixed_day,Mirai-udpplain,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.1438675618548424,1.0243165419982947,0.9645135625933339
+mixed_day,Mirai-udpplain,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,2.0,True,RATE_LIMIT_SOURCE,BLOCK_SOURCE,True,0.8543693693695275,0.14670178570145434,0.7337993859244251,0.7861641650217801
+mixed_day,Mirai-udpplain,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.15758461883367797,0.9087087775303617,0.726494681662819
+mixed_day,BenignTraffic,Benign,0.145032082429153,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.14274373544631583,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.1500671402227137,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.1534052499066352,False,,False,False,,,,,,,,,,,,,
+mixed_day,DoS-UDP_Flood,DoS,0.8543693693695275,True,DoS-UDP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.15716684560992655,1.159561797085589,0.9999601323915335
+mixed_day,DoS-UDP_Flood,DoS,0.8543693693695275,True,DoS-UDP_Flood,False,True,class_policy,Volumetric_Flood,,True,2.0,True,RATE_LIMIT_SOURCE,BLOCK_SOURCE,True,0.8543693693695275,0.15143149563010766,1.0000000002313012,0.8757930312798907
+mixed_day,DoS-UDP_Flood,DoS,0.8543693693695275,True,DoS-UDP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.15920091022490881,0.8085231578297498,0.9502230971971782
+mixed_day,DoS-UDP_Flood,DoS,0.8543693693695275,True,DoS-UDP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.1445438751083572,0.8949662594019848,0.669147194728574
+mixed_day,BenignTraffic,Benign,0.1373230729505536,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.14681329106057212,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.15443898911164802,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.1417608111293161,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.8024999999999999,True,BenignTraffic,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.17014545032103157,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.15075226917862006,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.14876877330422783,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.14328574107910133,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.17014545034793377,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.14034442891165727,False,,False,False,,,,,,,,,,,,,
+mixed_day,DDoS-SYN_Flood,DDoS,0.8543693693695275,True,DDoS-SYN_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.15813639900112336,1.0484355150577693,1.0
+mixed_day,DDoS-SYN_Flood,DDoS,0.8543693693695275,True,DDoS-SYN_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.14352577823784454,0.6924674076878279,0.9199876726854247
+mixed_day,DDoS-SYN_Flood,DDoS,0.8543693693695275,True,DDoS-SYN_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.15843655411612176,1.1331390213501689,0.9972386144567119
+mixed_day,DDoS-SYN_Flood,DDoS,0.8543693693695275,True,DDoS-SYN_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.15254625778072137,0.7912723911975819,0.9261550839281028
+mixed_day,BenignTraffic,Benign,0.1498500445547421,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.15074942738732355,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.15164210900739314,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.14019637424150022,False,,False,False,,,,,,,,,,,,,
+mixed_day,Recon-PortScan,Recon,0.15878941816856018,False,,False,False,,,,,,,,,,,,,
+mixed_day,Recon-PortScan,Recon,0.5616216696694725,True,Recon-PortScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.5616216696694725,0.14594676464334594,1.105541596953631,1.0
+mixed_day,Recon-PortScan,Recon,0.2875012160490692,False,,False,False,,,,,,,,,,,,,
+mixed_day,Recon-PortScan,Recon,0.5,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Unclassified anomaly,True,2.0,True,RATE_LIMIT_SOURCE,BLOCK_SOURCE,True,0.5,0.14611090331451387,0.9045340339575979,0.8232111892510017
+mixed_day,BenignTraffic,Benign,0.13840245622789152,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.15315719694595434,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.14328580056233162,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.15074843327042664,False,,False,False,,,,,,,,,,,,,
+mixed_day,Mirai-udpplain,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.14717425921051677,0.662177156107309,0.8008863715673613
+mixed_day,Mirai-udpplain,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.1505434839353633,0.7722980632813791,0.8668371830114991
+mixed_day,Mirai-udpplain,Mirai,0.8543692428128118,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543692428128118,0.16005959741605233,1.4615164245077774,0.7732273395387897
+mixed_day,Mirai-udpplain,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.15191894069883383,0.7537049156770808,0.6624458720242983
+mixed_day,BenignTraffic,Benign,0.15618980295972879,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.14200766152256697,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.152464320449906,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.14328374206914932,False,,False,False,,,,,,,,,,,,,
+mixed_day,DoS-UDP_Flood,DoS,0.8543693693695275,True,DoS-UDP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.15105215072343445,0.6776977289975091,0.762674423251632
+mixed_day,DoS-UDP_Flood,DoS,0.8543693693695275,True,DoS-UDP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.14718832007003738,0.8771448284348493,0.7963353675562402
+mixed_day,DoS-UDP_Flood,DoS,0.8543693693695275,True,DoS-UDP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.15893037344340982,0.5873474720723417,0.5496860556460422
+mixed_day,DoS-UDP_Flood,DoS,0.8543693693695275,True,DoS-UDP_Flood,False,True,class_policy,Volumetric_Flood,,True,2.0,True,RATE_LIMIT_SOURCE,BLOCK_SOURCE,True,0.8543693693695275,0.14831048484424209,0.6546536710134915,0.5920449346902115
+mixed_day,BenignTraffic,Benign,0.14524182139804473,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.14401656990367526,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.141658719765235,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.15383017883305425,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.1507459322876314,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.14328370270263002,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.1527729166088265,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.15754567144004664,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.1432840506798481,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.14377547433091808,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.14831048486944845,False,,False,False,,,,,,,,,,,,,
+mixed_day,DDoS-SYN_Flood,DDoS,0.8543693693695275,True,DDoS-SYN_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.1540190831198299,0.8081618542057836,0.6890465452329608
+mixed_day,DDoS-SYN_Flood,DDoS,0.8543693693695275,True,DDoS-SYN_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.1578192185000237,1.1060861218585853,0.7377182356868839
+mixed_day,DDoS-SYN_Flood,DDoS,0.8543693693695275,True,DDoS-SYN_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.14631794401843543,1.0484340444557259,0.9131867676173685
+mixed_day,DDoS-SYN_Flood,DDoS,0.8543693693695275,True,DDoS-SYN_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.1526305244818753,0.8375366572356423,0.8066888751956278
+mixed_day,BenignTraffic,Benign,0.14269671695076208,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.15075035864233835,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.14964543050596238,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.13739814213556534,False,,False,False,,,,,,,,,,,,,
+mixed_day,Recon-PortScan,Recon,0.5,True,Recon-PortScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.5,0.14887891271584963,1.000000000157022,1.0
+mixed_day,Recon-PortScan,Recon,0.5001155142201228,True,Recon-PortScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.5001155142201228,0.1391211612204924,0.9045340337550849,1.0
+mixed_day,Recon-PortScan,Recon,0.5,True,Recon-PortScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.5,0.14330608683895146,1.1055416328866405,0.9987912071131382
+mixed_day,Recon-PortScan,Recon,0.49999999999999994,True,Recon-PortScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.49999999999999994,0.15062793118032497,0.7337994088060946,0.9995302324339943
+mixed_day,BenignTraffic,Benign,0.14683971070499865,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.1507515101109587,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.15999192393272946,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.14943058956915997,False,,False,False,,,,,,,,,,,,,
+mixed_day,Mirai-udpplain,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.15308537742161019,0.7902299446791125,0.8845040132969986
+mixed_day,Mirai-udpplain,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.15877802947824496,1.0692761265327686,0.7277435310387034
+mixed_day,Mirai-udpplain,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.1541845044050449,0.8570847432209239,0.8631192632720779
+mixed_day,Mirai-udpplain,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,2.0,True,RATE_LIMIT_SOURCE,BLOCK_SOURCE,True,0.8543693693695275,0.15448541086708584,0.8164965810930481,0.3553214034091301
+mixed_day,BenignTraffic,Benign,0.15070606470150888,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.1452565962810521,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.15042566731817109,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.14469611754545025,False,,False,False,,,,,,,,,,,,,
+mixed_day,DoS-UDP_Flood,DoS,0.8543693693695275,True,DoS-UDP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.14956804498274445,0.8240453266826284,0.8691123724440992
+mixed_day,DoS-UDP_Flood,DoS,0.8543693693695275,True,DoS-UDP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.1532303932990443,1.3463250552089077,0.9637626223355057
+mixed_day,DoS-UDP_Flood,DoS,0.8543693693695275,True,DoS-UDP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.14995790088260558,0.8949438094128208,0.8561298092065044
+mixed_day,DoS-UDP_Flood,DoS,0.8543693693695275,True,DoS-UDP_Flood,False,True,class_policy,Volumetric_Flood,,True,2.0,True,RATE_LIMIT_SOURCE,BLOCK_SOURCE,True,0.8543693693695275,0.15038121052574127,1.0247802455722617,0.7101072412800182
+mixed_day,BenignTraffic,Benign,0.15025139782182387,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.14954863506715305,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.148915000284664,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.16057215484123802,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.14887013003142638,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.1483104848530125,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.14076585935320568,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.1459030484131815,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.14109535800852732,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.14328088556802404,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.14532684056820183,False,,False,False,,,,,,,,,,,,,
+mixed_day,DDoS-SYN_Flood,DDoS,0.8543693693695275,True,DDoS-SYN_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.14129714109881103,1.256232128029335,0.6065845240460125
+mixed_day,DDoS-SYN_Flood,DDoS,0.8543693693695275,True,DDoS-SYN_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.16079763424676927,1.183585562419786,0.8239124628413529
+mixed_day,DDoS-SYN_Flood,DDoS,0.8543693693695275,True,DDoS-SYN_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,3.0,False,ENABLE_SYN_COOKIES,BLOCK_SOURCE,True,0.8543693693695275,0.817242068700569,1.99999999986592,0.9973642722698652
+mixed_day,DDoS-SYN_Flood,DDoS,0.8543693693695275,True,DDoS-SYN_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.1606049648366701,0.9488785705117199,0.9981958146908372
+mixed_day,BenignTraffic,Benign,0.16057215485421614,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.14900118268087312,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.17014545036108253,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.14535231028783108,False,,False,False,,,,,,,,,,,,,
+mixed_day,Recon-PortScan,Recon,0.8428038112774916,True,Recon-PortScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.8428038112774916,0.16066212971536276,1.0000000275843437,0.9698072645773391
+mixed_day,Recon-PortScan,Recon,0.5,True,Recon-PortScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.5,0.15127581009459362,1.2247448713572242,1.0
+mixed_day,Recon-PortScan,Recon,0.5,True,Recon-PortScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.5,0.14328251816674153,1.1055415969508908,0.8539311956010276
+mixed_day,Recon-PortScan,Recon,0.7510015367657654,True,Recon-PortScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.7510015367657654,0.1473018688679999,1.0000000279046664,0.8710589523867202
+mixed_day,BenignTraffic,Benign,0.147425725484012,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.15584670207460022,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.15550909199372678,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.14597478677950743,False,,False,False,,,,,,,,,,,,,
+mixed_day,Mirai-udpplain,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.15876663563179988,1.0693150848131112,0.9825171455766145
+mixed_day,Mirai-udpplain,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,2.0,True,RATE_LIMIT_SOURCE,BLOCK_SOURCE,True,0.8543693693695275,0.17014545036071296,1.5275252317436359,0.3147716364429597
+mixed_day,Mirai-udpplain,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,2.0,True,RATE_LIMIT_SOURCE,BLOCK_SOURCE,True,0.8543693693695275,0.15075050351191852,0.8164965812385195,0.6554488656915883
+mixed_day,Mirai-udpplain,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.15901531013906753,1.0019692880366382,0.5742497509956986
+mixed_day,BenignTraffic,Benign,0.14588088587053374,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.15074860544163443,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.15012325461148088,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.142362566957011,False,,False,False,,,,,,,,,,,,,
+mixed_day,DoS-UDP_Flood,DoS,0.8543693693695275,True,DoS-UDP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.25657082721639946,1.048520831146424,0.9350962686852918
+mixed_day,DoS-UDP_Flood,DoS,0.8543693693695275,True,DoS-UDP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.15451275133478468,0.9107592459669485,0.8950831689741289
+mixed_day,DoS-UDP_Flood,DoS,0.8543693693695275,True,DoS-UDP_Flood,False,True,class_policy,Volumetric_Flood,,True,2.0,True,RATE_LIMIT_SOURCE,BLOCK_SOURCE,True,0.8543693693695275,0.15074946360300642,0.8164965812041786,0.11636196367384255
+mixed_day,DoS-UDP_Flood,DoS,0.8543693693695275,True,DoS-UDP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.15527023633968953,0.7730506439520632,0.8860295482476575
+mixed_day,BenignTraffic,Benign,0.15959390000699758,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.1471191897310106,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.1459747867744474,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.15493439477082616,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.14861642922103233,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.14889536301383627,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.15074789215836096,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.1459747867865125,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.1512577000348133,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.14996557750901418,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.13461923523404157,False,,False,False,,,,,,,,,,,,,
+mixed_day,DDoS-SYN_Flood,DDoS,0.8543693693695275,True,DDoS-SYN_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.14851713007370937,1.0484324427909506,0.9968726527036822
+mixed_day,DDoS-SYN_Flood,DDoS,0.8543693693695275,True,DDoS-SYN_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.15787734279887705,1.2190225962939603,0.6342591627457097
+mixed_day,DDoS-SYN_Flood,DDoS,0.8543693693695275,True,DDoS-SYN_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.1524441535968278,0.823845813517387,0.6464723275790218
+mixed_day,DDoS-SYN_Flood,DDoS,0.8543693693695275,True,DDoS-SYN_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.15107453033078241,1.3996530030309704,0.44329442735696345
+mixed_day,BenignTraffic,Benign,0.14327999572337274,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.1493020191086468,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.8025000000000002,True,Recon-OSScan,False,True,class_policy,Reconnaissance,,False,2.0,False,BLOCK_SCANNING_SOURCE,ISOLATE_SEGMENT,True,0.8025000000000002,0.8025000000000001,1.7320508076863237,1.0
+mixed_day,BenignTraffic,Benign,0.17014545035453318,False,,False,False,,,,,,,,,,,,,
+mixed_day,Recon-PortScan,Recon,0.5,True,Recon-PortScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.5,0.1497899411371922,0.7337994124892425,0.9866464280144165
+mixed_day,Recon-PortScan,Recon,0.49999999999999994,True,Recon-PortScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.49999999999999994,0.17014545585008728,1.5275252790985159,0.9678483842892497
+mixed_day,Recon-PortScan,Recon,0.8543693693695275,True,Recon-PortScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.8543693693695275,0.14397126995339274,0.7337994122699546,0.9715235269524604
+mixed_day,Recon-PortScan,Recon,0.7698431388500779,True,Recon-PortScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.7698431388500779,0.15074732281774386,0.8164965811890161,1.0
+mixed_day,BenignTraffic,Benign,0.15074513491262023,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.14921087778219447,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.13912752694812985,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.14328557588703536,False,,False,False,,,,,,,,,,,,,
+mixed_day,Mirai-udpplain,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.16197533599616443,0.9087198147824216,0.5691468459768501
+mixed_day,Mirai-udpplain,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.1611137568781893,0.6621712451252706,0.7311760415002021
+mixed_day,Mirai-udpplain,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.33164656574997287,1.2069681591461787,0.4006483651094769
+mixed_day,Mirai-udpplain,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.15922604647352875,0.5856210150603617,0.7364333217679093
+mixed_day,BenignTraffic,Benign,0.15420058990259886,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.15075104875568648,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.14327984976922015,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.15402533647857247,False,,False,False,,,,,,,,,,,,,
+mixed_day,DoS-UDP_Flood,DoS,0.8543693693695275,True,DoS-UDP_Flood,False,True,class_policy,Volumetric_Flood,,True,2.0,True,RATE_LIMIT_SOURCE,BLOCK_SOURCE,True,0.8543693693695275,0.146810238642095,1.105541596929087,0.8550815584596468
+mixed_day,DoS-UDP_Flood,DoS,0.8543693693695275,True,DoS-UDP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.1589312574974927,0.5873422556709516,0.7402051196060981
+mixed_day,DoS-UDP_Flood,DoS,0.8543693693695275,True,DoS-UDP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.1506674769226053,0.857886056940057,0.6588050268317338
+mixed_day,DoS-UDP_Flood,DoS,0.8543693693695275,True,DoS-UDP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.14845672795126635,0.9694830644859,0.7049118353980385
+mixed_day,BenignTraffic,Benign,0.1440005073396725,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.14597478677804446,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.1420080813500893,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.36035322312776824,True,Backdoor_Malware,False,True,class_policy,Malware_Backdoor,,False,1.0,True,QUARANTINE_ENDPOINT,QUARANTINE_ENDPOINT,True,0.36035322312776824,0.16243645139521526,1.105541596740864,0.00017900250532210116
+mixed_day,BenignTraffic,Benign,0.17014545035994863,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.14831048485169618,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.1368171570006236,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.13881066766937525,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.14057197011645134,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.14663481376653298,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.13905019923278547,False,,False,False,,,,,,,,,,,,,
+mixed_day,DDoS-SYN_Flood,DDoS,0.8543693693695275,True,DDoS-SYN_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.1433660473544738,1.048432782443005,0.5252284672866709
+mixed_day,DDoS-SYN_Flood,DDoS,0.8543693693695275,True,DDoS-SYN_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,2.0,True,ENABLE_SYN_COOKIES,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.1591104140444021,0.7912734003736205,0.9989257297061702
+mixed_day,DDoS-SYN_Flood,DDoS,0.8543693693695275,True,DDoS-SYN_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.14194669902227694,1.1594418743339532,0.9997513930961623
+mixed_day,DDoS-SYN_Flood,DDoS,0.8543693693695275,True,DDoS-SYN_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.15836822155223867,1.0705265169878473,0.33635894629855523
+mixed_day,BenignTraffic,Benign,0.1433519626981148,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.1491569577985859,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.15172627559085736,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.14328344769538434,False,,False,False,,,,,,,,,,,,,
+mixed_day,Recon-PortScan,Recon,0.5,True,Recon-PortScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.5,0.15247940153824902,1.0000000001765657,1.0
+mixed_day,Recon-PortScan,Recon,0.6063129234439419,True,Recon-PortScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.6063129234439419,0.1701454503417763,1.527525231580276,0.9728495755646803
+mixed_day,Recon-PortScan,Recon,0.6026925579033787,True,Recon-PortScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.6026925579033787,0.14638326836329615,1.0000000333029537,0.8125612813367068
+mixed_day,Recon-PortScan,Recon,0.6926867537310234,True,Recon-PortScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.6926867537310234,0.1557770696746387,0.9045340339448504,1.0
+mixed_day,BenignTraffic,Benign,0.17014545033449757,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.14755067533539168,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.17014545035941517,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.15009774350925037,False,,False,False,,,,,,,,,,,,,
+mixed_day,Mirai-udpplain,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.14547022585513786,0.6735941000300557,0.9551338726450592
+mixed_day,Mirai-udpplain,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.1530794104233599,0.7902455017460687,0.9798943507778823
+mixed_day,Mirai-udpplain,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.14325110281466244,0.6918594975160588,0.9615293625503447
+mixed_day,Mirai-udpplain,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.13898711908401898,0.8759466353100561,0.8752568374346981
+mixed_day,BenignTraffic,Benign,0.1496204106884949,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.14467995391447364,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.8024999999999999,True,BenignTraffic,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.15183189227879834,False,,False,False,,,,,,,,,,,,,
+mixed_day,DoS-UDP_Flood,DoS,0.8543693693695275,True,DoS-UDP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.156102424903984,1.1063320919053319,0.23051367464497796
+mixed_day,DoS-UDP_Flood,DoS,0.8543693693695275,True,DoS-UDP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.1549740558349624,0.9881523024599776,0.5163736844685067
+mixed_day,DoS-UDP_Flood,DoS,0.8543693693695275,True,DoS-UDP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.1479834779167949,1.0163686756652064,0.39795029655557723
+mixed_day,DoS-UDP_Flood,DoS,0.8543693693695275,True,DoS-UDP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.15821897062033874,1.0041741705060936,0.6852782951529197
+mixed_day,BenignTraffic,Benign,0.15119134317554694,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.17014545036204654,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.151220353366741,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.15233726859411126,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.15927767855257402,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.14721013833717095,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.13695165030936032,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.14785404003403826,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.1505794282900368,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.15111924863634102,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.15175534025714874,False,,False,False,,,,,,,,,,,,,
+mixed_day,DDoS-SYN_Flood,DDoS,0.8543693693695275,True,DDoS-SYN_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.15836914352311304,1.0705239698508038,0.7029159560910794
+mixed_day,DDoS-SYN_Flood,DDoS,0.8543693693695275,True,DDoS-SYN_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.15179120374353663,0.8770316983381248,0.999978871488559
+mixed_day,DDoS-SYN_Flood,DDoS,0.8543693693695275,True,DDoS-SYN_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,2.0,True,ENABLE_SYN_COOKIES,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.14676184657483518,1.2247448714666465,0.17624994202985078
+mixed_day,DDoS-SYN_Flood,DDoS,0.8543693693695275,True,DDoS-SYN_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.14836936358955904,1.0901610697593564,0.8217484776987158
+mixed_day,BenignTraffic,Benign,0.14756956212947897,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.15540099993727405,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.14984752696890768,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.15241503927976133,False,,False,False,,,,,,,,,,,,,
+mixed_day,Recon-PortScan,Recon,0.8543693693695275,True,Recon-PortScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.8543693693695275,0.13926777121864684,0.9045340338319184,1.0
+mixed_day,Recon-PortScan,Recon,0.5,True,Recon-PortScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.5,0.14254265722985274,1.22474487158265,1.0
+mixed_day,Recon-PortScan,Recon,0.5162880881863281,True,Recon-PortScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.5162880881863281,0.14782260109106815,1.3627702879565553,1.0
+mixed_day,Recon-PortScan,Recon,0.8463108525899148,True,Recon-PortScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.8463108525899148,0.1440764569482698,1.0000000001153497,1.0
+mixed_day,BenignTraffic,Benign,0.15084408023957882,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.1474508074146862,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.1507477803173839,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.14934995577769497,False,,False,False,,,,,,,,,,,,,
+mixed_day,Mirai-udpplain,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,2.0,True,RATE_LIMIT_SOURCE,BLOCK_SOURCE,True,0.8543693693695275,0.14686814343902405,1.0000000001126645,0.5380786516321749
+mixed_day,Mirai-udpplain,Mirai,0.8543692152742217,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543692152742217,0.15293262782840034,0.9681866894802615,0.7507916110373278
+mixed_day,Mirai-udpplain,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.15307342447749192,0.7902583623920589,0.8627598012605309
+mixed_day,Mirai-udpplain,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.15729109602951347,1.1821966594708835,0.8612192212714744
+mixed_day,BenignTraffic,Benign,0.1512286529820399,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.15126856788412013,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.14311902922172834,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.1490587630888499,False,,False,False,,,,,,,,,,,,,
+mixed_day,DoS-UDP_Flood,DoS,0.8543693693695275,True,DoS-UDP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.15177470882181865,0.6321386409242952,0.518176578946388
+mixed_day,DoS-UDP_Flood,DoS,0.8543693693695275,True,DoS-UDP_Flood,False,True,class_policy,Volumetric_Flood,,True,2.0,True,RATE_LIMIT_SOURCE,BLOCK_SOURCE,True,0.8543693693695275,0.1618314943901396,1.1055415969361762,0.6143878044065098
+mixed_day,DoS-UDP_Flood,DoS,0.8543693693695275,True,DoS-UDP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.15014380626429508,0.8578908771510726,0.819636596541394
+mixed_day,DoS-UDP_Flood,DoS,0.8543693693695275,True,DoS-UDP_Flood,False,True,class_policy,Volumetric_Flood,,True,2.0,True,RATE_LIMIT_SOURCE,BLOCK_SOURCE,True,0.8543693693695275,0.1528276721990257,0.7337993860025341,0.43804570887003724
+mixed_day,BenignTraffic,Benign,0.15397873719332672,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.15030016612429192,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.14330964215933706,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.8024999999999999,True,BenignTraffic,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.15074934517123126,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.14638259682844804,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.14465474095149328,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.15164745699391427,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.8025,True,BenignTraffic,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.17014545032152933,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.1428435951205525,False,,False,False,,,,,,,,,,,,,
+mixed_day,DDoS-SYN_Flood,DDoS,0.8543693693695275,True,DDoS-SYN_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.16723642503495953,0.5374548010359679,0.905020006564046
+mixed_day,DDoS-SYN_Flood,DDoS,0.8543693693695275,True,DDoS-SYN_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.15363472814542353,0.8236363539343554,0.8173832770875483
+mixed_day,DDoS-SYN_Flood,DDoS,0.8543693693695275,True,DDoS-SYN_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.15843764123896048,1.1331368846926824,0.9970833211990385
+mixed_day,DDoS-SYN_Flood,DDoS,0.8543693693695275,True,DDoS-SYN_Flood,False,True,class_policy,TCP_State_Exhaustion,,True,1.0,True,ENABLE_SYN_COOKIES,ENABLE_SYN_COOKIES,False,0.8543693693695275,0.1543125504803554,1.0484358151719309,0.9106902466652408
+mixed_day,BenignTraffic,Benign,0.8025000000000002,True,Recon-OSScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.8025000000000002,0.15350677205203841,1.1055415970232616,1.0
+mixed_day,BenignTraffic,Benign,0.14956523822125076,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.1459747867548464,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.1459747867752863,False,,False,False,,,,,,,,,,,,,
+mixed_day,Recon-PortScan,Recon,0.5157648895029491,True,Recon-PortScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.5157648895029491,0.14908645284276095,1.105541632516808,0.9658349343714916
+mixed_day,Recon-PortScan,Recon,0.5,True,Recon-PortScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.5,0.14258736099312427,0.9045340591785391,1.0
+mixed_day,Recon-PortScan,Recon,0.487930125855652,True,Recon-PortScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.487930125855652,0.17014545563531594,1.5275252772457637,1.0
+mixed_day,Recon-PortScan,Recon,0.5246141377842689,True,Recon-PortScan,False,True,class_policy,Reconnaissance,,False,1.0,True,BLOCK_SCANNING_SOURCE,BLOCK_SCANNING_SOURCE,True,0.5246141377842689,0.15075433789704623,0.8164965810973946,1.0
+mixed_day,BenignTraffic,Benign,0.14597478675051498,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.1507474917877068,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.13892278695235993,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.14899308040913695,False,,False,False,,,,,,,,,,,,,
+mixed_day,Mirai-udpplain,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.14220662701825318,1.158458486503994,0.9521109133897894
+mixed_day,Mirai-udpplain,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.15054355010008472,0.7722912204846837,0.8267209458085609
+mixed_day,Mirai-udpplain,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.15503717666826972,1.103978386509244,0.7486786778234065
+mixed_day,Mirai-udpplain,Mirai,0.8543693693695275,True,Unknown (zero-day),True,True,zero_day_behaviour,Zero-day,Constant-rate flood,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.15280745451030636,0.8371771911641867,0.8188150809400346
+mixed_day,BenignTraffic,Benign,0.14668386075999792,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.15075044462325024,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.15100660079003542,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.15117000421821664,False,,False,False,,,,,,,,,,,,,
+mixed_day,DoS-UDP_Flood,DoS,0.8543693693695275,True,DoS-UDP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.15094291112161656,0.7269424224702168,0.582885468575101
+mixed_day,DoS-UDP_Flood,DoS,0.8543693693695275,True,DoS-UDP_Flood,False,True,class_policy,Volumetric_Flood,,True,2.0,True,RATE_LIMIT_SOURCE,BLOCK_SOURCE,True,0.8543693693695275,0.14911507440782534,1.105541596885304,0.6317357620208355
+mixed_day,DoS-UDP_Flood,DoS,0.8543693693695275,True,DoS-UDP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.14923333442119682,0.6486159528661898,0.9232520704706384
+mixed_day,DoS-UDP_Flood,DoS,0.8543693693695275,True,DoS-UDP_Flood,False,True,class_policy,Volumetric_Flood,,True,1.0,True,RATE_LIMIT_SOURCE,RATE_LIMIT_SOURCE,False,0.8543693693695275,0.15335107271374068,0.7913719041687399,0.8632123543979027
+mixed_day,BenignTraffic,Benign,0.14848851738209062,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.1442756238793092,False,,False,False,,,,,,,,,,,,,
+mixed_day,BenignTraffic,Benign,0.1459747867855653,False,,False,False,,,,,,,,,,,,,
